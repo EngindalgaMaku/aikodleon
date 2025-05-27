@@ -19,7 +19,7 @@ export default function MachineLearningPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
         </div>
-        <div className="container relative -mt-32 pb-12">
+        <div className="container max-w-6xl mx-auto relative -mt-32 pb-12">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 mb-4">
               <Button asChild variant="ghost" size="sm" className="gap-1">
@@ -43,7 +43,7 @@ export default function MachineLearningPage() {
       </section>
       
       {/* Main content */}
-      <section className="container py-12">
+      <section className="container max-w-6xl mx-auto py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2">
             <div className="prose prose-lg dark:prose-invert max-w-none">

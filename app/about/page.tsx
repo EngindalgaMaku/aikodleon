@@ -16,7 +16,7 @@ export default function AboutPage() {
             backgroundSize: '20px 20px'
           }}
         />
-        <div className="container relative z-10">
+        <div className="container max-w-6xl mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
               Hakkımızda
@@ -30,7 +30,7 @@ export default function AboutPage() {
       
       {/* Mission section */}
       <section className="py-16">
-        <div className="container">
+        <div className="container max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-square rounded-2xl overflow-hidden">
               <Image 
@@ -80,7 +80,7 @@ export default function AboutPage() {
       
       {/* Values section */}
       <section className="py-16 bg-muted/50">
-        <div className="container">
+        <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-1 mb-6">
               <Lightbulb className="h-4 w-4 text-primary" />
@@ -158,7 +158,7 @@ export default function AboutPage() {
       
       {/* Team section */}
       <section className="py-16">
-        <div className="container">
+        <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-1 mb-6">
               <Users className="h-4 w-4 text-primary" />
@@ -219,7 +219,7 @@ export default function AboutPage() {
       
       {/* CTA section */}
       <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container">
+        <div className="container max-w-6xl mx-auto">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold tracking-tight mb-4">
               Yapay Zeka Yolculuğunuza Başlamaya Hazır Mısınız?

@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Brain, CheckCircle2, Ship as Chip, Database, Eye
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Metadata } from 'next';
 
 // Topic data mapping
 const topicsData: Record<string, any> = {
@@ -194,6 +195,37 @@ const allTopicSlugs = [
   "ai-ethics"
 ];
 
+// Generate metadata for each topic page
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { slug } = params;
+  const topic = topicsData[slug] || {
+    title: "Konu Bulunamadı",
+    description: "İstediğiniz konu şu anda mevcut değil.",
+  };
+  
+  return {
+    title: `${topic.title} Eğitimi | Kodleon Yapay Zeka Platformu`,
+    description: `${topic.description} Kodleon'da ${topic.title.toLowerCase()} konusunu derinlemesine öğrenin.`,
+    keywords: `${topic.title.toLowerCase()}, ${topic.title.toLowerCase()} eğitimi, kodleon, yapay zeka, AI öğrenme, türkçe ${topic.title.toLowerCase()} kursu`,
+    alternates: {
+      canonical: `https://kodleon.com/topics/${slug}`,
+    },
+    openGraph: {
+      title: `${topic.title} Eğitimi | Kodleon`,
+      description: topic.description,
+      url: `https://kodleon.com/topics/${slug}`,
+      images: [
+        {
+          url: topic.imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${topic.title} - Kodleon yapay zeka eğitimi`,
+        }
+      ],
+    },
+  };
+}
+
 // Add generateStaticParams function
 export async function generateStaticParams() {
   return allTopicSlugs.map((slug) => ({
@@ -226,22 +258,23 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
   return (
     <div>
       {/* Hero section */}
-      <section className="relative">
+      <section className="relative" aria-labelledby="topic-title">
         <div className="relative h-[300px] md:h-[400px]">
           <Image 
             src={topic.imageUrl}
-            alt={topic.title}
+            alt={`${topic.title} eğitimi - Kodleon yapay zeka platformu`}
             fill
             className="object-cover"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
         </div>
-        <div className="container relative -mt-32 pb-12">
+        <div className="container max-w-6xl mx-auto relative -mt-32 pb-12">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 mb-4">
               <Button asChild variant="ghost" size="sm" className="gap-1">
-                <Link href="/topics">
-                  <ArrowLeft className="h-4 w-4" />
+                <Link href="/topics" aria-label="Tüm yapay zeka konularına dön">
+                  <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                   Tüm Konular
                 </Link>
               </Button>
@@ -250,7 +283,7 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
               <div className="p-3 rounded-full bg-primary/10 backdrop-blur-sm">
                 {topic.icon}
               </div>
-              <h1 className="text-4xl font-bold">{topic.title}</h1>
+              <h1 id="topic-title" className="text-4xl font-bold">{topic.title}</h1>
             </div>
             <p className="text-xl text-muted-foreground">
               {topic.description}
@@ -260,23 +293,24 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
       </section>
       
       {/* Main content */}
-      <section className="container py-12">
+      <section className="container max-w-6xl mx-auto py-12" aria-labelledby="overview-heading">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
           <div>
             <div className="prose prose-lg dark:prose-invert max-w-none">
-              <h2>Genel Bakış</h2>
+              <h2 id="overview-heading">Genel Bakış</h2>
               <p>{topic.longDescription}</p>
               
-              <h2>Alt Konular</h2>
+              <h2 id="subtopics-heading">Alt Konular</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
                 {topic.subtopics?.map((subtopic: any, index: number) => (
                   <Card key={index} className="overflow-hidden">
                     <div className="relative h-40">
                       <Image 
                         src={subtopic.imageUrl}
-                        alt={subtopic.title}
+                        alt={`${subtopic.title} - ${topic.title} alt konusu`}
                         fill
                         className="object-cover"
+                        loading={index < 2 ? "eager" : "lazy"}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
                     </div>
@@ -298,7 +332,7 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
               <ul className="space-y-3 mb-6">
                 {topic.skills?.map((skill: string, index: number) => (
                   <li key={index} className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
                     <span>{skill}</span>
                   </li>
                 ))}
@@ -313,6 +347,7 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
                     <Link 
                       href={resource.link} 
                       className="flex items-center justify-between p-3 bg-background rounded-md hover:bg-secondary transition-colors"
+                      aria-label={`${resource.title} kaynağını incele - ${resource.type}`}
                     >
                       <span className="font-medium">{resource.title}</span>
                       <span className="text-sm text-muted-foreground">{resource.type}</span>
@@ -328,18 +363,19 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
       </section>
       
       {/* Related topics */}
-      <section className="bg-muted py-16">
-        <div className="container">
-          <h2 className="text-2xl font-bold mb-8">İlgili Konular</h2>
+      <section className="bg-muted py-16" aria-labelledby="related-topics-heading">
+        <div className="container max-w-6xl mx-auto">
+          <h2 id="related-topics-heading" className="text-2xl font-bold mb-8">İlgili Konular</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedTopics.map((relatedTopic, index) => (
               <Card key={index} className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <div className="relative h-48">
                   <Image 
                     src={relatedTopic.imageUrl}
-                    alt={relatedTopic.title}
+                    alt={`${relatedTopic.title} eğitimi - İlgili yapay zeka konusu`}
                     fill
                     className="object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
                   <div className="absolute bottom-4 left-4 p-2 rounded-full bg-background/80 backdrop-blur-sm">
@@ -352,9 +388,9 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
                 </CardHeader>
                 <CardFooter>
                   <Button asChild variant="ghost" className="gap-1 ml-auto">
-                    <Link href={`/topics/${relatedTopic.slug}`}>
+                    <Link href={`/topics/${relatedTopic.slug}`} aria-label={`${relatedTopic.title} konusunu keşfedin`}>
                       Konuyu İncele
-                      <ArrowRight className="h-4 w-4" />
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Link>
                   </Button>
                 </CardFooter>
@@ -363,6 +399,32 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+
+      {/* Structured data for SEO */}
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": `${topic.title} Eğitimi`,
+            "description": topic.description,
+            "provider": {
+              "@type": "Organization",
+              "name": "Kodleon",
+              "sameAs": "https://kodleon.com"
+            },
+            "courseCode": slug,
+            "educationalLevel": "Beginner to Advanced",
+            "teaches": topic.skills?.join(", "),
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "inLanguage": "tr"
+            }
+          })
+        }}
+      />
     </div>
   );
 }

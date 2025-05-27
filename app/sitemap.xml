@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://kodleon.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/topics</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/topics"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/about"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/topics/machine-learning</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/topics/machine-learning"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/topics/nlp</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/topics/nlp"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/topics/computer-vision</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/topics/computer-vision"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/topics/generative-ai</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/topics/generative-ai"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/topics/neural-networks</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/topics/neural-networks"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/topics/ai-ethics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/topics/ai-ethics"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/contact"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://kodleon.com/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://kodleon.com/terms"/>
+  </url>
+</urlset> 

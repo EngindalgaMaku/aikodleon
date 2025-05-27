@@ -19,12 +19,12 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container max-w-6xl mx-auto flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Brain className="h-6 w-6 text-primary" />
-          <span className="font-bold text-xl hidden sm:inline-block">AI Eğitim</span>
+        <Link href="/" className="flex items-center gap-2" aria-label="Kodleon ana sayfaya git">
+          <Brain className="h-6 w-6 text-primary" aria-hidden="true" />
+          <span className="font-bold text-xl hidden sm:inline-block">Kodleon</span>
         </Link>
         
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-6" aria-label="Ana navigasyon">
           {routes.map((route) => (
             <Link
               key={route.href}
@@ -42,14 +42,17 @@ export default function Navbar() {
           size="icon"
           className="md:hidden"
           onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          aria-label="Menüyü aç/kapat"
         >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          <span className="sr-only">Toggle menu</span>
+          {isOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          <span className="sr-only">Menüyü aç/kapat</span>
         </Button>
         
         {isOpen && (
-          <div className="absolute top-16 left-0 right-0 border-b bg-background md:hidden">
-            <nav className="container max-w-6xl mx-auto flex flex-col py-4 gap-2">
+          <div className="absolute top-16 left-0 right-0 border-b bg-background md:hidden" id="mobile-menu">
+            <nav className="container max-w-6xl mx-auto flex flex-col py-4 gap-2" aria-label="Mobil navigasyon">
               {routes.map((route) => (
                 <Link
                   key={route.href}
