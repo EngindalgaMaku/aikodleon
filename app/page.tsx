@@ -62,7 +62,7 @@ export default function Home() {
             backgroundSize: '20px 20px'
           }}
         />
-        <div className="container relative z-10">
+        <div className="container max-w-6xl mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-chart-2">
               Yapay Zeka ile Geleceği Keşfedin
@@ -84,7 +84,7 @@ export default function Home() {
       
       {/* Features section */}
       <section className="py-16 bg-muted/50">
-        <div className="container">
+        <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight mb-4">AI Eğitim Konuları</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -127,7 +127,7 @@ export default function Home() {
       
       {/* Benefits section */}
       <section className="py-16">
-        <div className="container">
+        <div className="container max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold tracking-tight mb-6">Neden AI Öğrenmelisiniz?</h2>
@@ -188,7 +188,7 @@ export default function Home() {
       
       {/* CTA section */}
       <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container">
+        <div className="container max-w-6xl mx-auto">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold tracking-tight mb-4">
               Yapay Zeka Yolculuğunuza Bugün Başlayın

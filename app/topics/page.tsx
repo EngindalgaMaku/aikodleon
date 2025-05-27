@@ -91,7 +91,7 @@ const allTopics = [
 
 export default function TopicsPage() {
   return (
-    <div className="container py-12">
+    <div className="container max-w-6xl mx-auto py-12">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold tracking-tight mb-4">AI Eğitim Konuları</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -110,34 +110,42 @@ export default function TopicsPage() {
         </div>
         
         <TabsContent value="all" className="mt-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allTopics.map((topic, index) => (
-              <TopicCard key={index} topic={topic} />
-            ))}
+          <div className="w-full flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {allTopics.map((topic, index) => (
+                <TopicCard key={index} topic={topic} />
+              ))}
+            </div>
           </div>
         </TabsContent>
         
         <TabsContent value="core" className="mt-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allTopics.filter(topic => topic.category === "core").map((topic, index) => (
-              <TopicCard key={index} topic={topic} />
-            ))}
+          <div className="w-full flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {allTopics.filter(topic => topic.category === "core").map((topic, index) => (
+                <TopicCard key={index} topic={topic} />
+              ))}
+            </div>
           </div>
         </TabsContent>
         
         <TabsContent value="applications" className="mt-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allTopics.filter(topic => topic.category === "applications").map((topic, index) => (
-              <TopicCard key={index} topic={topic} />
-            ))}
+          <div className="w-full flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {allTopics.filter(topic => topic.category === "applications").map((topic, index) => (
+                <TopicCard key={index} topic={topic} />
+              ))}
+            </div>
           </div>
         </TabsContent>
         
         <TabsContent value="advanced" className="mt-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allTopics.filter(topic => topic.category === "advanced").map((topic, index) => (
-              <TopicCard key={index} topic={topic} />
-            ))}
+          <div className="w-full flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {allTopics.filter(topic => topic.category === "advanced").map((topic, index) => (
+                <TopicCard key={index} topic={topic} />
+              ))}
+            </div>
           </div>
         </TabsContent>
       </Tabs>
@@ -157,7 +165,7 @@ export default function TopicsPage() {
 
 function TopicCard({ topic }: { topic: any }) {
   return (
-    <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+    <Card className="w-80 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
       <div className="relative h-48">
         <Image 
           src={topic.imageUrl}

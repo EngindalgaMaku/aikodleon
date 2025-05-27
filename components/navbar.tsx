@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container max-w-6xl mx-auto flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Brain className="h-6 w-6 text-primary" />
           <span className="font-bold text-xl hidden sm:inline-block">AI Eğitim</span>
@@ -49,7 +49,7 @@ export default function Navbar() {
         
         {isOpen && (
           <div className="absolute top-16 left-0 right-0 border-b bg-background md:hidden">
-            <nav className="container flex flex-col py-4 gap-2">
+            <nav className="container max-w-6xl mx-auto flex flex-col py-4 gap-2">
               {routes.map((route) => (
                 <Link
                   key={route.href}

@@ -194,6 +194,13 @@ const allTopicSlugs = [
   "ai-ethics"
 ];
 
+// Add generateStaticParams function
+export async function generateStaticParams() {
+  return allTopicSlugs.map((slug) => ({
+    slug: slug,
+  }));
+}
+
 export default function TopicPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const topic = topicsData[slug] || {
@@ -254,8 +261,8 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
       
       {/* Main content */}
       <section className="container py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+          <div>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <h2>Genel Bakış</h2>
               <p>{topic.longDescription}</p>
@@ -286,7 +293,7 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
           </div>
           
           <div>
-            <div className="bg-muted rounded-lg p-6 sticky top-24">
+            <div className="bg-muted rounded-lg p-6 sticky top-24 max-w-sm mx-auto">
               <h3 className="text-xl font-medium mb-4">Bu Konuda Kazanacağınız Beceriler</h3>
               <ul className="space-y-3 mb-6">
                 {topic.skills?.map((skill: string, index: number) => (
