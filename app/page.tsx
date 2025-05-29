@@ -34,7 +34,7 @@ const topics = [
     title: "Makine Öğrenmesi",
     description: "Algoritmaların veri kullanarak nasıl öğrendiğini ve tahminlerde bulunduğunu keşfedin.",
     icon: <Database className="h-8 w-8 text-chart-1" aria-hidden="true" />,
-    href: "/topics/machine-learning",
+    href: "https://ml.kodleon.com",
     imageUrl: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   {
@@ -141,7 +141,7 @@ export default function Home() {
                 </CardHeader>
                 <CardFooter>
                   <Button asChild variant="ghost" className="gap-1 ml-auto">
-                    <Link href={topic.href} aria-label={`${topic.title} konusunu daha detaylı inceleyin`}>
+                    <Link href={topic.href} aria-label={`${topic.title} konusunu daha detaylı inceleyin`} target="_blank" rel="noopener noreferrer">
                       Daha Fazla
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Link>

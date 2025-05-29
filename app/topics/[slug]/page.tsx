@@ -13,34 +13,39 @@ const topicsData: Record<string, any> = {
     description: "Algoritmaların veri kullanarak nasıl öğrendiğini ve tahminlerde bulunduğunu keşfedin.",
     icon: <Database className="h-8 w-8 text-chart-1" />,
     imageUrl: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    longDescription: "Makine öğrenmesi, bilgisayarların açık programlamaya gerek kalmadan öğrenmesini sağlayan yapay zeka uygulamalarıdır. Algoritmaların verilerden öğrenerek tahminlerde bulunmasını ve kararlar vermesini sağlar. Denetimli öğrenme, denetimsiz öğrenme ve pekiştirmeli öğrenme gibi farklı yaklaşımlar içerir.",
+    longDescription: "Makine öğrenmesi (ML), bilgisayar sistemlerinin açıkça programlanmadan verilerden öğrenmesini ve bu öğrenme yoluyla belirli görevleri yerine getirmesini sağlayan yapay zekanın bir dalıdır. ML algoritmaları, büyük veri kümelerindeki desenleri ve ilişkileri tanımlayarak çalışır, böylece bilinmeyen veriler hakkında tahminlerde bulunabilir veya kararlar alabilirler. Denetimli öğrenme (etiketli verilerle eğitim), denetimsiz öğrenme (etiketlenmemiş verilerden desen keşfi) ve pekiştirmeli öğrenme (deneme-yanılma yoluyla öğrenme) gibi çeşitli paradigmaları içerir. Makine öğrenmesi, tavsiye sistemlerinden otonom araçlara, tıbbi teşhisten finansal analizlere kadar çok geniş bir uygulama alanına sahiptir. Bu alanda uzmanlaşmak, geleceğin teknoloji dünyasında önemli bir yer edinmek anlamına gelir.",
     subtopics: [
       {
         title: "Denetimli Öğrenme",
         description: "Etiketli verilerle modellerin nasıl eğitildiğini ve tahminlerde bulunduğunu öğrenin.",
-        imageUrl: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/machine-learning/supervised-learning"
       },
       {
         title: "Denetimsiz Öğrenme",
         description: "Etiketlenmemiş verilerden kalıpları ve yapıları nasıl keşfedeceğinizi anlayın.",
-        imageUrl: "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/machine-learning/unsupervised-learning"
       },
       {
         title: "Pekiştirmeli Öğrenme",
         description: "Deneme yanılma yoluyla ajanların çevreleriyle nasıl etkileşime girdiğini ve öğrendiğini keşfedin.",
-        imageUrl: "https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/machine-learning/reinforcement-learning"
       },
       {
         title: "Derin Öğrenme Temelleri",
         description: "Derin öğrenmenin temel kavramlarını ve yapay sinir ağlarının çalışma prensiplerini öğrenin.",
-        imageUrl: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/machine-learning/deep-learning-basics"
       }
     ],
-    skills: ["Veri Analizi", "Python", "Algoritma Tasarımı", "Model Değerlendirme", "Veri Ön İşleme"],
+    skills: ["Veri Analizi", "Python", "Algoritma Tasarımı", "Model Değerlendirme", "Veri Ön İşleme", "Denetimli Öğrenme Modelleri", "Denetimsiz Öğrenme Teknikleri", "Model Optimizasyonu", "Makine Öğrenmesi Kütüphaneleri (Scikit-learn, TensorFlow, PyTorch)"],
     resources: [
       { title: "Makine Öğrenmesi Temelleri", type: "Kurs", link: "#" },
       { title: "Scikit-Learn ile Uygulamalı ML", type: "Pratik", link: "#" },
-      { title: "Makine Öğrenmesi Algoritmaları", type: "E-Kitap", link: "#" }
+      { title: "Makine Öğrenmesi Algoritmaları Derinlemesine İnceleme", type: "E-Kitap", link: "#" },
+      { title: "Kaggle ML Yarışmalarına Giriş", type: "Kaynak", link: "#" }
     ]
   },
   "nlp": {
@@ -48,7 +53,7 @@ const topicsData: Record<string, any> = {
     description: "Makinelerin insan dilini nasıl anlayıp işlediğini ve ürettiğini öğrenin.",
     icon: <FileText className="h-8 w-8 text-chart-2" />,
     imageUrl: "https://images.pexels.com/photos/7412095/pexels-photo-7412095.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    longDescription: "Doğal Dil İşleme (NLP), bilgisayarların insan dilini anlama, işleme ve üretme yeteneğidir. Metin sınıflandırma, duygu analizi, makine çevirisi ve soru cevaplama gibi uygulamaları içerir. Büyük dil modelleri (LLM'ler) ile gelişen bir alandır.",
+    longDescription: "Doğal Dil İşleme (NLP), bilgisayarların insan (doğal) dilini anlama, yorumlama ve üretme yeteneği kazandıran yapay zeka disiplinidir. Metin ve konuşma verileri üzerinde çalışarak anlam çıkarma, duygu analizi yapma, diller arası çeviri gerçekleştirme, metin özetleme ve sohbet botları geliştirme gibi geniş bir uygulama yelpazesine sahiptir. Son yıllarda, Transformer mimarisi ve Büyük Dil Modelleri (LLM'ler) gibi tekniklerdeki ilerlemeler sayesinde NLP alanında çığır açan gelişmeler yaşanmıştır. Bu gelişmeler, daha önce mümkün olmayan karmaşık dil görevlerinin yerine getirilmesini sağlamıştır. NLP, insan ve bilgisayar arasındaki etkileşimi daha doğal ve akıcı hale getirerek birçok sektörde devrim yaratma potansiyeli taşımaktadır.",
     subtopics: [
       {
         title: "Metin Analizi",
@@ -71,11 +76,12 @@ const topicsData: Record<string, any> = {
         imageUrl: "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       }
     ],
-    skills: ["Metin İşleme", "Vektör Temsilleri", "Dil Modellemesi", "Transformer Mimarileri", "Semantik Analiz"],
+    skills: ["Metin Ön İşleme", "Vektör Temsilleri (Word Embeddings)", "Dil Modellemesi", "Transformer Mimarileri", "Duygu Analizi", "Metin Sınıflandırma", "Varlık Tanıma (NER)", "Metin Üretimi", "NLP Kütüphaneleri (NLTK, spaCy, Hugging Face)"],
     resources: [
       { title: "NLP Temelleri", type: "Kurs", link: "#" },
-      { title: "Dil Modelleriyle Çalışma", type: "Atölye", link: "#" },
-      { title: "Duygu Analizi Projesi", type: "Pratik", link: "#" }
+      { title: "Dil Modelleriyle Çalışma Atölyesi", type: "Atölye", link: "#" },
+      { title: "Duygu Analizi Projesi Rehberi", type: "Pratik", link: "#" },
+      { title: "Transformer Modellerine Giriş", type: "E-Kitap", link: "#" }
     ]
   },
   "computer-vision": {
@@ -83,7 +89,7 @@ const topicsData: Record<string, any> = {
     description: "Bilgisayarların görüntüleri nasıl algıladığını ve işlediğini anlayın.",
     icon: <Eye className="h-8 w-8 text-chart-3" />,
     imageUrl: "https://images.pexels.com/photos/8438922/pexels-photo-8438922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    longDescription: "Bilgisayarlı görü, makinelerin dijital görüntüleri veya videoları anlama ve işleme yeteneğidir. Görüntü sınıflandırma, nesne algılama, yüz tanıma ve görüntü segmentasyonu gibi uygulamaları içerir. Konvolüsyonel sinir ağları (CNN'ler) gibi derin öğrenme tekniklerini kullanır.",
+    longDescription: "Bilgisayarlı görü (Computer Vision), makinelerin dijital görüntü veya videolardan anlamlı bilgiler çıkarma yeteneği kazandıran bir yapay zeka alanıdır. İnsan gözünün görsel dünyayı algılama ve yorumlama sürecini taklit etmeyi hedefler. Görüntü sınıflandırma (bir görüntünün ne olduğunu belirleme), nesne algılama (görüntüdeki nesnelerin yerini ve türünü belirleme), görüntü segmentasyonu (görüntüyü farklı bölgelere ayırma), yüz tanıma ve hareket takibi gibi çok çeşitli görevleri kapsar. Bilgisayarlı görüdeki ilerlemeler, otonom araçlar, güvenlik sistemleri, tıbbi görüntü analizi, artırılmış gerçeklik ve endüstriyel otomasyon gibi birçok alanda devrimci uygulamaların önünü açmıştır. Konvolüsyonel Sinir Ağları (CNN'ler) bu alandaki en etkili derin öğrenme modellerindendir.",
     subtopics: [
       {
         title: "Görüntü Sınıflandırma",
@@ -106,11 +112,12 @@ const topicsData: Record<string, any> = {
         imageUrl: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       }
     ],
-    skills: ["OpenCV", "Konvolüsyonel Sinir Ağları", "Görüntü İşleme", "Öznitelik Çıkarımı", "PyTorch/TensorFlow"],
+    skills: ["Görüntü İşleme Temelleri", "Konvolüsyonel Sinir Ağları (CNN)", "Nesne Algılama Algoritmaları (YOLO, Faster R-CNN)", "Görüntü Segmentasyonu Teknikleri", "Öznitelik Çıkarımı", "OpenCV", "PyTorch/TensorFlow ile Görüntü İşleme", "Model Eğitimi ve Değerlendirme"],
     resources: [
       { title: "Bilgisayarlı Görü Temelleri", type: "Kurs", link: "#" },
+      { title: "OpenCV ile Uygulamalı Görüntü İşleme", type: "Pratik", link: "#" },
       { title: "Nesne Algılama Projesi", type: "Pratik", link: "#" },
-      { title: "Derin Öğrenme ile Görüntü İşleme", type: "E-Kitap", link: "#" }
+      { title: "CNN Mimarileri", type: "E-Kitap", link: "#" }
     ]
   },
   "generative-ai": {
@@ -118,7 +125,7 @@ const topicsData: Record<string, any> = {
     description: "Metin, görüntü ve ses üretebilen yapay zeka modellerini keşfedin.",
     icon: <Lightbulb className="h-8 w-8 text-chart-4" />,
     imageUrl: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    longDescription: "Üretken AI, yeni içerik oluşturabilen yapay zeka sistemlerini ifade eder. Generative Adversarial Networks (GAN'lar), Variational Autoencoders (VAE'ler) ve diffusion modelleri gibi tekniklerle metin, görüntü, ses ve video üretebilir. ChatGPT, DALL-E ve Midjourney gibi araçlar bu alandaki önemli örneklerdir.",
+    longDescription: "Üretken Yapay Zeka (Generative AI), mevcut verilerden öğrenerek yeni ve özgün içerikler (metin, görüntü, müzik, kod, video vb.) oluşturabilen yapay zeka modellerini tanımlar. Bu modeller, verilerdeki kalıpları, stilleri ve yapıları öğrenir ve bu bilgiyi kullanarak daha önce hiç görülmemiş çıktılar üretir. Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs) ve Diffusion modelleri gibi teknikler, üretken AI'nın temelini oluşturur. ChatGPT, DALL-E, Midjourney ve Stable Diffusion gibi popüler araçlar, üretken AI'nın potansiyelini sergileyen güncel örneklerdir. Yaratıcı endüstrilerden bilimsel araştırmalara, yazılım geliştirmeden eğitime kadar birçok alanda dönüştürücü etkilere sahiptir. Üretken AI, makinelerin sadece analiz etmekle kalmayıp aynı zamanda 'yaratıcılık' sergileyebileceği bir geleceğin kapılarını aralamaktadır.",
     subtopics: [
       {
         title: "Üretken Çekişmeli Ağlar (GAN)",
@@ -141,11 +148,12 @@ const topicsData: Record<string, any> = {
         imageUrl: "https://images.pexels.com/photos/8566460/pexels-photo-8566460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       }
     ],
-    skills: ["Derin Öğrenme", "Model Mimarisi", "Fine-tuning", "Prompt Engineering", "Yaratıcı AI Uygulamaları"],
+    skills: ["Derin Öğrenme", "GANs", "VAEs", "Diffusion Modelleri", "Transformer Modelleri", "Metin/Görüntü/Ses Üretimi", "Model Eğitimi ve Fine-tuning", "Prompt Engineering", "Üretken AI Uygulama Geliştirme"],
     resources: [
       { title: "Üretken AI Temelleri", type: "Kurs", link: "#" },
-      { title: "GAN ile Görüntü Üretimi", type: "Pratik", link: "#" },
-      { title: "LLM'lerle Çalışma", type: "Atölye", link: "#" }
+      { title: "GAN ile Görüntü Üretimi Uygulamaları", type: "Pratik", link: "#" },
+      { title: "Büyük Dil Modelleriyle (LLM) Çalışma Atölyesi", type: "Atölye", link: "#" },
+      { title: "Diffusion Modellerine Kapsamlı Bakış", type: "E-Kitap", link: "#" }
     ]
   },
   "neural-networks": {
@@ -153,7 +161,7 @@ const topicsData: Record<string, any> = {
     description: "Beynin çalışma prensibinden esinlenen yapay sinir ağları hakkında bilgi edinin.",
     icon: <Brain className="h-8 w-8 text-chart-5" />,
     imageUrl: "https://images.pexels.com/photos/8386421/pexels-photo-8386421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    longDescription: "Yapay sinir ağları, insan beyninin nöral yapısından esinlenen hesaplama sistemleridir. Katmanlar halinde düzenlenmiş nöronlardan oluşur ve karmaşık örüntüleri öğrenebilir. Derin öğrenmenin temelini oluşturur ve görüntü tanıma, dil anlama ve karar verme gibi birçok AI uygulamasında kullanılır.",
+    longDescription: "Yapay Sinir Ağları (YSA), insan beyninin yapısından ve işleyişinden esinlenerek tasarlanmış hesaplama modelleridir. Birbirine bağlı 'nöron' katmanlarından oluşurlar ve öğrenme süreci, bu bağlantıların ağırlıklarının ve eğilimlerinin ayarlanmasıyla gerçekleşir. YSA'lar, özellikle karmaşık örüntü tanıma, sınıflandırma, regresyon ve tahmin görevlerinde üstün başarı gösterirler. Derin Öğrenme, birden çok gizli katmana sahip sinir ağlarını ifade eder ve son yıllarda görüntü tanıma, doğal dil işleme ve konuşma tanıma gibi alanlarda büyük atılımlar sağlamıştır. Konvolüsyonel Sinir Ağları (CNN) ve Tekrarlayan Sinir Ağları (RNN) gibi özel sinir ağı mimarileri, farklı veri türleri (görüntü, metin, zaman serisi) için optimize edilmiştir. Sinir ağları, modern yapay zekanın temel taşlarından biridir ve öğrenme yetenekleri sayesinde birçok zorlu problemin çözümünde kritik rol oynar.",
     subtopics: [
       {
         title: "Temel Sinir Ağı Mimarileri",
@@ -176,13 +184,28 @@ const topicsData: Record<string, any> = {
         imageUrl: "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       }
     ],
-    skills: ["Backpropagation", "Aktivasyon Fonksiyonları", "Hiperparametre Ayarlama", "Gradient Descent", "Model Optimizasyonu"],
+    skills: ["Nöron Modelleri", "İleri Beslemeli Ağlar", "Geri Yayılım (Backpropagation)", "Evrişimsel Katmanlar (Convolutional Layers)", "Tekrarlayan Katmanlar (Recurrent Layers)", "Aktivasyon Fonksiyonları", "Model Eğitimi", "Hiperparametre Ayarlama", "Derin Öğrenme Kütüphaneleri (TensorFlow, PyTorch)"],
     resources: [
       { title: "Sinir Ağları Temelleri", type: "Kurs", link: "#" },
-      { title: "PyTorch ile Neural Networks", type: "Pratik", link: "#" },
-      { title: "Derin Öğrenme Mimarileri", type: "E-Kitap", link: "#" }
+      { title: "PyTorch ile Sinir Ağı Uygulamaları", type: "Pratik", link: "#" },
+      { title: "Derin Öğrenme Mimarilerine Giriş", type: "E-Kitap", link: "#" },
+      { title: "Sinir Ağı Optimizasyon Teknikleri", type: "Kaynak", link: "#" }
     ]
-  }
+  },
+  "ai-ethics": {
+    title: "AI Etiği",
+    description: "Yapay zekanın etik kullanımı ve toplumsal etkileri üzerine tartışmalar.",
+    icon: <Users className="h-8 w-8 text-chart-1" />,
+    imageUrl: "https://images.pexels.com/photos/8386422/pexels-photo-8386422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    longDescription: "Yapay Zeka Etiği, yapay zeka sistemlerinin geliştirilmesi, dağıtılması ve kullanılması sırasında ortaya çıkan ahlaki, sosyal ve felsefi soruları inceleyen disiplinler arası bir alandır. AI'ın hızla yaygınlaşmasıyla birlikte, şeffaflık, adalet, hesap verebilirlik, gizlilik ve güvenlik gibi konular kritik önem kazanmıştır. AI sistemlerindeki potansiyel önyargılar, işsizlik, otonom silahlar ve mahremiyetin ihlali gibi etik sorunlar, küresel düzeyde tartışılmaktadır. AI etiği, sadece teknik bir mesele olmayıp, aynı zamanda hukuki düzenlemeler, toplumsal normlar ve bireysel sorumlulukları da kapsar. Bu alandaki farkındalık ve çalışmalar, yapay zekanın insanlık için faydalı ve sorumlu bir şekilde geliştirilmesini ve kullanılmasını sağlamak amacıyla büyük önem taşımaktadır.",
+    subtopics: [], // AI Etiği için alt konu kartları şimdilik boş bırakıldı.
+    skills: ["Etik Karar Verme Çerçeveleri", "AI Önyargısını Anlama ve Azaltma", "Şeffaflık ve Açıklanabilirlik (Explainable AI)", "Mahremiyet ve Veri Koruma", "AI Hukuku ve Regülasyonları", "Toplumsal Etki Analizi", "Hesap Verebilirlik Mekanizmaları"],
+    resources: [
+      { title: "AI Etiği Temelleri", type: "Kurs", link: "#" },
+      { title: "Yapay Zeka ve Toplum", type: "E-Kitap", link: "#" },
+      { title: "Sorumlu AI Geliştirme", type: "Rehber", link: "#" }
+    ]
+  },
 };
 
 // List of all topics for related topics section
@@ -300,61 +323,81 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
               <h2 id="overview-heading">Genel Bakış</h2>
               <p>{topic.longDescription}</p>
               
-              <h2 id="subtopics-heading">Alt Konular</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
-                {topic.subtopics?.map((subtopic: any, index: number) => (
-                  <Card key={index} className="overflow-hidden">
-                    <div className="relative h-40">
-                      <Image 
-                        src={subtopic.imageUrl}
-                        alt={`${subtopic.title} - ${topic.title} alt konusu`}
-                        fill
-                        className="object-cover"
-                        loading={index < 2 ? "eager" : "lazy"}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                    </div>
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-lg">{subtopic.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground">{subtopic.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {topic.subtopics && topic.subtopics.length > 0 && (
+                <>
+                  <h2 id="subtopics-heading">Alt Konular</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
+                    {topic.subtopics?.map((subtopic: any, index: number) => (
+                      <Card key={index} className="overflow-hidden">
+                        <div className="relative h-40">
+                          <Image 
+                            src={subtopic.imageUrl}
+                            alt={`${subtopic.title} - ${topic.title} alt konusu`}
+                            fill
+                            className="object-cover"
+                            loading={index < 2 ? "eager" : "lazy"}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                        </div>
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-lg">{subtopic.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground">{subtopic.description}</p>
+                        </CardContent>
+                        {subtopic.href && (
+                          <CardFooter>
+                            <Button asChild variant="ghost" className="gap-1 ml-auto">
+                              <Link href={subtopic.href} aria-label={`${subtopic.title} konusunu daha detaylı inceleyin`}>
+                                Daha Fazla
+                                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                              </Link>
+                            </Button>
+                          </CardFooter>
+                        )}
+                      </Card>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           </div>
           
           <div>
             <div className="bg-muted rounded-lg p-6 sticky top-24 max-w-sm mx-auto">
               <h3 className="text-xl font-medium mb-4">Bu Konuda Kazanacağınız Beceriler</h3>
-              <ul className="space-y-3 mb-6">
-                {topic.skills?.map((skill: string, index: number) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
-                    <span>{skill}</span>
-                  </li>
-                ))}
-              </ul>
+              {topic.skills && topic.skills.length > 0 && (
+                <ul className="space-y-3 mb-6">
+                  {topic.skills?.map((skill: string, index: number) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
+                      <span>{skill}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
               
-              <Separator className="my-6" />
-              
-              <h3 className="text-xl font-medium mb-4">Önerilen Kaynaklar</h3>
-              <ul className="space-y-4">
-                {topic.resources?.map((resource: any, index: number) => (
-                  <li key={index}>
-                    <Link 
-                      href={resource.link} 
-                      className="flex items-center justify-between p-3 bg-background rounded-md hover:bg-secondary transition-colors"
-                      aria-label={`${resource.title} kaynağını incele - ${resource.type}`}
-                    >
-                      <span className="font-medium">{resource.title}</span>
-                      <span className="text-sm text-muted-foreground">{resource.type}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {topic.resources && topic.resources.length > 0 && (
+                <>
+                  <Separator className="my-6" />
+                
+                  <h3 className="text-xl font-medium mb-4">Önerilen Kaynaklar</h3>
+                  <ul className="space-y-4">
+                    {topic.resources?.map((resource: any, index: number) => (
+                      <li key={index}>
+                        <Link 
+                          href={resource.link} 
+                          className="flex items-center justify-between p-3 bg-background rounded-md hover:bg-secondary transition-colors"
+                          aria-label={`${resource.title} kaynağını incele - ${resource.type}`}
+                        >
+                          <span className="font-medium">{resource.title}</span>
+                          <span className="text-sm text-muted-foreground">{resource.type}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
               
               <Button className="w-full mt-6 rounded-full">Derse Kaydol</Button>
             </div>
@@ -366,37 +409,39 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
       <section className="bg-muted py-16" aria-labelledby="related-topics-heading">
         <div className="container max-w-6xl mx-auto">
           <h2 id="related-topics-heading" className="text-2xl font-bold mb-8">İlgili Konular</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {relatedTopics.map((relatedTopic, index) => (
-              <Card key={index} className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div className="relative h-48">
-                  <Image 
-                    src={relatedTopic.imageUrl}
-                    alt={`${relatedTopic.title} eğitimi - İlgili yapay zeka konusu`}
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                  <div className="absolute bottom-4 left-4 p-2 rounded-full bg-background/80 backdrop-blur-sm">
-                    {relatedTopic.icon}
+          {relatedTopics && relatedTopics.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedTopics.map((relatedTopic, index) => (
+                <Card key={index} className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                  <div className="relative h-48">
+                    <Image 
+                      src={relatedTopic.imageUrl}
+                      alt={`${relatedTopic.title} eğitimi - İlgili yapay zeka konusu`}
+                      fill
+                      className="object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                    <div className="absolute bottom-4 left-4 p-2 rounded-full bg-background/80 backdrop-blur-sm">
+                      {relatedTopic.icon}
+                    </div>
                   </div>
-                </div>
-                <CardHeader>
-                  <CardTitle>{relatedTopic.title}</CardTitle>
-                  <CardDescription>{relatedTopic.description}</CardDescription>
-                </CardHeader>
-                <CardFooter>
-                  <Button asChild variant="ghost" className="gap-1 ml-auto">
-                    <Link href={`/topics/${relatedTopic.slug}`} aria-label={`${relatedTopic.title} konusunu keşfedin`}>
-                      Konuyu İncele
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+                  <CardHeader>
+                    <CardTitle>{relatedTopic.title}</CardTitle>
+                    <CardDescription>{relatedTopic.description}</CardDescription>
+                  </CardHeader>
+                  <CardFooter>
+                    <Button asChild variant="ghost" className="gap-1 ml-auto">
+                      <Link href={`/topics/${relatedTopic.slug}`} aria-label={`${relatedTopic.title} konusunu keşfedin`}>
+                        Konuyu İncele
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
