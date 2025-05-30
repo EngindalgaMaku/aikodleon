@@ -32,8 +32,8 @@ export default function TextPreprocessingPage() {
         <p>Yaygın olarak kullanılan metin ön işleme teknikleri şunlardır:</p>
         <ol>
           <li>**Tokenizasyon (Tokenization):** Metni kelimeler, noktalama işaretleri gibi daha küçük birimlere (tokenlara) ayırma işlemidir.</li>
-          <li>**Kök Bulma (Stemming):** Kelimelerin eklerini atarak kök formunu bulma tekniğidir (Örn: 'koşan', 'koşuyor' -> 'koş'). Genellikle dilbilgisel olarak doğru kök olmayabilir.</li>
-          <li>**Lemmatizasyon (Lemmatization):** Kelimeleri anlamlı ve sözcük dağarcığında bulunan temel formuna (lemma) indirme işlemidir (Örn: 'koşan', 'koşuyor' -> 'koşmak'). Kök bulmaya göre daha karmaşıktır ve kelimenin türünü dikkate alır.</li>
+          <li>**Kök Bulma (Stemming):** Kelimelerin eklerini atarak kök formunu bulma tekniğidir (Örn: 'koşan', 'koşuyor' -&gt; 'koş'). Genellikle dilbilgisel olarak doğru kök olmayabilir.</li>
+          <li>**Lemmatizasyon (Lemmatization):** Kelimeleri anlamlı ve sözcük dağarcığında bulunan temel formuna (lemma) indirme işlemidir (Örn: 'koşan', 'koşuyor' -&gt; 'koşmak'). Kök bulmaya göre daha karmaşıktır ve kelimenin türünü dikkate alır.</li>
           <li>**Durak Kelimeleri Kaldırma (Stop Word Removal):** Anlam taşımayan veya çok sık geçen kelimelerin (ve, ile, bir vb.) metinden çıkarılması işlemidir.</li>
           <li>**Küçük Harfe Dönüştürme (Lowercasing):** Tüm metni küçük harfe dönüştürerek aynı kelimenin farklı yazımlarının (Apple, apple) aynı kabul edilmesini sağlar.</li>
           <li>**Noktalama İşaretlerini ve Özel Karakterleri Kaldırma:** Metin analizini etkileyebilecek noktalama işaretleri, sayılar veya özel karakterlerin metinden temizlenmesi.</li>

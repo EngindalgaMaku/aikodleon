@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Derin Öğrenme Temelleri',
-  description: 'Kodleon'da derin öğrenmenin temel kavramlarını, yapay sinir ağlarının çalışma prensiplerini ve popüler mimarileri öğrenin.',
+  description: "Kodleon'da derin öğrenmenin temel kavramlarını, yapay sinir ağlarının çalışma prensiplerini ve popüler mimarileri öğrenin.",
   path: '/topics/machine-learning/deep-learning-basics',
   keywords: ['derin öğrenme', 'deep learning', 'makine öğrenmesi', 'sinir ağları', 'yapay sinir ağları', 'katmanlar', 'aktivasyon fonksiyonları', 'geri yayılım', 'kodleon', 'türkçe ai eğitimi'],
 });

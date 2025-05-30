@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Denetimsiz Öğrenme',
-  description: 'Kodleon'da denetimsiz öğrenme algoritmalarını ve kullanım alanlarını keşfedin. Kümeleme ve boyut indirgeme tekniklerini öğrenin.',
+  description: "Kodleon'da denetimsiz öğrenme algoritmalarını ve kullanım alanlarını keşfedin. Kümeleme ve boyut indirgeme tekniklerini öğrenin.",
   path: '/topics/machine-learning/unsupervised-learning',
   keywords: ['denetimsiz öğrenme', 'unsupervised learning', 'makine öğrenmesi', 'kümeleme', 'boyut indirgeme', 'ilişkilendirme kuralları', 'kodleon', 'türkçe ai eğitimi'],
 });

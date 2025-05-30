@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Brain, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
-import { cn } from "@/lib/utils";
 
 const routes = [
   { name: "Ana Sayfa", href: "/" },
@@ -35,6 +34,9 @@ export default function Navbar() {
             </Link>
           ))}
           <ThemeToggle />
+          <Button variant="default" asChild>
+            <Link href="/contact">İletişime Geçin</Link>
+          </Button>
         </nav>
         
         <Button
@@ -49,21 +51,24 @@ export default function Navbar() {
           {isOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
           <span className="sr-only">Menüyü aç/kapat</span>
         </Button>
-        
+
         {isOpen && (
-          <div className="absolute top-16 left-0 right-0 border-b bg-background md:hidden" id="mobile-menu">
-            <nav className="container max-w-6xl mx-auto flex flex-col py-4 gap-2" aria-label="Mobil navigasyon">
+          <div className="absolute top-full left-0 right-0 bg-background border-b md:hidden">
+            <nav className="container max-w-6xl mx-auto py-4 flex flex-col gap-4">
               {routes.map((route) => (
                 <Link
                   key={route.href}
                   href={route.href}
-                  className="px-4 py-2 text-sm font-medium transition-colors hover:text-primary"
+                  className="text-sm font-medium transition-colors hover:text-primary px-4 py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {route.name}
                 </Link>
               ))}
-              <div className="px-4 pt-2">
+              <Button variant="default" asChild className="mx-4">
+                <Link href="/contact">İletişime Geçin</Link>
+              </Button>
+              <div className="px-4">
                 <ThemeToggle />
               </div>
             </nav>

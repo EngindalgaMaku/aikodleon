@@ -338,7 +338,7 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
                   <h2 id="subtopics-heading">Alt Konular</h2>
                   <div className="space-y-4">
                     {topic.subtopics?.map((subtopic: any, index: number) => (
-                      <Link href={subtopic.href} key={index} className="block no-underline">
+                      <Link href={subtopic.href || '#'} key={index} className="block no-underline">
                         <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                           {subtopic.imageUrl && (
                             <div className="relative h-40">
@@ -403,7 +403,9 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
                 </>
               )}
               
-              <Button className="w-full mt-6 rounded-full">Derse Kaydol</Button>
+              <Button className="w-full mt-6 rounded-full">
+                <Link href="/contact">İletişime Geçin</Link>
+              </Button>
             </div>
           </div>
         </div>
