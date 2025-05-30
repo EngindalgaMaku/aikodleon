@@ -41,6 +41,16 @@ export default function DeepLearningBasicsPage() {
           <li>**Optimizasyon Algoritmaları:** Ağırlıkları güncellemek için gradyanları kullanan algoritmalardır (SGD, Adam, RMSprop gibi).</li>
         </ol>
 
+        <h3>Eğitim Süreci: Geri Yayılım ve Optimizasyon</h3>
+        <p>Bir derin öğrenme modelini eğitmek, modelin ağırlıklarını ve biaslarını ayarlayarak tahminlerinin doğruluğunu artırmak anlamına gelir. Bu süreç genellikle şu adımları içerir:</p>
+        <ol>
+          <li>**İleri Besleme (Forward Pass):** Girdi verisi ağa verilir ve her katmandan geçerek bir çıktı tahmini üretilir.</li>
+          <li>**Kayıp Hesaplama (Loss Calculation):** Üretilen tahmin ile gerçek hedef değer arasındaki hata, bir kayıp fonksiyonu kullanılarak hesaplanır.</li>
+          <li>**Geri Yayılım (Backpropagation):** Hesaplanan kayıp, ağda geriye doğru yayılarak her bir ağırlık ve biasın kayba ne kadar katkıda bulunduğu bulunur (gradyanlar hesaplanır).</li>
+          <li>**Parametre Güncelleme (Parameter Update):** Hesaplanan gradyanlar ve bir optimizasyon algoritması (SGD, Adam vb.) kullanılarak ağırlıklar ve biaslar güncellenir. Bu adım, kaybı minimize edecek yönde yapılır.</li>
+        </ol>
+        <p>Bu adımlar, genellikle tüm eğitim veri seti üzerinde birden çok kez (epoch) tekrarlanır. Aktivasyon fonksiyonları, ağın doğrusal olmayan ilişkileri öğrenebilmesi için kritik öneme sahiptir. ReLU (Rectified Linear Unit) günümüzde yaygın olarak kullanılan basit ve etkili bir aktivasyon fonksiyonudur.</p>
+
         <h2>Popüler Derin Öğrenme Mimarileri</h2>
         <p>Farklı veri türleri ve görevler için optimize edilmiş çeşitli derin öğrenme mimarileri bulunmaktadır:</p>
         <ul>

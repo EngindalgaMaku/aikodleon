@@ -34,7 +34,7 @@ const topics = [
     title: "Makine Öğrenmesi",
     description: "Algoritmaların veri kullanarak nasıl öğrendiğini ve tahminlerde bulunduğunu keşfedin.",
     icon: <Database className="h-8 w-8 text-chart-1" aria-hidden="true" />,
-    href: "https://ml.kodleon.com",
+    href: "/topics/machine-learning",
     imageUrl: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   {

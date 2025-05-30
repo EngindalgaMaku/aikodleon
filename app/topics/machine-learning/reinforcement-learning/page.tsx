@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Pekiştirmeli Öğrenme',
-  description: 'Kodleon'da pekiştirmeli öğrenme prensiplerini ve ajanların ödül-ceza sistemiyle nasıl öğrendiğini keşfedin.',
+  description: "Kodleon'da pekiştirmeli öğrenme prensiplerini ve ajanların ödül-ceza sistemiyle nasıl öğrendiğini keşfedin.",
   path: '/topics/machine-learning/reinforcement-learning',
   keywords: ['pekiştirmeli öğrenme', 'reinforcement learning', 'makine öğrenmesi', 'ajanlar', 'ödül', 'ceza', 'markov karar süreçleri', 'derin pekiştirmeli öğrenme', 'kodleon', 'türkçe ai eğitimi'],
 });
@@ -40,6 +40,9 @@ export default function ReinforcementLearningPage() {
           <li>**Değer Fonksiyonu (Value Function):** Belirli bir durumdan başlayarak veya belirli bir eylemi belirli bir durumda gerçekleştirerek elde edilmesi beklenen gelecekteki toplam ödül miktarını tahmin eder.</li>
         </ol>
 
+        <h3>Markov Karar Süreçleri (MDPs)</h3>
+        <p>Pekiştirmeli öğrenmenin matematiksel çerçevesi genellikle **Markov Karar Süreçleri (MDPs)** ile tanımlanır. Bir MDP, bir durum kümesi (S), bir eylem kümesi (A), durum geçiş olasılıkları, ödül fonksiyonu ve bir indirim faktöründen oluşur. MDP, bir ajanın dinamik bir ortamda ardışık kararlar alması gereken durumları modellemek için kullanılır. Ajanın mevcut durumu, gelecekteki durumunu ve alabileceği ödülü belirlemek için yeterlidir (Markov özelliği).</p>
+
         <h2>Algoritmalar ve Yaklaşımlar</h2>
         <p>Pekiştirmeli öğrenmede çeşitli algoritmalar kullanılır:</p>
         <ul>
@@ -48,6 +51,13 @@ export default function ReinforcementLearningPage() {
           <li>**Derin Q Ağları (DQN):** Q-learning'i derin sinir ağları ile birleştirerek karmaşık durum alanlarına sahip problemlerin çözümüne olanak tanır.</li>
           <li>**Politika Gradyanları (Policy Gradients):** Doğrudan politikayı optimize eden algoritmalardır.</li>
           <li>**Aktör-Kritik (Actor-Critic) Metotlar:** Hem politikayı hem de değer fonksiyonunu öğrenen melez yaklaşımlardır.</li>
+        </ul>
+
+        <h2>Yaygın Zorluklar</h2>
+        <p>Pekiştirmeli öğrenmenin pratik uygulamalarında karşılaşılan bazı zorluklar şunlardır:</p>
+        <ul>
+          <li>**Ödül Gecikmesi (Reward Delay):** Bir eylemin sonucunun (ödül veya ceza) hemen değil, belirli bir süre sonra ortaya çıkması durumudur. Ajanın, hangi eylemlerin gecikmiş de olsa olumlu sonuçlara yol açtığını doğru bir şekilde ilişkilendirmesi zor olabilir. Bu durum, ajanın öğrenme sürecini yavaşlatabilir veya suboptimal politikalar öğrenmesine neden olabilir.</li>
+          <li>**Keşif ve Sömürü Dengesi (Exploration vs. Exploitation):** Ajanın ya en yüksek ödülü getirdiği bilinen eylemleri tekrarlayarak mevcut bilgisini sömürmesi (exploitation) ya da daha iyi ödüller bulma umuduyla yeni eylemleri denemesi (exploration) arasındaki dengeyi bulma sorunudur. Etkili bir öğrenme için her ikisinin de uygun oranlarda yapılması gerekir.</li>
         </ul>
 
         <h2>Uygulama Alanları</h2>

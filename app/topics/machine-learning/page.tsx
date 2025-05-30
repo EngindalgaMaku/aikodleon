@@ -55,90 +55,98 @@ export default function MachineLearningPage() {
               
               <h2>Alt Konular</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
-                <Card className="overflow-hidden">
-                  <div className="relative h-40">
-                    <Image 
-                      src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                      alt="Denetimli Öğrenme"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                  </div>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Denetimli Öğrenme</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Etiketli verilerle modellerin nasıl eğitildiğini ve tahminlerde bulunduğunu öğrenin.
-                    </p>
-                  </CardContent>
-                </Card>
+                <Link href="/topics/machine-learning/supervised-learning" className="block no-underline">
+                  <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div className="relative h-40">
+                      <Image 
+                        src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        alt="Denetimli Öğrenme"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                    </div>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-lg">Denetimli Öğrenme</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Etiketli verilerle modellerin nasıl eğitildiğini ve tahminlerde bulunduğunu öğrenin.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
 
-                <Card className="overflow-hidden">
-                  <div className="relative h-40">
-                    <Image 
-                      src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                      alt="Denetimsiz Öğrenme"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                  </div>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Denetimsiz Öğrenme</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Etiketlenmemiş verilerden kalıpları ve yapıları nasıl keşfedeceğinizi anlayın.
-                    </p>
-                  </CardContent>
-                </Card>
+                <Link href="/topics/machine-learning/unsupervised-learning" className="block no-underline">
+                  <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div className="relative h-40">
+                      <Image 
+                        src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        alt="Denetimsiz Öğrenme"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                    </div>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-lg">Denetimsiz Öğrenme</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Etiketlenmemiş verilerden kalıpları ve yapıları nasıl keşfedeceğinizi anlayın.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
 
-                <Card className="overflow-hidden">
-                  <div className="relative h-40">
-                    <Image 
-                      src="https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                      alt="Pekiştirmeli Öğrenme"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                  </div>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Pekiştirmeli Öğrenme</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Deneme yanılma yoluyla ajanların çevreleriyle nasıl etkileşime girdiğini ve öğrendiğini keşfedin.
-                    </p>
-                  </CardContent>
-                </Card>
+                <Link href="/topics/machine-learning/reinforcement-learning" className="block no-underline">
+                  <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div className="relative h-40">
+                      <Image 
+                        src="https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        alt="Pekiştirmeli Öğrenme"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                    </div>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-lg">Pekiştirmeli Öğrenme</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Deneme yanılma yoluyla ajanların çevreleriyle nasıl etkileşime girdiğini ve öğrendiğini keşfedin.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
 
-                <Card className="overflow-hidden">
-                  <div className="relative h-40">
-                    <Image 
-                      src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                      alt="Derin Öğrenme Temelleri"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                  </div>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Derin Öğrenme Temelleri</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Derin öğrenmenin temel kavramlarını ve yapay sinir ağlarının çalışma prensiplerini öğrenin.
-                    </p>
-                  </CardContent>
-                </Card>
+                <Link href="/topics/machine-learning/deep-learning-basics" className="block no-underline">
+                  <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div className="relative h-40">
+                      <Image 
+                        src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        alt="Derin Öğrenme Temelleri"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                    </div>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-lg">Derin Öğrenme Temelleri</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Derin öğrenmenin temel kavramlarını ve yapay sinir ağlarının çalışma prensiplerini öğrenin.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
               </div>
 
               <h2>Öğrenme Yolculuğunuz</h2>
               <div className="space-y-6 not-prose">
-                <div className="flex gap-4">
+                <Link href="/topics/machine-learning/python-for-ml" className="flex gap-4 no-underline">
                   <div className="p-3 rounded-full bg-primary/10 h-fit">
                     <Code className="h-6 w-6 text-primary" />
                   </div>
@@ -148,7 +156,7 @@ export default function MachineLearningPage() {
                       Makine öğrenmesi için gerekli Python programlama temellerini öğrenin.
                     </p>
                   </div>
-                </div>
+                </Link>
 
                 <div className="flex gap-4">
                   <div className="p-3 rounded-full bg-primary/10 h-fit">
@@ -203,115 +211,8 @@ export default function MachineLearningPage() {
                 </li>
               </ul>
               
-              <Separator className="my-6" />
-              
-              <h3 className="text-xl font-medium mb-4">Önerilen Kaynaklar</h3>
-              <ul className="space-y-4">
-                <li>
-                  <Link 
-                    href="#" 
-                    className="flex items-center justify-between p-3 bg-background rounded-md hover:bg-secondary transition-colors"
-                  >
-                    <span className="font-medium">ML Temelleri</span>
-                    <span className="text-sm text-muted-foreground">Kurs</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    href="#" 
-                    className="flex items-center justify-between p-3 bg-background rounded-md hover:bg-secondary transition-colors"
-                  >
-                    <span className="font-medium">Python ile ML</span>
-                    <span className="text-sm text-muted-foreground">Pratik</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    href="#" 
-                    className="flex items-center justify-between p-3 bg-background rounded-md hover:bg-secondary transition-colors"
-                  >
-                    <span className="font-medium">ML Algoritmaları</span>
-                    <span className="text-sm text-muted-foreground">E-Kitap</span>
-                  </Link>
-                </li>
-              </ul>
-              
               <Button className="w-full mt-6 rounded-full">Derse Kaydol</Button>
             </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Projects section */}
-      <section className="bg-muted py-16">
-        <div className="container">
-          <h2 className="text-2xl font-bold mb-8">Örnek Projeler</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Müşteri Segmentasyonu</CardTitle>
-                <CardDescription>
-                  Denetimsiz öğrenme ile müşteri gruplarının analizi
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  K-means clustering kullanarak müşteri davranışlarını analiz eden bir proje.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button asChild variant="ghost" className="gap-1 ml-auto">
-                  <Link href="#">
-                    Projeyi İncele
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Görüntü Sınıflandırma</CardTitle>
-                <CardDescription>
-                  CNN ile görüntü sınıflandırma uygulaması
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Derin öğrenme kullanarak görüntüleri kategorilere ayıran model.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button asChild variant="ghost" className="gap-1 ml-auto">
-                  <Link href="#">
-                    Projeyi İncele
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Öneri Sistemi</CardTitle>
-                <CardDescription>
-                  Collaborative filtering tabanlı öneri sistemi
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Kullanıcı davranışlarına göre ürün önerileri yapan sistem.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button asChild variant="ghost" className="gap-1 ml-auto">
-                  <Link href="#">
-                    Projeyi İncele
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
           </div>
         </div>
       </section>

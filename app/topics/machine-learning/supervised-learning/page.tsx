@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Denetimli Öğrenme',
-  description: 'Kodleon'da denetimli öğrenme yöntemlerini ve uygulamalarını keşfedin. Regresyon ve sınıflandırma modellerini öğrenin.',
+  description: "Kodleon'da denetimli öğrenme yöntemlerini ve uygulamalarını keşfedin. Regresyon ve sınıflandırma modellerini öğrenin.",
   path: '/topics/machine-learning/supervised-learning',
   keywords: ['denetimli öğrenme', 'supervised learning', 'makine öğrenmesi', 'regresyon', 'sınıflandırma', 'kodleon', 'türkçe ai eğitimi'],
 });
@@ -28,6 +28,15 @@ export default function SupervisedLearningPage() {
       </p>
 
       <div className="prose prose-lg dark:prose-invert max-w-none">
+        <h2>Regresyon ve Sınıflandırma</h2>
+        <p>Denetimli öğrenme problemleri genellikle iki ana kategoriye ayrılır:</p>
+        <ul>
+          <li>**Regresyon:** Amaç, sürekli bir çıktı değerini tahmin etmektir. Örneğin, bir evin metrekare cinsinden büyüklüğüne, konumuna ve yaşına bakarak satış fiyatını tahmin etmek bir regresyon problemidir. Çıktı (fiyat) sürekli bir sayıdır.</li>
+          <li>**Sınıflandırma:** Amaç, bir veri örneğini belirli kategorilerden birine atamaktır. Örneğin, bir e-postanın içeriğine bakarak "spam" veya "spam değil" olarak etiketlemek bir sınıflandırma problemidir. Çıktı (spam/spam değil) belirli bir kategoridir. Diğer örnekler arasında bir resimdeki nesneyi tanıma (kedi, köpek, kuş vb.) veya bir hastanın semptomlarına göre belirli bir hastalığı teşhis etme yer alır.</li>
+        </ul>
+
+        <p>Her iki görev türü için de farklı algoritmalar ve değerlendirme metrikleri kullanılır. Örneğin, regresyonda Ortalama Karesel Hata (MSE) veya Ortalama Mutlak Hata (MAE) gibi metrikler kullanılırken, sınıflandırmada Doğruluk (Accuracy), Kesinlik (Precision), Geri Çağırma (Recall) ve F1 Skoru gibi metrikler yaygındır.</p>
+
         <h2>Nasıl Çalışır?</h2>
         <p>Denetimli öğrenme süreci genellikle şu adımları içerir:</p>
         <ol>
@@ -37,6 +46,13 @@ export default function SupervisedLearningPage() {
           <li>**Model Değerlendirme:** Eğitilmiş model, eğitimde kullanılmayan ayrı bir test veri kümesi üzerinde değerlendirilir. Performans metrikleri (doğruluk, kesinlik, geri çağırma, F1 skoru, Ortalama Karesel Hata vb.) kullanılarak modelin ne kadar iyi genelleme yaptığı ölçülür.</li>
           <li>**Model Ayarlama:** Model performansı yetersizse, hiperparametreler ayarlanabilir veya farklı modeller denenebilir.</li>
         </ol>
+
+        <h2>Yaygın Zorluklar</h2>
+        <p>Denetimli öğrenme modellerini eğitirken dikkat edilmesi gereken bazı yaygın zorluklar şunlardır:</p>
+        <ul>
+          <li>**Aşırı Uyum (Overfitting):** Modelin eğitim verilerini çok iyi öğrenmesi, ancak yeni ve görülmemiş verilere genelleme yapamaması durumudur. Model eğitim verisindeki gürültüyü bile öğrenir, bu da test verisinde kötü performansa yol açar. Genellikle karmaşık modeller veya yetersiz eğitim verisi olduğunda ortaya çıkar. Aşırı uyumu azaltmak için daha fazla veri toplama, model karmaşıklığını azaltma, düzenlileştirme (regularization) teknikleri veya çapraz doğrulama (cross-validation) kullanılabilir.</li>
+          <li>**Yetersiz Uyum (Underfitting):** Modelin eğitim verilerini bile yeterince öğrenememesi, dolayısıyla hem eğitim hem de test verisinde kötü performans göstermesi durumudur. Model verinin temel desenlerini yakalayamaz. Genellikle çok basit modeller veya yetersiz özellik seti kullanıldığında ortaya çıkar. Yetersiz uyumu gidermek için daha karmaşık bir model seçme, daha fazla ilgili özellik ekleme veya eğitim süresini artırma gibi yöntemler denenebilir.</li>
+        </ul>
 
         <h2>Uygulama Alanları</h2>
         <p>Denetimli öğrenme çok çeşitli alanlarda kullanılır:</p>

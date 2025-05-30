@@ -53,27 +53,37 @@ const topicsData: Record<string, any> = {
     description: "Makinelerin insan dilini nasıl anlayıp işlediğini ve ürettiğini öğrenin.",
     icon: <FileText className="h-8 w-8 text-chart-2" />,
     imageUrl: "https://images.pexels.com/photos/7412095/pexels-photo-7412095.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    longDescription: "Doğal Dil İşleme (NLP), bilgisayarların insan (doğal) dilini anlama, yorumlama ve üretme yeteneği kazandıran yapay zeka disiplinidir. Metin ve konuşma verileri üzerinde çalışarak anlam çıkarma, duygu analizi yapma, diller arası çeviri gerçekleştirme, metin özetleme ve sohbet botları geliştirme gibi geniş bir uygulama yelpazesine sahiptir. Son yıllarda, Transformer mimarisi ve Büyük Dil Modelleri (LLM'ler) gibi tekniklerdeki ilerlemeler sayesinde NLP alanında çığır açan gelişmeler yaşanmıştır. Bu gelişmeler, daha önce mümkün olmayan karmaşık dil görevlerinin yerine getirilmesini sağlamıştır. NLP, insan ve bilgisayar arasındaki etkileşimi daha doğal ve akıcı hale getirerek birçok sektörde devrim yaratma potansiyeli taşımaktadır.",
+    longDescription: "Doğal Dil İşleme (NLP), bilgisayarların insan (doğal) dilini anlama, yorumlama ve üretme yeteneği kazandıran yapay zeka disiplinidir. Metin ve konuşma verileri üzerinde çalışarak anlam çıkarma, duygu analizi yapma, diller arası çeviri gerçekleştirme, metin özetleme ve sohbet botları geliştirme gibi geniş bir uygulama yelpazesine sahiptir. **NLP süreci genellikle metin ön işleme (tokenizasyon, kök bulma, temizleme vb.), özellik çıkarımı ve model oluşturma adımlarını içerir.** Son yıllarda, **Transformer mimarisi ve Büyük Dil Modelleri (LLM'ler)** gibi tekniklerdeki ilerlemeler sayesinde NLP alanında çığır açan gelişmeler yaşanmıştır. Bu gelişmeler, duygu analizi, metin üretimi, soru yanıtlama ve makine çevirisi gibi daha önce mümkün olmayan karmaşık dil görevlerinin yerine getirilmesini sağlamıştır. NLP, insan ve bilgisayar arasındaki etkileşimi daha doğal ve akıcı hale getirerek birçok sektörde devrim yaratma potansiyeli taşımaktadır.",
     subtopics: [
+      {
+        title: "Metin Ön İşleme",
+        description: "Metin verilerini analiz için hazırlama teknikleri (tokenizasyon, temizleme vb.).",
+        imageUrl: "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/nlp/text-preprocessing"
+      },
       {
         title: "Metin Analizi",
         description: "Metinleri işleme, temizleme ve yapılandırma teknikleri.",
-        imageUrl: "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/nlp/text-analysis"
       },
       {
         title: "Dil Modelleri",
         description: "BERT, GPT ve diğer büyük dil modellerinin çalışma prensipleri.",
-        imageUrl: "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/nlp/language-models"
       },
       {
         title: "Duygu Analizi",
         description: "Metinlerden duygu ve görüşleri çıkarma yöntemleri.",
-        imageUrl: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/nlp/sentiment-analysis"
       },
       {
         title: "Makine Çevirisi",
         description: "Diller arası otomatik çeviri sistemlerinin çalışma prensipleri.",
-        imageUrl: "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/nlp/machine-translation"
       }
     ],
     skills: ["Metin Ön İşleme", "Vektör Temsilleri (Word Embeddings)", "Dil Modellemesi", "Transformer Mimarileri", "Duygu Analizi", "Metin Sınıflandırma", "Varlık Tanıma (NER)", "Metin Üretimi", "NLP Kütüphaneleri (NLTK, spaCy, Hugging Face)"],
@@ -326,36 +336,30 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
               {topic.subtopics && topic.subtopics.length > 0 && (
                 <>
                   <h2 id="subtopics-heading">Alt Konular</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
+                  <div className="space-y-4">
                     {topic.subtopics?.map((subtopic: any, index: number) => (
-                      <Card key={index} className="overflow-hidden">
-                        <div className="relative h-40">
-                          <Image 
-                            src={subtopic.imageUrl}
-                            alt={`${subtopic.title} - ${topic.title} alt konusu`}
-                            fill
-                            className="object-cover"
-                            loading={index < 2 ? "eager" : "lazy"}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                        </div>
-                        <CardHeader className="pb-2">
-                          <CardTitle className="text-lg">{subtopic.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground">{subtopic.description}</p>
-                        </CardContent>
-                        {subtopic.href && (
-                          <CardFooter>
-                            <Button asChild variant="ghost" className="gap-1 ml-auto">
-                              <Link href={subtopic.href} aria-label={`${subtopic.title} konusunu daha detaylı inceleyin`}>
-                                Daha Fazla
-                                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                              </Link>
-                            </Button>
-                          </CardFooter>
-                        )}
-                      </Card>
+                      <Link href={subtopic.href} key={index} className="block no-underline">
+                        <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                          {subtopic.imageUrl && (
+                            <div className="relative h-40">
+                              <Image 
+                                src={subtopic.imageUrl}
+                                alt={`${subtopic.title} - ${topic.title} alt konusu`}
+                                fill
+                                className="object-cover"
+                                loading={index < 2 ? "eager" : "lazy"}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                            </div>
+                          )}
+                          <CardHeader className="pb-2">
+                            <CardTitle className="text-lg">{subtopic.title}</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-sm text-muted-foreground">{subtopic.description}</p>
+                          </CardContent>
+                        </Card>
+                      </Link>
                     ))}
                   </div>
                 </>

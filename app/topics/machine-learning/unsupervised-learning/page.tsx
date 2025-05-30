@@ -37,6 +37,19 @@ export default function UnsupervisedLearningPage() {
           <li>**Anormallik Tespiti (Anomaly Detection):** Veri setindeki beklenen desenlerden önemli ölçüde sapan veri noktalarını (anormallikleri) belirleme işlemidir. Kredi kartı sahtekarlığı tespiti gibi alanlarda kullanılır.</li>
         </ol>
 
+        <h3>Kümeleme: K-Means Algoritması</h3>
+        <p>Kümeleme, veriyi benzerliklerine göre gruplamak için kullanılır. **K-Means**, en popüler kümeleme algoritmalarından biridir. Algoritma şu şekilde çalışır:</p>
+        <ol>
+          <li>Önceden belirlenmiş \(k\) sayıda küme merkezi (centroid) rastgele başlatılır.</li>
+          <li>Her veri noktası, kendine en yakın \(k\) küme merkezine atanır.</li>
+          <li>Her kümenin yeni merkezi, o kümeye atanan veri noktalarının ortalaması olarak hesaplanır.</li>
+          <li>Küme merkezlerinin konumu belirgin şekilde değişmeyene veya maksimum iterasyon sayısına ulaşılana kadar adımlar 2 ve 3 tekrarlanır.</li>
+        </ol>
+        <p>K-Means hızlı ve etkilidir, ancak \(k\) değerinin önceden belirlenmesi gerekir ve aykırı değerlere karşı hassastır.</p>
+
+        <h3>Boyut İndirgeme: Temel Bileşen Analizi (PCA)</h3>
+        <p>Boyut indirgeme, veri setindeki özellik sayısını azaltırken bilginin çoğunu korumayı hedefler. **Temel Bileşen Analizi (PCA)** yaygın bir doğrusal boyut indirgeme tekniğidir. PCA, verideki en fazla varyansı açıklayan dik (orthogonal) bileşenleri (principal components) bulur. Bu bileşenler, orijinal özelliklerin doğrusal kombinasyonlarıdır. Veriyi daha az sayıda temel bileşen üzerine yansıtarak boyut indirgeme gerçekleştirilir. PCA, gürültüyü azaltmaya, görselleştirmeyi kolaylaştırmaya ve sonraki makine öğrenmesi algoritmalarının performansını artırmaya yardımcı olabilir.</p>
+
         <h2>Uygulama Alanları</h2>
         <p>Denetimsiz öğrenme çeşitli alanlarda geniş kullanım bulur:</p>
         <ul>

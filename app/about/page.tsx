@@ -40,7 +40,7 @@ export default function AboutPage() {
 
         <p>Yapay zeka yolculuğunuzda size eşlik etmekten heyecan duyuyoruz.</p>
 
-      </div>
+        </div>
     </div>
   );
 }
