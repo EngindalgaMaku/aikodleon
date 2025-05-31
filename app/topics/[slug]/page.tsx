@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Brain, CheckCircle2, Ship as Chip, Database, Eye, FileText, Lightbulb, Rocket, Shapes, Users } from "lucide-react";
+import { ArrowLeft, ArrowRight, Brain, CheckCircle2, Ship as Chip, Database, Eye, FileText, Lightbulb, Rocket, Shapes, Users, FlaskConical, Sigma, Code2, BarChart3, DatabaseZap, BrainCircuit, GitMerge, ClipboardCheck, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -13,7 +13,7 @@ const topicsData: Record<string, any> = {
     description: "Algoritmaların veri kullanarak nasıl öğrendiğini ve tahminlerde bulunduğunu keşfedin.",
     icon: <Database className="h-8 w-8 text-chart-1" />,
     imageUrl: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    longDescription: "Makine öğrenmesi (ML), bilgisayar sistemlerinin açıkça programlanmadan verilerden öğrenmesini ve bu öğrenme yoluyla belirli görevleri yerine getirmesini sağlayan yapay zekanın bir dalıdır. ML algoritmaları, büyük veri kümelerindeki desenleri ve ilişkileri tanımlayarak çalışır, böylece bilinmeyen veriler hakkında tahminlerde bulunabilir veya kararlar alabilirler. Denetimli öğrenme (etiketli verilerle eğitim), denetimsiz öğrenme (etiketlenmemiş verilerden desen keşfi) ve pekiştirmeli öğrenme (deneme-yanılma yoluyla öğrenme) gibi çeşitli paradigmaları içerir. Makine öğrenmesi, tavsiye sistemlerinden otonom araçlara, tıbbi teşhisten finansal analizlere kadar çok geniş bir uygulama alanına sahiptir. Bu alanda uzmanlaşmak, geleceğin teknoloji dünyasında önemli bir yer edinmek anlamına gelir.",
+    longDescription: "Makine öğrenmesi (ML), bilgisayar sistemlerinin açıkça programlanmadan verilerden öğrenmesini ve bu öğrenme yoluyla belirli görevleri yerine getirmesini sağlayan yapay zekanın bir dalıdır. ML algoritmaları, büyük veri kümelerindeki desenleri ve ilişkileri tanımlayarak çalışır, böylece bilinmeyen veriler hakkında tahminlerde bulunabilir veya kararlar alabilirler. Denetimli öğrenme (etiketli verilerle eğitim), denetimsiz öğrenme (etiketlenmemiş verilerden desen keşfi) ve pekiştirmeli öğrenme (deneme-yanılma yoluyla öğrenme) gibi çeşitli paradigmaları içerir. Makine öğrenmesi, sadece bir dizi algoritmadan ibaret değildir; aynı zamanda problem tanımlama, veri toplama ve ön işleme, model seçimi, eğitim, değerlendirme ve dağıtım gibi iteratif bir süreçtir. Tavsiye sistemlerinden otonom araçlara, tıbbi teşhisten finansal analizlere ve doğal dil işlemeden bilgisayarlı görüye kadar çok geniş bir uygulama alanına sahiptir. Bu alanda uzmanlaşmak, günümüzün ve geleceğin teknoloji dünyasında çığır açan çözümler geliştirme ve önemli bir yer edinme anlamına gelir.",
     subtopics: [
       {
         title: "Denetimli Öğrenme",
@@ -365,6 +365,48 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
                 </>
               )}
             </div>
+
+            {/* Learning Journey Section - Specific to Machine Learning Topic */}
+            {slug === "machine-learning" && (
+              <div className="mt-12 pt-8 border-t border-border">
+                <h2 id="learning-journey-heading" className="text-3xl font-bold mb-8 text-center">Makine Öğrenmesi Yolculuğunuz</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {[{
+                    title: "Temel Matematik ve İstatistik",
+                    description: "Lineer cebir, kalkülüs ve olasılık gibi temel matematiksel kavramlar ile istatistiksel analiz ve hipotez testi temelleri.",
+                    icon: <Sigma className="w-10 h-10 text-blue-500" />
+                  }, {
+                    title: "Python Programlama",
+                    description: "Veri yapıları, kontrol akışı, fonksiyonlar ve NumPy, Pandas gibi temel veri bilimi kütüphaneleri.",
+                    icon: <Code2 className="w-10 h-10 text-green-500" />
+                  }, {
+                    title: "Veri Analizi ve Görselleştirme",
+                    description: "Veri temizleme, dönüştürme, keşifsel veri analizi (EDA) ve Matplotlib, Seaborn gibi araçlarla etkili görselleştirmeler.",
+                    icon: <BarChart3 className="w-10 h-10 text-yellow-500" />
+                  }, {
+                    title: "Temel ML Algoritmaları",
+                    description: "Regresyon, sınıflandırma, kümeleme gibi temel algoritma türlerini ve çalışma prensiplerini anlama.",
+                    icon: <BrainCircuit className="w-10 h-10 text-purple-500" />
+                  }, {
+                    title: "Model Geliştirme ve Değerlendirme",
+                    description: "Veri bölme, model eğitimi, hiperparametre ayarı, çapraz doğrulama ve performans metrikleri ile model değerlendirme.",
+                    icon: <ClipboardCheck className="w-10 h-10 text-red-500" />
+                  }, {
+                    title: "İleri Düzey Konular ve Uzmanlaşma",
+                    description: "Derin öğrenme, doğal dil işleme, bilgisayarlı görü gibi alanlarda uzmanlaşma veya MLOps gibi konulara yönelme.",
+                    icon: <GraduationCap className="w-10 h-10 text-indigo-500" />
+                  }].map((step, index) => (
+                    <Card key={index} className="flex flex-col items-center p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="p-3 bg-primary/10 rounded-full mb-4">
+                        {step.icon}
+                      </div>
+                      <CardTitle className="text-xl mb-2">{step.title}</CardTitle>
+                      <CardDescription>{step.description}</CardDescription>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
           
           <div>
@@ -402,10 +444,21 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
                   </ul>
                 </>
               )}
-              
-              <Button className="w-full mt-6 rounded-full">
-                <Link href="/contact">İletişime Geçin</Link>
-              </Button>
+
+              {slug === "machine-learning" && (
+                <>
+                  <Separator className="my-6" />
+                  <h3 className="text-xl font-medium mb-4">Makine Öğrenmesi Simülatörü</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Makine öğrenmesi algoritmalarını interaktif bir ortamda deneyimleyin ve temel kavramları uygulamalı olarak pekiştirin.
+                  </p>
+                  <Button asChild className="w-full bg-green-600 hover:bg-green-700">
+                    <Link href="https://ml.kodleon.com" target="_blank" rel="noopener noreferrer">
+                      <FlaskConical className="mr-2 h-4 w-4" /> Simülatöre Git
+                    </Link>
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         </div>
