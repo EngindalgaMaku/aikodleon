@@ -49,7 +49,7 @@ const FeaturedBlogCarousel: React.FC<FeaturedBlogCarouselProps> = ({ posts }) =>
     if (postsToShow.length <= 1) return;
     const interval = setInterval(() => {
       handleNext();
-    }, 5000);
+    }, 7000);
     return () => clearInterval(interval);
   }, [handleNext, postsToShow.length]);
 
@@ -60,8 +60,8 @@ const FeaturedBlogCarousel: React.FC<FeaturedBlogCarouselProps> = ({ posts }) =>
   const activePost = postsToShow[currentIndex];
 
   return (
-    <div className="max-w-4xl mx-auto relative overflow-hidden h-[450px] md:h-[500px] z-0 isolate">
-      <div className="relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300 group pointer-events-none h-full">
+    <div className="max-w-4xl mx-auto relative h-[450px] md:h-[500px] z-20 isolate">
+      <div className="relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300 group h-full">
         <div className={`relative h-full w-full transition-opacity duration-300 ease-in-out ${isTransitioning ? 'opacity-50' : 'opacity-100'}`}>
           <Image
             src={activePost.imageUrl}
@@ -71,23 +71,23 @@ const FeaturedBlogCarousel: React.FC<FeaturedBlogCarouselProps> = ({ posts }) =>
             priority={currentIndex === 0} 
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 1000px"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-0 h-full w-full" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-0" />
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/40 backdrop-blur-sm rounded-lg p-4 md:p-6 w-full max-w-lg shadow-lg border border-white/10 pointer-events-auto z-10">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary/90 text-primary-foreground shadow-sm">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="px-4 py-1.5 rounded-full text-sm font-semibold bg-primary/90 text-primary-foreground shadow-sm">
                 {activePost.category}
               </span>
               {activePost.date && (
-                <span className="text-xs text-gray-200 font-medium">{formatDate(activePost.date)}</span>
+                <span className="text-sm text-gray-200 font-medium">{formatDate(activePost.date)}</span>
               )}
             </div>
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight drop-shadow">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight drop-shadow">
               {activePost.title}
             </h2>
-            <p className="text-gray-100 mb-4 line-clamp-2 md:line-clamp-3 text-sm md:text-base font-normal drop-shadow">
+            <p className="text-gray-100 mb-5 line-clamp-2 md:line-clamp-3 text-base md:text-lg font-normal drop-shadow">
               {activePost.snippet}
             </p>
-            <Button asChild variant="default" size="sm" className="rounded-full shadow hover:shadow-md transition-all font-semibold text-sm px-4 py-2">
+            <Button asChild variant="default" size="sm" className="rounded-full shadow hover:shadow-md transition-all font-semibold text-base px-5 py-2.5">
               <Link href={activePost.href}>
                 Devamını Oku
                 <ArrowRight className="ml-2 h-4 w-4" />

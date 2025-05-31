@@ -151,7 +151,7 @@ export default function HomePageClientContent() {
       </div>
 
       {/* Hero section */}
-      <section className="relative py-20 md:py-32 overflow-hidden" aria-labelledby="hero-heading">
+      <section className="relative py-20 md:py-32" aria-labelledby="hero-heading">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 dark:from-primary/5 dark:via-transparent dark:to-secondary/5" />
         <div 
           className="absolute inset-0 opacity-20 dark:opacity-10"
@@ -163,7 +163,6 @@ export default function HomePageClientContent() {
         />
         <div className="container max-w-6xl mx-auto relative z-10 px-4">
           <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-            {/* Replaced TranslatedContent with direct translation */}
             <h1 
               id="hero-heading" 
               className="text-4xl md:text-6xl font-bold tracking-tight mb-6 
@@ -190,13 +189,12 @@ export default function HomePageClientContent() {
             </div>
           </div>
 
-          {/* Featured Blog Carousel */}
           <FeaturedBlogCarousel posts={latestBlogPosts} />
         </div>
       </section>
       
       {/* Topics section */}
-      <section className="py-16 md:py-20 bg-muted/30" aria-labelledby="topics-heading">
+      <section className="relative z-30 py-16 md:py-20 bg-muted/30" aria-labelledby="topics-heading">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="text-center mb-12 md:mb-16">
             <h2 id="topics-heading" className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
@@ -245,7 +243,7 @@ export default function HomePageClientContent() {
       </section>
       
       {/* Latest Blog Posts Section */}
-      <section className="py-16 md:py-20 bg-background" aria-labelledby="latest-blog-heading">
+      <section className="relative z-30 py-16 md:py-20 bg-background" aria-labelledby="latest-blog-heading">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block p-3 mb-4 bg-primary/10 rounded-full border border-primary/20">
@@ -304,7 +302,7 @@ export default function HomePageClientContent() {
       </section>
 
       {/* Why Kodleon section */}
-      <section className="py-16 md:py-20 bg-muted/30" aria-labelledby="why-kodleon-heading">
+      <section className="relative z-30 py-16 md:py-20 bg-muted/30" aria-labelledby="why-kodleon-heading">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block p-3 mb-4 bg-primary/10 rounded-full border border-primary/20">
@@ -332,7 +330,7 @@ export default function HomePageClientContent() {
       </section>
       
       {/* What you can achieve */}
-      <section className="py-16 md:py-20 bg-background" aria-labelledby="achieve-heading">
+      <section className="relative z-30 py-16 md:py-20 bg-background" aria-labelledby="achieve-heading">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="text-center mb-12 md:mb-16">
             <h2 id="achieve-heading" className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">

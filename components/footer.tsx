@@ -9,7 +9,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="w-full border-t bg-background" aria-labelledby="footer-heading">
+    <footer className="relative z-40 w-full border-t bg-background" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">{t('footer.ariaLabel')}</h2>
       <div className="container max-w-6xl mx-auto py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
