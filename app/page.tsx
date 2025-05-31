@@ -6,11 +6,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Metadata } from 'next';
+import FeaturedBlogCarousel from "@/components/FeaturedBlogCarousel";
 
 export const metadata: Metadata = {
   title: 'Kodleon | Türkiye\'nin Lider Yapay Zeka Eğitim Platformu',
-  description: 'Yapay zeka dünyasındaki en son gelişmeleri öğrenin ve geleceğin teknolojilerini şekillendiren becerileri Kodleon ile kazanın. Uzman eğitmenler, kapsamlı içerik ve uygulamalı projelerle AI\'da uzmanlaşın.',
-  keywords: 'yapay zeka eğitimi, kodleon, makine öğrenmesi kursu, doğal dil işleme, bilgisayarlı görü, Türkçe AI eğitimi, yapay zeka dersleri, AI projeleri, AI uzmanlığı',
+  description: 'Kodleon ile yapay zeka dünyasındaki en son gelişmeleri öğrenin, geleceğin teknolojilerini şekillendiren AI becerileri kazanın ve kariyerinize yön verin. Uzman eğitmenler, kapsamlı içerik ve uygulamalı projelerle uzmanlaşın.',
+  keywords: 'yapay zeka eğitimi, AI kursları, kodleon, makine öğrenmesi, doğal dil işleme, bilgisayarlı görü, derin öğrenme, Türkçe yapay zeka, online AI eğitimi, yapay zeka projeleri, AI sertifikası, veri bilimi eğitimi, yapay zeka uzmanlığı',
   alternates: {
     canonical: 'https://kodleon.com',
   },
@@ -19,13 +20,13 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     url: "https://kodleon.com",
     title: "Kodleon | Türkiye'nin Lider Yapay Zeka Eğitim Platformu",
-    description: "Yapay zeka dünyasındaki en son gelişmeleri öğrenin ve geleceğin teknolojilerini Kodleon ile keşfedin. Uzman eğitmenler, kapsamlı içerik ve uygulamalı projelerle AI'da uzmanlaşın.",
+    description: "Kodleon ile yapay zeka dünyasındaki en son gelişmeleri öğrenin, geleceğin teknolojilerini şekillendiren AI becerileri kazanın ve kariyerinize yön verin.",
     images: [
       {
-        url: "https://kodleon.com/og-image.jpg",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Kodleon Yapay Zeka Eğitim Platformu"
+        alt: "Kodleon Yapay Zeka Eğitim Platformu | Geleceği Kodlayın"
       }
     ],
   },
@@ -138,7 +139,7 @@ const latestBlogPosts = [
     snippet: "On yıllardır Yapay Zeka, büyük ölçüde ekranlarımızın arkasında var oldu; karmaşık hesaplamalarda ustalaştı, anlayışlı metinler üretti ve çarpıcı görseller yarattı. Ancak yeni bir sınır ortaya çıkıyor: etrafımızdaki fiziksel dünyayı algılayabilen, anlayabilen ve onunla etkileşime girebilen Yapay Zeka.",
     imageUrl: "https://images.pexels.com/photos/7661169/pexels-photo-7661169.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     href: "/blog/embodied-ai-future",
-    date: new Date().toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' }),
+    date: new Date(2025, 4, 31).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' }),
     category: "AI Gelişmeleri"
   },
   {
@@ -146,32 +147,16 @@ const latestBlogPosts = [
     snippet: "Yazılım geliştirme dünyası yapay zeka ile hızla dönüşüyor. Bu dönüşümün en önemli oyuncularından biri de AI kod asistanları. Peki, hangi araç size en uygun? Gelin, popüler seçenekleri mercek altına alalım.",
     imageUrl: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     href: "/blog/ai-kod-asistanlari-karsilastirmasi",
-    date: new Date().toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' }),
+    date: new Date(2025, 4, 31).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' }),
     category: "AI Araçları"
   },
   {
-    title: "Yapay Zeka Destekli İçerik Üretiminin Geleceği",
-    snippet: "AI'ın metin, görsel ve video üretiminde nasıl devrim yarattığını ve bu teknolojilerin pazarlama ve içerik stratejilerine etkilerini inceliyoruz...",
-    imageUrl: "https://images.pexels.com/photos/7567434/pexels-photo-7567434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    href: "/blog/ai-content-generation",
-    date: "15 Ekim 2023",
+    title: "Yapay Zeka ile Hareketli Hayaller: Veo ve Flow ile Video Üretiminde Yeni Bir Çağ",
+    snippet: "Google'ın Veo'su ve Meta'nın Flow'u gibi yeni nesil yapay zeka modelleri, metin ve görsellerden etkileyici videolar ve animasyonlar oluşturarak yaratıcılığın sınırlarını zorluyor. Bu teknolojiler nasıl çalışıyor ve gelecekte bizi neler bekliyor?",
+    imageUrl: "https://images.pexels.com/photos/9026285/pexels-photo-9026285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    href: "/blog/ai-video-uretimi-veo-flow",
+    date: new Date().toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' }),
     category: "Üretken AI"
-  },
-  {
-    title: "Derin Öğrenme Modellerini Anlamak: Yeni Başlayanlar İçin Kapsamlı Bir Rehber",
-    snippet: "Karmaşık sinir ağlarının ve derin öğrenme mimarilerinin temel prensiplerini adım adım açıklıyoruz. Örnekler ve kullanım alanlarıyla konuyu pekiştirin...",
-    imageUrl: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    href: "/blog/deep-learning-explained",
-    date: "28 Eylül 2023",
-    category: "Makine Öğrenmesi"
-  },
-  {
-    title: "Türkiye'de Yapay Zeka Ekosistemi: Fırsatlar ve Zorluklar",
-    snippet: "Yerel AI girişimlerini, akademik çalışmaları ve Türkiye'nin global yapay zeka yarışındaki konumunu değerlendiriyoruz. Gelecek projeksiyonları ve yatırım alanları...",
-    imageUrl: "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    href: "/blog/ai-ecosystem-turkey",
-    date: "10 Eylül 2023",
-    category: "AI Etiği ve Toplum"
   }
 ];
 
@@ -190,7 +175,7 @@ export default function Home() {
           aria-hidden="true"
         />
         <div className="container max-w-6xl mx-auto relative z-10 px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
             <h1 
               id="hero-heading" 
               className="text-4xl md:text-6xl font-bold tracking-tight mb-6 
@@ -200,17 +185,23 @@ export default function Home() {
               Yapay Zeka ile Geleceği Kodlayın
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-10">
-              Türkiye\'nin lider yapay zeka eğitim platformu Kodleon ile en güncel AI becerilerini kazanın, potansiyelinizi keşfedin ve geleceğin teknolojilerine yön verin.
+              Türkiye'nin lider yapay zeka eğitim platformu Kodleon ile en güncel AI becerilerini kazanın, potansiyelinizi keşfedin ve geleceğin teknolojilerine yön verin.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="rounded-full shadow-lg hover:shadow-xl transition-shadow">
                 <Link href="/topics" aria-label="Yapay zeka konularını keşfedin">AI Konularını Keşfet</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full border-border hover:border-primary/70 transition-colors">
-                <Link href="/about" aria-label="Kodleon hakkında daha fazla bilgi alın">Neden Kodleon?</Link>
+                <Link href="/blog" aria-label="Blog yazılarını keşfedin">
+                  <Rss className="mr-2 h-5 w-5" />
+                  Blog'u Keşfet
+                </Link>
               </Button>
             </div>
           </div>
+
+          {/* Featured Blog Carousel */}
+          <FeaturedBlogCarousel posts={latestBlogPosts} />
         </div>
       </section>
       
@@ -261,7 +252,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Latest Blog Posts Section - MOVED HERE */}
+      {/* Latest Blog Posts Section */}
       <section className="py-16 md:py-20 bg-background" aria-labelledby="latest-blog-heading">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="text-center mb-12 md:mb-16">

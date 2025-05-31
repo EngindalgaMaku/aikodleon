@@ -104,30 +104,35 @@ const topicsData: Record<string, any> = {
       {
         title: "Görüntü Sınıflandırma",
         description: "Görüntüleri kategorilere ayırma teknikleri.",
-        imageUrl: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/computer-vision/image-classification"
       },
       {
         title: "Nesne Tespiti",
         description: "Görüntülerdeki nesneleri tespit etme ve konumlandırma.",
-        imageUrl: "https://images.pexels.com/photos/762679/pexels-photo-762679.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/762679/pexels-photo-762679.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/computer-vision/object-detection"
       },
       {
         title: "Yüz Tanıma",
         description: "Yüz tanıma sistemlerinin çalışma prensipleri ve uygulamaları.",
-        imageUrl: "https://images.pexels.com/photos/6203795/pexels-photo-6203795.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/6203795/pexels-photo-6203795.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/computer-vision/face-recognition"
       },
       {
         title: "Görüntü Segmentasyonu",
         description: "Görüntüleri anlamlı bölgelere ayırma teknikleri.",
-        imageUrl: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/computer-vision/image-segmentation"
       }
     ],
     skills: ["Görüntü İşleme Temelleri", "Konvolüsyonel Sinir Ağları (CNN)", "Nesne Algılama Algoritmaları (YOLO, Faster R-CNN)", "Görüntü Segmentasyonu Teknikleri", "Öznitelik Çıkarımı", "OpenCV", "PyTorch/TensorFlow ile Görüntü İşleme", "Model Eğitimi ve Değerlendirme"],
     resources: [
-      { title: "Bilgisayarlı Görü Temelleri", type: "Kurs", link: "#" },
-      { title: "OpenCV ile Uygulamalı Görüntü İşleme", type: "Pratik", link: "#" },
-      { title: "Nesne Algılama Projesi", type: "Pratik", link: "#" },
-      { title: "CNN Mimarileri", type: "E-Kitap", link: "#" }
+      // Şimdilik kaynaklar yorum satırı, kullanıcıdan gelecek cevaba göre güncellenecek veya kaldırılacak.
+      // { title: "Bilgisayarlı Görü Temelleri", type: "Kurs", link: "#" },
+      // { title: "OpenCV ile Uygulamalı Görüntü İşleme", type: "Pratik", link: "#" },
+      // { title: "Nesne Algılama Projesi", type: "Pratik", link: "#" },
+      // { title: "CNN Mimarileri", type: "E-Kitap", link: "#" }
     ]
   },
   "generative-ai": {

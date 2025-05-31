@@ -102,10 +102,10 @@ export default function Footer() {
             &copy; {currentYear} Kodleon. Tüm hakları saklıdır.
           </p>
           <div className="flex gap-4 mt-4 sm:mt-0">
-            <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
               Gizlilik Politikası
             </Link>
-            <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <Link href="/terms-of-service" className="text-sm text-muted-foreground hover:text-primary transition-colors">
               Kullanım Şartları
             </Link>
           </div>
