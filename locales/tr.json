@@ -1,0 +1,167 @@
+{
+  "common": {
+    "home": "Ana Sayfa",
+    "resources": "Kaynaklar",
+    "topics": "Konular",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "search": "Ara",
+    "language": "Dil",
+    "menu": "Menü",
+    "close": "Kapat",
+    "imageAlt": "Kodleon yapay zeka eğitim içeriği görseli",
+    "exploreTopic": "Konuyu İncele",
+    "readMore": "Devamını Oku"
+  },
+  "home": {
+    "hero": {
+      "title": "Yapay Zeka ile Geleceği Kodlayın",
+      "subtitle": "Türkiye'nin lider yapay zeka eğitim platformu Kodleon ile en güncel AI becerilerini kazanın, potansiyelinizi keşfedin ve geleceğin teknolojilerine yön verin.",
+      "cta": "AI Konularını Keşfet"
+    },
+    "topics": {
+      "title": "Yapay Zeka Eğitim Konuları",
+      "subtitle": "Makine öğrenmesinden derin öğrenmeye, doğal dil işlemeden bilgisayarlı görüye kadar geniş bir yelpazede uzmanlaşın.",
+      "items": {
+        "machineLearning": {
+          "title": "Makine Öğrenmesi",
+          "description": "Algoritmaların veri kullanarak nasıl öğrendiğini ve tahminlerde bulunduğunu keşfedin."
+        },
+        "nlp": {
+          "title": "Doğal Dil İşleme",
+          "description": "Makinelerin insan dilini nasıl anlayıp işlediğini ve ürettiğini öğrenin."
+        },
+        "computerVision": {
+          "title": "Bilgisayarlı Görü",
+          "description": "Bilgisayarların görüntüleri nasıl algıladığını ve işlediğini anlayın."
+        },
+        "generativeAi": {
+          "title": "Üretken AI",
+          "description": "Metin, görüntü ve ses üretebilen yapay zeka modellerini keşfedin."
+        },
+        "neuralNetworks": {
+          "title": "Sinir Ağları",
+          "description": "Beynin çalışma prensibinden esinlenen yapay sinir ağları hakkında bilgi edinin."
+        },
+        "aiEthics": {
+          "title": "AI Etiği",
+          "description": "Yapay zekanın etik kullanımı ve toplumsal etkileri üzerine tartışmalar."
+        }
+      }
+    },
+    "blog": {
+      "title": "Blog'dan Son Gelişmeler",
+      "subtitle": "Yapay zeka dünyasındaki en son trendleri, derinlemesine analizleri ve uzman görüşlerini blogumuzda keşfedin.",
+      "viewAll": "Tüm Blog Yazıları",
+      "categories": {
+        "aiDevelopments": "AI Gelişmeleri",
+        "aiTools": "AI Araçları",
+        "generativeAi": "Üretken AI"
+      },
+      "posts": {
+        "embodiedAi": {
+          "title": "Ekranın Ötesinde: Cisimleşmiş Yapay Zeka Dünyamızı Anlamayı ve Şekillendirmeyi Nasıl Öğreniyor?",
+          "snippet": "On yıllardır Yapay Zeka, büyük ölçüde ekranlarımızın arkasında var oldu; karmaşık hesaplamalarda ustalaştı, anlayışlı metinler üretti ve çarpıcı görseller yarattı. Ancak yeni bir sınır ortaya çıkıyor: etrafımızdaki fiziksel dünyayı algılayabilen, anlayabilen ve onunla etkileşime girebilen Yapay Zeka."
+        },
+        "aiCodeAssistants": {
+          "title": "AI Kod Asistanları Arenası: Cursor vs. Windsurf (Codeium) ve Diğerleri",
+          "snippet": "Yazılım geliştirme dünyası yapay zeka ile hızla dönüşüyor. Bu dönüşümün en önemli oyuncularından biri de AI kod asistanları. Peki, hangi araç size en uygun? Gelin, popüler seçenekleri mercek altına alalım."
+        },
+        "aiVideoGeneration": {
+          "title": "Yapay Zeka ile Hareketli Hayaller: Veo ve Flow ile Video Üretiminde Yeni Bir Çağ",
+          "snippet": "Google'ın Veo'su ve Meta'nın Flow'u gibi yeni nesil yapay zeka modelleri, metin ve görsellerden etkileyici videolar ve animasyonlar oluşturarak yaratıcılığın sınırlarını zorluyor. Bu teknolojiler nasıl çalışıyor ve gelecekte bizi neler bekliyor?"
+        }
+      }
+    },
+    "whyKodleon": {
+      "title": "Neden Kodleon ile Yapay Zeka?",
+      "subtitle": "Yapay zeka öğrenme yolculuğunuzda Kodleon, size en iyi deneyimi sunmak için tasarlandı.",
+      "features": {
+        "expertInstructors": {
+          "title": "Uzman Eğitmen Kadrosu",
+          "description": "Sektör deneyimli, alanında uzman eğitmenlerden en güncel bilgileri öğrenin."
+        },
+        "comprehensiveContent": {
+          "title": "Kapsamlı ve Güncel İçerik",
+          "description": "Yapay zekanın temellerinden ileri düzey konulara kadar geniş bir yelpazede, sürekli güncellenen dersler."
+        },
+        "handsOnProjects": {
+          "title": "Uygulamalı Projeler ve Gerçek Dünya Senaryoları",
+          "description": "Teorik bilgiyi pratiğe dökebileceğiniz, portfolyonuzu güçlendirecek projeler üzerinde çalışın."
+        },
+        "activeCommunity": {
+          "title": "Aktif Topluluk Desteği",
+          "description": "Öğrenme yolculuğunuzda yalnız değilsiniz! Diğer öğrenciler ve eğitmenlerle etkileşimde bulunun."
+        },
+        "turkishResources": {
+          "title": "Tamamen Türkçe Kaynaklar",
+          "description": "Yapay zeka gibi karmaşık bir konuyu ana dilinizde, anlaşılır ve kaliteli kaynaklarla öğrenin."
+        },
+        "flexibleLearning": {
+          "title": "Esnek Öğrenme Modeli",
+          "description": "Kendi hızınızda, istediğiniz zaman ve yerden erişebileceğiniz online ders materyalleri."
+        }
+      }
+    },
+    "achieve": {
+      "title": "Kodleon ile Neler Başarabilirsiniz?",
+      "subtitle": "Yapay zeka becerileriyle donanarak çeşitli alanlarda fark yaratın ve yenilikçi çözümler üretin.",
+      "items": {
+        "smartApps": {
+          "title": "Akıllı Uygulamalar Geliştirin",
+          "description": "Kullanıcı deneyimini kişiselleştiren, veriye dayalı kararlar alan uygulamalar oluşturun."
+        },
+        "createValue": {
+          "title": "Veriden Değer Yaratın",
+          "description": "Büyük veri kümelerini analiz ederek anlamlı içgörüler çıkarın ve iş süreçlerini optimize edin."
+        },
+        "automationSolutions": {
+          "title": "Otomasyon Çözümleri Üretin",
+          "description": "Tekrarlayan görevleri otomatize ederek verimliliği artırın ve insan hatasını azaltın."
+        },
+        "leadTechnologies": {
+          "title": "Yeni Nesil Teknolojilere Liderlik Edin",
+          "description": "Yapay zeka alanındaki uzmanlığınızla geleceğin teknoloji trendlerini şekillendirin."
+        }
+      }
+    },
+    "joinUs": {
+      "title": "Geleceği Kodlayanlara Katılın!",
+      "subtitle": "Yapay zeka devriminin bir parçası olun, geleceği şekillendiren projeler geliştirin ve kariyerinizde yeni ufuklar açın.",
+      "cta": "Hemen Başla"
+    }
+  },
+  "navigation": {
+    "home": "Ana Sayfa",
+    "topics": "Konular",
+    "about": "Hakkımızda",
+    "contact": "İletişime Geçin",
+    "blog": "Blog'u Keşfet"
+  },
+  "footer": {
+    "ariaLabel": "Kodleon site alt bölümü",
+    "logoAriaLabel": "Kodleon ana sayfaya dön",
+    "description": "Yapay zeka dünyasını keşfedin ve geleceğin teknolojilerini öğrenin.",
+    "topics": {
+      "title": "Konular",
+      "machineLearning": "Makine Öğrenmesi",
+      "nlp": "Doğal Dil İşleme",
+      "computerVision": "Bilgisayarlı Görü",
+      "generativeAi": "Üretken AI"
+    },
+    "resources": {
+      "title": "Kaynaklar",
+      "blog": "Blog",
+      "materials": "Eğitim Materyalleri",
+      "faq": "Sık Sorulan Sorular"
+    },
+    "contact": {
+      "title": "İletişim",
+      "contactUs": "Bize Ulaşın",
+      "about": "Hakkımızda"
+    },
+    "copyright": "Tüm hakları saklıdır.",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları"
+  }
+} 

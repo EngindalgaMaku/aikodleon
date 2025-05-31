@@ -5,15 +5,18 @@ import Link from "next/link";
 import { Brain, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
-
-const routes = [
-  { name: "Ana Sayfa", href: "/" },
-  { name: "Konular", href: "/topics" },
-  { name: "Hakkında", href: "/about" },
-];
+import { useTranslation } from "@/lib/i18n";
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+
+  const routes = [
+    { name: t('navigation.home'), href: "/" },
+    { name: t('navigation.topics'), href: "/topics" },
+    { name: t('navigation.blog'), href: "/blog" },
+    { name: t('navigation.about'), href: "/about" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -35,7 +38,7 @@ export default function Navbar() {
           ))}
           <ThemeToggle />
           <Button variant="default" asChild>
-            <Link href="/contact">İletişime Geçin</Link>
+            <Link href="/contact">{t('navigation.contact')}</Link>
           </Button>
         </nav>
         
@@ -66,7 +69,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Button variant="default" asChild className="mx-4">
-                <Link href="/contact">İletişime Geçin</Link>
+                <Link href="/contact">{t('navigation.contact')}</Link>
               </Button>
               <div className="px-4">
                 <ThemeToggle />

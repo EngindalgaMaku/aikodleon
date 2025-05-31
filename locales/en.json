@@ -1,0 +1,167 @@
+{
+  "common": {
+    "home": "Home",
+    "resources": "Resources",
+    "topics": "Topics",
+    "about": "About",
+    "contact": "Contact",
+    "search": "Search",
+    "language": "Language",
+    "menu": "Menu",
+    "close": "Close",
+    "imageAlt": "Kodleon AI education content image",
+    "exploreTopic": "Explore Topic",
+    "readMore": "Read More"
+  },
+  "home": {
+    "hero": {
+      "title": "Code the Future with Artificial Intelligence",
+      "subtitle": "Gain the most up-to-date AI skills with Kodleon, Turkey's leading artificial intelligence education platform, discover your potential, and shape future technologies.",
+      "cta": "Explore AI Topics"
+    },
+    "topics": {
+      "title": "AI Education Topics",
+      "subtitle": "Specialize in a wide range from machine learning to deep learning, from natural language processing to computer vision.",
+      "items": {
+        "machineLearning": {
+          "title": "Machine Learning",
+          "description": "Discover how algorithms learn from data and make predictions."
+        },
+        "nlp": {
+          "title": "Natural Language Processing",
+          "description": "Learn how machines understand, process, and generate human language."
+        },
+        "computerVision": {
+          "title": "Computer Vision",
+          "description": "Understand how computers perceive and interpret images."
+        },
+        "generativeAi": {
+          "title": "Generative AI",
+          "description": "Explore AI models that can generate text, images, and audio."
+        },
+        "neuralNetworks": {
+          "title": "Neural Networks",
+          "description": "Learn about artificial neural networks inspired by the human brain."
+        },
+        "aiEthics": {
+          "title": "AI Ethics",
+          "description": "Discuss the ethical use of artificial intelligence and its societal impacts."
+        }
+      }
+    },
+    "blog": {
+      "title": "Latest from the Blog",
+      "subtitle": "Discover the latest trends, in-depth analyses, and expert opinions in the world of artificial intelligence on our blog.",
+      "viewAll": "View All Blog Posts",
+      "categories": {
+        "aiDevelopments": "AI Developments",
+        "aiTools": "AI Tools",
+        "generativeAi": "Generative AI"
+      },
+      "posts": {
+        "embodiedAi": {
+          "title": "Beyond the Screen: How Embodied AI is Learning to Understand and Shape Our World",
+          "snippet": "For decades, Artificial Intelligence has largely existed behind our screens, mastering complex calculations, generating insightful text, and creating stunning visuals. But a new frontier is emerging: AI that can perceive, understand, and interact with the physical world around us."
+        },
+        "aiCodeAssistants": {
+          "title": "The AI Code Assistant Arena: Cursor vs. Windsurf (Codeium) and Others",
+          "snippet": "The world of software development is rapidly transforming with artificial intelligence. One of the most significant players in this transformation is AI code assistants. So, which tool is right for you? Let's take a closer look at the popular options."
+        },
+        "aiVideoGeneration": {
+          "title": "Animated Dreams with AI: A New Era in Video Generation with Veo and Flow",
+          "snippet": "Next-generation AI models like Google's Veo and Meta's Flow are pushing the boundaries of creativity by generating impressive videos and animations from text and images. How do these technologies work, and what awaits us in the future?"
+        }
+      }
+    },
+    "whyKodleon": {
+      "title": "Why AI with Kodleon?",
+      "subtitle": "Kodleon is designed to provide you with the best experience on your AI learning journey.",
+      "features": {
+        "expertInstructors": {
+          "title": "Expert Instructor Staff",
+          "description": "Learn the most up-to-date information from industry-experienced, expert instructors."
+        },
+        "comprehensiveContent": {
+          "title": "Comprehensive and Current Content",
+          "description": "Continuously updated courses covering a wide range from AI fundamentals to advanced topics."
+        },
+        "handsOnProjects": {
+          "title": "Hands-On Projects and Real-World Scenarios",
+          "description": "Work on projects that allow you to apply theoretical knowledge to practice and strengthen your portfolio."
+        },
+        "activeCommunity": {
+          "title": "Active Community Support",
+          "description": "You are not alone on your learning journey! Interact with other students and instructors."
+        },
+        "turkishResources": {
+          "title": "Fully Turkish Resources",
+          "description": "Learn a complex subject like artificial intelligence in your native language with clear and high-quality resources."
+        },
+        "flexibleLearning": {
+          "title": "Flexible Learning Model",
+          "description": "Online course materials that you can access at your own pace, anytime, anywhere."
+        }
+      }
+    },
+    "achieve": {
+      "title": "What Can You Achieve with Kodleon?",
+      "subtitle": "Make a difference in various fields and create innovative solutions by equipping yourself with AI skills.",
+      "items": {
+        "smartApps": {
+          "title": "Develop Smart Applications",
+          "description": "Create applications that personalize user experience and make data-driven decisions."
+        },
+        "createValue": {
+          "title": "Create Value from Data",
+          "description": "Extract meaningful insights by analyzing large datasets and optimize business processes."
+        },
+        "automationSolutions": {
+          "title": "Produce Automation Solutions",
+          "description": "Increase efficiency and reduce human error by automating repetitive tasks."
+        },
+        "leadTechnologies": {
+          "title": "Lead Next-Generation Technologies",
+          "description": "Shape future technology trends with your expertise in artificial intelligence."
+        }
+      }
+    },
+    "joinUs": {
+      "title": "Join Those Coding the Future!",
+      "subtitle": "Become a part of the AI revolution, develop projects that shape the future, and open new horizons in your career.",
+      "cta": "Start Now"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "topics": "Topics",
+    "about": "About",
+    "contact": "Get in Touch",
+    "blog": "Explore Blog"
+  },
+  "footer": {
+    "ariaLabel": "Kodleon site footer section",
+    "logoAriaLabel": "Go to Kodleon homepage",
+    "description": "Discover the world of AI and learn the technologies of the future.",
+    "topics": {
+      "title": "Topics",
+      "machineLearning": "Machine Learning",
+      "nlp": "Natural Language Processing",
+      "computerVision": "Computer Vision",
+      "generativeAi": "Generative AI"
+    },
+    "resources": {
+      "title": "Resources",
+      "blog": "Blog",
+      "materials": "Learning Materials",
+      "faq": "FAQ"
+    },
+    "contact": {
+      "title": "Contact",
+      "contactUs": "Contact Us",
+      "about": "About Us"
+    },
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+} 
