@@ -1,3 +1,5 @@
+[Üst Sayfaya Dön](../../topics/neural-networks/)
+
 # Tekrarlayan Sinir Ağları (RNN)
 
 Tekrarlayan Sinir Ağları (Recurrent Neural Networks - RNN), sıralı verileri işlemek ve bu verilerdeki zamansal bağımlılıkları yakalamak için tasarlanmış bir yapay sinir ağı türüdür. Geleneksel ileri beslemeli sinir ağlarının aksine, RNN'ler önceki adımlardan gelen bilgileri "hatırlamalarını" sağlayan geri besleme döngülerine sahiptir. Bu özellikleri sayesinde, bir sonraki adımı tahmin etmek veya bir dizideki örüntüleri anlamak için geçmiş bilgileri kullanabilirler.

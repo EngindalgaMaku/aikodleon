@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Brain, CheckCircle2, Ship as Chip, Database, Eye, FileText, Lightbulb, Rocket, Shapes, Users, FlaskConical, Sigma, Code2, BarChart3, DatabaseZap, BrainCircuit, GitMerge, ClipboardCheck, GraduationCap } from "lucide-react";
+import { ArrowLeft, ArrowRight, Brain, CheckCircle2, Ship as Chip, Database, Eye, FileText, Lightbulb, Rocket, Shapes, Users, FlaskConical, Sigma, Code2, BarChart3, DatabaseZap, BrainCircuit, GitMerge, ClipboardCheck, GraduationCap, Shield, Settings2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -281,6 +281,37 @@ export async function generateStaticParams() {
   }));
 }
 
+// 1. longDescription görselleştirme
+const highlightKeywords = (text: string) => {
+  return text
+    .replace(/Yapay Sinir Ağları \(YSA\)/g, '<span class="font-bold text-primary">Yapay Sinir Ağları (YSA)</span>')
+    .replace(/Derin Öğrenme/g, '<span class="font-bold text-pink-600 dark:text-pink-400">Derin Öğrenme</span>')
+    .replace(/CNN/g, '<span class="font-bold text-blue-600 dark:text-blue-400">CNN</span>')
+    .replace(/RNN/g, '<span class="font-bold text-green-600 dark:text-green-400">RNN</span>');
+};
+
+// 2. Subtopic ikon eşlemesi
+const subtopicIcons: Record<string, JSX.Element> = {
+  'Temel Sinir Ağı Mimarileri': <GraduationCap className="h-5 w-5 text-primary" />, 
+  'Yapay Sinir Ağları ve Güvenlik': <Shield className="h-5 w-5 text-amber-600" />, 
+  'Konvolüsyonel Sinir Ağları (CNN)': <Shapes className="h-5 w-5 text-blue-600" />, 
+  'Tekrarlayan Sinir Ağları (RNN)': <BrainCircuit className="h-5 w-5 text-green-600" />, 
+  'Transformerlar': <GitMerge className="h-5 w-5 text-fuchsia-600" />
+};
+
+// 3. Skill ikon eşlemesi
+const skillIcons: Record<string, JSX.Element> = {
+  'Nöron Modelleri': <Brain className="h-4 w-4 mr-1 text-primary" />,
+  'İleri Beslemeli Ağlar': <ArrowRight className="h-4 w-4 mr-1 text-blue-600" />,
+  'Geri Yayılım (Backpropagation)': <ArrowLeft className="h-4 w-4 mr-1 text-pink-600" />,
+  'Evrişimsel Katmanlar (Convolutional Layers)': <Shapes className="h-4 w-4 mr-1 text-blue-600" />,
+  'Tekrarlayan Katmanlar (Recurrent Layers)': <BrainCircuit className="h-4 w-4 mr-1 text-green-600" />,
+  'Aktivasyon Fonksiyonları': <Sigma className="h-4 w-4 mr-1 text-fuchsia-600" />,
+  'Model Eğitimi': <GraduationCap className="h-4 w-4 mr-1 text-amber-600" />,
+  'Hiperparametre Ayarlama': <Settings2 className="h-4 w-4 mr-1 text-cyan-600" />,
+  'Derin Öğrenme Kütüphaneleri (TensorFlow, PyTorch)': <Code2 className="h-4 w-4 mr-1 text-orange-600" />
+};
+
 export default function TopicPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const topic = topicsData[slug] || {
@@ -346,7 +377,11 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
           <div>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <h2 id="overview-heading">Genel Bakış</h2>
-              <p>{topic.longDescription}</p>
+              {/* longDescription görselleştirme */}
+              <div 
+                className="prose prose-lg dark:prose-invert max-w-none rounded-lg bg-primary/10 p-4 mb-4 border border-primary/20" 
+                dangerouslySetInnerHTML={{ __html: highlightKeywords(topic.longDescription) }} 
+              />
               
               {topic.subtopics && topic.subtopics.length > 0 && (
                 <>
@@ -367,11 +402,12 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
                               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
                             </div>
                           )}
-                          <CardHeader className="pb-2">
-                            <CardTitle className="text-lg">{subtopic.title}</CardTitle>
+                          <CardHeader className="flex flex-row items-center gap-2">
+                            {subtopicIcons[subtopic.title] || <Shapes className="h-5 w-5 text-primary" />}
+                            <CardTitle className="text-lg font-bold text-primary">{subtopic.title}</CardTitle>
                           </CardHeader>
                           <CardContent>
-                            <p className="text-sm text-muted-foreground">{subtopic.description}</p>
+                            <CardDescription>{subtopic.description}</CardDescription>
                           </CardContent>
                         </Card>
                       </Link>

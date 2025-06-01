@@ -18,12 +18,15 @@ interface SubtopicPageProps {
 }
 
 async function getMarkdownContent(slug: string): Promise<string | null> {
+  let filePath: string = ''; // filePath'i try bloğunun dışında tanımla
   try {
-    const filePath = path.join(process.cwd(), `${slug}.md`);
+    filePath = path.join(process.cwd(), 'neural-networks', `${slug}.md`);
+    console.log('Attempting to read file from:', filePath);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     return fileContents;
   } catch (error) {
-    console.error(`Markdown file for slug ${slug} not found or could not be read:`, error);
+    // Hata mesajında belirtilen formatı kullanarak filePath'i de logla
+    console.error(`Markdown file for slug ${slug} not found or could not be read at ${filePath || 'unknown path'}:`, error);
     return null;
   }
 }
@@ -53,7 +56,7 @@ export default async function SubtopicPage({ params }: SubtopicPageProps) {
 
   if (!markdownContent) {
     return (
-      <div className="container mx-auto py-10">
+      <div className="container mx-auto py-10 px-4">
         <h1 className="text-3xl font-bold mb-4">İçerik Bulunamadı</h1>
         <p>Aradığınız konu ({subtopic_slug}) için içerik mevcut değil veya yüklenirken bir sorun oluştu.</p>
       </div>
@@ -61,10 +64,21 @@ export default async function SubtopicPage({ params }: SubtopicPageProps) {
   }
 
   return (
-    <div className="container mx-auto py-10">
-      <article className="prose lg:prose-xl dark:prose-invert max-w-none">
-        <MarkdownContent content={markdownContent} />
-      </article>
+    <div className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen pb-16">
+      <div className="container mx-auto py-10 px-4 sm:px-6 lg:px-8 max-w-5xl">
+        <div className="bg-white dark:bg-gray-850 rounded-xl shadow-md overflow-hidden">
+          <div className="p-6 sm:p-10">
+            <article className="prose lg:prose-xl dark:prose-invert max-w-none">
+              <MarkdownContent content={markdownContent} />
+            </article>
+          </div>
+        </div>
+        
+        <div className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400">
+          <p>© {new Date().getFullYear()} Kodleon | Yapay Zeka Eğitim Platformu</p>
+          <p className="mt-2">Bu içerik sadece eğitim amaçlıdır ve sürekli güncellenmektedir.</p>
+        </div>
+      </div>
     </div>
   );
 }
