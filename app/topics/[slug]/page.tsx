@@ -181,22 +181,32 @@ const topicsData: Record<string, any> = {
       {
         title: "Temel Sinir Ağı Mimarileri",
         description: "Temel yapay sinir ağı yapıları ve çalışma prensipleri.",
-        imageUrl: "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/neural-networks/temel-sinir-agi-mimarileri"
+      },
+      {
+        title: "Yapay Sinir Ağları ve Güvenlik",
+        description: "Yapay sinir ağlarının güvenlik alanındaki uygulamaları ve önemi.",
+        imageUrl: "https://images.pexels.com/photos/5325710/pexels-photo-5325710.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/neural-networks/yapay-sinir-aglari-guvenlik-uygulamalari"
       },
       {
         title: "Konvolüsyonel Sinir Ağları (CNN)",
         description: "Görüntü işlemede kullanılan CNN'lerin yapısı ve uygulamaları.",
-        imageUrl: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/neural-networks/konvolusyonel-sinir-aglari"
       },
       {
         title: "Tekrarlayan Sinir Ağları (RNN)",
         description: "Dizileri işleyen RNN'lerin yapısı ve kullanım alanları.",
-        imageUrl: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/neural-networks/tekrarlayan-sinir-aglari-rnn"
       },
       {
         title: "Transformerlar",
         description: "Modern NLP'nin temelini oluşturan transformer mimarisi.",
-        imageUrl: "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/neural-networks/transformerlar"
       }
     ],
     skills: ["Nöron Modelleri", "İleri Beslemeli Ağlar", "Geri Yayılım (Backpropagation)", "Evrişimsel Katmanlar (Convolutional Layers)", "Tekrarlayan Katmanlar (Recurrent Layers)", "Aktivasyon Fonksiyonları", "Model Eğitimi", "Hiperparametre Ayarlama", "Derin Öğrenme Kütüphaneleri (TensorFlow, PyTorch)"],
