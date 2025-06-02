@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from 'next';
+import MarkdownContent from "@/components/MarkdownContent";
+import TopicSubtopicsList from "@/components/TopicSubtopicsList";
 
 // Topic data mapping
 const topicsData: Record<string, any> = {
@@ -127,13 +129,7 @@ const topicsData: Record<string, any> = {
       }
     ],
     skills: ["Görüntü İşleme Temelleri", "Konvolüsyonel Sinir Ağları (CNN)", "Nesne Algılama Algoritmaları (YOLO, Faster R-CNN)", "Görüntü Segmentasyonu Teknikleri", "Öznitelik Çıkarımı", "OpenCV", "PyTorch/TensorFlow ile Görüntü İşleme", "Model Eğitimi ve Değerlendirme"],
-    resources: [
-      // Şimdilik kaynaklar yorum satırı, kullanıcıdan gelecek cevaba göre güncellenecek veya kaldırılacak.
-      // { title: "Bilgisayarlı Görü Temelleri", type: "Kurs", link: "#" },
-      // { title: "OpenCV ile Uygulamalı Görüntü İşleme", type: "Pratik", link: "#" },
-      // { title: "Nesne Algılama Projesi", type: "Pratik", link: "#" },
-      // { title: "CNN Mimarileri", type: "E-Kitap", link: "#" }
-    ]
+    resources: []
   },
   "generative-ai": {
     title: "Üretken AI",
@@ -145,22 +141,26 @@ const topicsData: Record<string, any> = {
       {
         title: "Üretken Çekişmeli Ağlar (GAN)",
         description: "GAN'ların yapısı ve gerçekçi içerik üretme yöntemleri.",
-        imageUrl: "https://images.pexels.com/photos/7567434/pexels-photo-7567434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/7567434/pexels-photo-7567434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/generative-ai/gan"
       },
       {
         title: "Diffusion Modelleri",
         description: "Diffusion modellerinin çalışma prensipleri ve uygulamaları.",
-        imageUrl: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/generative-ai/diffusion-models"
       },
       {
         title: "Büyük Dil Modelleri",
         description: "Metin üreten yapay zeka modellerinin yapısı ve eğitimi.",
-        imageUrl: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/generative-ai/large-language-models"
       },
       {
         title: "Text-to-Image Modelleri",
         description: "Metinden görüntü üreten modellerin çalışma prensipleri.",
-        imageUrl: "https://images.pexels.com/photos/8566460/pexels-photo-8566460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        imageUrl: "https://images.pexels.com/photos/8566460/pexels-photo-8566460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/generative-ai/text-to-image"
       }
     ],
     skills: ["Derin Öğrenme", "GANs", "VAEs", "Diffusion Modelleri", "Transformer Modelleri", "Metin/Görüntü/Ses Üretimi", "Model Eğitimi ve Fine-tuning", "Prompt Engineering", "Üretken AI Uygulama Geliştirme"],
@@ -223,7 +223,7 @@ const topicsData: Record<string, any> = {
     icon: <Users className="h-8 w-8 text-chart-1" />,
     imageUrl: "https://images.pexels.com/photos/8386422/pexels-photo-8386422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     longDescription: "Yapay Zeka Etiği, yapay zeka sistemlerinin geliştirilmesi, dağıtılması ve kullanılması sırasında ortaya çıkan ahlaki, sosyal ve felsefi soruları inceleyen disiplinler arası bir alandır. AI'ın hızla yaygınlaşmasıyla birlikte, şeffaflık, adalet, hesap verebilirlik, gizlilik ve güvenlik gibi konular kritik önem kazanmıştır. AI sistemlerindeki potansiyel önyargılar, işsizlik, otonom silahlar ve mahremiyetin ihlali gibi etik sorunlar, küresel düzeyde tartışılmaktadır. AI etiği, sadece teknik bir mesele olmayıp, aynı zamanda hukuki düzenlemeler, toplumsal normlar ve bireysel sorumlulukları da kapsar. Bu alandaki farkındalık ve çalışmalar, yapay zekanın insanlık için faydalı ve sorumlu bir şekilde geliştirilmesini ve kullanılmasını sağlamak amacıyla büyük önem taşımaktadır.",
-    subtopics: [], // AI Etiği için alt konu kartları şimdilik boş bırakıldı.
+    subtopics: [],
     skills: ["Etik Karar Verme Çerçeveleri", "AI Önyargısını Anlama ve Azaltma", "Şeffaflık ve Açıklanabilirlik (Explainable AI)", "Mahremiyet ve Veri Koruma", "AI Hukuku ve Regülasyonları", "Toplumsal Etki Analizi", "Hesap Verebilirlik Mekanizmaları"],
     resources: [
       { title: "AI Etiği Temelleri", type: "Kurs", link: "#" },
@@ -231,6 +231,79 @@ const topicsData: Record<string, any> = {
       { title: "Sorumlu AI Geliştirme", type: "Rehber", link: "#" }
     ]
   },
+  "metasezgisel-optimizasyon": {
+    title: "Metasezgisel Optimizasyon",
+    description: "Karmaşık optimizasyon problemlerini çözmek için doğadan esinlenen ve sezgisel yöntemler kullanan algoritmaları öğrenin.",
+    icon: <Sigma className="h-8 w-8 text-purple-500" />,
+    imageUrl: "https://images.pexels.com/photos/2169500/pexels-photo-2169500.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    longDescription: "Metasezgisel optimizasyon algoritmaları, geleneksel optimizasyon yöntemlerinin yetersiz kaldığı büyük ve karmaşık problemler için güçlü çözüm yaklaşımları sunar. Bu algoritmalar genellikle doğadaki süreçlerden (evrim, sürü davranışları vb.) veya fiziksel olaylardan (metal tavlaması gibi) ilham alır. Kesin en iyi çözümü garanti etmeseler de, kabul edilebilir sürede çok iyi çözümler bulma konusunda etkilidirler. Bu bölümde, en yaygın metasezgisel algoritmaların çalışma prensiplerini, avantajlarını, dezavantajlarını ve çeşitli alanlardaki uygulamalarını inceleyeceğiz.",
+    subtopics: [
+      {
+        title: "Genetik Algoritmalar",
+        description: "Evrimsel süreçlerden ilham alan, popülasyon tabanlı bir optimizasyon tekniği.",
+        imageUrl: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", 
+        href: "/topics/metasezgisel-optimizasyon/genetik-algoritmalar"
+      },
+      {
+        title: "Parçacık Sürü Optimizasyonu",
+        description: "Kuş sürülerinin ve balık okullarının sosyal davranışlarından esinlenen bir yöntem.",
+        imageUrl: "https://images.pexels.com/photos/1089842/pexels-photo-1089842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/metasezgisel-optimizasyon/parcacik-suru-optimizasyonu"
+      },
+      {
+        title: "Tavlama Benzetimi",
+        description: "Metalürjideki tavlama işleminden esinlenen, olasılıksal bir optimizasyon tekniği.",
+        imageUrl: "https://images.pexels.com/photos/2088205/pexels-photo-2088205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/metasezgisel-optimizasyon/tavlama-benzetimi"
+      },
+      {
+        title: "Karınca Kolonisi Optimizasyonu",
+        description: "Karıncaların yiyecek bulma davranışlarından esinlenen, kolektif zekaya dayalı bir yöntem.",
+        imageUrl: "https://images.pexels.com/photos/790357/pexels-photo-790357.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/metasezgisel-optimizasyon/karinca-kolonisi-optimizasyonu"
+      },
+      {
+        title: "Yasaklı Arama (Tabu Search)",
+        description: "Yerel optimumlardan kaçmak için hafıza kullanan bir metasezgisel arama tekniği.",
+        imageUrl: "https://images.pexels.com/photos/277092/pexels-photo-277092.jpeg",
+        href: "/topics/metasezgisel-optimizasyon/yasakli-arama"
+      },
+      {
+        title: "Yapay Arı Kolonisi Algoritması",
+        description: "Yapay Arı Kolonisi (ABC) algoritması, arı sürülerinin yiyecek arama davranışlarından esinlenerek geliştirilmiş bir optimizasyon tekniğidir.",
+        imageUrl: "https://images.pexels.com/photos/1327430/pexels-photo-1327430.jpeg",
+        href: "/topics/metasezgisel-optimizasyon/yapay-ari-kolonisi-algoritmasi",
+      },
+      {
+        title: "Diferansiyel Gelişim",
+        description: "Diferansiyel Gelişim (DE), sürekli uzaylardaki optimizasyon problemleri için tasarlanmış, popülasyon tabanlı bir metasezgisel arama algoritmasıdır.",
+        imageUrl: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/metasezgisel-optimizasyon/diferansiyel-gelisim",
+      },
+      {
+        title: "Uyum Araması",
+        description: "Uyum Araması (HS), müzik performansındaki doğaçlama sürecinden esinlenen bir metasezgisel optimizasyon algoritmasıdır.",
+        imageUrl: "https://images.pexels.com/photos/3785147/pexels-photo-3785147.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/metasezgisel-optimizasyon/uyum-aramasi",
+      },
+    ],
+    skills: ["Problem Modelleme", "Algoritma Tasarımı", "Python ile Uygulama", "Performans Analizi", "Parametre Ayarlama", "Optimizasyon Temelleri", "Sezgisel Yöntemler"],
+    resources: []
+  },
+  "responsible-ai": {
+    title: "Sorumlu AI",
+    description: "AI'nin etik ve sosyal sorumluluklarını anlayın.",
+    icon: <Shield className="h-8 w-8 text-chart-1" />,
+    imageUrl: "https://images.pexels.com/photos/8386422/pexels-photo-8386422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    longDescription: "Sorumlu AI, AI'nin günümüzün ve geleceğin sosyal, ekonomik ve teknolojik dünyasında etik ve sosyal sorumluluklarını anlamanın önemini vurgular. Bu konu, AI'nin nasıl geliştirileceği, kullanılacağı ve yönetileceği konuları içerir. Sorumlu AI, AI'nin insanlarla etkileşimini ve onların haklarını koruma konusunda önemli rol oynar. Bu alandaki farkındalık ve çalışmalar, AI'nin insanlık için faydalı ve sorumlu bir şekilde geliştirilmesini ve kullanılmasını sağlamak amacıyla büyük önem taşımaktadır.",
+    subtopics: [],
+    skills: ["AI'nin Sosyal ve Ekonomik Sorumluluklarını Anlama", "AI'nin İnsan Haklarına Etkilerini İnceleme", "AI'nin İnsanlarla Etkileşimi İyileştirme", "AI'nin İnsanlık İçin Faydalı Olmasını Sağlama"],
+    resources: [
+      { title: "Sorumlu AI Temelleri", type: "Kurs", link: "#" },
+      { title: "Sorumlu AI Pratikleri", type: "E-Kitap", link: "#" },
+      { title: "Sorumlu AI Geliştirme", type: "Rehber", link: "#" }
+    ]
+  }
 };
 
 // List of all topics for related topics section
@@ -240,7 +313,9 @@ const allTopicSlugs = [
   "computer-vision", 
   "generative-ai", 
   "neural-networks", 
-  "ai-ethics"
+  "ai-ethics",
+  "metasezgisel-optimizasyon",
+  "responsible-ai"
 ];
 
 // Generate metadata for each topic page
@@ -376,43 +451,19 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
           <div>
             <div className="prose prose-lg dark:prose-invert max-w-none">
-              <h2 id="overview-heading">Genel Bakış</h2>
-              {/* longDescription görselleştirme */}
-              <div 
-                className="prose prose-lg dark:prose-invert max-w-none rounded-lg bg-primary/10 p-4 mb-4 border border-primary/20" 
-                dangerouslySetInnerHTML={{ __html: highlightKeywords(topic.longDescription) }} 
-              />
+              <h2 id="overview-heading" className="text-3xl font-bold text-primary dark:text-primary-dark mb-4 mt-8">Genel Bakış</h2>
+              <div className="rounded-lg bg-primary/10 p-4 mb-4 border border-primary/20">
+                {topic.longDescription ? <MarkdownContent content={topic.longDescription} /> : <p>Açıklama bulunamadı.</p>}
+              </div>
               
               {topic.subtopics && topic.subtopics.length > 0 && (
                 <>
-                  <h2 id="subtopics-heading">Alt Konular</h2>
-                  <div className="space-y-4">
-                    {topic.subtopics?.map((subtopic: any, index: number) => (
-                      <Link href={subtopic.href || '#'} key={index} className="block no-underline">
-                        <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                          {subtopic.imageUrl && (
-                            <div className="relative h-40">
-                              <Image 
-                                src={subtopic.imageUrl}
-                                alt={`${subtopic.title} - ${topic.title} alt konusu`}
-                                fill
-                                className="object-cover"
-                                loading={index < 2 ? "eager" : "lazy"}
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                            </div>
-                          )}
-                          <CardHeader className="flex flex-row items-center gap-2">
-                            {subtopicIcons[subtopic.title] || <Shapes className="h-5 w-5 text-primary" />}
-                            <CardTitle className="text-lg font-bold text-primary">{subtopic.title}</CardTitle>
-                          </CardHeader>
-                          <CardContent>
-                            <CardDescription>{subtopic.description}</CardDescription>
-                          </CardContent>
-                        </Card>
-                      </Link>
-                    ))}
-                  </div>
+                  <h2 id="subtopics-heading" className="text-3xl font-bold text-primary dark:text-primary-dark mb-4 mt-8">Alt Konular</h2>
+                  <TopicSubtopicsList 
+                    subtopics={topic.subtopics}
+                    isMetasearchTopic={slug === "metasezgisel-optimizasyon"}
+                    subtopicIcons={subtopicIcons}
+                  />
                 </>
               )}
             </div>
@@ -462,7 +513,7 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
           
           <div>
             <div className="bg-muted rounded-lg p-6 sticky top-24 max-w-sm mx-auto">
-              <h3 className="text-xl font-medium mb-4">Bu Konuda Kazanacağınız Beceriler</h3>
+              <h3 className="text-xl font-semibold mb-4">Bu Konuda Kazanacağınız Beceriler</h3>
               {topic.skills && topic.skills.length > 0 && (
                 <ul className="space-y-3 mb-6">
                   {topic.skills?.map((skill: string, index: number) => (
@@ -478,17 +529,19 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
                 <>
                   <Separator className="my-6" />
                 
-                  <h3 className="text-xl font-medium mb-4">Önerilen Kaynaklar</h3>
+                  <h3 className="text-xl font-semibold mb-4">
+                    {slug === "metasezgisel-optimizasyon" ? "Diğer Algoritmalar" : "Önerilen Kaynaklar"}
+                  </h3>
                   <ul className="space-y-4">
                     {topic.resources?.map((resource: any, index: number) => (
                       <li key={index}>
                         <Link 
-                          href={resource.link} 
+                          href={resource.href || resource.link || '#'}
                           className="flex items-center justify-between p-3 bg-background rounded-md hover:bg-secondary transition-colors"
-                          aria-label={`${resource.title} kaynağını incele - ${resource.type}`}
+                          aria-label={`${resource.title} kaynağını incele - ${resource.type || ''}`}
                         >
                           <span className="font-medium">{resource.title}</span>
-                          <span className="text-sm text-muted-foreground">{resource.type}</span>
+                          {resource.type && <span className="text-sm text-muted-foreground">{resource.type}</span>}
                         </Link>
                       </li>
                     ))}
@@ -499,7 +552,7 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
               {slug === "machine-learning" && (
                 <>
                   <Separator className="my-6" />
-                  <h3 className="text-xl font-medium mb-4">Makine Öğrenmesi Simülatörü</h3>
+                  <h3 className="text-xl font-semibold mb-4">Makine Öğrenmesi Simülatörü</h3>
                   <p className="text-sm text-muted-foreground mb-4">
                     Makine öğrenmesi algoritmalarını interaktif bir ortamda deneyimleyin ve temel kavramları uygulamalı olarak pekiştirin.
                   </p>

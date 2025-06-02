@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Brain, Ship as Chip, Database, Eye, FileText, Lightbulb, Rocket, Shapes, Users } from "lucide-react";
+import { ArrowRight, Brain, Ship as Chip, Database, Eye, FileText, Lightbulb, Rocket, Shapes, Users, Sigma } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -131,6 +131,20 @@ const allTopics = [
       { title: "Tahmine Dayalı Modelleme", href: "/topics/ai-data-science/predictive-modeling" },
       { title: "Anomali Tespiti", href: "/topics/ai-data-science/anomaly-detection" },
       { title: "Veri Görselleştirme", href: "/topics/ai-data-science/data-visualization" }
+    ]
+  },
+  {
+    title: "Metasezgisel Optimizasyon",
+    description: "Karmaşık optimizasyon problemlerini çözmek için doğadan esinlenen ve sezgisel yöntemler kullanan algoritmaları öğrenin.",
+    icon: <Sigma className="h-8 w-8 text-purple-500" />,
+    href: "/topics/metasezgisel-optimizasyon",
+    imageUrl: "https://images.pexels.com/photos/2169500/pexels-photo-2169500.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    category: "advanced",
+    subtopics: [
+      { title: "Genetik Algoritmalar", href: "/topics/metasezgisel-optimizasyon/genetik-algoritmalar" },
+      { title: "Parçacık Sürü Optimizasyonu", href: "/topics/metasezgisel-optimizasyon/parcacik-suru-optimizasyonu" },
+      { title: "Tavlama Benzetimi", href: "/topics/metasezgisel-optimizasyon/tavlama-benzetimi" },
+      { title: "Karınca Kolonisi Optimizasyonu", href: "/topics/metasezgisel-optimizasyon/karinca-kolonisi-optimizasyonu" }
     ]
   },
 ];
