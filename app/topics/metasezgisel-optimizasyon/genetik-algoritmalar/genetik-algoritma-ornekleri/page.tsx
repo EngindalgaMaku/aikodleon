@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import MarkdownContent from '@/components/MarkdownContent';
-import { getMarkdownContent } from '@/lib/markdown'; // Varsayılan olarak bu fonksiyonun var olduğunu ve çalıştığını varsayalım
+import { getPostBySlug } from '@/lib/markdown';
 import { Metadata } from 'next';
+import MarkdownContent from '@/components/MarkdownContent';
 
 export const metadata: Metadata = {
   title: 'Genetik Algoritma Örnekleri (Python) | Kodleon Metasezgisel Optimizasyon',
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GeneticAlgorithmExamplesPage() {
-  const { rawContent, frontmatter } = getMarkdownContent('metasezgisel-optimizasyon/genetik-algoritma-ornekleri');
+export default async function GeneticAlgorithmExamplesPage() {
+  const { rawContent, frontmatter } = getPostBySlug('metasezgisel-optimizasyon/genetik-algoritma-ornekleri');
 
   return (
     <div className="container max-w-4xl mx-auto py-12 px-4">

@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { Metadata } from 'next';
 import MarkdownContent from "@/components/MarkdownContent";
 import TopicSubtopicsList from "@/components/TopicSubtopicsList";
+import PaginatedSubtopicsList from "@/components/PaginatedSubtopicsList";
 
 // Topic data mapping
 const topicsData: Record<string, any> = {
@@ -235,7 +236,7 @@ const topicsData: Record<string, any> = {
     title: "Metasezgisel Optimizasyon",
     description: "Karmaşık optimizasyon problemlerini çözmek için doğadan esinlenen ve sezgisel yöntemler kullanan algoritmaları öğrenin.",
     icon: <Sigma className="h-8 w-8 text-purple-500" />,
-    imageUrl: "https://images.pexels.com/photos/2169500/pexels-photo-2169500.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    imageUrl: "/images/metasezgisel_algoritm.jpg",
     longDescription: "Metasezgisel optimizasyon algoritmaları, geleneksel optimizasyon yöntemlerinin yetersiz kaldığı büyük ve karmaşık problemler için güçlü çözüm yaklaşımları sunar. Bu algoritmalar genellikle doğadaki süreçlerden (evrim, sürü davranışları vb.) veya fiziksel olaylardan (metal tavlaması gibi) ilham alır. Kesin en iyi çözümü garanti etmeseler de, kabul edilebilir sürede çok iyi çözümler bulma konusunda etkilidirler. Bu bölümde, en yaygın metasezgisel algoritmaların çalışma prensiplerini, avantajlarını, dezavantajlarını ve çeşitli alanlardaki uygulamalarını inceleyeceğiz.",
     subtopics: [
       {
@@ -252,40 +253,70 @@ const topicsData: Record<string, any> = {
       },
       {
         title: "Tavlama Benzetimi",
-        description: "Metalürjideki tavlama işleminden esinlenen, olasılıksal bir optimizasyon tekniği.",
-        imageUrl: "https://images.pexels.com/photos/2088205/pexels-photo-2088205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        description: "Metal tavlama sürecinden esinlenen, olasılıksal bir arama tekniği.",
+        imageUrl: "https://images.pexels.com/photos/162491/foundry-molten-metal-production-162491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         href: "/topics/metasezgisel-optimizasyon/tavlama-benzetimi"
       },
       {
-        title: "Karınca Kolonisi Optimizasyonu",
-        description: "Karıncaların yiyecek bulma davranışlarından esinlenen, kolektif zekaya dayalı bir yöntem.",
-        imageUrl: "https://images.pexels.com/photos/790357/pexels-photo-790357.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        href: "/topics/metasezgisel-optimizasyon/karinca-kolonisi-optimizasyonu"
-      },
-      {
-        title: "Yasaklı Arama (Tabu Search)",
-        description: "Yerel optimumlardan kaçmak için hafıza kullanan bir metasezgisel arama tekniği.",
-        imageUrl: "https://images.pexels.com/photos/277092/pexels-photo-277092.jpeg",
+        title: "Yasaklı Arama",
+        description: "Arama sürecinde daha önce ziyaret edilen çözümlerin tekrarını engelleyen bir yöntem.",
+        imageUrl: "https://images.pexels.com/photos/268917/pexels-photo-268917.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         href: "/topics/metasezgisel-optimizasyon/yasakli-arama"
       },
       {
-        title: "Yapay Arı Kolonisi Algoritması",
-        description: "Yapay Arı Kolonisi (ABC) algoritması, arı sürülerinin yiyecek arama davranışlarından esinlenerek geliştirilmiş bir optimizasyon tekniğidir.",
-        imageUrl: "https://images.pexels.com/photos/1327430/pexels-photo-1327430.jpeg",
-        href: "/topics/metasezgisel-optimizasyon/yapay-ari-kolonisi-algoritmasi",
+        title: "Uyum Araması",
+        description: "Müzisyenlerin doğaçlama performanslarındaki estetik standartlardan esinlenir.",
+        imageUrl: "https://images.pexels.com/photos/3783124/pexels-photo-3783124.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/metasezgisel-optimizasyon/uyum-aramasi"
       },
       {
         title: "Diferansiyel Gelişim",
-        description: "Diferansiyel Gelişim (DE), sürekli uzaylardaki optimizasyon problemleri için tasarlanmış, popülasyon tabanlı bir metasezgisel arama algoritmasıdır.",
-        imageUrl: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        href: "/topics/metasezgisel-optimizasyon/diferansiyel-gelisim",
+        description: "Popülasyondaki çözümler arasındaki fark vektörlerini kullanarak yeni çözümler üretir.",
+        imageUrl: "https://images.pexels.com/photos/1181275/pexels-photo-1181275.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/metasezgisel-optimizasyon/diferansiyel-gelisim"
       },
       {
-        title: "Uyum Araması",
-        description: "Uyum Araması (HS), müzik performansındaki doğaçlama sürecinden esinlenen bir metasezgisel optimizasyon algoritmasıdır.",
-        imageUrl: "https://images.pexels.com/photos/3785147/pexels-photo-3785147.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        href: "/topics/metasezgisel-optimizasyon/uyum-aramasi",
+        title: "Karınca Koloni Optimizasyonu",
+        description: "Karıncaların yiyecek arama davranışlarından esinlenen olasılıksal bir algoritma.",
+        imageUrl: "https://images.unsplash.com/photo-1588534496794-71d4493ea504?q=80&w=1287&auto=format&fit=crop", // Original: https://unsplash.com/photos/Vf1JrKMUS0Q
+        href: "/topics/metasezgisel-optimizasyon/karinca-koloni-optimizasyonu"
       },
+      {
+        title: "Yapay Arı Kolonisi Optimizasyonu",
+        description: "Bal arılarının yiyecek arama davranışlarından esinlenen bir algoritma.",
+        imageUrl: "https://images.pexels.com/photos/790357/pexels-photo-790357.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", // Generic bees/honeycomb
+        href: "/topics/metasezgisel-optimizasyon/yapay-ari-kolonisi-optimizasyonu"
+      },
+      {
+        title: "Ateşböceği Algoritması",
+        description: "Ateşböceklerinin ışık sinyallerinden ve çekiciliklerinden esinlenir.",
+        imageUrl: "https://images.unsplash.com/photo-1530053999930-791076eb2516?q=80&w=1470&auto=format&fit=crop", // Original: https://unsplash.com/s/photos/firefly
+        href: "/topics/metasezgisel-optimizasyon/atesbocegi-algoritmasi"
+      },
+      {
+        title: "Guguk Kuşu Araması",
+        description: "Guguk kuşlarının kuluçka parazitizmi ve Lévy uçuşlarından esinlenir.",
+        imageUrl: "https://images.unsplash.com/photo-1602601394064-069135805672?q=80&w=1374&auto=format&fit=crop", // Original: https://unsplash.com/photos/HlLvAaHU3H4 (Greater Coucal, a type of cuckoo)
+        href: "/topics/metasezgisel-optimizasyon/guguk-kusu-aramasi"
+      },
+      {
+        title: "Gri Kurt Optimizasyonu",
+        description: "Gri kurtların sosyal hiyerarşisi ve avlanma davranışlarından esinlenir.",
+        imageUrl: "https://images.pexels.com/photos/162318/wolf-gray-wolf-canis-lupus-predator-162318.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/metasezgisel-optimizasyon/gri-kurt-optimizasyonu"
+      },
+      {
+        title: "Balina Optimizasyon Algoritması",
+        description: "Kambur balinaların kabarcık ağı avlanma tekniğinden esinlenir.",
+        imageUrl: "https://images.pexels.com/photos/96423/pexels-photo-96423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", // Humpback whale
+        href: "/topics/metasezgisel-optimizasyon/balina-optimizasyon-algoritmasi"
+      },
+      {
+        title: "Yarasa Algoritması",
+        description: "Yarasaların ekolokasyon davranışlarından esinlenir.",
+        imageUrl: "https://images.pexels.com/photos/4754651/pexels-photo-4754651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", // Bat in flight
+        href: "/topics/metasezgisel-optimizasyon/yarasa-algoritmasi"
+      }
     ],
     skills: ["Problem Modelleme", "Algoritma Tasarımı", "Python ile Uygulama", "Performans Analizi", "Parametre Ayarlama", "Optimizasyon Temelleri", "Sezgisel Yöntemler"],
     resources: []
@@ -459,11 +490,20 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
               {topic.subtopics && topic.subtopics.length > 0 && (
                 <>
                   <h2 id="subtopics-heading" className="text-3xl font-bold text-primary dark:text-primary-dark mb-4 mt-8">Alt Konular</h2>
-                  <TopicSubtopicsList 
-                    subtopics={topic.subtopics}
-                    isMetasearchTopic={slug === "metasezgisel-optimizasyon"}
-                    subtopicIcons={subtopicIcons}
-                  />
+                  {slug === "metasezgisel-optimizasyon" ? (
+                    <PaginatedSubtopicsList
+                      subtopics={topic.subtopics}
+                      isMetasearchTopic={true}
+                      subtopicIcons={subtopicIcons}
+                      itemsPerPage={8}
+                    />
+                  ) : (
+                    <TopicSubtopicsList 
+                      subtopics={topic.subtopics}
+                      isMetasearchTopic={slug === "metasezgisel-optimizasyon"}
+                      subtopicIcons={subtopicIcons}
+                    />
+                  )}
                 </>
               )}
             </div>

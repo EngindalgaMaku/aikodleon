@@ -11,7 +11,7 @@ export interface MarkdownFrontmatter {
   [key: string]: any; // For any other custom frontmatter fields
 }
 
-export function getMarkdownContent(filePath: string): { rawContent: string; frontmatter: MarkdownFrontmatter } {
+export function getPostBySlug(filePath: string): { rawContent: string; frontmatter: MarkdownFrontmatter } {
   const correctedFilePath = filePath.endsWith('.md') ? filePath : `${filePath}.md`;
   const fullPath = path.join(topicsDirectory, correctedFilePath);
   
