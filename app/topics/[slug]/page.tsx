@@ -336,27 +336,31 @@ const topicsData: Record<string, any> = {
     ]
   },
   "python": {
-    title: "Python",
-    description: "Python programlama dili ile ilgili temel ve ileri konuları keşfedin.",
-    icon: <Code2 className="h-8 w-8 text-blue-500" />,
-    imageUrl: "/images/python.jpg", // public/images/ altında bir python görseli ekleyin
-    longDescription: "Python, hem başlangıç seviyesinde hem de ileri düzeyde yazılım geliştirme için kullanılan, güçlü ve çok yönlü bir programlama dilidir. Bu bölümde Python ile nesneye yönelik programlama ve derin öğrenme konularını bulabilirsiniz.",
+    title: "Python Programlama",
+    description: "Python programlama dilinin temellerini ve ileri düzey konularını öğrenin.",
+    icon: <Code2 className="h-8 w-8 text-chart-6" />,
+    imageUrl: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    longDescription: "Python, okunabilir sözdizimi ve zengin kütüphane ekosistemi ile en popüler programlama dillerinden biridir. Veri bilimi, yapay zeka, web geliştirme ve otomasyon gibi birçok alanda yaygın olarak kullanılır. Bu bölümde, Python'un temel kavramlarından ileri düzey konularına kadar geniş bir yelpazede bilgi edineceksiniz.",
     subtopics: [
       {
-        title: "Python ile Nesneye Yönelik Programlama",
-        description: "Sınıflar, nesneler, kalıtım ve daha fazlası ile Python'da OOP temelleri.",
-        imageUrl: "/images/python_oop.jpg",
+        title: "Nesneye Yönelik Programlama",
+        description: "Python'da OOP kavramları ve uygulamaları.",
+        imageUrl: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         href: "/topics/python/nesneye-yonelik-programlama"
       },
       {
-        title: "Python ile Derin Öğrenme",
-        description: "Python ile derin öğrenme temelleri ve popüler kütüphaneler.",
-        imageUrl: "/images/python_deep_learning.jpg",
-        href: "/topics/python/derin-ogrenme"
+        title: "Veri Yapıları",
+        description: "Python'da temel ve ileri düzey veri yapıları.",
+        imageUrl: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        href: "/topics/python/veri-yapilari"
       }
     ],
-    skills: ["Python Temelleri", "OOP", "Derin Öğrenme", "Kütüphaneler"],
-    resources: []
+    skills: ["Temel Python Sözdizimi", "Nesneye Yönelik Programlama", "Veri Yapıları ve Algoritmalar", "Modül ve Paket Yönetimi", "Hata Yönetimi", "Dosya İşlemleri", "Veritabanı Entegrasyonu", "Web Geliştirme"],
+    resources: [
+      { title: "Python Temelleri", type: "Kurs", link: "#" },
+      { title: "OOP ile Python", type: "E-Kitap", link: "#" },
+      { title: "Python Projeleri", type: "Pratik", link: "#" }
+    ]
   }
 };
 
