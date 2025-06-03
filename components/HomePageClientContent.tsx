@@ -145,11 +145,6 @@ export default function HomePageClientContent() {
 
   return (
     <div className="flex flex-col bg-background text-foreground">
-      {/* Language Switcher */}
-      <div className="absolute top-4 right-4 z-50">
-        <LanguageSwitcher />
-      </div>
-
       {/* Hero section */}
       <section className="relative py-20 md:py-32" aria-labelledby="hero-heading">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 dark:from-primary/5 dark:via-transparent dark:to-secondary/5" />

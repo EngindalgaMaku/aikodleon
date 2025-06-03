@@ -131,6 +131,17 @@ export default function PythonOOPPage() {
       <div className="max-w-4xl mx-auto">
         <MarkdownContent content={content} />
         
+        {/* OOP Concept Image */}
+        <div className="my-8 flex justify-center">
+          <Image
+            src="/images/python_nesne1.jpg"
+            alt="Python OOP Concepts"
+            width={800}
+            height={450}
+            className="rounded-lg shadow-lg"
+          />
+        </div>
+        
         {/* Interactive Learning Path */}
         <div className="my-12">
           <h2 className="text-3xl font-bold mb-8">Öğrenme Yolu</h2>
@@ -156,7 +167,7 @@ export default function PythonOOPPage() {
                 <CardFooter>
                   <Button asChild className="w-full group">
                     <Link href={section.href}>
-                      Detaylı İncele
+                      Derse Git
                       <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>

@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
-import MarkdownContent from "@/components/MarkdownContent";
+import Link from 'next/link';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import MarkdownContent from '@/components/MarkdownContent';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -8,17 +11,17 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: 'Python OOP: Kalıtım (Inheritance) | Kodleon',
-  description: 'Python\'da kalıtım kavramını, türleri, kullanım örnekleri ve best practice\'leri ile öğrenin.',
+  description: 'Python\'da kalıtım kavramını, türetilmiş sınıfları ve çoklu kalıtımı öğrenin.',
 };
 
 const content = `
-# Kalıtım (Inheritance)
+# Python'da Kalıtım (Inheritance)
 
-Kalıtım, bir sınıfın başka bir sınıfın özelliklerini ve metodlarını miras almasını sağlayan OOP özelliğidir. Bu sayede kod tekrarını önler ve hiyerarşik bir yapı oluşturabiliriz.
+Kalıtım, bir sınıfın başka bir sınıfın özelliklerini ve metodlarını miras almasıdır. Bu sayede kod tekrarını önler ve hiyerarşik bir yapı oluşturabiliriz.
 
 ## Temel Kalıtım
 
-Bir sınıfın başka bir sınıftan kalıtım alması için, sınıf tanımında parantez içinde üst sınıfı belirtmemiz yeterlidir:
+Bir sınıftan türetme yapmak için, yeni sınıf tanımında parantez içinde temel sınıfı belirtiriz:
 
 \`\`\`python
 class Hayvan:
@@ -27,352 +30,179 @@ class Hayvan:
         self.yas = yas
     
     def ses_cikar(self):
-        return "Ses yok"
-    
-    def bilgi_goster(self):
-        return f"{self.isim}, {self.yas} yaşında"
+        pass
 
 class Kopek(Hayvan):
-    def __init__(self, isim, yas, tur):
-        super().__init__(isim, yas)  # Üst sınıfın constructor'ını çağır
-        self.tur = tur
-    
-    def ses_cikar(self):  # Method override
+    def ses_cikar(self):
         return "Hav hav!"
-    
-    def kuyruk_salla(self):  # Yeni method
-        return "Kuyruk sallanıyor..."
 
-# Kullanım
-kopek = Kopek("Karabaş", 3, "Golden")
-print(kopek.bilgi_goster())  # Çıktı: Karabaş, 3 yaşında
-print(kopek.ses_cikar())     # Çıktı: Hav hav!
-print(kopek.kuyruk_salla())  # Çıktı: Kuyruk sallanıyor...
+class Kedi(Hayvan):
+    def ses_cikar(self):
+        return "Miyav!"
+\`\`\`
+
+## super() Fonksiyonu
+
+\`super()\` fonksiyonu, üst sınıfın metodlarını çağırmak için kullanılır:
+
+\`\`\`python
+class Ogrenci:
+    def __init__(self, ad, soyad):
+        self.ad = ad
+        self.soyad = soyad
+
+class LiseOgrencisi(Ogrenci):
+    def __init__(self, ad, soyad, sinif):
+        super().__init__(ad, soyad)  # Üst sınıfın __init__ metodunu çağır
+        self.sinif = sinif
 \`\`\`
 
 ## Çoklu Kalıtım
 
-Python, bir sınıfın birden fazla sınıftan kalıtım almasına izin verir:
+Python'da bir sınıf birden fazla sınıftan türetilebilir:
 
 \`\`\`python
-class Canli:
-    def yasam_formu(self):
-        return "Canlı varlık"
+class A:
+    def metod_a(self):
+        return "A sınıfından"
 
-class Ucabilen:
-    def uc(self):
-        return "Uçuyor..."
+class B:
+    def metod_b(self):
+        return "B sınıfından"
 
-class Kus(Canli, Ucabilen):
-    def __init__(self, isim):
-        self.isim = isim
-    
-    def ses_cikar(self):
-        return "Cik cik!"
+class C(A, B):  # C sınıfı hem A hem B'den türetildi
+    pass
 
-# Kullanım
-kus = Kus("Sarı")
-print(kus.yasam_formu())  # Çıktı: Canlı varlık
-print(kus.uc())          # Çıktı: Uçuyor...
-print(kus.ses_cikar())   # Çıktı: Cik cik!
+c = C()
+print(c.metod_a())  # "A sınıfından"
+print(c.metod_b())  # "B sınıfından"
 \`\`\`
 
 ## Method Resolution Order (MRO)
 
-Python'da çoklu kalıtım kullanırken metodların hangi sırayla aranacağını MRO belirler:
+Python'da çoklu kalıtımda metodların aranma sırası MRO ile belirlenir:
 
 \`\`\`python
 class A:
-    def metod(self):
-        return "A'dan"
+    def kim(self):
+        return "A"
 
 class B(A):
-    def metod(self):
-        return "B'den"
+    def kim(self):
+        return "B"
 
 class C(A):
-    def metod(self):
-        return "C'den"
+    def kim(self):
+        return "C"
 
 class D(B, C):
     pass
 
-# MRO'yu görüntüleme
-print(D.__mro__)  
-# Çıktı: (<class '__main__.D'>, <class '__main__.B'>, 
-#         <class '__main__.C'>, <class '__main__.A'>, <class 'object'>)
-
 d = D()
-print(d.metod())  # Çıktı: B'den
+print(D.mro())  # MRO sırasını gösterir
+print(d.kim())  # "B" (soldan sağa arama yapılır)
 \`\`\`
 
-## super() Kullanımı
+## isinstance() ve issubclass()
 
-\`super()\` fonksiyonu, üst sınıfın metodlarına erişmemizi sağlar:
+Nesne ve sınıf ilişkilerini kontrol etmek için kullanılan fonksiyonlar:
 
 \`\`\`python
-class Arac:
-    def __init__(self, marka, model):
-        self.marka = marka
-        self.model = model
-    
-    def bilgi(self):
-        return f"{self.marka} {self.model}"
-
-class Otomobil(Arac):
-    def __init__(self, marka, model, renk):
-        super().__init__(marka, model)  # Üst sınıfın __init__ metodunu çağır
-        self.renk = renk
-    
-    def bilgi(self):
-        return f"{super().bilgi()}, Renk: {self.renk}"
-
-# Kullanım
-araba = Otomobil("Toyota", "Corolla", "Kırmızı")
-print(araba.bilgi())  # Çıktı: Toyota Corolla, Renk: Kırmızı
+kopek = Kopek("Karabaş", 3)
+print(isinstance(kopek, Kopek))      # True
+print(isinstance(kopek, Hayvan))     # True
+print(issubclass(Kopek, Hayvan))     # True
 \`\`\`
 
-## Mixin Sınıfları
-
-Mixin'ler, belirli işlevselliği sağlayan ve genellikle tek başına kullanılmayan sınıflardır:
+## Pratik Örnek: Şekiller
 
 \`\`\`python
-class LogMixin:
-    def log(self, message):
-        print(f"[LOG] {message}")
+import math
 
-class JSONMixin:
-    def to_json(self):
-        import json
-        return json.dumps(self.__dict__)
-
-class Kullanici(LogMixin, JSONMixin):
-    def __init__(self, ad, email):
-        self.ad = ad
-        self.email = email
-    
-    def kaydet(self):
-        self.log(f"Kullanıcı kaydedildi: {self.ad}")
-        return self.to_json()
-
-# Kullanım
-kullanici = Kullanici("Ahmet", "ahmet@example.com")
-print(kullanici.kaydet())
-# Çıktı: [LOG] Kullanıcı kaydedildi: Ahmet
-# {"ad": "Ahmet", "email": "ahmet@example.com"}
-\`\`\`
-
-## İyi Uygulama Örnekleri
-
-1. **Composition vs Inheritance**
-\`\`\`python
-# Inheritance - Bazen uygun olmayabilir
-class FileManager(dict):
-    pass
-
-# Composition - Genellikle daha iyi bir seçenek
-class FileManager:
-    def __init__(self):
-        self._data = {}
-\`\`\`
-
-2. **Abstract Base Classes**
-\`\`\`python
-from abc import ABC, abstractmethod
-
-class Shape(ABC):
-    @abstractmethod
-    def area(self):
+class Sekil:
+    def alan(self):
         pass
     
-    @abstractmethod
-    def perimeter(self):
+    def cevre(self):
         pass
 
-class Rectangle(Shape):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+class Dikdortgen(Sekil):
+    def __init__(self, genislik, yukseklik):
+        self.genislik = genislik
+        self.yukseklik = yukseklik
     
-    def area(self):
-        return self.width * self.height
+    def alan(self):
+        return self.genislik * self.yukseklik
     
-    def perimeter(self):
-        return 2 * (self.width + self.height)
-\`\`\`
+    def cevre(self):
+        return 2 * (self.genislik + self.yukseklik)
 
-3. **Interface Segregation**
-\`\`\`python
-# Kötü örnek
-class Animal:
-    def fly(self): pass
-    def swim(self): pass
-    def run(self): pass
+class Daire(Sekil):
+    def __init__(self, yaricap):
+        self.yaricap = yaricap
+    
+    def alan(self):
+        return math.pi * self.yaricap ** 2
+    
+    def cevre(self):
+        return 2 * math.pi * self.yaricap
 
-# İyi örnek
-class Flyable:
-    def fly(self): pass
+# Kullanım
+d1 = Dikdortgen(5, 3)
+print(f"Dikdörtgen Alanı: {d1.alan()}")
+print(f"Dikdörtgen Çevresi: {d1.cevre()}")
 
-class Swimmable:
-    def swim(self): pass
-
-class Bird(Flyable):
-    def fly(self):
-        return "Kuş uçuyor"
-
-class Fish(Swimmable):
-    def swim(self):
-        return "Balık yüzüyor"
+d2 = Daire(4)
+print(f"Daire Alanı: {d2.alan():.2f}")
+print(f"Daire Çevresi: {d2.cevre():.2f}")
 \`\`\`
 
 ## Alıştırmalar
 
-1. **Şekil Hiyerarşisi**
-Bir Shape base class oluşturun ve bundan türeyen Circle, Rectangle, Triangle sınıfları yazın.
+1. Bir \`Calisan\` temel sınıfı oluşturun ve bu sınıftan \`Muhendis\` ve \`Yonetici\` sınıflarını türetin.
+2. Bir \`Arac\` temel sınıfı oluşturun ve farklı araç türleri için alt sınıflar oluşturun.
+3. Çoklu kalıtım kullanarak bir \`SuperKahraman\` sınıfı oluşturun.
 
-2. **Çalışan Sistemi**
-Employee base class'ından türeyen Manager, Developer, Designer sınıfları oluşturun.
+## Sonraki Adımlar
 
-3. **Oyun Karakterleri**
-Character base class'ından türeyen Warrior, Mage, Archer sınıfları yazın.
-
-## Kaynaklar
-
-- [Python Inheritance Documentation](https://docs.python.org/3/tutorial/classes.html#inheritance)
-- [Real Python - Inheritance and Composition](https://realpython.com/inheritance-composition-python/)
-- [Python MRO Guide](https://www.python.org/download/releases/2.3/mro/)
+Kalıtım konusunu öğrendiniz. Şimdi kapsülleme (encapsulation) konusuna geçerek, sınıf içi verileri nasıl koruyacağımızı ve erişimi nasıl kontrol edeceğimizi öğrenebilirsiniz.
 `;
 
 export default function InheritancePage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="mb-6">
+        <Button asChild variant="ghost" size="sm" className="gap-1">
+          <Link href="/topics/python/nesneye-yonelik-programlama">
+            <ArrowLeft className="h-4 w-4" />
+            OOP Konularına Dön
+          </Link>
+        </Button>
+      </div>
+      
+      <div className="prose prose-lg dark:prose-invert max-w-none">
         <MarkdownContent content={content} />
+      </div>
+      
+      {/* Navigasyon Linkleri */}
+      <div className="mt-12 flex flex-col sm:flex-row justify-between gap-4">
+        <Button asChild variant="outline" className="gap-2">
+          <Link href="/topics/python/nesneye-yonelik-programlama/siniflar-ve-nesneler">
+            <ArrowLeft className="h-4 w-4" />
+            Önceki Konu: Sınıflar ve Nesneler
+          </Link>
+        </Button>
         
-        {/* Interactive Examples Section */}
-        <div className="my-12">
-          <h2 className="text-3xl font-bold mb-8">İnteraktif Örnekler</h2>
-          <Tabs defaultValue="example1">
-            <TabsList>
-              <TabsTrigger value="example1">Temel Kalıtım</TabsTrigger>
-              <TabsTrigger value="example2">Çoklu Kalıtım</TabsTrigger>
-              <TabsTrigger value="example3">Mixin Örneği</TabsTrigger>
-            </TabsList>
-            <TabsContent value="example1">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Hayvan Sınıf Hiyerarşisi</CardTitle>
-                  <CardDescription>
-                    Temel kalıtım örneği
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
-                    <code>{`class Hayvan:
-    def __init__(self, isim):
-        self.isim = isim
-    
-    def ses_cikar(self):
-        return "Ses yok"
-
-class Kedi(Hayvan):
-    def ses_cikar(self):
-        return "Miyav!"
-
-# Kullanım
-kedi = Kedi("Pamuk")
-print(kedi.ses_cikar())  # Çıktı: Miyav!`}</code>
-                  </pre>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="example2">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Süper Kahraman</CardTitle>
-                  <CardDescription>
-                    Çoklu kalıtım örneği
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
-                    <code>{`class Ucabilen:
-    def uc(self):
-        return "Uçuyor..."
-
-class GucluVuran:
-    def vur(self):
-        return "Güçlü vuruş!"
-
-class SuperKahraman(Ucabilen, GucluVuran):
-    def __init__(self, isim):
-        self.isim = isim
-
-# Kullanım
-kahraman = SuperKahraman("Süperman")
-print(kahraman.uc())   # Çıktı: Uçuyor...
-print(kahraman.vur())  # Çıktı: Güçlü vuruş!`}</code>
-                  </pre>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="example3">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Logger Mixin</CardTitle>
-                  <CardDescription>
-                    Mixin kullanım örneği
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
-                    <code>{`class LoggerMixin:
-    def log(self, message):
-        print(f"[LOG] {message}")
-
-class Veritabani(LoggerMixin):
-    def kaydet(self, veri):
-        self.log(f"Veri kaydedildi: {veri}")
-        return "Başarılı"
-
-# Kullanım
-db = Veritabani()
-db.kaydet("test")  # Çıktı: [LOG] Veri kaydedildi: test`}</code>
-                  </pre>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </div>
-
-        {/* Tips and Best Practices */}
-        <div className="my-12 space-y-4">
-          <h2 className="text-3xl font-bold mb-8">İpuçları ve En İyi Pratikler</h2>
-          
-          <Alert>
-            <Info className="h-4 w-4" />
-            <AlertTitle>Kalıtım vs Kompozisyon</AlertTitle>
-            <AlertDescription>
-              "Kalıtım yerine kompozisyon kullan" prensibini unutmayın. Eğer "is-a" ilişkisi yoksa, kompozisyonu tercih edin.
-            </AlertDescription>
-          </Alert>
-
-          <Alert>
-            <Lightbulb className="h-4 w-4" />
-            <AlertTitle>super() Kullanımı</AlertTitle>
-            <AlertDescription>
-              Üst sınıfın metodlarını çağırırken her zaman super() kullanın. Bu, çoklu kalıtımda sorunları önler.
-            </AlertDescription>
-          </Alert>
-
-          <Alert>
-            <AlertTriangle className="h-4 w-4" />
-            <AlertTitle>Derin Kalıtım Hiyerarşisi</AlertTitle>
-            <AlertDescription>
-              Çok derin kalıtım hiyerarşilerinden kaçının. Genellikle 2-3 seviyeden derin olmaması önerilir.
-            </AlertDescription>
-          </Alert>
-        </div>
+        <Button asChild variant="default" className="gap-2">
+          <Link href="/topics/python/nesneye-yonelik-programlama/kapsulleme">
+            Sonraki Konu: Kapsülleme
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </Button>
+      </div>
+      
+      <div className="mt-16 text-center text-sm text-muted-foreground">
+        <p>© {new Date().getFullYear()} Kodleon | Yapay Zeka Eğitim Platformu</p>
       </div>
     </div>
   );

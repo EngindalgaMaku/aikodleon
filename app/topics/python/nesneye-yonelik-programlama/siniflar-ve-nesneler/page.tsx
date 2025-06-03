@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import MarkdownContent from "@/components/MarkdownContent";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -12,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const content = `
-# Sınıflar ve Nesneler
+# Python'da Sınıflar ve Nesneler
 
 Python'da nesneye yönelik programlamanın temel yapı taşları olan sınıflar ve nesneleri detaylı olarak öğrenelim.
 
@@ -236,29 +239,39 @@ Kitap ekleme, silme, ödünç verme ve iade işlemlerini yapabilen bir kütüpha
 export default function ClassesAndObjectsPage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="mb-6">
+        <Button asChild variant="ghost" size="sm" className="gap-1">
+          <Link href="/topics/python/nesneye-yonelik-programlama">
+            <ArrowLeft className="h-4 w-4" />
+            OOP Konularına Dön
+          </Link>
+        </Button>
+      </div>
+      
+      <div className="prose prose-lg dark:prose-invert max-w-none">
         <MarkdownContent content={content} />
-        
-        {/* Interactive Examples Section */}
-        <div className="my-12">
-          <h2 className="text-3xl font-bold mb-8">İnteraktif Örnekler</h2>
-          <Tabs defaultValue="example1">
-            <TabsList>
-              <TabsTrigger value="example1">Örnek 1</TabsTrigger>
-              <TabsTrigger value="example2">Örnek 2</TabsTrigger>
-              <TabsTrigger value="example3">Örnek 3</TabsTrigger>
-            </TabsList>
-            <TabsContent value="example1">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Basit Sınıf Örneği</CardTitle>
-                  <CardDescription>
-                    Temel bir öğrenci sınıfı ve kullanımı
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
-                    <code>{`class Ogrenci:
+      </div>
+      
+      {/* Interactive Examples Section */}
+      <div className="my-12">
+        <h2 className="text-3xl font-bold mb-8">İnteraktif Örnekler</h2>
+        <Tabs defaultValue="example1">
+          <TabsList>
+            <TabsTrigger value="example1">Örnek 1</TabsTrigger>
+            <TabsTrigger value="example2">Örnek 2</TabsTrigger>
+            <TabsTrigger value="example3">Örnek 3</TabsTrigger>
+          </TabsList>
+          <TabsContent value="example1">
+            <Card>
+              <CardHeader>
+                <CardTitle>Basit Sınıf Örneği</CardTitle>
+                <CardDescription>
+                  Temel bir öğrenci sınıfı ve kullanımı
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
+                  <code>{`class Ogrenci:
     def __init__(self, ad, numara):
         self.ad = ad
         self.numara = numara
@@ -269,21 +282,21 @@ export default function ClassesAndObjectsPage() {
 # Kullanım
 ogrenci = Ogrenci("Ali", "123")
 print(ogrenci.bilgi_goster())`}</code>
-                  </pre>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="example2">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Hesap Makinesi</CardTitle>
-                  <CardDescription>
-                    Dört işlem yapabilen bir sınıf örneği
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
-                    <code>{`class HesapMakinesi:
+                </pre>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="example2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Hesap Makinesi</CardTitle>
+                <CardDescription>
+                  Dört işlem yapabilen bir sınıf örneği
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
+                  <code>{`class HesapMakinesi:
     def topla(self, a, b):
         return a + b
     
@@ -301,21 +314,21 @@ print(ogrenci.bilgi_goster())`}</code>
 # Kullanım
 hm = HesapMakinesi()
 print(hm.topla(5, 3))  # 8`}</code>
-                  </pre>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="example3">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Banka Hesabı</CardTitle>
-                  <CardDescription>
-                    Para yatırma ve çekme işlemleri yapabilen bir sınıf
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
-                    <code>{`class BankaHesabi:
+                </pre>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="example3">
+            <Card>
+              <CardHeader>
+                <CardTitle>Banka Hesabı</CardTitle>
+                <CardDescription>
+                  Para yatırma ve çekme işlemleri yapabilen bir sınıf
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
+                  <code>{`class BankaHesabi:
     def __init__(self, bakiye=0):
         self.bakiye = bakiye
     
@@ -332,41 +345,59 @@ print(hm.topla(5, 3))  # 8`}</code>
 # Kullanım
 hesap = BankaHesabi(1000)
 print(hesap.para_yatir(500))  # Yeni bakiye: 1500`}</code>
-                  </pre>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </div>
+                </pre>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </div>
 
-        {/* Tips and Best Practices */}
-        <div className="my-12 space-y-4">
-          <h2 className="text-3xl font-bold mb-8">İpuçları ve En İyi Pratikler</h2>
-          
-          <Alert>
-            <Info className="h-4 w-4" />
-            <AlertTitle>İsimlendirme Kuralları</AlertTitle>
-            <AlertDescription>
-              Sınıf isimleri PascalCase (HesapMakinesi), metod ve özellik isimleri snake_case (hesap_no) olmalıdır.
-            </AlertDescription>
-          </Alert>
+      {/* Tips and Best Practices */}
+      <div className="my-12 space-y-4">
+        <h2 className="text-3xl font-bold mb-8">İpuçları ve En İyi Pratikler</h2>
+        
+        <Alert>
+          <Info className="h-4 w-4" />
+          <AlertTitle>İsimlendirme Kuralları</AlertTitle>
+          <AlertDescription>
+            Sınıf isimleri PascalCase (HesapMakinesi), metod ve özellik isimleri snake_case (hesap_no) olmalıdır.
+          </AlertDescription>
+        </Alert>
 
-          <Alert>
-            <Lightbulb className="h-4 w-4" />
-            <AlertTitle>Docstring Kullanımı</AlertTitle>
-            <AlertDescription>
-              Her sınıf ve metodun işlevini açıklayan docstring'ler ekleyin. Bu, kodunuzun bakımını kolaylaştırır.
-            </AlertDescription>
-          </Alert>
+        <Alert>
+          <Lightbulb className="h-4 w-4" />
+          <AlertTitle>Docstring Kullanımı</AlertTitle>
+          <AlertDescription>
+            Her sınıf ve metodun işlevini açıklayan docstring'ler ekleyin. Bu, kodunuzun bakımını kolaylaştırır.
+          </AlertDescription>
+        </Alert>
 
-          <Alert>
-            <AlertTriangle className="h-4 w-4" />
-            <AlertTitle>Dikkat Edilmesi Gerekenler</AlertTitle>
-            <AlertDescription>
-              Sınıf özelliklerini doğrudan erişime açık bırakmak yerine, getter ve setter metodları kullanmayı düşünün.
-            </AlertDescription>
-          </Alert>
-        </div>
+        <Alert>
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle>Dikkat Edilmesi Gerekenler</AlertTitle>
+          <AlertDescription>
+            Sınıf özelliklerini doğrudan erişime açık bırakmak yerine, getter ve setter metodları kullanmayı düşünün.
+          </AlertDescription>
+        </Alert>
+      </div>
+
+      {/* Navigasyon Linkleri */}
+      <div className="mt-12 flex flex-col sm:flex-row justify-between gap-4">
+        <Button variant="outline" disabled className="gap-2">
+          <ArrowLeft className="h-4 w-4" />
+          Önceki Konu
+        </Button>
+        
+        <Button asChild variant="default" className="gap-2">
+          <Link href="/topics/python/nesneye-yonelik-programlama/kalitim">
+            Sonraki Konu: Kalıtım
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </Button>
+      </div>
+      
+      <div className="mt-16 text-center text-sm text-muted-foreground">
+        <p>© {new Date().getFullYear()} Kodleon | Yapay Zeka Eğitim Platformu</p>
       </div>
     </div>
   );
