@@ -65,6 +65,7 @@ export default function MarkdownContent({ content, className }: MarkdownContentP
                 style={atomDark} // Seçilen tema
                 language={match[1]}
                 PreTag="div"
+                customStyle={{ maxHeight: '600px', overflowY: 'auto' }}
                 {...props}
               >
                 {String(children).replace(/\n$/, '')}

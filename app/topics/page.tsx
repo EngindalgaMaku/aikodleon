@@ -138,7 +138,7 @@ const allTopics = [
     description: "Karmaşık optimizasyon problemlerini çözmek için doğadan esinlenen ve sezgisel yöntemler kullanan algoritmaları öğrenin.",
     icon: <Sigma className="h-8 w-8 text-purple-500" />,
     href: "/topics/metasezgisel-optimizasyon",
-    imageUrl: "https://images.pexels.com/photos/2169500/pexels-photo-2169500.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    imageUrl: "/images/metasezgisel_algoritm.jpg",
     category: "advanced",
     subtopics: [
       { title: "Genetik Algoritmalar", href: "/topics/metasezgisel-optimizasyon/genetik-algoritmalar" },

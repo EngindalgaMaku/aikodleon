@@ -1,6 +1,6 @@
 # Genetik Algoritmalar (Genetic Algorithms - GA)
 
-![Genetik Algoritmalar Konsept İllüstrasyonu](https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)
+![Genetik Algoritmalar Konsept İllüstrasyonu](/images/genetic_algoritm_top.jpg)
 
 Genetik Algoritmalar (GA), Charles Darwin'in doğal seçilim ve evrim teorisinden esinlenerek geliştirilmiş, arama ve optimizasyon problemlerinin çözümü için kullanılan metasezgisel bir yöntemdir. John Holland tarafından 1960'larda temelleri atılan bu algoritmalar, özellikle karmaşık ve geleneksel yöntemlerle çözümü zor olan problemler için güçlü bir alternatif sunar.
 
@@ -32,11 +32,9 @@ Tipik bir Genetik Algoritma aşağıdaki adımları izler:
     *   **e. Uygunluk Değerlendirmesi:** Yeni popülasyondaki kromozomların uygunluk değerleri hesaplanır.
 4.  **Döngü Sonu:** Durdurma kriteri karşılandığında, popülasyondaki en iyi uygunluk değerine sahip kromozom, problemin çözümü olarak sunulur.
 
-```
-![Genetik Algoritma Akış Şeması](/images/genetik_algoritm.jpg)
-```
 
----
+![Genetik Algoritma Akış Şeması](/images/genetik_algoritm.jpg)
+
 
 ### 🚀 Python ile Pratik Uygulamalar
 

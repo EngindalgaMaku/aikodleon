@@ -6,6 +6,7 @@ import { Brain, Menu, X, Rocket } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 import { useTranslation } from "@/lib/i18n";
+import { SiPython } from "react-icons/si";
 
 export default function Navbar() {
   const { t } = useTranslation();
@@ -15,11 +16,10 @@ export default function Navbar() {
     { name: t('navigation.home'), href: "/" },
     { name: t('navigation.topics'), href: "/topics" },
     { name: t('navigation.blog'), href: "/blog" },
-    { name: t('navigation.about'), href: "/about" },
   ];
 
   const practicalExamplesLink = "/pratik-ornekler";
-  const practicalExamplesText = "Pratik Örnekler";
+  const practicalExamplesText = "Kod Örnekleri";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -40,6 +40,14 @@ export default function Navbar() {
             </Link>
           ))}
           <ThemeToggle />
+          <Link
+            href="/topics/python"
+            className="flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-white bg-blue-100 hover:bg-blue-600 px-3 py-1.5 rounded transition-colors shadow-sm"
+            style={{ fontFamily: 'monospace' }}
+          >
+            <SiPython className="h-5 w-5 text-blue-500" />
+            Python Dersleri
+          </Link>
           <Button variant="default" asChild size="sm">
             <Link href={practicalExamplesLink} className="flex items-center gap-1.5">
               <Rocket className="h-4 w-4" />
@@ -74,6 +82,15 @@ export default function Navbar() {
                   {route.name}
                 </Link>
               ))}
+              <Link
+                href="/topics/python"
+                className="flex items-center gap-2 text-base font-bold transition-colors px-4 py-2 rounded-md bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white"
+                style={{ fontFamily: 'monospace' }}
+                onClick={() => setIsOpen(false)}
+              >
+                <SiPython className="h-5 w-5 text-blue-500" />
+                Python Dersleri
+              </Link>
               <Link 
                 href={practicalExamplesLink}
                 className="flex items-center gap-2 text-base font-medium transition-colors hover:text-primary px-4 py-2 rounded-md hover:bg-muted bg-primary/10 text-primary"
@@ -82,7 +99,7 @@ export default function Navbar() {
                 <Rocket className="h-5 w-5" />
                 {practicalExamplesText}
               </Link>
-              <div className="px-4 pt-2">
+              <div className="pt-2 flex justify-start pl-4">
                 <ThemeToggle />
               </div>
             </nav>

@@ -242,7 +242,7 @@ const topicsData: Record<string, any> = {
       {
         title: "Genetik Algoritmalar",
         description: "Evrimsel süreçlerden ilham alan, popülasyon tabanlı bir optimizasyon tekniği.",
-        imageUrl: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", 
+        imageUrl: "/images/genetic_algoritm.jpg", 
         href: "/topics/metasezgisel-optimizasyon/genetik-algoritmalar"
       },
       {
@@ -334,6 +334,29 @@ const topicsData: Record<string, any> = {
       { title: "Sorumlu AI Pratikleri", type: "E-Kitap", link: "#" },
       { title: "Sorumlu AI Geliştirme", type: "Rehber", link: "#" }
     ]
+  },
+  "python": {
+    title: "Python",
+    description: "Python programlama dili ile ilgili temel ve ileri konuları keşfedin.",
+    icon: <Code2 className="h-8 w-8 text-blue-500" />,
+    imageUrl: "/images/python.jpg", // public/images/ altında bir python görseli ekleyin
+    longDescription: "Python, hem başlangıç seviyesinde hem de ileri düzeyde yazılım geliştirme için kullanılan, güçlü ve çok yönlü bir programlama dilidir. Bu bölümde Python ile nesneye yönelik programlama ve derin öğrenme konularını bulabilirsiniz.",
+    subtopics: [
+      {
+        title: "Python ile Nesneye Yönelik Programlama",
+        description: "Sınıflar, nesneler, kalıtım ve daha fazlası ile Python'da OOP temelleri.",
+        imageUrl: "/images/python_oop.jpg",
+        href: "/topics/python/nesneye-yonelik-programlama"
+      },
+      {
+        title: "Python ile Derin Öğrenme",
+        description: "Python ile derin öğrenme temelleri ve popüler kütüphaneler.",
+        imageUrl: "/images/python_deep_learning.jpg",
+        href: "/topics/python/derin-ogrenme"
+      }
+    ],
+    skills: ["Python Temelleri", "OOP", "Derin Öğrenme", "Kütüphaneler"],
+    resources: []
   }
 };
 
@@ -346,7 +369,8 @@ const allTopicSlugs = [
   "neural-networks", 
   "ai-ethics",
   "metasezgisel-optimizasyon",
-  "responsible-ai"
+  "responsible-ai",
+  "python"
 ];
 
 // Generate metadata for each topic page
@@ -498,11 +522,11 @@ export default function TopicPage({ params }: { params: { slug: string } }) {
                       itemsPerPage={8}
                     />
                   ) : (
-                    <TopicSubtopicsList 
-                      subtopics={topic.subtopics}
-                      isMetasearchTopic={slug === "metasezgisel-optimizasyon"}
-                      subtopicIcons={subtopicIcons}
-                    />
+                  <TopicSubtopicsList 
+                    subtopics={topic.subtopics}
+                    isMetasearchTopic={slug === "metasezgisel-optimizasyon"}
+                    subtopicIcons={subtopicIcons}
+                  />
                   )}
                 </>
               )}

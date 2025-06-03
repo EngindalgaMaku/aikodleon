@@ -44,7 +44,7 @@ export default function PaginatedSubtopicsList({
     <div>
       <TopicSubtopicsList
         subtopics={currentSubtopics}
-        isMetasearchTopic={isMetasearchTopic}
+        isMetasearchTopic={false}
         subtopicIcons={subtopicIcons}
       />
       {totalPages > 1 && (

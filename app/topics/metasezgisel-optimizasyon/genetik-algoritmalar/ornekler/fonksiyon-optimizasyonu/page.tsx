@@ -55,7 +55,7 @@ export default async function GeneticAlgorithmFonksiyonOptimizasyonuPage({ param
   console.log("Extracted post.content:", post.rawContent); // post.content içeriğini konsola yazdır
 
   return (
-    <article className="container py-8 max-w-3xl">
+    <article className="container mx-auto py-8 max-w-3xl">
       <header className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
           {post.frontmatter.title}

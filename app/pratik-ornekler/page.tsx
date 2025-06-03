@@ -1,25 +1,26 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { ChevronRight, Code2, BrainCircuit, Zap } from 'lucide-react'; // İkonlar eklendi
+import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: 'Pratik Kod Örnekleri | Kodleon',
+  title: 'Kod Örnekleri | Kodleon',
   description: 'Yapay zeka, makine öğrenmesi ve metasezgisel optimizasyon gibi konularda pratik kod örnekleri ve uygulamalar. Python ile gerçek dünya problemlerine çözümler.',
   keywords: 'kod örnekleri, pratik uygulamalar, python örnekleri, yapay zeka projeleri, makine öğrenmesi uygulamaları, metasezgisel optimizasyon kodları, kodleon',
   alternates: {
-    canonical: '/pratik-ornekler',
+    canonical: `${siteConfig.url}/pratik-ornekler`,
   },
   openGraph: {
-    title: 'Pratik Kod Örnekleri | Kodleon',
+    title: 'Kod Örnekleri | Kodleon',
     description: 'Çeşitli yapay zeka konularında Python ile pratik kod örnekleri.',
-    url: '/pratik-ornekler',
+    url: `${siteConfig.url}/pratik-ornekler`,
     images: [
       {
-        url: '/images/placeholder-kod-ornekleri.png', // Genel bir placeholder, daha sonra güncellenebilir
+        url: `${siteConfig.url}/images/og-pratik-ornekler.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Kodleon - Pratik Kod Örnekleri',
-      },
+        alt: 'Kodleon - Kod Örnekleri',
+      }
     ],
   },
 };
@@ -69,16 +70,18 @@ const exampleCategories: ExampleCategory[] = [
 
 export default function PracticalExamplesPage() {
   return (
-    <div className="container mx-auto py-12 px-4">
-      <header className="mb-12 text-center">
-        <Code2 className="h-16 w-16 mx-auto text-primary mb-4" />
-        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
-          Pratik Kod Örnekleri
+    <div className="container max-w-6xl mx-auto px-4 py-12 md:py-20">
+      <div className="text-center mb-12 md:mb-16">
+        <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
+          <Code2 className="h-10 w-10 text-primary" />
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+          Kod Örnekleri
         </h1>
-        <p className="mt-4 text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p className="mt-4 md:mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
           Farklı yapay zeka ve optimizasyon konularında Python ile geliştirilmiş uygulanabilir kod örneklerini keşfedin.
         </p>
-      </header>
+      </div>
 
       <div className="space-y-10">
         {exampleCategories.map((category) => (
