@@ -115,28 +115,28 @@ export default function PythonBasicsPage() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {sections.map((section, index) => (
+            {sections.map((section, index) => (
             <Card key={index} className="flex flex-col">
-              <CardHeader>
+                  <CardHeader>
                 <div className="flex items-center gap-2">
                   {section.icon}
-                  <CardTitle>{section.title}</CardTitle>
+                    <CardTitle>{section.title}</CardTitle>
                 </div>
                 <CardDescription>{section.description}</CardDescription>
-              </CardHeader>
+                  </CardHeader>
               <CardContent className="flex-1">
                 <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                   {section.topics.map((topic, i) => (
                     <li key={i}>{topic}</li>
                   ))}
                 </ul>
-              </CardContent>
+                  </CardContent>
               <div className="p-6 pt-0">
                 <Button asChild className="w-full">
                   <Link href={section.href}>Detaylı Bilgi</Link>
                 </Button>
               </div>
-            </Card>
+                </Card>
           ))}
         </div>
 
