@@ -188,6 +188,78 @@ export default function HomePageClientContent() {
         </div>
       </section>
       
+      {/* Free AI Courses section */}
+      <section className="relative z-20 py-16 bg-gradient-to-r from-primary/5 via-background to-secondary/5">
+        <div className="container max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
+              {t('home.freeCourses.badge', 'ÜCRETSİZ DERSLER')}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              {t('home.freeCourses.title', 'Ücretsiz Yapay Zeka Dersleri')}
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+              {t('home.freeCourses.subtitle', 'Yapay zeka yolculuğunuza hemen başlayın! Ücretsiz derslerimizle AI dünyasını keşfedin.')}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="group hover:shadow-lg transition-all duration-300">
+              <CardHeader>
+                <Code2 className="h-8 w-8 text-primary mb-4" />
+                <CardTitle>{t('home.freeCourses.cards.python.title', 'Python Programlama')}</CardTitle>
+                <CardDescription>
+                  {t('home.freeCourses.cards.python.description', 'Yapay zeka için gerekli Python programlama temellerini sıfırdan öğrenin.')}
+                </CardDescription>
+              </CardHeader>
+              <CardFooter>
+                <Link href="/topics/python/" className="inline-flex items-center text-primary hover:underline">
+                  {t('home.freeCourses.startLearning', 'Öğrenmeye Başla')} <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </CardFooter>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-all duration-300">
+              <CardHeader>
+                <Brain className="h-8 w-8 text-primary mb-4" />
+                <CardTitle>{t('home.freeCourses.cards.intro.title', 'Yapay Zekaya Giriş')}</CardTitle>
+                <CardDescription>
+                  {t('home.freeCourses.cards.intro.description', 'Yapay zekanın temellerini öğrenin ve AI dünyasına ilk adımınızı atın.')}
+                </CardDescription>
+              </CardHeader>
+              <CardFooter>
+                <Link href="/topics/ai-fundamentals" className="inline-flex items-center text-primary hover:underline">
+                  {t('home.freeCourses.startLearning', 'Öğrenmeye Başla')} <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </CardFooter>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-all duration-300">
+              <CardHeader>
+                <Brain className="h-8 w-8 text-primary mb-4" />
+                <CardTitle>{t('home.freeCourses.cards.neural.title', 'Yapay Sinir Ağları')}</CardTitle>
+                <CardDescription>
+                  {t('home.freeCourses.cards.neural.description', 'Yapay sinir ağlarının çalışma prensiplerini ve uygulamalarını keşfedin.')}
+                </CardDescription>
+              </CardHeader>
+              <CardFooter>
+                <Link href="/neural-networks/basics" className="inline-flex items-center text-primary hover:underline">
+                  {t('home.freeCourses.startLearning', 'Öğrenmeye Başla')} <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </CardFooter>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button asChild size="lg" variant="outline" className="rounded-full">
+              <Link href="/topics">
+                {t('home.freeCourses.viewAll', 'Tüm Ücretsiz Dersleri Gör')} <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Topics section */}
       <section className="relative z-30 py-16 md:py-20 bg-muted/30" aria-labelledby="topics-heading">
         <div className="container max-w-6xl mx-auto px-4">

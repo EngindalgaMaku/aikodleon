@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, BookOpen, Code2, FileCode2, Lightbulb, Puzzle, Trophy } from "lucide-react";
+import { ArrowRight, BookOpen, Code2, FileCode2, Lightbulb, Puzzle, Trophy, Github } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Python ile Nesneye Yönelik Programlama',
@@ -177,6 +177,54 @@ export default function PythonOOPPage() {
           </div>
         </div>
 
+        {/* Alıştırmalar Bölümü */}
+        <section className="py-12 bg-muted/30">
+          <div className="container max-w-6xl mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center">Alıştırmalar</h2>
+            <p className="text-lg text-muted-foreground text-center mb-12">
+              Öğrendiklerinizi pekiştirin
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="group hover:shadow-lg transition-all duration-300">
+                <Link href="/topics/python/nesne-tabanli-programlama/kod-ornekleri">
+                  <CardHeader>
+                    <Code2 className="h-8 w-8 text-primary mb-4" />
+                    <CardTitle>Kod Örnekleri</CardTitle>
+                    <CardDescription>
+                      Pratik kod örnekleriyle kavramları daha iyi anlayın
+                    </CardDescription>
+                  </CardHeader>
+                </Link>
+              </Card>
+
+              <Card className="group hover:shadow-lg transition-all duration-300">
+                <Link href="/topics/python/nesne-tabanli-programlama/quiz">
+                  <CardHeader>
+                    <BookOpen className="h-8 w-8 text-primary mb-4" />
+                    <CardTitle>Quiz Soruları</CardTitle>
+                    <CardDescription>
+                      Bilgilerinizi test edin ve eksiklerinizi görün
+                    </CardDescription>
+                  </CardHeader>
+                </Link>
+              </Card>
+
+              <Card className="group hover:shadow-lg transition-all duration-300">
+                <Link href="/topics/python/nesne-tabanli-programlama/projeler">
+                  <CardHeader>
+                    <Github className="h-8 w-8 text-primary mb-4" />
+                    <CardTitle>Projeler</CardTitle>
+                    <CardDescription>
+                      Gerçek dünya projelerinde becerilerinizi geliştirin
+                    </CardDescription>
+                  </CardHeader>
+                </Link>
+              </Card>
+            </div>
+          </div>
+        </section>
+
         {/* Additional Resources */}
         <div className="my-12">
           <h2 className="text-3xl font-bold mb-8">Ek Kaynaklar</h2>
@@ -191,19 +239,6 @@ export default function PythonOOPPage() {
                   <li>Temel OOP Kavramları</li>
                   <li>Pratik Uygulamalar</li>
                   <li>İleri Seviye Teknikler</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Alıştırmalar</CardTitle>
-                <CardDescription>Öğrendiklerinizi pekiştirin</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                  <li>Kod Örnekleri</li>
-                  <li>Quiz Soruları</li>
-                  <li>Projeler</li>
                 </ul>
               </CardContent>
             </Card>

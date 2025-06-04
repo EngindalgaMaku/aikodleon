@@ -19,6 +19,31 @@
       "subtitle": "Türkiye'nin lider yapay zeka eğitim platformu Kodleon ile en güncel AI becerilerini kazanın, potansiyelinizi keşfedin ve geleceğin teknolojilerine yön verin.",
       "cta": "AI Konularını Keşfet"
     },
+    "freeCourses": {
+      "badge": "ÜCRETSİZ DERSLER",
+      "title": "Ücretsiz Yapay Zeka Dersleri",
+      "subtitle": "Yapay zeka yolculuğunuza hemen başlayın! Ücretsiz derslerimizle AI dünyasını keşfedin.",
+      "startLearning": "Öğrenmeye Başla",
+      "viewAll": "Tüm Ücretsiz Dersleri Gör",
+      "cards": {
+        "python": {
+          "title": "Python Programlama",
+          "description": "Yapay zeka için gerekli Python programlama temellerini sıfırdan öğrenin."
+        },
+        "intro": {
+          "title": "Yapay Zekaya Giriş",
+          "description": "Yapay zekanın temellerini öğrenin ve AI dünyasına ilk adımınızı atın."
+        },
+        "neural": {
+          "title": "Yapay Sinir Ağları",
+          "description": "Yapay sinir ağlarının çalışma prensiplerini ve uygulamalarını keşfedin."
+        },
+        "practical": {
+          "title": "Pratik AI Örnekleri",
+          "description": "Gerçek dünya problemlerini çözmek için AI uygulamalarını öğrenin."
+        }
+      }
+    },
     "topics": {
       "title": "Yapay Zeka Eğitim Konuları",
       "subtitle": "Makine öğrenmesinden derin öğrenmeye, doğal dil işlemeden bilgisayarlı görüye kadar geniş bir yelpazede uzmanlaşın.",

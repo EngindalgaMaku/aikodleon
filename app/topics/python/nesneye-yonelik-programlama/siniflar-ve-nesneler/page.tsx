@@ -1,6 +1,7 @@
-import { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Code2, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MarkdownContent from "@/components/MarkdownContent";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,396 +9,342 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Info, Lightbulb, AlertTriangle } from "lucide-react";
 import Image from "next/image";
-
-export const metadata: Metadata = {
-  title: 'Python OOP: Sınıflar ve Nesneler | Kodleon',
-  description: 'Python\'da sınıf ve nesne kavramlarını, oluşturma yöntemlerini ve kullanım örneklerini öğrenin.',
-};
+import { useState } from "react";
+import Quiz from './components/Quiz';
 
 const content = `
-# Python'da Sınıflar ve Nesneler
+# Sınıflar ve Nesneler
 
-Python'da nesneye yönelik programlamanın temel yapı taşları olan sınıflar ve nesneleri detaylı olarak öğrenelim.
+Python'da nesne yönelimli programlamanın temel yapı taşları sınıflar ve nesnelerdir. Bu bölümde, sınıfların nasıl oluşturulduğunu ve nesnelerin nasıl kullanıldığını öğreneceksiniz.
 
 ## Sınıf Nedir?
 
-Sınıf (Class), nesneler için bir şablon veya taslak görevi görür. Bir sınıf:
-- Veri özellikleri (attributes)
-- Metodlar (methods)
-içerir.
+Sınıf (class), nesnelerin özelliklerini ve davranışlarını tanımlayan bir şablondur. Örneğin, bir "Araba" sınıfı düşünelim:
 
-Örnek bir sınıf tanımı:
+\`\`\`python
+class Araba:
+    # Constructor (Yapıcı) metod
+    def __init__(self, marka, model, yil):
+        self.marka = marka    # Instance variable (örnek değişkeni)
+        self.model = model    # Instance variable
+        self.yil = yil        # Instance variable
+        self.hiz = 0         # Varsayılan değer
+
+    # Instance method (örnek metodu)
+    def hizlan(self, artis):
+        self.hiz += artis
+        return f"Hız {self.hiz} km/s'ye yükseltildi"
+
+    def yavasla(self, azalis):
+        if self.hiz - azalis >= 0:
+            self.hiz -= azalis
+            return f"Hız {self.hiz} km/s'ye düşürüldü"
+        return "Hız 0'ın altına düşemez"
+
+    def bilgi_goster(self):
+        return f"{self.yil} model {self.marka} {self.model}, Mevcut hız: {self.hiz} km/s"
+\`\`\`
+
+## Nesne Oluşturma ve Kullanma
+
+Sınıftan nesne oluşturmak ve metodları kullanmak:
+
+\`\`\`python
+# Yeni bir araba nesnesi oluşturma
+araba1 = Araba("Toyota", "Corolla", 2022)
+
+# Metodları kullanma
+print(araba1.bilgi_goster())  # 2022 model Toyota Corolla, Mevcut hız: 0 km/s
+print(araba1.hizlan(50))      # Hız 50 km/s'ye yükseltildi
+print(araba1.yavasla(20))     # Hız 30 km/s'ye düşürüldü
+print(araba1.bilgi_goster())  # 2022 model Toyota Corolla, Mevcut hız: 30 km/s
+\`\`\`
+
+## Constructor (\`__init__\`) Metodu
+
+Constructor, sınıftan bir nesne oluşturulduğunda otomatik olarak çağrılan özel bir metoddur:
 
 \`\`\`python
 class Ogrenci:
-    # Sınıf özelliği (class attribute)
-    okul = "Kodleon Akademi"
-    
-    # Yapıcı metod (constructor)
     def __init__(self, ad, soyad, numara):
-        # Nesne özellikleri (instance attributes)
         self.ad = ad
         self.soyad = soyad
         self.numara = numara
-        self.dersler = []
-    
-    # Nesne metodu (instance method)
-    def bilgileri_goster(self):
-        return f"{self.ad} {self.soyad} - {self.numara}"
-    
-    # Ders ekleme metodu
+        self.dersler = []    # Boş liste ile başlatma
+
     def ders_ekle(self, ders):
         self.dersler.append(ders)
         return f"{ders} dersi eklendi"
+
+    def dersleri_listele(self):
+        if self.dersler:
+            return f"{self.ad}'in aldığı dersler: {', '.join(self.dersler)}"
+        return f"{self.ad} henüz ders almamış"
+
+# Kullanım örneği
+ogrenci1 = Ogrenci("Ahmet", "Yılmaz", "2023001")
+print(ogrenci1.ders_ekle("Python"))
+print(ogrenci1.ders_ekle("Veri Yapıları"))
+print(ogrenci1.dersleri_listele())
 \`\`\`
 
-## Nesne Oluşturma
+## Instance Metodları
 
-Sınıftan bir nesne (object) oluşturmak için sınıf adını fonksiyon gibi çağırırız:
-
-\`\`\`python
-# Yeni bir öğrenci nesnesi oluşturma
-ogrenci1 = Ogrenci("Ahmet", "Yılmaz", "123")
-
-# Nesne metodlarını kullanma
-print(ogrenci1.bilgileri_goster())  # Çıktı: Ahmet Yılmaz - 123
-print(ogrenci1.ders_ekle("Python"))  # Çıktı: Python dersi eklendi
-
-# Sınıf özelliğine erişim
-print(Ogrenci.okul)  # Çıktı: Kodleon Akademi
-print(ogrenci1.okul)  # Çıktı: Kodleon Akademi
-\`\`\`
-
-## Constructor (\`__init__\`)
-
-\`__init__\` metodu, sınıftan bir nesne oluşturulduğunda otomatik olarak çağrılan özel bir metoddur:
+Instance metodları, nesnenin durumunu değiştiren ve nesneyle ilgili işlemler yapan fonksiyonlardır:
 
 \`\`\`python
-class Dikdortgen:
-    def __init__(self, uzunluk, genislik):
-        self.uzunluk = uzunluk
-        self.genislik = genislik
-        # Nesne oluşturulduğunda alan ve çevre otomatik hesaplanır
-        self.alan = uzunluk * genislik
-        self.cevre = 2 * (uzunluk + genislik)
+class BankaHesabi:
+    def __init__(self, hesap_no, sahip, bakiye=0):
+        self.hesap_no = hesap_no
+        self.sahip = sahip
+        self.bakiye = bakiye
+        self.islemler = []
 
-# Nesne oluşturma
-d1 = Dikdortgen(5, 3)
-print(f"Alan: {d1.alan}")    # Çıktı: Alan: 15
-print(f"Çevre: {d1.cevre}")  # Çıktı: Çevre: 16
+    def para_yatir(self, miktar):
+        if miktar > 0:
+            self.bakiye += miktar
+            self.islemler.append(f"Yatırma: +{miktar} TL")
+            return f"{miktar} TL yatırıldı. Yeni bakiye: {self.bakiye} TL"
+        return "Geçersiz miktar"
+
+    def para_cek(self, miktar):
+        if miktar > 0 and self.bakiye >= miktar:
+            self.bakiye -= miktar
+            self.islemler.append(f"Çekme: -{miktar} TL")
+            return f"{miktar} TL çekildi. Yeni bakiye: {self.bakiye} TL"
+        return "Yetersiz bakiye veya geçersiz miktar"
+
+    def hesap_ozeti(self):
+        ozet = f"Hesap No: {self.hesap_no}\\nSahip: {self.sahip}\\nBakiye: {self.bakiye} TL\\n"
+        ozet += "\\nSon İşlemler:\\n"
+        for islem in self.islemler[-5:]:  # Son 5 işlem
+            ozet += f"- {islem}\\n"
+        return ozet
+
+# Kullanım örneği
+hesap = BankaHesabi("123456", "Ali Veli", 1000)
+print(hesap.para_yatir(500))
+print(hesap.para_cek(200))
+print(hesap.hesap_ozeti())
 \`\`\`
 
 ## Self Parametresi
 
-\`self\` parametresi, nesnenin kendisini temsil eder ve nesne metodlarının ilk parametresi olmalıdır:
+\`self\` parametresi, metodun çağrıldığı nesneyi temsil eder. Python'da instance metodlarının ilk parametresi her zaman \`self\` olmalıdır:
 
 \`\`\`python
-class Araba:
-    def __init__(self, marka, model):
-        self.marka = marka
-        self.model = model
-        self.hiz = 0
-    
+class Nokta:
+    def __init__(self, x, y):
+        self.x = x  # self.x nesnenin x koordinatını temsil eder
+        self.y = y  # self.y nesnenin y koordinatını temsil eder
+
+    def kordinatlari_goster(self):
+        return f"X: {self.x}, Y: {self.y}"
+
+    def nokta_tasi(self, delta_x, delta_y):
+        self.x += delta_x  # self ile nesnenin x değerini değiştiriyoruz
+        self.y += delta_y  # self ile nesnenin y değerini değiştiriyoruz
+        return self.kordinatlari_goster()
+
+# Kullanım örneği
+nokta1 = Nokta(5, 10)
+print(nokta1.kordinatlari_goster())  # X: 5, Y: 10
+print(nokta1.nokta_tasi(3, -2))      # X: 8, Y: 8
+\`\`\`
+`;
+
+const examples = [
+  {
+    title: "Araba Sınıfı",
+    description: "Araba sınıfının nasıl oluşturulduğunu ve metodlarının nasıl kullanıldığını gösterir.",
+    code: `class Araba:
+    # Constructor (Yapıcı) metod
+    def __init__(self, marka, model, yil):
+        self.marka = marka    # Instance variable (örnek değişkeni)
+        self.model = model    # Instance variable
+        self.yil = yil        # Instance variable
+        self.hiz = 0         # Varsayılan değer
+
+    # Instance method (örnek metodu)
     def hizlan(self, artis):
         self.hiz += artis
-        return f"Yeni hız: {self.hiz} km/s"
-    
+        return f"Hız {self.hiz} km/s'ye yükseltildi"
+
     def yavasla(self, azalis):
         if self.hiz - azalis >= 0:
             self.hiz -= azalis
-        else:
-            self.hiz = 0
-        return f"Yeni hız: {self.hiz} km/s"
+            return f"Hız {self.hiz} km/s'ye düşürüldü"
+        return "Hız 0'ın altına düşemez"
 
-# Kullanım
-araba = Araba("Toyota", "Corolla")
-print(araba.hizlan(20))   # Çıktı: Yeni hız: 20 km/s
-print(araba.yavasla(5))   # Çıktı: Yeni hız: 15 km/s
-\`\`\`
+    def bilgi_goster(self):
+        return f"{self.yil} model {self.marka} {self.model}, Mevcut hız: {self.hiz} km/s"
+`,
+    explanation: "Araba sınıfı, marka, model ve yıl gibi özellikleri ve hizlan, yavasla ve bilgi_goster gibi metodları içerir."
+  },
+  {
+    title: "Nesne Oluşturma ve Kullanma",
+    description: "Araba sınıfından bir nesne oluşturma ve metodlarının nasıl kullanıldığını gösterir.",
+    code: `# Yeni bir araba nesnesi oluşturma
+araba1 = Araba("Toyota", "Corolla", 2022)
 
-## Instance vs. Class Attributes
-
-Python'da iki tür özellik vardır:
-
-1. **Instance Attributes (Nesne Özellikleri)**
-   - Her nesne için özeldir
-   - \`__init__\` içinde veya nesne metodlarında tanımlanır
-   - \`self\` ile erişilir
-
-2. **Class Attributes (Sınıf Özellikleri)**
-   - Tüm nesneler için ortaktır
-   - Sınıf içinde doğrudan tanımlanır
-   - Sınıf adı ile erişilebilir
-
-\`\`\`python
-class Calisan:
-    # Sınıf özelliği
-    sirket = "Kodleon"
-    calisan_sayisi = 0
-    
-    def __init__(self, ad, maas):
-        # Nesne özellikleri
-        self.ad = ad
-        self.maas = maas
-        # Sınıf özelliğini güncelleme
-        Calisan.calisan_sayisi += 1
-
-# Kullanım
-c1 = Calisan("Ali", 5000)
-c2 = Calisan("Ayşe", 6000)
-
-print(Calisan.calisan_sayisi)  # Çıktı: 2
-print(c1.sirket)  # Çıktı: Kodleon
-print(c2.sirket)  # Çıktı: Kodleon
-
-# Sınıf özelliğini değiştirme
-Calisan.sirket = "Kodleon Tech"
-print(c1.sirket)  # Çıktı: Kodleon Tech
-print(c2.sirket)  # Çıktı: Kodleon Tech
-\`\`\`
-
-## İyi Uygulama Örnekleri
-
-1. **Anlamlı İsimlendirme**
-\`\`\`python
-# İyi örnek
-class OgrenciKayit:
-    def __init__(self, ad, soyad):
+# Metodları kullanma
+print(araba1.bilgi_goster())  # 2022 model Toyota Corolla, Mevcut hız: 0 km/s
+print(araba1.hizlan(50))      # Hız 50 km/s'ye yükseltildi
+print(araba1.yavasla(20))     # Hız 30 km/s'ye düşürüldü
+print(araba1.bilgi_goster())  # 2022 model Toyota Corolla, Mevcut hız: 30 km/s
+`,
+    explanation: "Araba sınıfından bir nesne oluşturulur ve bilgi_goster, hizlan ve yavasla metodları kullanılarak nesnenin özellikleri ve davranışları incelenir."
+  },
+  {
+    title: "Constructor (\`__init__\`) Metodu",
+    description: "Constructor metodunun nasıl kullanıldığını gösterir.",
+    code: `class Ogrenci:
+    def __init__(self, ad, soyad, numara):
         self.ad = ad
         self.soyad = soyad
+        self.numara = numara
+        self.dersler = []    # Boş liste ile başlatma
 
-# Kötü örnek
-class X:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-\`\`\`
+    def ders_ekle(self, ders):
+        self.dersler.append(ders)
+        return f"{ders} dersi eklendi"
 
-2. **Docstring Kullanımı**
-\`\`\`python
-class BankaHesabi:
-    """
-    Banka hesabı işlemlerini yöneten sınıf.
-    
-    Attributes:
-        hesap_no (str): Hesap numarası
-        bakiye (float): Hesap bakiyesi
-    """
-    
-    def __init__(self, hesap_no, bakiye=0):
+    def dersleri_listele(self):
+        if self.dersler:
+            return f"{self.ad}'in aldığı dersler: {', '.join(self.dersler)}"
+        return f"{self.ad} henüz ders almamış"
+
+# Kullanım örneği
+ogrenci1 = Ogrenci("Ahmet", "Yılmaz", "2023001")
+print(ogrenci1.ders_ekle("Python"))
+print(ogrenci1.ders_ekle("Veri Yapıları"))
+print(ogrenci1.dersleri_listele())
+`,
+    explanation: "Ogrenci sınıfı, ad, soyad ve numara gibi özellikleri ve ders_ekle ve dersleri_listele gibi metodları içerir. Constructor metodu, nesne oluşturulduğunda otomatik olarak çağrılır."
+  },
+  {
+    title: "Instance Metodları",
+    description: "Instance metodlarının nasıl kullanıldığını gösterir.",
+    code: `class BankaHesabi:
+    def __init__(self, hesap_no, sahip, bakiye=0):
         self.hesap_no = hesap_no
+        self.sahip = sahip
         self.bakiye = bakiye
-    
+        self.islemler = []
+
     def para_yatir(self, miktar):
-        """
-        Hesaba para yatırma işlemi.
-        
-        Args:
-            miktar (float): Yatırılacak miktar
-            
-        Returns:
-            float: Güncel bakiye
-        """
-        self.bakiye += miktar
-        return self.bakiye
-\`\`\`
+        if miktar > 0:
+            self.bakiye += miktar
+            self.islemler.append(f"Yatırma: +{miktar} TL")
+            return f"{miktar} TL yatırıldı. Yeni bakiye: {self.bakiye} TL"
+        return "Geçersiz miktar"
 
-3. **Type Hints Kullanımı**
-\`\`\`python
-from typing import List, Optional
+    def para_cek(self, miktar):
+        if miktar > 0 and self.bakiye >= miktar:
+            self.bakiye -= miktar
+            self.islemler.append(f"Çekme: -{miktar} TL")
+            return f"{miktar} TL çekildi. Yeni bakiye: {self.bakiye} TL"
+        return "Yetersiz bakiye veya geçersiz miktar"
 
-class Kutuphane:
-    def __init__(self, ad: str) -> None:
-        self.ad: str = ad
-        self.kitaplar: List[str] = []
-    
-    def kitap_ekle(self, kitap: str) -> None:
-        self.kitaplar.append(kitap)
-    
-    def kitap_bul(self, ad: str) -> Optional[str]:
-        return next((k for k in self.kitaplar if k == ad), None)
-\`\`\`
+    def hesap_ozeti(self):
+        ozet = f"Hesap No: {self.hesap_no}\\nSahip: {self.sahip}\\nBakiye: {self.bakiye} TL\\n"
+        ozet += "\\nSon İşlemler:\\n"
+        for islem in self.islemler[-5:]:  # Son 5 işlem
+            ozet += f"- {islem}\\n"
+        return ozet
 
-## Alıştırmalar
+# Kullanım örneği
+hesap = BankaHesabi("123456", "Ali Veli", 1000)
+print(hesap.para_yatir(500))
+print(hesap.para_cek(200))
+print(hesap.hesap_ozeti())
+`,
+    explanation: "BankaHesabi sınıfı, hesap_no, sahip ve bakiye gibi özellikleri ve para_yatir, para_cek ve hesap_ozeti gibi metodları içerir. Instance metodları, nesnenin durumunu değiştirebilir ve nesnenin özelliklerine erişebilir."
+  },
+  {
+    title: "Self Parametresi",
+    description: "Self parametresinin nasıl kullanıldığını gösterir.",
+    code: `class Nokta:
+    def __init__(self, x, y):
+        self.x = x  # self.x nesnenin x koordinatını temsil eder
+        self.y = y  # self.y nesnenin y koordinatını temsil eder
 
-1. **Basit Hesap Makinesi**
-Toplama, çıkarma, çarpma ve bölme işlemlerini yapabilen bir hesap makinesi sınıfı oluşturun.
+    def kordinatlari_goster(self):
+        return f"X: {self.x}, Y: {self.y}"
 
-2. **Öğrenci Not Sistemi**
-Öğrenci bilgilerini ve notlarını tutabilen, ortalama hesaplayabilen bir sınıf oluşturun.
+    def nokta_tasi(self, delta_x, delta_y):
+        self.x += delta_x  # self ile nesnenin x değerini değiştiriyoruz
+        self.y += delta_y  # self ile nesnenin y değerini değiştiriyoruz
+        return self.kordinatlari_goster()
 
-3. **Kütüphane Yönetimi**
-Kitap ekleme, silme, ödünç verme ve iade işlemlerini yapabilen bir kütüphane sınıfı oluşturun.
+# Kullanım örneği
+nokta1 = Nokta(5, 10)
+print(nokta1.kordinatlari_goster())  # X: 5, Y: 10
+print(nokta1.nokta_tasi(3, -2))      # X: 8, Y: 8
+`,
+    explanation: "Nokta sınıfı, x ve y koordinatlarını içeren bir sınıftır. kordinatlari_goster ve nokta_tasi metodları, self parametresi kullanılarak nesnenin durumunu değiştirir ve nesnenin özelliklerine erişir."
+  }
+];
 
-## Kaynaklar
-
-- [Python Resmi Dokümantasyonu - Classes](https://docs.python.org/3/tutorial/classes.html)
-- [Real Python - OOP in Python](https://realpython.com/python3-object-oriented-programming/)
-- [Python Design Patterns](https://python-patterns.guide/)
-`;
-
-export default function ClassesAndObjectsPage() {
+export default function ClassesAndObjects() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-6">
-        <Button asChild variant="ghost" size="sm" className="gap-1">
-          <Link href="/topics/python/nesneye-yonelik-programlama">
-            <ArrowLeft className="h-4 w-4" />
-            OOP Konularına Dön
+      <div className="max-w-4xl mx-auto">
+        <div className="mb-8">
+          <Link 
+            href="/topics/python/nesneye-yonelik-programlama" 
+            className="inline-flex items-center text-primary hover:underline mb-4"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Nesneye Yönelik Programlama'ya Dön
           </Link>
-        </Button>
-      </div>
-      
-      <div className="prose prose-lg dark:prose-invert max-w-none">
+        </div>
+
         <MarkdownContent content={content} />
-      </div>
-      
-      {/* Interactive Examples Section */}
-      <div className="my-12">
-        <h2 className="text-3xl font-bold mb-8">İnteraktif Örnekler</h2>
-        <Tabs defaultValue="example1">
-          <TabsList>
-            <TabsTrigger value="example1">Örnek 1</TabsTrigger>
-            <TabsTrigger value="example2">Örnek 2</TabsTrigger>
-            <TabsTrigger value="example3">Örnek 3</TabsTrigger>
-          </TabsList>
-          <TabsContent value="example1">
-            <Card>
-              <CardHeader>
-                <CardTitle>Basit Sınıf Örneği</CardTitle>
-                <CardDescription>
-                  Temel bir öğrenci sınıfı ve kullanımı
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
-                  <code>{`class Ogrenci:
-    def __init__(self, ad, numara):
-        self.ad = ad
-        self.numara = numara
-    
-    def bilgi_goster(self):
-        return f"{self.ad} - {self.numara}"
 
-# Kullanım
-ogrenci = Ogrenci("Ali", "123")
-print(ogrenci.bilgi_goster())`}</code>
-                </pre>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="example2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Hesap Makinesi</CardTitle>
-                <CardDescription>
-                  Dört işlem yapabilen bir sınıf örneği
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
-                  <code>{`class HesapMakinesi:
-    def topla(self, a, b):
-        return a + b
-    
-    def cikar(self, a, b):
-        return a - b
-    
-    def carp(self, a, b):
-        return a * b
-    
-    def bol(self, a, b):
-        if b != 0:
-            return a / b
-        return "Sıfıra bölünemez"
+        <section className="my-12">
+          <h2 className="text-3xl font-bold mb-8">Alıştırmalar ve Örnekler</h2>
+          <div className="grid gap-8">
+            {examples.map((example, index) => (
+              <Card key={index} className="overflow-hidden">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Code2 className="h-5 w-5 text-primary" />
+                    {example.title}
+                  </CardTitle>
+                  <CardDescription>{example.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="mb-4">
+                    <pre className="bg-muted p-4 rounded-lg overflow-x-auto">
+                      <code className="text-sm">{example.code}</code>
+                    </pre>
+                  </div>
+                  <p className="text-muted-foreground">{example.explanation}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
 
-# Kullanım
-hm = HesapMakinesi()
-print(hm.topla(5, 3))  # 8`}</code>
-                </pre>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="example3">
-            <Card>
-              <CardHeader>
-                <CardTitle>Banka Hesabı</CardTitle>
-                <CardDescription>
-                  Para yatırma ve çekme işlemleri yapabilen bir sınıf
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
-                  <code>{`class BankaHesabi:
-    def __init__(self, bakiye=0):
-        self.bakiye = bakiye
-    
-    def para_yatir(self, miktar):
-        self.bakiye += miktar
-        return f"Yeni bakiye: {self.bakiye}"
-    
-    def para_cek(self, miktar):
-        if miktar <= self.bakiye:
-            self.bakiye -= miktar
-            return f"Yeni bakiye: {self.bakiye}"
-        return "Yetersiz bakiye"
+        <section className="my-12">
+          <Quiz />
+        </section>
 
-# Kullanım
-hesap = BankaHesabi(1000)
-print(hesap.para_yatir(500))  # Yeni bakiye: 1500`}</code>
-                </pre>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-      </div>
-
-      {/* Tips and Best Practices */}
-      <div className="my-12 space-y-4">
-        <h2 className="text-3xl font-bold mb-8">İpuçları ve En İyi Pratikler</h2>
-        
-        <Alert>
-          <Info className="h-4 w-4" />
-          <AlertTitle>İsimlendirme Kuralları</AlertTitle>
-          <AlertDescription>
-            Sınıf isimleri PascalCase (HesapMakinesi), metod ve özellik isimleri snake_case (hesap_no) olmalıdır.
-          </AlertDescription>
-        </Alert>
-
-        <Alert>
-          <Lightbulb className="h-4 w-4" />
-          <AlertTitle>Docstring Kullanımı</AlertTitle>
-          <AlertDescription>
-            Her sınıf ve metodun işlevini açıklayan docstring'ler ekleyin. Bu, kodunuzun bakımını kolaylaştırır.
-          </AlertDescription>
-        </Alert>
-
-        <Alert>
-          <AlertTriangle className="h-4 w-4" />
-          <AlertTitle>Dikkat Edilmesi Gerekenler</AlertTitle>
-          <AlertDescription>
-            Sınıf özelliklerini doğrudan erişime açık bırakmak yerine, getter ve setter metodları kullanmayı düşünün.
-          </AlertDescription>
-        </Alert>
-      </div>
-
-      {/* Navigasyon Linkleri */}
-      <div className="mt-12 flex flex-col sm:flex-row justify-between gap-4">
-        <Button variant="outline" disabled className="gap-2">
-          <ArrowLeft className="h-4 w-4" />
-          Önceki Konu
-        </Button>
-        
-        <Button asChild variant="default" className="gap-2">
-          <Link href="/topics/python/nesneye-yonelik-programlama/kalitim">
-            Sonraki Konu: Kalıtım
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </Button>
-      </div>
-      
-      <div className="mt-16 text-center text-sm text-muted-foreground">
-        <p>© {new Date().getFullYear()} Kodleon | Yapay Zeka Eğitim Platformu</p>
+        <div className="mt-8 flex justify-between">
+          <Button asChild variant="outline">
+            <Link href="/topics/python/nesneye-yonelik-programlama">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Önceki: Giriş
+            </Link>
+          </Button>
+          <Button asChild>
+            <Link href="/topics/python/nesneye-yonelik-programlama/kalitim">
+              Sonraki: Kalıtım
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   );
