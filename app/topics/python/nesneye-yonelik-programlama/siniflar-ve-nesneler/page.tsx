@@ -8,20 +8,26 @@ import Quiz from './components/Quiz';
 export default function ClassesAndObjects() {
   return (
     <div className="container mx-auto py-8">
-      <div className="flex justify-between items-center mb-8">
-        <Link href="/topics/python/nesneye-yonelik-programlama">
-          <Button variant="outline">
+      <nav className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8 bg-muted/30 p-4 rounded-lg">
+        <Link href="/topics/python/nesneye-yonelik-programlama" className="w-full sm:w-auto">
+          <Button variant="outline" className="w-full">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Nesneye Yönelik Programlama
+            <div className="flex flex-col items-start">
+              <span className="text-xs text-muted-foreground">Önceki Konu</span>
+              <span>Nesneye Yönelik Programlama</span>
+            </div>
           </Button>
         </Link>
-        <Link href="/topics/python/nesneye-yonelik-programlama/kalitim">
-          <Button variant="outline">
-            Kalıtım
+        <Link href="/topics/python/nesneye-yonelik-programlama/kalitim" className="w-full sm:w-auto">
+          <Button variant="outline" className="w-full">
+            <div className="flex flex-col items-end">
+              <span className="text-xs text-muted-foreground">Sonraki Konu</span>
+              <span>Kalıtım</span>
+            </div>
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>
-      </div>
+      </nav>
 
       <h1 className="text-4xl font-bold mb-6">Sınıflar ve Nesneler</h1>
 
