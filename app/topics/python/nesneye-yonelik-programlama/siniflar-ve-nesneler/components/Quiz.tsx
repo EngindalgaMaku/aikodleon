@@ -4,7 +4,14 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-const quizQuestions = [
+interface QuizQuestion {
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+}
+
+const quizQuestions: QuizQuestion[] = [
   {
     question: "Python'da yeni bir sınıf oluşturmak için hangi anahtar kelime kullanılır?",
     options: ["def", "class", "create", "new"],
@@ -95,22 +102,32 @@ export default function Quiz() {
   };
 
   const handleAnswerSelect = (answerIndex: number) => {
+    if (showResult) return;
+    
     setSelectedAnswer(answerIndex);
     setShowResult(true);
     
     if (answerIndex === quizQuestions[currentQuestionIndex].correctAnswer) {
-      setScore(score + 1);
+      setScore(prev => prev + 1);
     }
   };
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setCurrentQuestionIndex(prev => prev + 1);
       setSelectedAnswer(null);
       setShowResult(false);
     } else {
       setQuizCompleted(true);
     }
+  };
+
+  const getButtonVariant = (index: number): "default" | "destructive" | "outline" | "secondary" => {
+    if (selectedAnswer === null) return "outline";
+    if (selectedAnswer === index) {
+      return index === quizQuestions[currentQuestionIndex].correctAnswer ? "secondary" : "destructive";
+    }
+    return index === quizQuestions[currentQuestionIndex].correctAnswer && showResult ? "secondary" : "outline";
   };
 
   return (
@@ -125,7 +142,7 @@ export default function Quiz() {
         {!quizStarted ? (
           <div className="text-center">
             <p className="mb-4">
-              Bu quiz 10 sorudan oluşmaktadır ve Python'da sınıflar ve nesneler konusunu kapsamaktadır.
+              Bu quiz {quizQuestions.length} sorudan oluşmaktadır ve Python'da sınıflar ve nesneler konusunu kapsamaktadır.
             </p>
             <Button onClick={handleStartQuiz}>
               Quize Başla
@@ -163,14 +180,9 @@ export default function Quiz() {
                 {quizQuestions[currentQuestionIndex].options.map((option, index) => (
                   <Button
                     key={index}
-                    variant={
-                      selectedAnswer === null ? "outline" :
-                      selectedAnswer === index ?
-                        (index === quizQuestions[currentQuestionIndex].correctAnswer ? "success" : "destructive") :
-                        index === quizQuestions[currentQuestionIndex].correctAnswer && showResult ? "success" : "outline"
-                    }
+                    variant={getButtonVariant(index)}
                     className="w-full justify-start h-auto py-3 px-4"
-                    onClick={() => !showResult && handleAnswerSelect(index)}
+                    onClick={() => handleAnswerSelect(index)}
                     disabled={showResult}
                   >
                     {option}

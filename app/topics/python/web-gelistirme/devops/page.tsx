@@ -1,16 +1,12 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
+'use client';
+
 import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import MarkdownContent from '@/components/MarkdownContent';
 import { Card } from '@/components/ui/card';
 
-export const metadata: Metadata = {
-  title: 'DevOps Practices | Python Web Geliştirme | Kodleon',
-  description: 'Python web uygulamaları için DevOps pratikleri. CI/CD, infrastructure as code, monitoring ve automation.',
-};
-
-const content = `
+const markdownContent = `
 # DevOps Practices
 
 Python web uygulamaları için modern DevOps pratiklerini ve araçlarını öğreneceğiz.
@@ -76,8 +72,8 @@ jobs:
     - name: Login to Docker Hub
       uses: docker/login-action@v2
       with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        username: \${{ secrets.DOCKERHUB_USERNAME }}
+        password: \${{ secrets.DOCKERHUB_TOKEN }}
         
     - name: Build and push
       uses: docker/build-push-action@v4
@@ -94,9 +90,9 @@ jobs:
     - name: Deploy to production
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
+        host: \${{ secrets.SSH_HOST }}
+        username: \${{ secrets.SSH_USERNAME }}
+        key: \${{ secrets.SSH_KEY }}
         script: |
           cd /app
           docker-compose pull
@@ -373,6 +369,54 @@ const learningPath = [
     href: '/topics/python/web-gelistirme/devops/automation'
   }
 ];
+
+const dockerComposeYaml = `version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/app
+    depends_on:
+      - db
+  
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=app`;
+
+const content = markdownContent.replace(/\${{/g, "\\${{");
+
+const githubActionsYaml = `name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: \${{ secrets.DOCKERHUB_USERNAME }}
+        password: \${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: user/app:latest`;
 
 export default function DevOpsPage() {
   return (

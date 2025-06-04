@@ -193,13 +193,13 @@ export default function HomePageClientContent() {
         <div className="container max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
-              {t('home.freeCourses.badge', 'ÜCRETSİZ DERSLER')}
+              {t('home.freeCourses.badge')}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              {t('home.freeCourses.title', 'Ücretsiz Yapay Zeka Dersleri')}
+              {t('home.freeCourses.title')}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              {t('home.freeCourses.subtitle', 'Yapay zeka yolculuğunuza hemen başlayın! Ücretsiz derslerimizle AI dünyasını keşfedin.')}
+              {t('home.freeCourses.subtitle')}
             </p>
           </div>
 
@@ -207,14 +207,14 @@ export default function HomePageClientContent() {
             <Card className="group hover:shadow-lg transition-all duration-300">
               <CardHeader>
                 <Code2 className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>{t('home.freeCourses.cards.python.title', 'Python Programlama')}</CardTitle>
+                <CardTitle>{t('home.freeCourses.cards.python.title')}</CardTitle>
                 <CardDescription>
-                  {t('home.freeCourses.cards.python.description', 'Yapay zeka için gerekli Python programlama temellerini sıfırdan öğrenin.')}
+                  {t('home.freeCourses.cards.python.description')}
                 </CardDescription>
               </CardHeader>
               <CardFooter>
                 <Link href="/topics/python/" className="inline-flex items-center text-primary hover:underline">
-                  {t('home.freeCourses.startLearning', 'Öğrenmeye Başla')} <ArrowRight className="ml-2 h-4 w-4" />
+                  {t('home.freeCourses.startLearning')} <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </CardFooter>
             </Card>
@@ -222,14 +222,14 @@ export default function HomePageClientContent() {
             <Card className="group hover:shadow-lg transition-all duration-300">
               <CardHeader>
                 <Brain className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>{t('home.freeCourses.cards.intro.title', 'Yapay Zekaya Giriş')}</CardTitle>
+                <CardTitle>{t('home.freeCourses.cards.intro.title')}</CardTitle>
                 <CardDescription>
-                  {t('home.freeCourses.cards.intro.description', 'Yapay zekanın temellerini öğrenin ve AI dünyasına ilk adımınızı atın.')}
+                  {t('home.freeCourses.cards.intro.description')}
                 </CardDescription>
               </CardHeader>
               <CardFooter>
                 <Link href="/topics/ai-fundamentals" className="inline-flex items-center text-primary hover:underline">
-                  {t('home.freeCourses.startLearning', 'Öğrenmeye Başla')} <ArrowRight className="ml-2 h-4 w-4" />
+                  {t('home.freeCourses.startLearning')} <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </CardFooter>
             </Card>
@@ -237,14 +237,14 @@ export default function HomePageClientContent() {
             <Card className="group hover:shadow-lg transition-all duration-300">
               <CardHeader>
                 <Brain className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>{t('home.freeCourses.cards.neural.title', 'Yapay Sinir Ağları')}</CardTitle>
+                <CardTitle>{t('home.freeCourses.cards.neural.title')}</CardTitle>
                 <CardDescription>
-                  {t('home.freeCourses.cards.neural.description', 'Yapay sinir ağlarının çalışma prensiplerini ve uygulamalarını keşfedin.')}
+                  {t('home.freeCourses.cards.neural.description')}
                 </CardDescription>
               </CardHeader>
               <CardFooter>
                 <Link href="/neural-networks/basics" className="inline-flex items-center text-primary hover:underline">
-                  {t('home.freeCourses.startLearning', 'Öğrenmeye Başla')} <ArrowRight className="ml-2 h-4 w-4" />
+                  {t('home.freeCourses.startLearning')} <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </CardFooter>
             </Card>
@@ -253,7 +253,7 @@ export default function HomePageClientContent() {
           <div className="text-center mt-12">
             <Button asChild size="lg" variant="outline" className="rounded-full">
               <Link href="/topics">
-                {t('home.freeCourses.viewAll', 'Tüm Ücretsiz Dersleri Gör')} <ArrowRight className="ml-2 h-4 w-4" />
+                {t('home.freeCourses.viewAll')} <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>

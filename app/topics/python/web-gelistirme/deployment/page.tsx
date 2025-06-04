@@ -1,16 +1,12 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
+'use client';
+
 import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import MarkdownContent from '@/components/MarkdownContent';
 import { Card } from '@/components/ui/card';
 
-export const metadata: Metadata = {
-  title: 'Cloud Deployment | Python Web Geliştirme | Kodleon',
-  description: 'Python web uygulamaları için cloud deployment. Containerization, cloud platforms, CI/CD ve infrastructure as code.',
-};
-
-const content = `
+const markdownContent = `
 # Cloud Deployment
 
 Python web uygulamalarını cloud platformlarda deploy etmeyi öğreneceğiz.
@@ -276,78 +272,17 @@ app.synth()
 
 \`\`\`yaml
 # .github/workflows/ci-cd.yml
-name: CI/CD Pipeline
+name: Deploy to AWS
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: webapp
-  ECS_CLUSTER: WebAppCluster
-  ECS_SERVICE: WebAppService
-  CONTAINER_NAME: web
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:13
-        env:
-          POSTGRES_USER: test
-          POSTGRES_PASSWORD: test
-          POSTGRES_DB: test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-      
-      redis:
-        image: redis:6
-        ports:
-          - 6379:6379
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
-    
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install poetry
-        poetry install
-    
-    - name: Run tests
-      env:
-        DATABASE_URL: postgresql://test:test@localhost:5432/test
-        REDIS_URL: redis://localhost:6379/0
-      run: |
-        poetry run pytest --cov=app --cov-report=xml
-    
-    - name: Upload coverage
-      uses: codecov/codecov-action@v2
-      with:
-        file: ./coverage.xml
-
-  build-and-deploy:
-    needs: test
-    if: github.ref == 'refs/heads/main'
+  deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -356,9 +291,9 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
+        aws-access-key-id: \${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: \${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: \${{ env.AWS_REGION }}
     
     - name: Login to Amazon ECR
       id: login-ecr
@@ -366,18 +301,18 @@ jobs:
     
     - name: Build and push Docker image
       env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ github.sha }}
+        ECR_REGISTRY: \${{ steps.login-ecr.outputs.registry }}
+        IMAGE_TAG: \${{ github.sha }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker build -t \$ECR_REGISTRY/\$ECR_REPOSITORY:\$IMAGE_TAG .
+        docker push \$ECR_REGISTRY/\$ECR_REPOSITORY:\$IMAGE_TAG
     
     - name: Deploy to ECS
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: task-definition.json
-        service: ${{ env.ECS_SERVICE }}
-        cluster: ${{ env.ECS_CLUSTER }}
+        service: \${{ env.ECS_SERVICE }}
+        cluster: \${{ env.ECS_CLUSTER }}
         wait-for-service-stability: true
         force-new-deployment: true
 \`\`\`
@@ -653,7 +588,7 @@ export default function DeploymentPage() {
         </div>
 
         <div className="prose prose-lg dark:prose-invert">
-          <MarkdownContent content={content} />
+          <MarkdownContent content={markdownContent} />
         </div>
 
         <h2 className="text-2xl font-bold mb-6">Öğrenme Yolu</h2>
