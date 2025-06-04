@@ -12,9 +12,9 @@ export default function CodeRunner({ initialCode }: CodeRunnerProps) {
   const [code] = useState(initialCode);
 
   const openInPlayground = () => {
-    // Python Playground URL'sini oluştur
+    // Python Tutor URL'sini oluştur
     const encodedCode = encodeURIComponent(code);
-    const playgroundUrl = `https://trinket.io/embed/python3/33121ac255?runOption=run&start=result&showInstructions=false`;
+    const playgroundUrl = `https://pythontutor.com/visualize.html#code=${encodedCode}&cumulative=false&heapPrimitives=true&mode=edit&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false`;
     
     // Yeni pencerede aç
     window.open(playgroundUrl, '_blank');
@@ -31,7 +31,7 @@ export default function CodeRunner({ initialCode }: CodeRunnerProps) {
           className="bg-green-600 hover:bg-green-700"
         >
           <Play className="h-4 w-4 mr-1" />
-          Playground'da Aç ve Çalıştır
+          Python Tutor'da Çalıştır
         </Button>
       </div>
       

@@ -47,7 +47,7 @@ class Ogrenci:
     
     def ders_ekle(self, ders):
         if ders not in self.dersler:
-            self.dersler.append(ders)
+        self.dersler.append(ders)
             print(f"{ders} dersi başarıyla eklendi.")
         else:
             print(f"{ders} dersi zaten mevcut!")
@@ -108,7 +108,7 @@ class BankaHesabi:
     
     def para_yatir(self, miktar):
         if miktar > 0:
-            self.bakiye += miktar
+        self.bakiye += miktar
             self.islem_kaydet("Yatırma", miktar)
             return f"{miktar} TL yatırıldı. Yeni bakiye: {self.bakiye} TL"
         return "Geçersiz miktar!"
@@ -241,7 +241,7 @@ arac2.bilgileri_goster()`;
             <div className="flex flex-col items-end">
               <span className="text-xs text-muted-foreground">Sonraki Konu</span>
               <span>Kalıtım</span>
-            </div>
+      </div>
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>
@@ -329,7 +329,7 @@ arac2.bilgileri_goster()`;
             özellikleri içermektedir.
           </p>
           <CodeRunner initialCode={bankaHesabiCode} />
-        </div>
+      </div>
 
         <h3 className="text-2xl font-semibold mt-6 mb-4">2. Metodlar ve Özellikler</h3>
         <p>
@@ -367,8 +367,8 @@ arac2.bilgileri_goster()`;
               <strong>Dokümantasyon:</strong> Karmaşık metodlar için açıklamalar eklenmelidir.
             </li>
           </ul>
-        </div>
-
+      </div>
+      
         <div className="bg-green-50 dark:bg-green-900/10 p-6 rounded-lg mb-6">
           <h3 className="text-2xl font-semibold mb-4">Yaygın Hatalar ve Çözümleri</h3>
           <ul className="list-disc pl-6">
@@ -385,7 +385,7 @@ arac2.bilgileri_goster()`;
               <strong>Yetersiz Hata Kontrolü:</strong> Metodlarda gerekli kontroller yapılmalıdır.
             </li>
           </ul>
-        </div>
+      </div>
       </section>
 
       <section className="my-12">
