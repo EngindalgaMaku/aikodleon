@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, BookOpen, Code2, FileCode2, Lightbulb, Puzzle, Trophy } from "lucide-react";
+import { ArrowRight, BookOpen, Code2, FileCode2, Lightbulb, Puzzle, Trophy, Box, GitFork, Lock, Layers, Component } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Python ile Nesneye Yönelik Programlama',
@@ -96,7 +96,21 @@ const sections = [
     ]
   },
   {
-    title: "5. İleri Düzey Konular",
+    title: "5. Soyut Sınıflar ve Arayüzler",
+    description: "Soyut sınıflar ve arayüzler ile kod organizasyonunu öğrenin.",
+    image: "/images/python-oop/abstract.jpg",
+    icon: <Component className="h-6 w-6" />,
+    href: "/topics/python/nesneye-yonelik-programlama/soyut-siniflar-ve-arayuzler",
+    topics: [
+      "Soyut sınıf nedir?",
+      "ABC modülü",
+      "Abstract metodlar",
+      "Protokoller",
+      "Interface tanımlama"
+    ]
+  },
+  {
+    title: "6. İleri Düzey Konular",
     description: "OOP'nin güçlü ve ileri seviye özelliklerini öğrenin.",
     image: "/images/python-oop/advanced.jpg",
     icon: <Trophy className="h-6 w-6" />,
@@ -107,20 +121,6 @@ const sections = [
       "Metaclasses",
       "Context managers",
       "Descriptors"
-    ]
-  },
-  {
-    title: "6. Pratik Örnekler",
-    description: "Gerçek dünya problemlerini OOP ile çözmeyi öğrenin.",
-    image: "/images/python-oop/examples.jpg",
-    icon: <BookOpen className="h-6 w-6" />,
-    href: "/topics/python/nesneye-yonelik-programlama/pratik-ornekler",
-    topics: [
-      "Banka hesap sistemi",
-      "Oyun karakterleri",
-      "E-ticaret sistemi",
-      "Dosya yöneticisi",
-      "Logger implementasyonu"
     ]
   }
 ];
