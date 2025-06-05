@@ -71,7 +71,7 @@ const sections = [
     title: "3. Kapsülleme",
     description: "Veri gizleme ve güvenli erişim yöntemlerini öğrenin.",
     image: "/images/python-oop/encapsulation.jpg",
-    icon: <Puzzle className="h-6 w-6" />,
+    icon: <Lock className="h-6 w-6" />,
     href: "/topics/python/nesneye-yonelik-programlama/kapsulleme",
     topics: [
       "Private ve protected üyeler",
@@ -110,17 +110,31 @@ const sections = [
     ]
   },
   {
-    title: "6. İleri Düzey Konular",
-    description: "OOP'nin güçlü ve ileri seviye özelliklerini öğrenin.",
+    title: "6. Tasarım Desenleri",
+    description: "Python'da yaygın tasarım desenlerini ve uygulamalarını öğrenin.",
+    image: "/images/python-oop/design-patterns.jpg",
+    icon: <Puzzle className="h-6 w-6" />,
+    href: "/topics/python/nesneye-yonelik-programlama/tasarim-desenleri",
+    topics: [
+      "Yaratımsal desenler",
+      "Yapısal desenler",
+      "Davranışsal desenler",
+      "Uygulama örnekleri",
+      "Anti-patterns"
+    ]
+  },
+  {
+    title: "7. Pratik Örnekler",
+    description: "Gerçek dünya problemlerini OOP ile çözmeyi öğrenin.",
     image: "/images/python-oop/advanced.jpg",
     icon: <Trophy className="h-6 w-6" />,
-    href: "/topics/python/nesneye-yonelik-programlama/ileri-duzey",
+    href: "/topics/python/nesneye-yonelik-programlama/pratik-ornekler-ve-projeler",
     topics: [
-      "Magic methods",
-      "Decorators",
-      "Metaclasses",
-      "Context managers",
-      "Descriptors"
+      "Banka hesap sistemi",
+      "Oyun karakterleri",
+      "E-ticaret sistemi",
+      "Dosya yöneticisi",
+      "Logger implementasyonu"
     ]
   }
 ];
