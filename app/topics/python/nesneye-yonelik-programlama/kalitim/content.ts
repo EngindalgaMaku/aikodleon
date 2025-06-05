@@ -4,14 +4,15 @@ export const content = `
 Kalıtım, nesne yönelimli programlamanın temel prensiplerinden biridir. Bir sınıfın başka bir sınıfın özelliklerini ve davranışlarını miras almasını sağlar.
 Bu sayede kod tekrarını önler ve sınıflar arasında hiyerarşik bir ilişki kurulmasını sağlar.
 
-<div class="bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg mb-8">
-  <h3 class="text-2xl font-semibold mb-4">🎯 Kalıtımın Avantajları</h3>
-  <ul class="list-disc pl-6">
-    <li><strong>Kod Tekrarını Önleme:</strong> Ortak özellikleri temel sınıfta tanımlayarak kod tekrarını önler.</li>
-    <li><strong>Hiyerarşik Yapı:</strong> Sınıflar arasında mantıksal bir hiyerarşi oluşturur.</li>
-    <li><strong>Kodun Yeniden Kullanılabilirliği:</strong> Var olan kodun yeni sınıflarda kullanılmasını sağlar.</li>
-    <li><strong>Genişletilebilirlik:</strong> Mevcut sınıfları değiştirmeden yeni özellikler eklenebilir.</li>
-  </ul>
+<div class="info">
+
+### 🎯 Kalıtımın Avantajları
+
+- **Kod Tekrarını Önleme:** Ortak özellikleri temel sınıfta tanımlayarak kod tekrarını önler.
+- **Hiyerarşik Yapı:** Sınıflar arasında mantıksal bir hiyerarşi oluşturur.
+- **Kodun Yeniden Kullanılabilirliği:** Var olan kodun yeni sınıflarda kullanılmasını sağlar.
+- **Genişletilebilirlik:** Mevcut sınıfları değiştirmeden yeni özellikler eklenebilir.
+
 </div>
 
 ## Temel Kalıtım
@@ -73,13 +74,14 @@ print(c.metod_a())  # "A sınıfından"
 print(c.metod_b())  # "B sınıfından"
 \`\`\`
 
-<div class="bg-yellow-50 dark:bg-yellow-900/10 p-6 rounded-lg mb-8">
-  <h3 class="text-2xl font-semibold mb-4">⚠️ Çoklu Kalıtımda Dikkat Edilecek Noktalar</h3>
-  <ul class="list-disc pl-6">
-    <li><strong>Elmas Problemi:</strong> Aynı metodun farklı üst sınıflarda farklı şekillerde tanımlanması durumu.</li>
-    <li><strong>Karmaşıklık:</strong> Çok sayıda üst sınıf kullanımı kodun anlaşılmasını zorlaştırabilir.</li>
-    <li><strong>MRO (Method Resolution Order):</strong> Python'ın metod arama sırasını anlamak önemlidir.</li>
-  </ul>
+<div class="warning">
+
+### ⚠️ Çoklu Kalıtımda Dikkat Edilecek Noktalar
+
+- **Elmas Problemi:** Aynı metodun farklı üst sınıflarda farklı şekillerde tanımlanması durumu.
+- **Karmaşıklık:** Çok sayıda üst sınıf kullanımı kodun anlaşılmasını zorlaştırabilir.
+- **MRO (Method Resolution Order):** Python'ın metod arama sırasını anlamak önemlidir.
+
 </div>
 
 ## Method Resolution Order (MRO)
@@ -120,45 +122,46 @@ print(issubclass(Kopek, Hayvan))     # True
 
 ## Alıştırmalar
 
-1. **Çalışan Yönetim Sistemi**
-   
-   [Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kalitim/calisan-yonetim-sistemi)
-   
-   - Bir şirketin çalışan yönetim sistemini modelleyin:
-     - \`Calisan\` temel sınıfı
-     - \`Muhendis\`, \`Yonetici\`, \`Pazarlamaci\` gibi alt sınıflar
-     - Maaş hesaplama, izin takibi, proje atama gibi özellikler
-     - Departman bazlı raporlama sistemi
+### 1. Çalışan Yönetim Sistemi
 
-2. **Oyun Karakter Sistemi**
-   
-   [Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kalitim/oyun-karakter-sistemi)
-   
-   - Bir RPG oyunu için karakter sistemi geliştirin:
-     - \`Karakter\` temel sınıfı
-     - \`Savasci\`, \`Buyucu\`, \`Okcu\` gibi alt sınıflar
-     - Yetenek sistemi ve seviye atlama
-     - Envanter yönetimi ve ekipman sistemi
+[Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kalitim/calisan-yonetim-sistemi)
 
-3. **Medya Oynatıcı Sistemi**
-   
-   [Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kalitim/medya-oynatici-sistemi)
-   
-   - Farklı medya türlerini destekleyen bir oynatıcı sistemi oluşturun:
-     - \`MedyaOynatici\` temel sınıfı
-     - \`MuzikOynatici\`, \`VideoOynatici\`, \`PodcastOynatici\` alt sınıfları
-     - Çalma listesi yönetimi
-     - Format dönüştürme ve kalite ayarları
+Bir şirketin çalışan yönetim sistemini modelleyin:
+- \`Calisan\` temel sınıfı
+- \`Muhendis\`, \`Yonetici\`, \`Pazarlamaci\` gibi alt sınıflar
+- Maaş hesaplama, izin takibi, proje atama gibi özellikler
+- Departman bazlı raporlama sistemi
 
-<div class="bg-purple-50 dark:bg-purple-900/10 p-6 rounded-lg mb-8">
-  <h3 class="text-2xl font-semibold mb-4">💡 Kalıtım Kullanırken Dikkat Edilecek Noktalar</h3>
-  <ul class="list-disc pl-6">
-    <li><strong>IS-A İlişkisi:</strong> Kalıtım kullanırken "is-a" ilişkisinin varlığından emin olun.</li>
-    <li><strong>Kompozisyon vs Kalıtım:</strong> Bazen kalıtım yerine kompozisyon kullanmak daha uygun olabilir.</li>
-    <li><strong>Liskov Substitution Prensibi:</strong> Alt sınıflar, üst sınıfların yerine kullanılabilmelidir.</li>
-    <li><strong>DRY Prensibi:</strong> Kendini tekrar eden kodları ortak bir üst sınıfa taşıyın.</li>
-    <li><strong>SOLID Prensipleri:</strong> Kalıtım hiyerarşisini tasarlarken SOLID prensiplerine uyun.</li>
-  </ul>
+### 2. Oyun Karakter Sistemi
+
+[Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kalitim/oyun-karakter-sistemi)
+
+Bir RPG oyunu için karakter sistemi geliştirin:
+- \`Karakter\` temel sınıfı
+- \`Savasci\`, \`Buyucu\`, \`Okcu\` gibi alt sınıflar
+- Yetenek sistemi ve seviye atlama
+- Envanter yönetimi ve ekipman sistemi
+
+### 3. Medya Oynatıcı Sistemi
+
+[Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kalitim/medya-oynatici-sistemi)
+
+Farklı medya türlerini destekleyen bir oynatıcı sistemi oluşturun:
+- \`MedyaOynatici\` temel sınıfı
+- \`MuzikOynatici\`, \`VideoOynatici\`, \`PodcastOynatici\` alt sınıfları
+- Çalma listesi yönetimi
+- Format dönüştürme ve kalite ayarları
+
+<div class="tip">
+
+### 💡 Kalıtım Kullanırken Dikkat Edilecek Noktalar
+
+- **IS-A İlişkisi:** Kalıtım kullanırken "is-a" ilişkisinin varlığından emin olun.
+- **Kompozisyon vs Kalıtım:** Bazen kalıtım yerine kompozisyon kullanmak daha uygun olabilir.
+- **Liskov Substitution Prensibi:** Alt sınıflar, üst sınıfların yerine kullanılabilmelidir.
+- **DRY Prensibi:** Kendini tekrar eden kodları ortak bir üst sınıfa taşıyın.
+- **SOLID Prensipleri:** Kalıtım hiyerarşisini tasarlarken SOLID prensiplerine uyun.
+
 </div>
 
 ## Sonraki Adımlar
