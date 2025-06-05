@@ -259,24 +259,21 @@ print(laptop)
 
 ## Alıştırmalar
 
-1. **Banka Hesabı Geliştirme** 
-   <a href="/topics/python/nesneye-yonelik-programlama/kapsulleme/banka-hesabi-gelistirme" target="_blank" rel="noopener noreferrer">Detaylı çözüm için tıklayın</a>
+1. **Banka Hesabı Geliştirme** [Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kapsulleme/banka-hesabi-gelistirme)
    - Yukarıdaki BankaHesabi sınıfına şu özellikleri ekleyin:
      - Hesap limiti kontrolü
      - Günlük para çekme limiti
      - Hesap dondurma/açma özelliği
      - Detaylı işlem raporu
 
-2. **Kütüphane Üye Sistemi**
-   <a href="/topics/python/nesneye-yonelik-programlama/kapsulleme/kutuphane-uye-sistemi" target="_blank" rel="noopener noreferrer">Detaylı çözüm için tıklayın</a>
+2. **Kütüphane Üye Sistemi** [Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kapsulleme/kutuphane-uye-sistemi)
    - Üye bilgilerini kapsülleyen bir sistem oluşturun:
      - Üye kişisel bilgilerinin gizliliği
      - Ödünç alınan kitap takibi
      - Gecikme cezası hesaplama
      - Üyelik durumu kontrolü
 
-3. **Araç Kiralama Sistemi**
-   <a href="/topics/python/nesneye-yonelik-programlama/kapsulleme/arac-kiralama-sistemi" target="_blank" rel="noopener noreferrer">Detaylı çözüm için tıklayın</a>
+3. **Araç Kiralama Sistemi** [Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kapsulleme/arac-kiralama-sistemi)
    - Araç bilgilerini ve kiralama işlemlerini yöneten bir sistem yapın:
      - Araç durumu takibi
      - Kiralama ücreti hesaplama
