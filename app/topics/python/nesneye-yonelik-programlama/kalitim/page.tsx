@@ -155,13 +155,30 @@ print(f"Daire Çevresi: {d2.cevre():.2f}")
 
 ## Alıştırmalar
 
-1. Bir \`Calisan\` temel sınıfı oluşturun ve bu sınıftan \`Muhendis\` ve \`Yonetici\` sınıflarını türetin.
-2. Bir \`Arac\` temel sınıfı oluşturun ve farklı araç türleri için alt sınıflar oluşturun.
-3. Çoklu kalıtım kullanarak bir \`SuperKahraman\` sınıfı oluşturun.
+1. **Çalışan Yönetim Sistemi** [Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kalitim/calisan-yonetim-sistemi)
+   - Bir şirketin çalışan yönetim sistemini modelleyin:
+     - `Calisan` temel sınıfı
+     - `Muhendis`, `Yonetici`, `Pazarlamaci` gibi alt sınıflar
+     - Maaş hesaplama, izin takibi, proje atama gibi özellikler
+     - Departman bazlı raporlama sistemi
+
+2. **Oyun Karakter Sistemi** [Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kalitim/oyun-karakter-sistemi)
+   - Bir RPG oyunu için karakter sistemi geliştirin:
+     - `Karakter` temel sınıfı
+     - `Savasci`, `Buyucu`, `Okcu` gibi alt sınıflar
+     - Yetenek sistemi ve seviye atlama
+     - Envanter yönetimi ve ekipman sistemi
+
+3. **Medya Oynatıcı Sistemi** [Detaylı çözüm için tıklayın](/topics/python/nesneye-yonelik-programlama/kalitim/medya-oynatici-sistemi)
+   - Farklı medya türlerini destekleyen bir oynatıcı sistemi oluşturun:
+     - `MedyaOynatici` temel sınıfı
+     - `MuzikOynatici`, `VideoOynatici`, `PodcastOynatici` alt sınıfları
+     - Çalma listesi yönetimi
+     - Format dönüştürme ve kalite ayarları
 
 ## Sonraki Adımlar
 
-Kalıtım konusunu öğrendiniz. Şimdi kapsülleme (encapsulation) konusuna geçerek, sınıf içi verileri nasıl koruyacağımızı ve erişimi nasıl kontrol edeceğimizi öğrenebilirsiniz.
+Kalıtım konusunu detaylı örneklerle öğrendiniz. Şimdi kapsülleme (encapsulation) konusuna geçerek, sınıf içi verileri nasıl koruyacağımızı ve erişimi nasıl kontrol edeceğimizi öğrenebilirsiniz.
 `;
 
 const temelKalitimCode = `# Temel bir Sekil sınıfı tanımlayalım
