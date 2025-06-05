@@ -51,7 +51,8 @@ const sections = [
       "Constructor (__init__)",
       "Instance metodları",
       "Self parametresi"
-    ]
+    ],
+    color: "from-sky-500/20 to-sky-500/10 hover:from-sky-500/30 hover:to-sky-500/20"
   },
   {
     title: "2. Kalıtım",
@@ -65,7 +66,8 @@ const sections = [
       "Method overriding",
       "super() kullanımı",
       "Mixin sınıfları"
-    ]
+    ],
+    color: "from-emerald-500/20 to-emerald-500/10 hover:from-emerald-500/30 hover:to-emerald-500/20"
   },
   {
     title: "3. Kapsülleme",
@@ -79,7 +81,8 @@ const sections = [
       "Property dekoratörü",
       "Name mangling",
       "Access modifiers"
-    ]
+    ],
+    color: "from-rose-500/20 to-rose-500/10 hover:from-rose-500/30 hover:to-rose-500/20"
   },
   {
     title: "4. Çok Biçimlilik",
@@ -93,7 +96,8 @@ const sections = [
       "Abstract base classes",
       "Interface tanımlama",
       "Polymorphic functions"
-    ]
+    ],
+    color: "from-amber-500/20 to-amber-500/10 hover:from-amber-500/30 hover:to-amber-500/20"
   },
   {
     title: "5. İleri Düzey Konular",
@@ -107,7 +111,8 @@ const sections = [
       "Metaclasses",
       "Context managers",
       "Descriptors"
-    ]
+    ],
+    color: "from-violet-500/20 to-violet-500/10 hover:from-violet-500/30 hover:to-violet-500/20"
   },
   {
     title: "6. Pratik Örnekler",
@@ -121,7 +126,8 @@ const sections = [
       "E-ticaret sistemi",
       "Dosya yöneticisi",
       "Logger implementasyonu"
-    ]
+    ],
+    color: "from-teal-500/20 to-teal-500/10 hover:from-teal-500/30 hover:to-teal-500/20"
   }
 ];
 
@@ -147,7 +153,7 @@ export default function PythonOOPPage() {
           <h2 className="text-3xl font-bold mb-8">Öğrenme Yolu</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {sections.map((section, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-shadow">
+              <Card key={index} className={`group hover:shadow-lg transition-shadow bg-gradient-to-r ${section.color}`}>
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     <div className="p-2 rounded-lg bg-primary/10">

@@ -6,154 +6,167 @@ import MarkdownContent from '@/components/MarkdownContent';
 
 export const metadata: Metadata = {
   title: 'Python OOP: Kapsülleme (Encapsulation) | Kodleon',
-  description: 'Python\'da kapsülleme kavramını, private ve protected üyeleri, property dekoratörlerini öğrenin.',
+  description: 'Python\'da kapsülleme kavramını, private ve protected üyeleri, property dekoratörlerini detaylı örneklerle öğrenin.',
 };
 
 const content = `
 # Python'da Kapsülleme (Encapsulation)
 
-Kapsülleme, bir sınıfın iç yapısını dış dünyadan gizleyerek, sınıf içi verilere kontrollü erişim sağlamamızı sağlar.
+Kapsülleme (Encapsulation), nesne yönelimli programlamanın temel prensiplerinden biridir. Bu kavram, bir sınıfın verilerini ve bu veriler üzerinde çalışan metodları bir arada tutarak, dış dünyadan gizlemeyi ve korumayı amaçlar.
+
+## Kapsüllemenin Temel Prensipleri
+
+1. **Veri Gizleme**: Sınıf içindeki verilere doğrudan erişimi kısıtlama
+2. **Kontrollü Erişim**: Verilere sadece metodlar aracılığıyla erişim sağlama
+3. **Veri Doğrulama**: Verilerin değiştirilmesi sırasında kontrol mekanizmaları oluşturma
 
 ## Private ve Protected Üyeler
 
-Python'da gerçek private üyeler yoktur, ancak isimlendirme kuralları ile gizlilik sağlanır:
+Python'da üç tür erişim belirleyici vardır:
+
+1. **Public** (Genel): Herhangi bir alt çizgi olmayan üyeler
+2. **Protected** (Korumalı): Tek alt çizgi (_) ile başlayan üyeler
+3. **Private** (Özel): Çift alt çizgi (__) ile başlayan üyeler
+
+### Detaylı Örnek: Banka Hesabı
 
 \`\`\`python
 class BankaHesabi:
-    def __init__(self, hesap_no, bakiye):
-        self._hesap_no = hesap_no    # Protected (tek alt çizgi)
-        self.__bakiye = bakiye       # Private (çift alt çizgi)
-    
-    def bakiye_goruntule(self):
-        return self.__bakiye
+    def __init__(self, hesap_no, bakiye, sahip_adi):
+        self.hesap_no = hesap_no      # Public üye
+        self._sahip_adi = sahip_adi   # Protected üye
+        self.__bakiye = bakiye        # Private üye
+        self.__islemler = []          # Private işlem geçmişi
     
     def para_yatir(self, miktar):
         if miktar > 0:
             self.__bakiye += miktar
+            self.__islem_kaydet(f"Para yatırma: +{miktar} TL")
             return True
         return False
+    
+    def para_cek(self, miktar):
+        if miktar > 0 and self.__bakiye >= miktar:
+            self.__bakiye -= miktar
+            self.__islem_kaydet(f"Para çekme: -{miktar} TL")
+            return True
+        return False
+    
+    def bakiye_goruntule(self):
+        return f"Güncel bakiye: {self.__bakiye} TL"
+    
+    def __islem_kaydet(self, islem):
+        from datetime import datetime
+        tarih = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.__islemler.append(f"{tarih} - {islem}")
+    
+    def islem_gecmisi(self):
+        return "\\n".join(self.__islemler)
 
-# Kullanım
-hesap = BankaHesabi("123456", 1000)
-print(hesap._hesap_no)      # Erişilebilir ama önerilmez
-# print(hesap.__bakiye)     # AttributeError
-print(hesap.bakiye_goruntule())  # Doğru kullanım
+# Kullanım örneği
+hesap = BankaHesabi("12345", 1000, "Ahmet Yılmaz")
+
+# Public üyeye erişim
+print(hesap.hesap_no)  # Direkt erişilebilir
+
+# Protected üyeye erişim
+print(hesap._sahip_adi)  # Erişilebilir ama önerilmez
+
+# Private üyeye erişim denemesi
+try:
+    print(hesap.__bakiye)  # AttributeError hatası verir
+except AttributeError:
+    print("Private üyelere doğrudan erişilemez!")
+
+# Doğru kullanım
+print(hesap.bakiye_goruntule())
+hesap.para_yatir(500)
+hesap.para_cek(200)
+print(hesap.islem_gecmisi())
 \`\`\`
+
+### Açıklama:
+- \`hesap_no\`: Public üye, herkes tarafından erişilebilir ve değiştirilebilir
+- \`_sahip_adi\`: Protected üye, erişilebilir ama değiştirilmemesi önerilir
+- \`__bakiye\`: Private üye, sadece sınıf içinden erişilebilir
+- \`__islemler\`: Private liste, işlem geçmişini güvenli şekilde tutar
+- \`__islem_kaydet\`: Private metod, sadece sınıf içinden çağrılabilir
 
 ## Property Dekoratörleri
 
-Property'ler, sınıf özelliklerine kontrollü erişim sağlar:
+Property'ler, sınıf özelliklerine güvenli ve kontrollü erişim sağlar. Üç temel bileşeni vardır:
+1. **getter**: Veriyi okuma
+2. **setter**: Veriyi değiştirme
+3. **deleter**: Veriyi silme
+
+### Detaylı Örnek: Sıcaklık Dönüştürücü
 
 \`\`\`python
-class Ogrenci:
-    def __init__(self, ad, not_ortalamasi):
-        self._ad = ad
-        self._not_ortalamasi = not_ortalamasi
+class SicaklikDonusturucu:
+    def __init__(self, celsius=0):
+        self._celsius = celsius
     
     @property
-    def ad(self):
-        return self._ad
+    def celsius(self):
+        """Sıcaklığı Celsius cinsinden döndürür"""
+        return self._celsius
+    
+    @celsius.setter
+    def celsius(self, deger):
+        """Celsius değerini kontrollü şekilde ayarlar"""
+        if deger < -273.15:  # Mutlak sıfır kontrolü
+            raise ValueError("Sıcaklık mutlak sıfırdan düşük olamaz!")
+        self._celsius = deger
     
     @property
-    def not_ortalamasi(self):
-        return self._not_ortalamasi
+    def fahrenheit(self):
+        """Sıcaklığı Fahrenheit cinsinden döndürür"""
+        return (self._celsius * 9/5) + 32
     
-    @not_ortalamasi.setter
-    def not_ortalamasi(self, deger):
-        if 0 <= deger <= 100:
-            self._not_ortalamasi = deger
-        else:
-            raise ValueError("Not 0-100 arasında olmalıdır")
+    @fahrenheit.setter
+    def fahrenheit(self, deger):
+        """Fahrenheit değerini Celsius'a çevirip ayarlar"""
+        celsius = (deger - 32) * 5/9
+        if celsius < -273.15:
+            raise ValueError("Sıcaklık mutlak sıfırdan düşük olamaz!")
+        self._celsius = celsius
+    
+    @property
+    def kelvin(self):
+        """Sıcaklığı Kelvin cinsinden döndürür"""
+        return self._celsius + 273.15
+    
+    @kelvin.setter
+    def kelvin(self, deger):
+        """Kelvin değerini Celsius'a çevirip ayarlar"""
+        celsius = deger - 273.15
+        if celsius < -273.15:
+            raise ValueError("Sıcaklık mutlak sıfırdan düşük olamaz!")
+        self._celsius = celsius
 
-# Kullanım
-ogrenci = Ogrenci("Ahmet", 85)
-print(ogrenci.ad)  # Property olarak erişim
-print(ogrenci.not_ortalamasi)
-ogrenci.not_ortalamasi = 90  # Setter ile değer atama
+# Kullanım örnekleri
+sicaklik = SicaklikDonusturucu(25)  # 25°C ile başla
+
+# Farklı birimlerde okuma
+print(f"Celsius: {sicaklik.celsius}°C")
+print(f"Fahrenheit: {sicaklik.fahrenheit}°F")
+print(f"Kelvin: {sicaklik.kelvin}K")
+
+# Farklı birimlerde değer atama
+sicaklik.fahrenheit = 68  # 20°C
+print(f"Yeni Celsius: {sicaklik.celsius}°C")
+
+sicaklik.kelvin = 300  # 26.85°C
+print(f"Yeni Celsius: {sicaklik.celsius}°C")
+
+# Hata kontrolü
+try:
+    sicaklik.celsius = -300  # Mutlak sıfırdan düşük!
+except ValueError as e:
+    print(f"Hata: {e}")
 \`\`\`
 
-## Getter ve Setter Metodları
-
-Property'lere alternatif olarak geleneksel getter/setter metodları:
-
-\`\`\`python
-class Dikdortgen:
-    def __init__(self, genislik, yukseklik):
-        self.__genislik = genislik
-        self.__yukseklik = yukseklik
-    
-    def get_genislik(self):
-        return self.__genislik
-    
-    def set_genislik(self, deger):
-        if deger > 0:
-            self.__genislik = deger
-        else:
-            raise ValueError("Genişlik pozitif olmalıdır")
-    
-    def get_yukseklik(self):
-        return self.__yukseklik
-    
-    def set_yukseklik(self, deger):
-        if deger > 0:
-            self.__yukseklik = deger
-        else:
-            raise ValueError("Yükseklik pozitif olmalıdır")
-    
-    def alan(self):
-        return self.__genislik * self.__yukseklik
-
-# Kullanım
-d = Dikdortgen(5, 3)
-print(d.get_genislik())
-d.set_genislik(10)
-print(d.alan())
-\`\`\`
-
-## Property vs Getter/Setter
-
-Property'ler daha Pythonic bir yaklaşım sunar:
-
-\`\`\`python
-class Dikdortgen:
-    def __init__(self, genislik, yukseklik):
-        self._genislik = genislik
-        self._yukseklik = yukseklik
-    
-    @property
-    def genislik(self):
-        return self._genislik
-    
-    @genislik.setter
-    def genislik(self, deger):
-        if deger > 0:
-            self._genislik = deger
-        else:
-            raise ValueError("Genişlik pozitif olmalıdır")
-    
-    @property
-    def yukseklik(self):
-        return self._yukseklik
-    
-    @yukseklik.setter
-    def yukseklik(self, deger):
-        if deger > 0:
-            self._yukseklik = deger
-        else:
-            raise ValueError("Yükseklik pozitif olmalıdır")
-    
-    @property
-    def alan(self):
-        return self._genislik * self._yukseklik
-
-# Kullanım
-d = Dikdortgen(5, 3)
-print(d.genislik)      # Property getter
-d.genislik = 10        # Property setter
-print(d.alan)          # Property olarak alan hesaplama
-\`\`\`
-
-## Pratik Örnek: Ürün Sınıfı
+## Pratik Örnek: E-Ticaret Ürün Yönetimi
 
 \`\`\`python
 class Urun:
@@ -161,6 +174,8 @@ class Urun:
         self._ad = ad
         self._fiyat = fiyat
         self._stok = stok
+        self._satis_sayisi = 0
+        self._indirim_orani = 0
     
     @property
     def ad(self):
@@ -168,61 +183,109 @@ class Urun:
     
     @property
     def fiyat(self):
-        return self._fiyat
+        """İndirimli fiyatı hesaplar ve döndürür"""
+        indirimli_fiyat = self._fiyat * (1 - self._indirim_orani)
+        return round(indirimli_fiyat, 2)
     
     @fiyat.setter
     def fiyat(self, yeni_fiyat):
-        if yeni_fiyat >= 0:
-            self._fiyat = yeni_fiyat
-        else:
-            raise ValueError("Fiyat negatif olamaz")
+        """Fiyatı kontrollü şekilde günceller"""
+        if yeni_fiyat < 0:
+            raise ValueError("Fiyat negatif olamaz!")
+        self._fiyat = yeni_fiyat
     
     @property
     def stok(self):
         return self._stok
     
     def stok_ekle(self, miktar):
+        """Stok miktarını artırır"""
         if miktar > 0:
             self._stok += miktar
             return True
         return False
     
     def stok_cikar(self, miktar):
+        """Stok miktarını azaltır ve satış sayısını günceller"""
         if 0 < miktar <= self._stok:
             self._stok -= miktar
+            self._satis_sayisi += miktar
             return True
         return False
+    
+    @property
+    def satis_sayisi(self):
+        return self._satis_sayisi
+    
+    def indirim_uygula(self, oran):
+        """İndirim oranını ayarlar (0-1 arası)"""
+        if 0 <= oran <= 1:
+            self._indirim_orani = oran
+            return True
+        return False
+    
+    def __str__(self):
+        return f"""
+Ürün: {self._ad}
+Orijinal Fiyat: {self._fiyat} TL
+İndirim Oranı: %{self._indirim_orani * 100}
+Güncel Fiyat: {self.fiyat} TL
+Stok: {self._stok}
+Satış Sayısı: {self._satis_sayisi}
+"""
 
-# Kullanım
-urun = Urun("Laptop", 15000, 10)
-print(f"Ürün: {urun.ad}")
-print(f"Fiyat: {urun.fiyat} TL")
-print(f"Stok: {urun.stok}")
+# Kullanım örneği
+laptop = Urun("Gaming Laptop", 25000, 10)
+print(laptop)
 
-urun.fiyat = 16000  # Fiyat güncelleme
-urun.stok_ekle(5)   # Stok ekleme
-print(f"Yeni stok: {urun.stok}")
+# Fiyat güncelleme
+laptop.fiyat = 27500
+print(f"Yeni fiyat: {laptop.fiyat} TL")
+
+# İndirim uygulama
+laptop.indirim_uygula(0.15)  # %15 indirim
+print(f"İndirimli fiyat: {laptop.fiyat} TL")
+
+# Stok işlemleri
+laptop.stok_ekle(5)
+print(f"Güncel stok: {laptop.stok}")
+
+laptop.stok_cikar(3)
+print(f"Kalan stok: {laptop.stok}")
+print(f"Toplam satış: {laptop.satis_sayisi}")
+
+print(laptop)
 \`\`\`
 
 ## Alıştırmalar
 
-1. Bir \`KrediKarti\` sınıfı oluşturun:
-   - Kart numarası ve bakiye private olsun
-   - Para çekme ve yatırma işlemleri için metodlar ekleyin
-   - Bakiye kontrolü yapın
+1. **Banka Hesabı Geliştirme** 
+   <a href="/topics/python/nesneye-yonelik-programlama/kapsulleme/banka-hesabi-gelistirme" target="_blank" rel="noopener noreferrer">Detaylı çözüm için tıklayın</a>
+   - Yukarıdaki BankaHesabi sınıfına şu özellikleri ekleyin:
+     - Hesap limiti kontrolü
+     - Günlük para çekme limiti
+     - Hesap dondurma/açma özelliği
+     - Detaylı işlem raporu
 
-2. Bir \`Kullanici\` sınıfı oluşturun:
-   - Şifre private olsun
-   - Şifre değiştirme metodu ekleyin
-   - Şifre kontrolü için property kullanın
+2. **Kütüphane Üye Sistemi**
+   <a href="/topics/python/nesneye-yonelik-programlama/kapsulleme/kutuphane-uye-sistemi" target="_blank" rel="noopener noreferrer">Detaylı çözüm için tıklayın</a>
+   - Üye bilgilerini kapsülleyen bir sistem oluşturun:
+     - Üye kişisel bilgilerinin gizliliği
+     - Ödünç alınan kitap takibi
+     - Gecikme cezası hesaplama
+     - Üyelik durumu kontrolü
 
-3. Bir \`SicaklikOlcer\` sınıfı oluşturun:
-   - Celsius ve Fahrenheit dönüşümleri için property'ler ekleyin
-   - Geçerli sıcaklık aralığı kontrolü yapın
+3. **Araç Kiralama Sistemi**
+   <a href="/topics/python/nesneye-yonelik-programlama/kapsulleme/arac-kiralama-sistemi" target="_blank" rel="noopener noreferrer">Detaylı çözüm için tıklayın</a>
+   - Araç bilgilerini ve kiralama işlemlerini yöneten bir sistem yapın:
+     - Araç durumu takibi
+     - Kiralama ücreti hesaplama
+     - Kilometre sınırı kontrolü
+     - Bakım takibi
 
 ## Sonraki Adımlar
 
-Kapsülleme konusunu öğrendiniz. Şimdi çok biçimlilik (polymorphism) konusuna geçerek, aynı arayüzü farklı sınıflarda nasıl kullanacağımızı öğrenebilirsiniz.
+Kapsülleme konusunu detaylı örneklerle öğrendiniz. Şimdi sırada çok biçimlilik (polymorphism) konusu var. Bu konuda, aynı arayüzü farklı sınıflarda nasıl kullanacağımızı ve kodumuzun esnekliğini nasıl artıracağımızı öğreneceğiz.
 `;
 
 export default function EncapsulationPage() {
@@ -241,7 +304,6 @@ export default function EncapsulationPage() {
         <MarkdownContent content={content} />
       </div>
       
-      {/* Navigasyon Linkleri */}
       <div className="mt-12 flex flex-col sm:flex-row justify-between gap-4">
         <Button asChild variant="outline" className="gap-2">
           <Link href="/topics/python/nesneye-yonelik-programlama/kalitim">
