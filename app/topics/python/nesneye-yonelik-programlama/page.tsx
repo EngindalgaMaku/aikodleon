@@ -195,53 +195,42 @@ export default function PythonOOPPage() {
         <div className="my-12">
           <h2 className="text-3xl font-bold mb-8">Ek Kaynaklar</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Terimler Sözlüğü</CardTitle>
-                <CardDescription>OOP terimlerini öğrenin</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                  <li>Temel Kavramlar</li>
-                  <li>İleri Kavramlar</li>
-                  <li>Python'a Özgü Terimler</li>
-                </ul>
-              </CardContent>
-              <CardFooter>
-                <Button asChild className="w-full group">
-                  <Link href="/topics/python/nesneye-yonelik-programlama/terimler-sozlugu">
-                    Sözlüğe Git
-                    <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Video Eğitimler</CardTitle>
-                <CardDescription>OOP kavramlarını görsel olarak öğrenin</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                  <li>Temel OOP Kavramları</li>
-                  <li>Pratik Uygulamalar</li>
-                  <li>İleri Seviye Teknikler</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Alıştırmalar</CardTitle>
-                <CardDescription>Öğrendiklerinizi pekiştirin</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                  <li>Kod Örnekleri</li>
-                  <li>Quiz Soruları</li>
-                  <li>Projeler</li>
-                </ul>
-              </CardContent>
-            </Card>
+            <div className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold mb-4">Terimler Sözlüğü</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">OOP kavramlarını detaylı açıklamalarla öğrenin</p>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-4">
+                <li>Temel OOP Kavramları</li>
+                <li>İleri Seviye Terimler</li>
+                <li>Python'a Özgü Terimler</li>
+              </ul>
+              <Link 
+                href="/topics/python/nesneye-yonelik-programlama/terimler-sozlugu"
+                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 text-sm font-medium inline-flex items-center"
+              >
+                Sözlüğe Git
+                <ArrowRight className="h-4 w-4 ml-1" />
+              </Link>
+            </div>
+
+            <div className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold mb-4">Video Eğitimler</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">OOP kavramlarını görsel olarak öğrenin</p>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Temel OOP Kavramları</li>
+                <li>Pratik Uygulamalar</li>
+                <li>İleri Seviye Teknikler</li>
+              </ul>
+            </div>
+
+            <div className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold mb-4">Dokümantasyon</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">Detaylı kaynak dökümanlar</p>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Python OOP Rehberi</li>
+                <li>Best Practices</li>
+                <li>Tasarım Desenleri</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
