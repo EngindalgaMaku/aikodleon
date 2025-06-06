@@ -37,7 +37,30 @@ export function generateSitemapEntries(): SitemapEntry[] {
     },
   ];
 
-  // Konu sayfaları
+  // Python OOP sayfaları
+  const pythonOOPPages = [
+    '/topics/python/nesne-tabanli-programlama',
+    '/topics/python/nesne-tabanli-programlama/siniflar-ve-nesneler',
+    '/topics/python/nesne-tabanli-programlama/kalitim',
+    '/topics/python/nesne-tabanli-programlama/kapsulleme',
+    '/topics/python/nesne-tabanli-programlama/cok-bicimlilk',
+    '/topics/python/nesne-tabanli-programlama/soyut-siniflar-ve-arayuzler',
+    '/topics/python/nesne-tabanli-programlama/tasarim-desenleri',
+    '/topics/python/nesne-tabanli-programlama/pratik-ornekler',
+    '/topics/python/nesne-tabanli-programlama/terimler-sozlugu',
+    // Yeni eklenen örnek sayfaları
+    '/topics/python/nesne-tabanli-programlama/pratik-ornekler/temel-ornekler',
+    '/topics/python/nesne-tabanli-programlama/pratik-ornekler/temel-ornekler/ogrenci-sistemi',
+    '/topics/python/nesne-tabanli-programlama/pratik-ornekler/temel-ornekler/arac-kiralama',
+    '/topics/python/nesne-tabanli-programlama/pratik-ornekler/tasarim-desenleri',
+    '/topics/python/nesne-tabanli-programlama/pratik-ornekler/gercek-dunya'
+  ].map(url => ({
+    url,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
+  // Diğer konu sayfaları
   const topicPages = [
     '/topics/machine-learning',
     '/topics/nlp',
@@ -62,7 +85,7 @@ export function generateSitemapEntries(): SitemapEntry[] {
   }));
 
   // Tüm sayfaları birleştir
-  const allPages = [...mainPages, ...topicPages, ...legalPages];
+  const allPages = [...mainPages, ...pythonOOPPages, ...topicPages, ...legalPages];
 
   // Her sayfa için tam URL ve alternatif dil referansı ekle
   return allPages.map(page => ({
