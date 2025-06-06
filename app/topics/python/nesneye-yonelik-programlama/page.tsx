@@ -197,6 +197,27 @@ export default function PythonOOPPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card>
               <CardHeader>
+                <CardTitle>Terimler Sözlüğü</CardTitle>
+                <CardDescription>OOP terimlerini öğrenin</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                  <li>Temel Kavramlar</li>
+                  <li>İleri Kavramlar</li>
+                  <li>Python'a Özgü Terimler</li>
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button asChild className="w-full group">
+                  <Link href="/topics/python/nesneye-yonelik-programlama/terimler-sozlugu">
+                    Sözlüğe Git
+                    <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+            <Card>
+              <CardHeader>
                 <CardTitle>Video Eğitimler</CardTitle>
                 <CardDescription>OOP kavramlarını görsel olarak öğrenin</CardDescription>
               </CardHeader>
@@ -218,19 +239,6 @@ export default function PythonOOPPage() {
                   <li>Kod Örnekleri</li>
                   <li>Quiz Soruları</li>
                   <li>Projeler</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Dokümantasyon</CardTitle>
-                <CardDescription>Detaylı kaynak dökümanlar</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                  <li>Python OOP Rehberi</li>
-                  <li>Best Practices</li>
-                  <li>Tasarım Desenleri</li>
                 </ul>
               </CardContent>
             </Card>
