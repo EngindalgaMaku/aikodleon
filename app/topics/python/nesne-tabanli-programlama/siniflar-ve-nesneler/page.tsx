@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Code2, Settings, Terminal, BookOpen } from "lucide-react";
+import { ArrowRight, Code2, Settings, Terminal, BookOpen, GraduationCap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Python Sınıflar ve Nesneler | AIKOD',
@@ -147,6 +147,59 @@ print(c2.projeler)  # ['Mobil Uygulama']
 3. Her sınıf tek bir sorumluluğa sahip olmalıdır
 4. Constructor'da gerekli tüm başlangıç değerleri atanmalıdır
 5. Metodlar anlamlı isimler ile adlandırılmalıdır
+
+## Nesne Dizileriyle Çalışma
+
+Nesnelerle çalışırken, birden fazla nesneyi bir dizide (liste veya tuple) saklayabilir ve üzerlerinde döngülerle işlem yapabilirsiniz:
+
+\`\`\`python
+class Oyuncu:
+    def __init__(self, x, y):
+        self.x = x  # x koordinatı
+        self.y = y  # y koordinatı
+
+# Birden fazla nesne oluşturma
+oyuncu1 = Oyuncu(5, 6)
+oyuncu2 = Oyuncu(2, 4)
+oyuncu3 = Oyuncu(3, 6)
+
+# Nesneleri bir listede saklama
+oyuncular = [oyuncu1, oyuncu2, oyuncu3]
+
+# Tüm oyuncuların koordinatlarını yazdırma
+for oyuncu in oyuncular:
+    print(f"X: {oyuncu.x} Y: {oyuncu.y}")
+\`\`\`
+
+Bu örnekte:
+1. \`Oyuncu\` sınıfı, 2D dünyada bir oyuncunun konumunu temsil eder
+2. Üç farklı oyuncu nesnesi oluşturulur
+3. Nesneler bir liste içinde saklanır
+4. \`for\` döngüsü ile her oyuncunun koordinatları yazdırılır
+
+Döngü her iterasyonda:
+- İlk iterasyonda \`oyuncu1\` nesnesi \`oyuncu\` değişkenine atanır
+- İkinci iterasyonda \`oyuncu2\` nesnesi \`oyuncu\` değişkenine atanır
+- Üçüncü iterasyonda \`oyuncu3\` nesnesi \`oyuncu\` değişkenine atanır
+
+💡 İpucu: Döngü değişkenine, içinde saklayacağı nesne tipini temsil eden bir isim vermeniz önerilir. Bu örnekte \`oyuncu\` kullanılmıştır çünkü değişken \`Oyuncu\` sınıfı nesnelerini tutar.
+
+### Nesne Dizileriyle Çalışmanın Avantajları
+
+1. **Kod Tekrarını Azaltma**: Aynı işlemi birden fazla nesne için tek bir döngüde yapabilirsiniz
+2. **Bakım Kolaylığı**: Tüm nesneler için yapılacak değişiklikler tek bir yerde yapılır
+3. **Dinamik İşlemler**: Çalışma zamanında nesne sayısı değişse bile kod çalışmaya devam eder
+4. **Toplu İşlemler**: Filtreleme, sıralama, dönüştürme gibi işlemleri kolayca yapabilirsiniz
+
+## Alıştırmalar
+
+Pratik yaparak öğrenin:
+
+1. Başlangıç seviyesi örnekler
+2. Orta seviye projeler
+3. İleri seviye uygulamalar
+4. Test senaryoları
+
 `;
 
 const sections = [
@@ -154,6 +207,7 @@ const sections = [
     title: "Sınıf Kavramı",
     description: "Sınıfların tanımı ve temel özellikleri",
     icon: <Code2 className="h-6 w-6" />,
+    link: "/topics/python/nesne-tabanli-programlama/siniflar-ve-nesneler/sinif-kavrami",
     topics: [
       "Sınıf tanımlama",
       "Özellikler (attributes)",
@@ -165,6 +219,7 @@ const sections = [
     title: "Nesne Oluşturma",
     description: "Sınıflardan nesne örnekleri oluşturma",
     icon: <Settings className="h-6 w-6" />,
+    link: "/topics/python/nesne-tabanli-programlama/siniflar-ve-nesneler/nesne-olusturma",
     topics: [
       "Constructor kullanımı",
       "Nesne örnekleme",
@@ -176,6 +231,7 @@ const sections = [
     title: "Instance Metodları",
     description: "Nesne davranışlarını tanımlayan metodlar",
     icon: <Terminal className="h-6 w-6" />,
+    link: "/topics/python/nesne-tabanli-programlama/siniflar-ve-nesneler/instance-metodlari",
     topics: [
       "Self parametresi",
       "Metod tanımlama",
@@ -187,11 +243,36 @@ const sections = [
     title: "İyi Pratikler",
     description: "Sınıf ve nesne kullanım önerileri",
     icon: <BookOpen className="h-6 w-6" />,
+    link: "/topics/python/nesne-tabanli-programlama/siniflar-ve-nesneler/iyi-pratikler",
     topics: [
       "İsimlendirme kuralları",
       "Kod organizasyonu",
       "Hata yönetimi",
       "Dokümantasyon"
+    ]
+  },
+  {
+    title: "Nesne Dizileri",
+    description: "Birden fazla nesneyle çalışma teknikleri",
+    icon: <Code2 className="h-6 w-6" />,
+    link: "/topics/python/nesne-tabanli-programlama/siniflar-ve-nesneler/nesne-dizileri",
+    topics: [
+      "Liste ve tuple kullanımı",
+      "Döngülerle işlem yapma",
+      "Toplu nesne işlemleri",
+      "Nesne koleksiyonları"
+    ]
+  },
+  {
+    title: "Alıştırmalar",
+    description: "Pratik yaparak öğrenin",
+    icon: <GraduationCap className="h-6 w-6" />,
+    link: "/topics/python/nesne-tabanli-programlama/siniflar-ve-nesneler/alistirmalar",
+    topics: [
+      "Başlangıç seviyesi örnekler",
+      "Orta seviye projeler",
+      "İleri seviye uygulamalar",
+      "Test senaryoları"
     ]
   }
 ];
@@ -224,6 +305,16 @@ export default function SiniflarVeNesnelerPage() {
                     ))}
                   </ul>
                 </CardContent>
+                {section.link && (
+                  <CardFooter>
+                    <Button asChild variant="outline" className="w-full group">
+                      <Link href={section.link}>
+                        Detaylı İncele
+                        <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                )}
               </Card>
             ))}
           </div>
