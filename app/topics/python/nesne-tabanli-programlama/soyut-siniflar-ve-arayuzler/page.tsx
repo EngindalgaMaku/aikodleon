@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ArrowRight, Component, Blocks, Workflow, Code2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python Soyut Sınıflar ve Arayüzler | AIKOD',
+  title: 'Python Soyut Sınıflar ve Arayüzler | Kodleon',
   description: 'Python\'da soyut sınıflar, abstract metodlar, arayüzler, protokoller ve daha fazlası.',
 };
 

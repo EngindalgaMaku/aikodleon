@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Code2, BookOpen, GraduationCap, Lightbulb } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python OOP Terimler Sözlüğü | AIKOD',
+  title: 'Python OOP Terimler Sözlüğü | Kodleon',
   description: 'Python nesne tabanlı programlamada kullanılan temel kavramlar ve terimler sözlüğü.',
 };
 

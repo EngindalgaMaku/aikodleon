@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Factory, Layers, Brain, Code } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python OOP Tasarım Desenleri Örnekleri | AIKOD',
+  title: 'Python OOP Tasarım Desenleri Örnekleri | Kodleon',
   description: 'Python nesne tabanlı programlama ile tasarım desenleri örnekleri ve detaylı açıklamalar.',
 };
 

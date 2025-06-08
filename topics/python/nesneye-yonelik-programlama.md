@@ -2,6 +2,8 @@
 title: "Python ile Nesneye Yönelik Programlama"
 description: "Python'da nesneye yönelik programlamanın (OOP) temelleri, sınıflar, nesneler, kalıtım ve daha fazlası."
 keywords: "python, oop, nesneye yönelik programlama, sınıf, nesne, kalıtım, inheritance, encapsulation, polymorphism"
+image: "/blog-images/python_nesne.jpg"
+date: "2023-06-10"
 ---
 
 # Python ile Nesneye Yönelik Programlama (OOP)

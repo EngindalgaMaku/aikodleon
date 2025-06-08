@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ArrowRight, Layers, Code2, Workflow, Settings } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python Çok Biçimlilik (Polymorphism) | AIKOD',
+  title: 'Python Çok Biçimlilik (Polymorphism) | Kodleon',
   description: 'Python\'da çok biçimlilik kavramı, method overriding, duck typing, abstract base classes ve daha fazlası.',
 };
 

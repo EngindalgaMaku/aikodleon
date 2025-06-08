@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Code2, Settings, Terminal, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python Instance Metodları | AIKOD',
+  title: 'Python Instance Metodları | Kodleon',
   description: 'Python\'da instance metodları, self parametresi, metod tanımlama ve çağırma teknikleri.',
 };
 

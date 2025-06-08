@@ -1,6 +1,8 @@
 ---
 title: Yapay Arı Kolonisi Optimizasyonu (Artificial Bee Colony - ABC)
 description: Yapay Arı Kolonisi (ABC) algoritması, bal arılarının yiyecek arama davranışlarından esinlenerek Derviş Karaboğa tarafından 2005 yılında geliştirilmiş bir metasezgisel optimizasyon algoritmasıdır.
+image: "/blog-images/artificialbee.jpg"
+date: "2023-07-01"
 ---
 
 ## Yapay Arı Kolonisi (ABC) Nedir?

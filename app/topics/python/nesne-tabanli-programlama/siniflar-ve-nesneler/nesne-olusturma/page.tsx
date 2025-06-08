@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Code2, Settings, Terminal, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python Nesne Oluşturma | AIKOD',
+  title: 'Python Nesne Oluşturma | Kodleon',
   description: 'Python\'da nesne oluşturma, constructor kullanımı, nesne örnekleme ve yaşam döngüsü yönetimi.',
 };
 

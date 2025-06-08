@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ArrowRight, Factory, Copy, Command, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python Tasarım Desenleri | AIKOD',
+  title: 'Python Tasarım Desenleri | Kodleon',
   description: 'Python\'da yaygın kullanılan tasarım desenleri: Creational, Structural ve Behavioral patterns.',
 };
 

@@ -1,6 +1,9 @@
-# Karınca Kolonisi Optimizasyonu (Ant Colony Optimization - ACO)
-
-![Karınca Kolonisi Optimizasyonu](https://images.pexels.com/photos/790357/pexels-photo-790357.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)
+---
+title: Karınca Kolonisi Optimizasyonu (Ant Colony Optimization - ACO)
+description: Karınca Kolonisi Optimizasyonu, gerçek karıncaların yiyecek kaynaklarına giden en kısa yolları bulma davranışlarından esinlenilmiş, olasılıksal bir metasezgisel optimizasyon algoritmasıdır.
+image: "/blog-images/antcolony.jpg"
+date: "2023-06-16"
+---
 
 ## Karınca Kolonisi Optimizasyonu Nedir?
 

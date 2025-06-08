@@ -37,7 +37,7 @@ export default function Head() {
             "@type": "Organization",
             "name": "Kodleon",
             "url": "https://kodleon.com",
-            "logo": "https://kodleon.com/logo.png",
+            "logo": "https://kodleon.com/images/logo.jpg",
             "sameAs": [
               "https://twitter.com/kodleon",
               "https://www.linkedin.com/company/kodleon",

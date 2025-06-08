@@ -1,6 +1,8 @@
 ---
 title: Ateşböceği Algoritması (Firefly Algorithm - FA)
 description: Ateşböceği Algoritması (FA), ateşböceklerinin yanıp sönen ışıklarını kullanarak birbirlerini çekme davranışlarından esinlenerek geliştirilmiş bir metasezgisel optimizasyon algoritmasıdır.
+image: "/blog-images/firefly.jpg"
+date: "2023-06-22"
 ---
 
 ## Ateşböceği Algoritması (FA) Nedir?

@@ -2,6 +2,8 @@
 title: "Python ile Derin Öğrenme"
 description: "Python ile derin öğrenme temelleri, yapay sinir ağları ve popüler kütüphaneler."
 keywords: "python, derin öğrenme, deep learning, sinir ağı, tensorflow, keras, pytorch"
+image: "/blog-images/python_derin.jpg"
+date: "2023-06-13"
 ---
 
 ## Python ile Derin Öğrenme

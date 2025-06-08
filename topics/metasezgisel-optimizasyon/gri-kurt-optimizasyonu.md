@@ -1,6 +1,8 @@
 ---
 title: Gri Kurt Optimizasyonu (Grey Wolf Optimizer - GWO)
 description: Gri Kurt Optimizasyonu (GWO), gri kurtların sosyal hiyerarşisi ve avlanma davranışlarından esinlenerek geliştirilmiş bir metasezgisel optimizasyon algoritmasıdır.
+image: "/blog-images/greywolf.jpg"
+date: "2023-06-25"
 ---
 
 ## Gri Kurt Optimizasyonu (GWO) Nedir?
@@ -28,33 +30,57 @@ GWO algoritmasının temel adımları şunlardır:
 
 2.  **Avı Çevreleme (Encircling Prey):**
     *   Kurtlar avın etrafını sarar. Bu davranış matematiksel olarak şu şekilde modellenir:
-        \[ \vec{D} = |\vec{C} \cdot \vec{X}_p(t) - \vec{X}(t)| \]
-        \[ \vec{X}(t+1) = \vec{X}_p(t) - \vec{A} \cdot \vec{D} \]
+        
+        <div style="text-align: center; margin: 1em 0;">
+        <b>D</b> = |<b>C</b> · <b>X<sub>p</sub></b>(t) - <b>X</b>(t)|
+        </div>
+        
+        <div style="text-align: center; margin: 1em 0;">
+        <b>X</b>(t+1) = <b>X<sub>p</sub></b>(t) - <b>A</b> · <b>D</b>
+        </div>
+        
         Burada:
         *   `t`, mevcut iterasyonu gösterir.
-        *   \( \vec{X}_p \), avın pozisyon vektörüdür.
-        *   \( \vec{X} \), bir gri kurdun pozisyon vektörüdür.
-        *   \( \vec{A} \) ve \( \vec{C} \) katsayı vektörleridir:
-            \[ \vec{A} = 2\vec{a} \cdot \vec{r}_1 - \vec{a} \]
-            \[ \vec{C} = 2 \cdot \vec{r}_2 \]
-            *   \( \vec{a} \) bileşenleri, iterasyonlar boyunca lineer olarak 2'den 0'a düşürülür.
-            *   \( \vec{r}_1 \) ve \( \vec{r}_2 \), `[0, 1]` aralığında rastgele vektörlerdir.
+        *   <b>X<sub>p</sub></b>, avın pozisyon vektörüdür.
+        *   <b>X</b>, bir gri kurdun pozisyon vektörüdür.
+        *   <b>A</b> ve <b>C</b> katsayı vektörleridir:
+            
+            <div style="text-align: center; margin: 1em 0;">
+            <b>A</b> = 2<b>a</b> · <b>r<sub>1</sub></b> - <b>a</b>
+            </div>
+            
+            <div style="text-align: center; margin: 1em 0;">
+            <b>C</b> = 2 · <b>r<sub>2</sub></b>
+            </div>
+            
+            *   <b>a</b> bileşenleri, iterasyonlar boyunca lineer olarak 2'den 0'a düşürülür.
+            *   <b>r<sub>1</sub></b> ve <b>r<sub>2</sub></b>, `[0, 1]` aralığında rastgele vektörlerdir.
 
 3.  **Avlanma (Hunting):**
     *   Alfa, beta ve delta kurtlarının avın potansiyel konumu hakkında daha iyi bilgiye sahip olduğu varsayılır.
     *   Bu nedenle, ilk üç en iyi çözüm (α, β, δ) saklanır ve diğer arama ajanları (omega kurtları), bu en iyi çözümlere göre pozisyonlarını güncellemeye zorlanır.
     *   Omega kurtlarının pozisyon güncelleme denklemleri şunlardır:
-        \[ \vec{D}_\alpha = |\vec{C}_1 \cdot \vec{X}_\alpha - \vec{X}|, \quad \vec{D}_\beta = |\vec{C}_2 \cdot \vec{X}_\beta - \vec{X}|, \quad \vec{D}_\delta = |\vec{C}_3 \cdot \vec{X}_\delta - \vec{X}| \]
-        \[ \vec{X}_1 = \vec{X}_\alpha - \vec{A}_1 \cdot \vec{D}_\alpha, \quad \vec{X}_2 = \vec{X}_\beta - \vec{A}_2 \cdot \vec{D}_\beta, \quad \vec{X}_3 = \vec{X}_\delta - \vec{A}_3 \cdot \vec{D}_\delta \]
-        \[ \vec{X}(t+1) = \frac{\vec{X}_1 + \vec{X}_2 + \vec{X}_3}{3} \]
-        Burada \( \vec{X}_\alpha, \vec{X}_\beta, \vec{X}_\delta \) sırasıyla alfa, beta ve delta kurtlarının pozisyonlarıdır ve \( \vec{A}_1, \vec{A}_2, \vec{A}_3 \) ile \( \vec{C}_1, \vec{C}_2, \vec{C}_3 \) yukarıda tanımlanan \( \vec{A} \) ve \( \vec{C} \) gibi hesaplanır.
+        
+        <div style="text-align: center; margin: 1em 0;">
+        <b>D<sub>α</sub></b> = |<b>C<sub>1</sub></b> · <b>X<sub>α</sub></b> - <b>X</b>|,&nbsp;&nbsp;&nbsp;<b>D<sub>β</sub></b> = |<b>C<sub>2</sub></b> · <b>X<sub>β</sub></b> - <b>X</b>|,&nbsp;&nbsp;&nbsp;<b>D<sub>δ</sub></b> = |<b>C<sub>3</sub></b> · <b>X<sub>δ</sub></b> - <b>X</b>|
+        </div>
+        
+        <div style="text-align: center; margin: 1em 0;">
+        <b>X<sub>1</sub></b> = <b>X<sub>α</sub></b> - <b>A<sub>1</sub></b> · <b>D<sub>α</sub></b>,&nbsp;&nbsp;&nbsp;<b>X<sub>2</sub></b> = <b>X<sub>β</sub></b> - <b>A<sub>2</sub></b> · <b>D<sub>β</sub></b>,&nbsp;&nbsp;&nbsp;<b>X<sub>3</sub></b> = <b>X<sub>δ</sub></b> - <b>A<sub>3</sub></b> · <b>D<sub>δ</sub></b>
+        </div>
+        
+        <div style="text-align: center; margin: 1em 0;">
+        <b>X</b>(t+1) = (<b>X<sub>1</sub></b> + <b>X<sub>2</sub></b> + <b>X<sub>3</sub></b>)/3
+        </div>
+        
+        Burada <b>X<sub>α</sub></b>, <b>X<sub>β</sub></b>, <b>X<sub>δ</sub></b> sırasıyla alfa, beta ve delta kurtlarının pozisyonlarıdır ve <b>A<sub>1</sub></b>, <b>A<sub>2</sub></b>, <b>A<sub>3</sub></b> ile <b>C<sub>1</sub></b>, <b>C<sub>2</sub></b>, <b>C<sub>3</sub></b> yukarıda tanımlanan <b>A</b> ve <b>C</b> gibi hesaplanır.
 
 4.  **Avı Arama (Keşif) ve Saldırı (Sömürü) (Attacking Prey - Exploitation vs. Exploration):**
-    *   \( \vec{A} \) vektörünün değeri, keşif ve sömürü dengesini sağlar.
-    *   \( \vec{a} \) değeri iterasyonlar boyunca 2'den 0'a azaldığı için, \( \vec{A} \) değeri de `[-a, a]` aralığında değişir.
-    *   Eğer \( |A| > 1 \) ise, kurtlar avdan uzaklaşmaya (keşif yapmaya) zorlanır.
-    *   Eğer \( |A| < 1 \) ise, kurtlar ava saldırmaya (sömürü yapmaya) zorlanır.
-    *   \( \vec{C} \) vektörü de `[0, 2]` aralığında rastgele değerler içerir ve avın yerel optimumlarda takılıp kalmasını önlemek için rastgele ağırlıklar sağlar.
+    *   <b>A</b> vektörünün değeri, keşif ve sömürü dengesini sağlar.
+    *   <b>a</b> değeri iterasyonlar boyunca 2'den 0'a azaldığı için, <b>A</b> değeri de `[-a, a]` aralığında değişir.
+    *   Eğer |A| > 1 ise, kurtlar avdan uzaklaşmaya (keşif yapmaya) zorlanır.
+    *   Eğer |A| < 1 ise, kurtlar ava saldırmaya (sömürü yapmaya) zorlanır.
+    *   <b>C</b> vektörü de `[0, 2]` aralığında rastgele değerler içerir ve avın yerel optimumlarda takılıp kalmasını önlemek için rastgele ağırlıklar sağlar.
 
 5.  **Durdurma Koşulu (Termination Condition):**
     *   Algoritma, maksimum iterasyon sayısına ulaşıldığında veya başka bir durdurma kriteri karşılandığında sona erer. Aksi halde, kurtların uygunlukları yeniden hesaplanır, alfa, beta ve delta güncellenir ve 2. adıma geri dönülür.

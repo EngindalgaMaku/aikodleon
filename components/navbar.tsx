@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Brain, Menu, X } from "lucide-react";
+import { Brain, Menu, X, Home } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 import { useTranslation } from "@/lib/i18n";
@@ -17,7 +18,6 @@ export default function Navbar() {
   const isHomePage = pathname === "/";
 
   const routes = [
-    ...(isHomePage ? [] : [{ name: t('navigation.home'), href: "/" }]),
     { name: t('navigation.topics'), href: "/topics" },
     { name: t('navigation.blog'), href: "/blog" },
   ];
@@ -28,13 +28,31 @@ export default function Navbar() {
         {/* Logo - Sol */}
         <div className="flex-none">
           <Link href="/" className="flex items-center gap-2" aria-label="Kodleon ana sayfaya git">
-            <Brain className="h-6 w-6 text-primary" aria-hidden="true" />
+            <div className="relative h-8 w-8 overflow-hidden">
+              <Image 
+                src="/images/logo.jpg" 
+                alt="Kodleon Logo" 
+                width={32} 
+                height={32} 
+                className="rounded-sm object-contain"
+              />
+            </div>
             <span className="font-bold text-xl hidden sm:inline-block">Kodleon</span>
           </Link>
         </div>
         
         {/* Ana Menü - Orta */}
         <nav className="hidden md:flex flex-1 items-center justify-center" aria-label="Ana navigasyon">
+          {!isHomePage && (
+            <Link
+              href="/"
+              className="text-sm font-medium transition-colors hover:text-primary px-4 flex items-center"
+              aria-label={t('navigation.home')}
+            >
+              <Home className="h-4 w-4" />
+            </Link>
+          )}
+          
           {routes.map((route) => (
             <Link
               key={route.href}
@@ -82,6 +100,18 @@ export default function Navbar() {
         {isOpen && (
           <div className="absolute top-full left-0 right-0 bg-background border-b md:hidden shadow-lg">
             <nav className="container max-w-6xl mx-auto py-4 flex flex-col gap-2">
+              {!isHomePage && (
+                <Link
+                  href="/"
+                  className="flex items-center gap-2 text-base font-medium px-4 py-2 rounded-md hover:bg-muted hover:text-primary"
+                  onClick={() => setIsOpen(false)}
+                  aria-label={t('navigation.home')}
+                >
+                  <Home className="h-5 w-5" />
+                  {t('navigation.home')}
+                </Link>
+              )}
+              
               {routes.map((route) => (
                 <Link
                   key={route.href}

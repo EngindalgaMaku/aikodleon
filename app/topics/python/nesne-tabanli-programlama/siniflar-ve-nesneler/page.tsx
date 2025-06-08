@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ArrowRight, Code2, Settings, Terminal, BookOpen, GraduationCap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python Sınıflar ve Nesneler | AIKOD',
+  title: 'Python Sınıflar ve Nesneler | Kodleon',
   description: 'Python\'da sınıf ve nesne kavramları, constructor, instance metodları, self parametresi ve daha fazlası.',
 };
 

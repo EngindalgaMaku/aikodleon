@@ -23,7 +23,7 @@ export const metadata: Metadata = createPageMetadata({
     type: 'article',
     images: [
       {
-        url: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        url: '/blog-images/code-assistants.jpg',
         width: 1260,
         height: 750,
         alt: 'AI Kod Asistanları Karşılaştırması Blog Görseli',
@@ -101,7 +101,7 @@ export default function AiCodingAssistantsBlogPostPage() {
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Yazılım geliştirme dünyası yapay zeka ile hızla dönüşüyor. Bu dönüşümün en önemli oyuncularından biri de AI kod asistanları. Peki, hangi araç size en uygun? Gelin, popüler seçenekleri mercek altına alalım.
             </p>
-            <p className="text-sm text-muted-foreground mt-4">Yayınlanma Tarihi: {new Date().toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <p className="text-sm text-muted-foreground mt-4">Yayınlanma Tarihi: 10 Mart 2025</p>
           </div>
         </div>
       </section>

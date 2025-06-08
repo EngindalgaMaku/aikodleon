@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: 'article',
     images: [
       {
-        url: 'https://images.pexels.com/photos/7661169/pexels-photo-7661169.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', // İlgili bir görselle değiştirin
+        url: '/blog-images/embodied-ai.jpg', // İlgili bir görselle değiştirin
         width: 1260,
         height: 750,
         alt: 'Fiziksel dünyayla etkileşen robot, Cisimleşmiş Yapay Zekayı temsil ediyor',
@@ -66,7 +66,7 @@ export default function CisimlesmisYapayZekaBlogPostPage() {
             Yapay Zeka, dijital alemden çıkıp fiziksel gerçekliğimize adım atıyor. Cisimleşmiş Yapay Zekanın yükselişini, dünya modellerinin gücünü ve vaat ettikleri geleceği keşfedin.
           </p>
           <p className="text-sm text-muted-foreground">
-            Yayınlanma Tarihi: {new Date().toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}
+            Yayınlanma Tarihi: 15 Şubat 2025
           </p>
         </div>
       </section>

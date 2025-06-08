@@ -1,6 +1,8 @@
 ---
 title: Guguk Kuşu Araması (Cuckoo Search - CS)
 description: Guguk Kuşu Araması (Cuckoo Search - CS), guguk kuşlarının kuluçka parazitizmi davranışlarından ve Lévy uçuşlarından esinlenerek geliştirilmiş bir metasezgisel optimizasyon algoritmasıdır.
+image: "/blog-images/gugukkusu.jpg"
+date: "2023-06-28"
 ---
 
 ## Guguk Kuşu Araması (Cuckoo Search - CS) Nedir?

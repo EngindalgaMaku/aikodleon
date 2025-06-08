@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ArrowRight, Lock, Key, Shield, Eye } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python Kapsülleme (Encapsulation) | AIKOD',
+  title: 'Python Kapsülleme (Encapsulation) | Kodleon',
   description: 'Python\'da kapsülleme (encapsulation) kavramı, private ve protected üyeler, getter ve setter metodları, property dekoratörü ve daha fazlası.',
 };
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Car, Calendar, CreditCard, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python OOP Araç Kiralama Sistemi Örneği | AIKOD',
+  title: 'Python OOP Araç Kiralama Sistemi Örneği | Kodleon',
   description: 'Python nesne tabanlı programlama ile araç kiralama sistemi uygulaması örneği ve detaylı açıklamalar.',
 };
 

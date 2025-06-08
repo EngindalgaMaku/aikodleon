@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Code2, Settings, Terminal, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python Sınıf Kavramı | AIKOD',
+  title: 'Python Sınıf Kavramı | Kodleon',
   description: 'Python\'da sınıf kavramı, sınıf tanımlama, özellikler, metodlar ve sınıf yapısı hakkında detaylı bilgi.',
 };
 

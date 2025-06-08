@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Code2, BookOpen, GraduationCap, Lightbulb } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python OOP Alıştırmalar | AIKOD',
+  title: 'Python OOP Alıştırmalar | Kodleon',
   description: 'Python nesne tabanlı programlama alıştırmaları ve çözümleri.',
 };
 

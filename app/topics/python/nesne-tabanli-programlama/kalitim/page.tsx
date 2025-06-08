@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ArrowRight, GitFork, GitMerge, GitBranch, GitPullRequest } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python Kalıtım (Inheritance) | AIKOD',
+  title: 'Python Kalıtım (Inheritance) | Kodleon',
   description: 'Python\'da kalıtım kavramı, tek ve çoklu kalıtım, method overriding, super() kullanımı ve daha fazlası.',
 };
 

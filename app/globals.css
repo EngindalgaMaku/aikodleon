@@ -80,3 +80,80 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Markdown içerik stilleri */
+.markdown-content h1 {
+  @apply text-3xl font-bold mt-6 mb-4 text-primary border-b pb-2;
+}
+
+.markdown-content h2 {
+  @apply text-2xl font-semibold mt-5 mb-3 text-primary;
+}
+
+.markdown-content h3 {
+  @apply text-xl font-medium mt-4 mb-2 text-primary;
+}
+
+.markdown-content h4 {
+  @apply text-lg font-medium mt-3 mb-2;
+}
+
+.markdown-content p {
+  @apply my-3 leading-relaxed;
+}
+
+.markdown-content ul {
+  @apply list-disc pl-6 my-3 space-y-1;
+}
+
+.markdown-content ol {
+  @apply list-decimal pl-6 my-3 space-y-1;
+}
+
+.markdown-content li {
+  @apply my-1;
+}
+
+.markdown-content a {
+  @apply text-blue-600 hover:underline dark:text-blue-400;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic my-4;
+}
+
+.markdown-content code {
+  @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono;
+}
+
+.markdown-content pre {
+  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-x-auto my-4 text-sm font-mono;
+}
+
+.markdown-content table {
+  @apply w-full border-collapse my-4;
+}
+
+.markdown-content th {
+  @apply bg-muted p-2 text-left font-semibold;
+}
+
+.markdown-content td {
+  @apply border border-border p-2;
+}
+
+.markdown-content img {
+  @apply max-w-full h-auto my-4 rounded-md;
+}
+
+.markdown-content hr {
+  @apply my-6 border-t border-gray-300 dark:border-gray-700;
+}
+
+.markdown-content strong, .markdown-content b {
+  @apply font-bold;
+}
+
+.markdown-content em, .markdown-content i {
+  @apply italic;
+}

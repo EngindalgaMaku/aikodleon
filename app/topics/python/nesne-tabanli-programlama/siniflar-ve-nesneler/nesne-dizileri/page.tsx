@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Code2, List, Terminal, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python Nesne Dizileri | AIKOD',
+  title: 'Python Nesne Dizileri | Kodleon',
   description: 'Python\'da nesne dizileriyle çalışma, liste ve tuple kullanımı, döngülerle işlem yapma ve toplu nesne işlemleri.',
 };
 

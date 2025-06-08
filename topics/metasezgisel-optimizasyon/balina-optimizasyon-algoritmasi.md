@@ -1,6 +1,11 @@
 ---
 title: Balina Optimizasyon Algoritması (Whale Optimization Algorithm - WOA)
 description: Balina Optimizasyon Algoritması (WOA), kambur balinaların "kabarcık ağı" avlanma tekniğinden esinlenerek geliştirilmiş bir metasezgisel optimizasyon algoritmasıdır.
+author: "Kodleon Ekibi"
+date: "2023-07-07"
+category: "Optimizasyon"
+tags: ["optimizasyon", "metasezgisel", "algoritma", "yapay zeka"]
+image: "/blog-images/whalealgorithm.jpg"
 ---
 
 ## Balina Optimizasyon Algoritması (WOA) Nedir?

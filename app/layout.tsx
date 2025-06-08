@@ -4,33 +4,54 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import { siteConfig } from '@/config/site';
+import 'highlight.js/styles/github.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kodleon.com'),
   title: {
-    default: 'Kodleon | Yapay Zeka Eğitim Platformu',
-    template: '%s | Kodleon'
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
   },
-  description: 'Yapay zeka, makine öğrenmesi ve veri bilimi konularında Türkçe eğitim içerikleri sunan modern eğitim platformu.',
-  keywords: ['yapay zeka', 'makine öğrenmesi', 'derin öğrenme', 'yapay zeka eğitimi', 'kodleon', 'türkçe ai eğitimi', 'veri bilimi', 'nlp', 'doğal dil işleme', 'bilgisayarlı görü'],
-  authors: [{ name: 'Kodleon Ekibi' }],
+  description: siteConfig.description,
+  keywords: [
+    'Python',
+    'programlama',
+    'nesne tabanlı programlama',
+    'OOP',
+    'yazılım geliştirme',
+    'eğitim',
+    'Türkçe programlama',
+    'Python dersleri',
+    'yazılım dersleri',
+    'kodlama öğren'
+  ],
+  authors: [{ name: 'Kodleon Team' }],
   creator: 'Kodleon',
   publisher: 'Kodleon',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    type: 'website',
-    locale: 'tr_TR',
+    title: 'Kodleon - Python ve Programlama Eğitimi',
+    description: 'Python programlama, nesne tabanlı programlama, veri yapıları ve algoritmalar hakkında kapsamlı Türkçe eğitim içerikleri.',
     url: 'https://kodleon.com',
-    title: 'Kodleon | Yapay Zeka Eğitim Platformu',
-    description: 'Yapay zeka, makine öğrenmesi ve veri bilimi konularında Türkçe eğitim içerikleri sunan modern eğitim platformu.',
     siteName: 'Kodleon',
+    locale: 'tr_TR',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kodleon | Yapay Zeka Eğitim Platformu',
-    description: 'Yapay zeka, makine öğrenmesi ve veri bilimi konularında Türkçe eğitim içerikleri.',
+    title: 'Kodleon - Python ve Programlama Eğitimi',
+    description: 'Python programlama, nesne tabanlı programlama, veri yapıları ve algoritmalar hakkında kapsamlı Türkçe eğitim içerikleri.',
     creator: '@kodleon',
+  },
+  verification: {
+    google: 'google-site-verification-code',
   },
   alternates: {
     canonical: 'https://kodleon.com',
@@ -40,15 +61,8 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
-  },
-  verification: {
-    google: 'google-site-verification-code',
-  },
-  category: 'education',
-  formatDetection: {
-    telephone: false,
+    icon: '/images/favicons/favicon-16x16.png',
+    apple: '/images/favicons/favicon-16x16.png',
   },
   viewport: {
     width: 'device-width',
@@ -64,12 +78,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="tr" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+        <link
+          rel="apple-touch-icon"
+          href="/images/favicons/favicon-16x16.png"
+          type="image/png"
+          sizes="16x16"
+        />
+        <meta name="google-site-verification" content="your-verification-code" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -78,8 +100,8 @@ export default function RootLayout({
               "@type": "EducationalOrganization",
               "name": "Kodleon",
               "url": "https://kodleon.com",
-              "logo": "https://kodleon.com/logo.png",
-              "description": "Yapay zeka, makine öğrenmesi ve veri bilimi konularında Türkçe eğitim içerikleri sunan modern eğitim platformu.",
+              "logo": "https://kodleon.com/images/logo.jpg",
+              "description": "Python programlama, nesne tabanlı programlama, veri yapıları ve algoritmalar hakkında kapsamlı Türkçe eğitim içerikleri.",
               "sameAs": [
                 "https://twitter.com/kodleon",
                 "https://www.linkedin.com/company/kodleon",

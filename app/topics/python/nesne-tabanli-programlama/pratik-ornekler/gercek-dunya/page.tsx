@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Globe, Database, Layout, FileSearch } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python OOP Gerçek Dünya Uygulamaları | AIKOD',
+  title: 'Python OOP Gerçek Dünya Uygulamaları | Kodleon',
   description: 'Python nesne tabanlı programlama ile gerçek dünya uygulama örnekleri ve detaylı açıklamalar.',
 };
 

@@ -1,6 +1,8 @@
 ---
 title: Yarasa Algoritması (Bat Algorithm - BA)
 description: Yarasa Algoritması (BA), yarasaların ekolokasyon (echolocation) davranışlarından esinlenerek geliştirilmiş bir metasezgisel optimizasyon algoritmasıdır.
+image: "/blog-images/yarasa_algotihm.jpg"
+date: "2023-07-04"
 ---
 
 ## Yarasa Algoritması (BA) Nedir?

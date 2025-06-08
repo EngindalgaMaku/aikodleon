@@ -1,3 +1,10 @@
+---
+title: Genetik Algoritmalar (Genetic Algorithms - GA)
+description: Genetik Algoritmalar, doğal seçilim ve evrim teorisinden esinlenilerek geliştirilmiş, arama ve optimizasyon problemlerinin çözümü için kullanılan bir metasezgisel yöntemdir.
+image: "/blog-images/genetic.jpg"
+date: "2023-06-19"
+---
+
 # Genetik Algoritmalar (Genetic Algorithms - GA)
 
 ![Genetik Algoritmalar Konsept İllüstrasyonu](/images/genetic_algoritm_top.jpg)

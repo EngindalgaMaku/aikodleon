@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, GraduationCap, Book, Calculator, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python OOP Öğrenci Bilgi Sistemi Örneği | AIKOD',
+  title: 'Python OOP Öğrenci Bilgi Sistemi Örneği | Kodleon',
   description: 'Python nesne tabanlı programlama ile öğrenci bilgi sistemi uygulaması örneği ve detaylı açıklamalar.',
 };
 

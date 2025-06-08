@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Library, Building2, GraduationCap, Car } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python OOP Temel Örnekler | AIKOD',
+  title: 'Python OOP Temel Örnekler | Kodleon',
   description: 'Python nesne tabanlı programlamanın temel kavramlarını içeren detaylı örnekler ve açıklamalar.',
 };
 
@@ -98,7 +98,7 @@ class Kutuphane:
 # Kullanım örneği
 def main():
     # Kütüphane oluştur
-    kutuphane = Kutuphane("AIKOD Kütüphanesi")
+    kutuphane = Kutuphane("Kodleon Kütüphanesi")
     
     # Kitaplar ekle
     kitap1 = Kitap("123", "Python Programlama", "Ahmet Yılmaz")
@@ -240,7 +240,7 @@ class Banka:
 # Kullanım örneği
 def main():
     # Banka oluştur
-    banka = Banka("AIKOD Bank")
+    banka = Banka("Kodleon Bank")
     
     # Hesaplar oluştur
     vadesiz = VadesizHesap("V123", "Ali Yılmaz")

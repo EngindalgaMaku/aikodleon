@@ -23,7 +23,7 @@ export const metadata: Metadata = createPageMetadata({
     type: 'article',
     images: [
       {
-        url: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        url: '/blog-images/ai-video.jpg',
         width: 1260,
         height: 750,
         alt: 'Yapay Zeka ve Teknoloji Blog Görseli',

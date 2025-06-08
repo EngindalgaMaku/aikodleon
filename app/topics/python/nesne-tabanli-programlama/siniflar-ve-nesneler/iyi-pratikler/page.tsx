@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Code2, Settings, Terminal, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python OOP İyi Pratikler | AIKOD',
+  title: 'Python OOP İyi Pratikler | Kodleon',
   description: 'Python nesne tabanlı programlamada iyi pratikler, tasarım prensipleri ve kod organizasyonu.',
 };
 

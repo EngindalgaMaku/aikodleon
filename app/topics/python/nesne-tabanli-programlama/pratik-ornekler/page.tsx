@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Code, Blocks, Factory, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Python OOP Pratik Örnekler | AIKOD',
+  title: 'Python OOP Pratik Örnekler | Kodleon',
   description: 'Python nesne tabanlı programlama pratik örnekleri: Temel örnekler, tasarım desenleri ve gerçek dünya uygulamaları.',
 };
 
