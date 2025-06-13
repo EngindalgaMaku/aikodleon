@@ -87,6 +87,7 @@ export default async function SubtopicPage({ params }: SubtopicPageProps) {
 export async function generateStaticParams() {
   // Markdown dosyalarının listesi
   const subtopicFiles = [
+    'basics.md',
     'temel-sinir-agi-mimarileri.md',
     'yapay-sinir-aglari-guvenlik-uygulamalari.md',
     'tekrarlayan-sinir-aglari-rnn.md',

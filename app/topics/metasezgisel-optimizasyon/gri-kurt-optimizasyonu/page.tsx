@@ -3,7 +3,7 @@ import path from 'path';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, Home } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const MarkdownContent = dynamic(() => import('@/components/MarkdownContent'), {
@@ -23,24 +23,24 @@ async function getPageContent(pagePath: string): Promise<string | null> {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = "Yapay Arı Kolonisi Algoritması (ABC)";
-  const description = "Yapay Arı Kolonisi (ABC) algoritmasının arıların yiyecek arama davranışlarından nasıl esinlendiğini, çalışma prensiplerini ve optimizasyon problemlerindeki uygulamalarını öğrenin.";
+  const title = "Gri Kurt Optimizasyonu (Grey Wolf Optimization - GWO)";
+  const description = "Gri kurtların hiyerarşik liderlik yapısını ve avlanma davranışlarını taklit eden metasezgisel optimizasyon tekniği.";
   return {
     title: `${title} | Metasezgisel Optimizasyon | Kodleon`,
     description: description,
-    keywords: "yapay arı kolonisi, artificial bee colony, abc, metasezgisel optimizasyon, sürü zekası, optimizasyon algoritmaları",
+    keywords: "gri kurt optimizasyonu, grey wolf optimization, gwo, metasezgisel optimizasyon, liderlik hiyerarşisi, sürü optimizasyonu, avlanma stratejisi, yapay zeka",
     openGraph: {
       title: `${title} | Kodleon`,
       description: description,
-      images: [{ url: 'https://images.pexels.com/photos/798366/pexels-photo-798366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }],
+      images: [{ url: 'https://images.pexels.com/photos/2361/nature-animal-wolf-wilderness.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }],
     }
   };
 }
 
-export default async function ArtificialBeeColonyPage() {
-  const markdownFilePath = 'topics/metasezgisel-optimizasyon/yapay-ari-kolonisi-algoritmasi.md';
+export default async function GreyWolfOptimizationPage() {
+  const markdownFilePath = 'topics/metasezgisel-optimizasyon/gri-kurt-optimizasyonu.md';
   const markdownContent = await getPageContent(markdownFilePath);
-  const pageTitle = "Yapay Arı Kolonisi Algoritması";
+  const pageTitle = "Gri Kurt Optimizasyonu";
 
   if (!markdownContent) {
     return (
@@ -63,15 +63,15 @@ export default async function ArtificialBeeColonyPage() {
     <div className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen pb-16">
       <div className="container mx-auto py-10 px-4 sm:px-6 lg:px-8 max-w-5xl">
         <div className="mb-8 flex justify-between items-center">
-          <Button asChild variant="outline">
-            <Link href="/topics/metasezgisel-optimizasyon/yasakli-arama" className="flex items-center">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Önceki Konu: Yasaklı Arama
+          <Button asChild variant="outline" size="sm" className="gap-1 text-sm">
+            <Link href="/topics/metasezgisel-optimizasyon/guguk-kusu-aramasi">
+              <ArrowLeft className="h-4 w-4" />
+              Önceki: Guguk Kuşu Araması
             </Link>
           </Button>
-          <Button asChild variant="outline">
-            <Link href="/topics/metasezgisel-optimizasyon" className="flex items-center">
-              <Home className="mr-2 h-4 w-4" />
+          <Button asChild variant="outline" size="sm" className="gap-1 text-sm">
+            <Link href="/topics/metasezgisel-optimizasyon">
+              <ArrowLeft className="h-4 w-4" />
               Ana Kategori: Metasezgisel Optimizasyon
             </Link>
           </Button>
@@ -84,9 +84,9 @@ export default async function ArtificialBeeColonyPage() {
           </div>
         </div>
         <div className="mt-12 text-center">
-          <Button asChild variant="outline">
-            <Link href="/topics/metasezgisel-optimizasyon/diferansiyel-gelisim" className="flex items-center">
-              Sonraki Konu: Diferansiyel Gelişim <ArrowRight className="ml-2 h-4 w-4" />
+          <Button asChild variant="default">
+            <Link href="/topics/metasezgisel-optimizasyon/balina-optimizasyon-algoritmasi">
+              Sonraki Konu: Balina Optimizasyon Algoritması <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>

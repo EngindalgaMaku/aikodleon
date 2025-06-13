@@ -36,6 +36,116 @@ DE'nin temel fikri, popülasyondaki mevcut çözümler (vektörler) arasındaki 
 
 3.  **Sonuç:** Belirlenen durma kriteri sağlandığında, popülasyondaki en iyi uygunluk değerine sahip vektör çözüm olarak döndürülür.
 
+## Matematiksel Formülasyon
+
+Diferansiyel Gelişim algoritmasının temel adımları aşağıdaki matematiksel denklemlerle ifade edilebilir:
+
+1.  **Mutasyon:**
+    Her bir hedef vektör için popülasyondan rastgele seçilen üç farklı vektör (`Xr1`, `Xr2`, `Xr3`) kullanılarak bir mutant vektör (`Xv,yeni`) oluşturulur.
+    \[ X_{v,yeni} = X_{r1} + F \cdot (X_{r2} - X_{r3}) \quad (Denklem\ 2.3) \]
+    Burada `F`, mutasyon ölçek faktörüdür (`F ∈ [0, 2]`).
+
+2.  **Çaprazlama (Rekombinasyon):**
+    Mutant vektör (`Xv,yeni`) ile hedef vektör (`Xi`) arasında bileşenlerin olasılıksal olarak değiştirilmesiyle bir deneme vektörü (`Xu,yeni`) oluşturulur.
+    \[ X_{u,yeni,j} = \begin{cases} X_{v,yeni,j} & \text{if } rand_j \leq CR \text{ veya } j = j_{rand} \\ X_{i,j} & \text{aksi takdirde} \end{cases} \quad (Denklem\ 2.8) \]
+    Burada `CR`, çaprazlama oranıdır (`CR ∈ [0, 1]`) ve `j_rand`, en az bir bileşenin mutant vektörden gelmesini sağlayan rastgele bir indekstir.
+
+3.  **Seçilim:**
+    Oluşturulan deneme vektörünün uygunluk değeri, hedef vektörün uygunluk değeriyle karşılaştırılır. Eğer deneme vektörü daha iyiyse, bir sonraki nesilde hedef vektörün yerini alır.
+    \[ X_{i,yeni} = \begin{cases} X_{u,yeni} & \text{if } f(X_{u,yeni}) \leq f(X_i) \\ X_i & \text{aksi takdirde} \end{cases} \quad (Denklem\ 2.9) \]
+
+### Parametreler ve Bileşenler
+
+| Sembol | Açıklama |
+| :--- | :--- |
+| **Optimizasyon Bileşenleri** | |
+| \(X_{yeni}\) | Çaprazlama sonrası oluşturulan yeni aday çözüm (deneme vektörü) |
+| \(X_{v,yeni}\) | Mutasyon sonrası oluşturulan aday çözüm (mutant vektör) |
+| \(X_p\) | Başlangıç matrisinden rastgele seçilen p. kromozom |
+| \(q, r\) | Başlangıç matrisinden rastgele seçilen q. ve r. kromozomlar |
+| **Algoritma Parametreleri** | |
+| `nc` | Kromozom sayısı |
+| `F` | Ağırlıklandırma faktörü (`F ∈ [0, 2]`) |
+| `CR` | Çaprazlama olasılığı (`CR ∈ [0, 1]`) |
+| **Fonksiyonlar** | |
+| `rand()` | [0, 1] aralığında rastgele sayı üreten fonksiyon |
+| `ceil()` | Kendisine eşit veya kendisinden büyük pozitif tam sayıya yuvarlayan fonksiyon |
+
+## Uygulama Örnekleri
+
+### MATLAB Kodu
+
+```matlab
+% İTERASYON SÜRECİ
+for dongu = 1:durma_kriteri
+    
+    % BAŞLANGIÇ MATRİSİNDEN RASSAL OLARAK ÜÇ FARKLI ÇÖZÜMÜN SEÇİLMESİ
+    for kr = 1:nc
+        p = ceil(rand() * nc);
+        q = ceil(rand() * nc);
+        r = ceil(rand() * nc);
+        
+        % X(yeni,1) tasarım değişkeni için mutasyona uğrayan (yeni) aday çözüm değeri
+        X1yeni = OPT(1,p) + F * (OPT(1,q) - OPT(1,r));
+        
+        % X(yeni,2) tasarım değişkeni için mutasyona uğrayan (yeni) aday çözüm değeri
+        X2yeni = OPT(2,p) + F * (OPT(2,q) - OPT(2,r));
+    end
+    
+    % ÇAPRAZLAMA AŞAMASI (Bknz. Denklem 2.7)
+    rand_kr = ceil(rand() * D); % D: Değişken sayısı
+    
+    if (rand() < CR) || (kr == rand_kr)
+        X1 = X1yeni;
+    else
+        X1 = OPT(1, kr);
+    end
+    
+    % SEÇİLİM AŞAMASI (Bknz. Denklem 2.9)
+    % ... uygunluk karşılaştırması ve güncelleme ...
+    
+end
+```
+
+### Python Kodu
+
+```python
+import math
+from random import random
+
+# İTERASYON SÜRECİ
+for dongu in range(durma_kriteri):
+    
+    # BAŞLANGIÇ MATRİSİNDEN RASSAL OLARAK ÜÇ FARKLI ÇÖZÜMÜN SEÇİLMESİ
+    for kr in range(nc):
+        p = math.ceil(random() * nc) - 1
+        q = math.ceil(random() * nc) - 1
+        r = math.ceil(random() * nc) - 1
+        
+        # X1yeni: 1. tasarım değişkeni için mutasyona uğrayan yeni aday çözüm değeri
+        X1yeni = OPT[p][0] + F * (OPT[q][0] - OPT[r][0])
+        
+        # X2yeni: 2. tasarım değişkeni için mutasyona uğrayan yeni aday çözüm değeri
+        X2yeni = OPT[p][1] + F * (OPT[q][1] - OPT[r][1])
+
+        # ÇAPRAZLAMA AŞAMASI (Bknz. Denklem 2.7)
+        rand_kr_idx = math.ceil(random() * D) - 1 # D: Değişken sayısı
+        
+        X1 = 0
+        if (random() < CR) or (kr == rand_kr_idx):
+            X1 = X1yeni
+        else:
+            X1 = OPT[kr][0]
+            
+        # ... Diğer değişkenler için de çaprazlama ...
+
+        # SEÇİLİM AŞAMASI (Bknz. Denklem 2.9)
+        # ... uygunluk karşılaştırması ve yeni bireyin popülasyona eklenmesi ...
+
+# İterasyon sonu
+# En iyi çözümün bulunması
+```
+
 ## Avantajları
 
 *   **Basitlik ve Uygulama Kolaylığı:** Az sayıda adımdan oluşur ve anlaşılması, uygulanması kolaydır.

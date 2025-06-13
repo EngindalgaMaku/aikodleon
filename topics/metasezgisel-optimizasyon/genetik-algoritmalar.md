@@ -39,9 +39,7 @@ Tipik bir Genetik Algoritma aşağıdaki adımları izler:
     *   **e. Uygunluk Değerlendirmesi:** Yeni popülasyondaki kromozomların uygunluk değerleri hesaplanır.
 4.  **Döngü Sonu:** Durdurma kriteri karşılandığında, popülasyondaki en iyi uygunluk değerine sahip kromozom, problemin çözümü olarak sunulur.
 
-
 ![Genetik Algoritma Akış Şeması](/images/genetik_algoritm.jpg)
-
 
 ### 🚀 Python ile Pratik Uygulamalar
 

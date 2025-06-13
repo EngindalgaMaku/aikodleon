@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -14,24 +14,14 @@ export default function ContactPage() {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <Card>
           <CardContent className="flex flex-col items-center text-center p-6">
             <div className="p-3 rounded-full bg-primary/10 mb-4">
               <Mail className="h-6 w-6 text-primary" />
             </div>
             <h3 className="font-medium mb-2">Email</h3>
-            <p className="text-sm text-muted-foreground">info@aiegitim.com</p>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardContent className="flex flex-col items-center text-center p-6">
-            <div className="p-3 rounded-full bg-primary/10 mb-4">
-              <Phone className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="font-medium mb-2">Telefon</h3>
-            <p className="text-sm text-muted-foreground">+90 (212) 555 0123</p>
+            <p className="text-sm text-muted-foreground">mackaengin@gmail.com</p>
           </CardContent>
         </Card>
         
@@ -42,7 +32,7 @@ export default function ContactPage() {
             </div>
             <h3 className="font-medium mb-2">Adres</h3>
             <p className="text-sm text-muted-foreground">
-              Levent, İstanbul
+              Antalya
             </p>
           </CardContent>
         </Card>

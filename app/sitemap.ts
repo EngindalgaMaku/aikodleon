@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly' as ChangeFrequency,
       priority: 0.8
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified,
+      changeFrequency: 'monthly' as ChangeFrequency,
+      priority: 0.7
     }
   ]
 
@@ -83,7 +89,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8
     },
     {
-      url: `${baseUrl}/topics/python/nesne-tabanli-programlama/cok-bicimlilk`,
+      url: `${baseUrl}/topics/python/nesne-tabanli-programlama/cok-bicimlilik`,
       lastModified,
       changeFrequency: 'weekly' as ChangeFrequency,
       priority: 0.8
@@ -102,6 +108,81 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/topics/python/nesne-tabanli-programlama/terimler-sozlugu`,
+      lastModified,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/topics/python/nesne-tabanli-programlama/method-overriding`,
+      lastModified,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.8
+    }
+  ]
+
+  const metasezgiselPages = [
+    {
+      url: `${baseUrl}/topics/metasezgisel-optimizasyon`,
+      lastModified,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.9
+    },
+    {
+      url: `${baseUrl}/topics/metasezgisel-optimizasyon/guguk-kusu-aramasi`,
+      lastModified,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/topics/metasezgisel-optimizasyon/yapay-ari-kolonisi-optimizasyonu`,
+      lastModified,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.8
+    }
+  ]
+
+  const nlpPages = [
+    {
+      url: `${baseUrl}/topics/nlp`,
+      lastModified,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.9
+    }
+  ]
+
+  const neuralNetworksPages = [
+    {
+      url: `${baseUrl}/topics/neural-networks`,
+      lastModified,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.9
+    }
+  ]
+
+  const aiFundamentalsPages = [
+    {
+      url: `${baseUrl}/topics/ai-fundamentals`,
+      lastModified,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.9
+    }
+  ]
+
+  const codeExamplesPages = [
+    {
+      url: `${baseUrl}/kod-ornekleri`,
+      lastModified,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.9
+    },
+    {
+      url: `${baseUrl}/kod-ornekleri/temel-sinir-agi`,
+      lastModified,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/kod-ornekleri/resim-siniflandirma`,
       lastModified,
       changeFrequency: 'weekly' as ChangeFrequency,
       priority: 0.8
@@ -132,5 +213,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   ]
 
-  return [...mainPages, ...pythonOOPPages, ...blogPages, ...legalPages]
+  return [
+    ...mainPages,
+    ...pythonOOPPages,
+    ...metasezgiselPages,
+    ...nlpPages,
+    ...neuralNetworksPages,
+    ...aiFundamentalsPages,
+    ...codeExamplesPages,
+    ...blogPages,
+    ...legalPages
+  ]
 } 
