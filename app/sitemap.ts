@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
+import { getAllPosts } from '@/lib/mdx';
 
 type ChangeFrequency = 'daily' | 'weekly' | 'monthly' | 'yearly' | 'always' | 'hourly' | 'never';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://kodleon.com'
   const lastModified = new Date()
 
@@ -189,13 +190,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   ]
 
+  // Get all blog posts
+  const posts = await getAllPosts();
+  
+  // Create sitemap entries for individual blog posts
+  const blogPostPages = posts.map(post => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified,
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7
+  }));
+
   const blogPages = [
     {
       url: `${baseUrl}/blog`,
       lastModified,
       changeFrequency: 'daily' as ChangeFrequency,
       priority: 0.9
-    }
+    },
+    ...blogPostPages
   ]
 
   const legalPages = [

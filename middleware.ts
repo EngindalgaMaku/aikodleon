@@ -1,0 +1,33 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+export function middleware(request: NextRequest) {
+  const url = request.nextUrl.clone();
+  const hostname = request.headers.get('host') || '';
+  
+  // Check if the hostname starts with 'www.'
+  if (hostname.startsWith('www.')) {
+    // Create new URL without 'www.'
+    const newHostname = hostname.replace(/^www\./, '');
+    url.host = newHostname;
+    
+    // Return a redirect response
+    return NextResponse.redirect(url);
+  }
+  
+  return NextResponse.next();
+}
+
+// Only run middleware on specific paths
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
+}; 
