@@ -1,3 +1,7 @@
+// NOTE: This middleware is currently disabled because it's incompatible with Next.js static export.
+// To use this middleware, remove 'output: export' from next.config.js and deploy to a platform
+// that supports Next.js middleware (like Vercel).
+
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 

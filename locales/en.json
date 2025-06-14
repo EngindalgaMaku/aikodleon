@@ -2,7 +2,7 @@
   "common": {
     "home": "Home",
     "resources": "Resources",
-    "topics": "Topics",
+    "topics": "AI Topics",
     "about": "About",
     "contact": "Contact",
     "search": "Search",
@@ -18,6 +18,36 @@
       "title": "Code the Future with Artificial Intelligence",
       "subtitle": "Gain the most up-to-date AI skills with Kodleon, Turkey's leading artificial intelligence education platform, discover your potential, and shape future technologies.",
       "cta": "Explore AI Topics"
+    },
+    "featuredPaths": {
+      "badge": "RECOMMENDED LEARNING PATHS",
+      "title": "Start Your Learning Journey",
+      "subtitle": "Enhance your AI and programming skills with our most popular learning paths"
+    },
+    "freeCourses": {
+      "badge": "FREE COURSES",
+      "title": "Free AI Courses",
+      "subtitle": "Start your AI journey right away! Explore the world of AI with our free courses.",
+      "startLearning": "Start Learning",
+      "viewAll": "View All Free Courses",
+      "cards": {
+        "python": {
+          "title": "Python Programming",
+          "description": "Learn Python programming fundamentals required for AI from scratch."
+        },
+        "intro": {
+          "title": "Introduction to AI",
+          "description": "Learn the basics of artificial intelligence and take your first step into the AI world."
+        },
+        "neural": {
+          "title": "Neural Networks",
+          "description": "Discover the working principles and applications of neural networks."
+        },
+        "practical": {
+          "title": "Practical AI Examples",
+          "description": "Learn AI applications to solve real-world problems."
+        }
+      }
     },
     "topics": {
       "title": "AI Education Topics",
@@ -133,7 +163,7 @@
   },
   "navigation": {
     "home": "Home",
-    "topics": "Topics",
+    "topics": "AI Topics",
     "about": "About",
     "contact": "Get in Touch",
     "blog": "Explore Blog"
@@ -143,7 +173,7 @@
     "logoAriaLabel": "Go to Kodleon homepage",
     "description": "Discover the world of AI and learn the technologies of the future.",
     "topics": {
-      "title": "Topics",
+      "title": "AI Topics",
       "machineLearning": "Machine Learning",
       "nlp": "Natural Language Processing",
       "computerVision": "Computer Vision",

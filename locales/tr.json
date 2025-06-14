@@ -2,7 +2,7 @@
   "common": {
     "home": "Ana Sayfa",
     "resources": "Kaynaklar",
-    "topics": "Konular",
+    "topics": "AI Konuları",
     "about": "Hakkımızda",
     "contact": "İletişim",
     "search": "Ara",
@@ -18,6 +18,11 @@
       "title": "Yapay Zeka ile Geleceği Kodlayın",
       "subtitle": "Türkiye'nin lider yapay zeka eğitim platformu Kodleon ile en güncel AI becerilerini kazanın, potansiyelinizi keşfedin ve geleceğin teknolojilerine yön verin.",
       "cta": "AI Konularını Keşfet"
+    },
+    "featuredPaths": {
+      "badge": "ÖNERİLEN ÖĞRENME YOLLARI",
+      "title": "Öğrenme Yolculuğunuza Başlayın",
+      "subtitle": "En popüler öğrenme yollarımızla yapay zeka ve programlama becerilerinizi geliştirin"
     },
     "freeCourses": {
       "badge": "ÜCRETSİZ DERSLER",
@@ -158,7 +163,7 @@
   },
   "navigation": {
     "home": "Ana Sayfa",
-    "topics": "Konular",
+    "topics": "AI Konuları",
     "about": "Hakkımızda",
     "contact": "İletişime Geçin",
     "blog": "Blog'u Keşfet"
@@ -168,7 +173,7 @@
     "logoAriaLabel": "Kodleon ana sayfaya dön",
     "description": "Yapay zeka dünyasını keşfedin ve geleceğin teknolojilerini öğrenin.",
     "topics": {
-      "title": "Konular",
+      "title": "AI Konuları",
       "machineLearning": "Makine Öğrenmesi",
       "nlp": "Doğal Dil İşleme",
       "computerVision": "Bilgisayarlı Görü",

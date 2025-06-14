@@ -146,7 +146,7 @@ export default function HomePageClientContent() {
   return (
     <div className="flex flex-col bg-background text-foreground">
       {/* Hero section */}
-      <section className="relative py-20 md:py-32" aria-labelledby="hero-heading">
+      <section className="relative py-16 md:py-24" aria-labelledby="hero-heading">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 dark:from-primary/5 dark:via-transparent dark:to-secondary/5" />
         <div 
           className="absolute inset-0 opacity-20 dark:opacity-10"
@@ -157,16 +157,16 @@ export default function HomePageClientContent() {
           aria-hidden="true"
         />
         <div className="container max-w-6xl mx-auto relative z-10 px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-8 md:mb-10">
             <h1 
               id="hero-heading" 
-              className="text-4xl md:text-6xl font-bold tracking-tight mb-6 
+              className="text-3xl md:text-5xl font-bold tracking-tight mb-4 
                          bg-clip-text text-transparent bg-gradient-to-r from-primary via-pink-500 to-orange-500 
                          animate-gradient-xy"
             >
               {t('home.hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-10">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8">
               {t('home.hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -188,10 +188,109 @@ export default function HomePageClientContent() {
         </div>
       </section>
       
-      {/* Free AI Courses section */}
-      <section className="relative z-20 py-16 bg-gradient-to-r from-primary/5 via-background to-secondary/5">
+      {/* Featured Learning Paths - NEW SECTION */}
+      <section className="relative z-20 py-12 bg-gradient-to-r from-primary/10 via-background to-secondary/10">
         <div className="container max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
+            <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-3">
+              {t('home.featuredPaths.badge')}
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">
+              {t('home.featuredPaths.title')}
+            </h2>
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-6">
+              {t('home.featuredPaths.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Python Learning Path */}
+            <div className="relative overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/20 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <div className="absolute top-0 right-0 w-32 h-32 -mt-8 -mr-8 bg-blue-500/20 rounded-full blur-2xl"></div>
+              <div className="p-6 md:p-8 relative z-10">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/30">
+                    <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold text-blue-800 dark:text-blue-300 mb-2">Python Öğrenme Yolu</h3>
+                    <p className="text-sm md:text-base text-blue-700/80 dark:text-blue-300/80">Programlamanın temellerinden ileri Python uygulamalarına kadar kapsamlı eğitim içeriği</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  <div className="flex items-center gap-2 text-sm text-blue-700 dark:text-blue-300/90">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                    <span>Temel Python</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-blue-700 dark:text-blue-300/90">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                    <span>Veri Yapıları</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-blue-700 dark:text-blue-300/90">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                    <span>OOP</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-blue-700 dark:text-blue-300/90">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                    <span>Veri Analizi</span>
+                  </div>
+                </div>
+                <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white border-none">
+                  <Link href="/topics/python">
+                    Python Derslerine Başla
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* AI Learning Path */}
+            <div className="relative overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/30 dark:to-purple-900/20 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <div className="absolute top-0 right-0 w-32 h-32 -mt-8 -mr-8 bg-purple-500/20 rounded-full blur-2xl"></div>
+              <div className="p-6 md:p-8 relative z-10">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 rounded-lg bg-purple-500/10 border border-purple-500/30">
+                    <Brain className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold text-purple-800 dark:text-purple-300 mb-2">Yapay Zeka Öğrenme Yolu</h3>
+                    <p className="text-sm md:text-base text-purple-700/80 dark:text-purple-300/80">Yapay zeka temellerinden ileri uygulamalara kadar kapsamlı eğitim içeriği</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  <div className="flex items-center gap-2 text-sm text-purple-700 dark:text-purple-300/90">
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                    <span>Makine Öğrenmesi</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-purple-700 dark:text-purple-300/90">
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                    <span>Derin Öğrenme</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-purple-700 dark:text-purple-300/90">
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                    <span>NLP</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-purple-700 dark:text-purple-300/90">
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                    <span>Bilgisayarlı Görü</span>
+                  </div>
+                </div>
+                <Button asChild className="w-full bg-purple-600 hover:bg-purple-700 text-white border-none">
+                  <Link href="/topics/ai-fundamentals">
+                    Yapay Zeka Derslerine Başla
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Free AI Courses section */}
+      <section className="relative z-20 py-16 bg-background">
+        <div className="container max-w-6xl mx-auto px-4">
+          <div className="text-center mb-10">
             <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
               {t('home.freeCourses.badge')}
             </span>
@@ -203,54 +302,69 @@ export default function HomePageClientContent() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="group hover:shadow-lg transition-all duration-300">
-              <CardHeader>
-                <Code2 className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>{t('home.freeCourses.cards.python.title')}</CardTitle>
-                <CardDescription>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-blue-200 dark:border-blue-900/40 bg-gradient-to-br from-blue-50/50 to-transparent dark:from-blue-900/20 dark:to-transparent overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-blue-200/30 dark:bg-blue-500/10 rounded-full blur-2xl -mr-20 -mt-20 z-0"></div>
+              <CardHeader className="relative z-10">
+                <div className="p-3 rounded-lg bg-blue-100 dark:bg-blue-900/40 inline-block mb-3">
+                  <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                </div>
+                <CardTitle className="text-xl text-blue-800 dark:text-blue-300">{t('home.freeCourses.cards.python.title')}</CardTitle>
+                <CardDescription className="text-blue-700/80 dark:text-blue-400/80">
                   {t('home.freeCourses.cards.python.description')}
                 </CardDescription>
               </CardHeader>
-              <CardFooter>
-                <Link href="/topics/python/" className="inline-flex items-center text-primary hover:underline">
-                  {t('home.freeCourses.startLearning')} <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+              <CardFooter className="relative z-10">
+                <Button asChild variant="default" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                  <Link href="/topics/python/">
+                    {t('home.freeCourses.startLearning')} <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </CardFooter>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300">
-              <CardHeader>
-                <Brain className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>{t('home.freeCourses.cards.intro.title')}</CardTitle>
-                <CardDescription>
+            <Card className="group hover:shadow-lg transition-all duration-300 border-purple-200 dark:border-purple-900/40 bg-gradient-to-br from-purple-50/50 to-transparent dark:from-purple-900/20 dark:to-transparent overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-purple-200/30 dark:bg-purple-500/10 rounded-full blur-2xl -mr-20 -mt-20 z-0"></div>
+              <CardHeader className="relative z-10">
+                <div className="p-3 rounded-lg bg-purple-100 dark:bg-purple-900/40 inline-block mb-3">
+                  <Brain className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                </div>
+                <CardTitle className="text-xl text-purple-800 dark:text-purple-300">{t('home.freeCourses.cards.intro.title')}</CardTitle>
+                <CardDescription className="text-purple-700/80 dark:text-purple-400/80">
                   {t('home.freeCourses.cards.intro.description')}
                 </CardDescription>
               </CardHeader>
-              <CardFooter>
-                <Link href="/topics/ai-fundamentals" className="inline-flex items-center text-primary hover:underline">
-                  {t('home.freeCourses.startLearning')} <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+              <CardFooter className="relative z-10">
+                <Button asChild variant="default" className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+                  <Link href="/topics/ai-fundamentals">
+                    {t('home.freeCourses.startLearning')} <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </CardFooter>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300">
-              <CardHeader>
-                <Brain className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>{t('home.freeCourses.cards.neural.title')}</CardTitle>
-                <CardDescription>
+            <Card className="group hover:shadow-lg transition-all duration-300 border-green-200 dark:border-green-900/40 bg-gradient-to-br from-green-50/50 to-transparent dark:from-green-900/20 dark:to-transparent overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-green-200/30 dark:bg-green-500/10 rounded-full blur-2xl -mr-20 -mt-20 z-0"></div>
+              <CardHeader className="relative z-10">
+                <div className="p-3 rounded-lg bg-green-100 dark:bg-green-900/40 inline-block mb-3">
+                  <Brain className="h-8 w-8 text-green-600 dark:text-green-400" />
+                </div>
+                <CardTitle className="text-xl text-green-800 dark:text-green-300">{t('home.freeCourses.cards.neural.title')}</CardTitle>
+                <CardDescription className="text-green-700/80 dark:text-green-400/80">
                   {t('home.freeCourses.cards.neural.description')}
                 </CardDescription>
               </CardHeader>
-              <CardFooter>
-                <Link href="/neural-networks/basics" className="inline-flex items-center text-primary hover:underline">
-                  {t('home.freeCourses.startLearning')} <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+              <CardFooter className="relative z-10">
+                <Button asChild variant="default" className="w-full bg-green-600 hover:bg-green-700 text-white">
+                  <Link href="/neural-networks/basics">
+                    {t('home.freeCourses.startLearning')} <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </CardFooter>
             </Card>
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center">
             <Button asChild size="lg" variant="outline" className="rounded-full">
               <Link href="/topics">
                 {t('home.freeCourses.viewAll')} <ArrowRight className="ml-2 h-4 w-4" />
@@ -272,39 +386,139 @@ export default function HomePageClientContent() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {topics.map((topic, index) => (
-              <Card key={index} className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 border-border hover:border-primary/50 bg-card flex flex-col">
-                <div className="relative h-52 w-full">
+          <div className="flex flex-col gap-8">
+            {/* Featured Topics - Python & AI */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {/* Python Topic - Featured */}
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 border-blue-200/50 dark:border-blue-800/50 bg-card flex flex-col">
+                <div className="relative h-64 w-full">
                   <Image 
-                    src={topic.imageUrl}
-                    alt={`${topic.title} - ${t('common.imageAlt')}`}
+                    src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    alt={`Python Programming - ${t('common.imageAlt')}`}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading={index < 3 ? "eager" : "lazy"}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading="eager"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" aria-hidden="true" />
                   <div className="absolute bottom-4 left-4 p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-md">
-                    {topic.icon}
+                    <Code2 className="h-8 w-8 text-blue-500" />
                   </div>
                 </div>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors">{topic.title}</CardTitle>
+                  <div className="flex justify-between items-center mb-2">
+                    <CardTitle className="text-2xl group-hover:text-primary transition-colors">Python Programlama</CardTitle>
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300">
+                      Temel
+                    </span>
+                  </div>
+                  <CardDescription className="text-base">
+                    Yapay zeka ve veri bilimi için temel Python programlama becerilerini öğrenin. Veri yapıları, nesne tabanlı programlama ve daha fazlası.
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <CardDescription>{topic.description}</CardDescription>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-xs rounded-md">Temel Sözdizimi</span>
+                    <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-xs rounded-md">Veri Yapıları</span>
+                    <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-xs rounded-md">OOP</span>
+                    <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-xs rounded-md">NumPy & Pandas</span>
+                  </div>
                 </CardContent>
                 <CardFooter className="mt-auto pt-3">
-                  <Button asChild variant="ghost" className="gap-1.5 ml-auto text-primary hover:text-primary/80">
-                    <Link href={topic.href}>
-                      {t('common.exploreTopic')}
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  <Button asChild variant="default" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                    <Link href="/topics/python">
+                      Python Derslerine Git
+                      <ArrowRight className="h-4 w-4 ml-2" aria-hidden="true" />
                     </Link>
                   </Button>
                 </CardFooter>
               </Card>
-            ))}
+
+              {/* AI Topic - Featured */}
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 border-purple-200/50 dark:border-purple-800/50 bg-card flex flex-col">
+                <div className="relative h-64 w-full">
+                  <Image 
+                    src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    alt={`Yapay Zeka - ${t('common.imageAlt')}`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="eager"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" aria-hidden="true" />
+                  <div className="absolute bottom-4 left-4 p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-md">
+                    <Brain className="h-8 w-8 text-purple-500" />
+                  </div>
+                </div>
+                <CardHeader className="pb-2">
+                  <div className="flex justify-between items-center mb-2">
+                    <CardTitle className="text-2xl group-hover:text-primary transition-colors">Yapay Zeka</CardTitle>
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300">
+                      Kapsamlı
+                    </span>
+                  </div>
+                  <CardDescription className="text-base">
+                    Yapay zeka teknolojilerinin temellerini ve uygulamalarını keşfedin. Makine öğrenmesi, derin öğrenme ve daha fazlası.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    <span className="px-2 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 text-xs rounded-md">Makine Öğrenmesi</span>
+                    <span className="px-2 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 text-xs rounded-md">Derin Öğrenme</span>
+                    <span className="px-2 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 text-xs rounded-md">NLP</span>
+                    <span className="px-2 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 text-xs rounded-md">Bilgisayarlı Görü</span>
+                  </div>
+                </CardContent>
+                <CardFooter className="mt-auto pt-3">
+                  <Button asChild variant="default" className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+                    <Link href="/topics/ai-fundamentals">
+                      Yapay Zeka Derslerine Git
+                      <ArrowRight className="h-4 w-4 ml-2" aria-hidden="true" />
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            </div>
+
+            {/* Other Topics */}
+            <h3 className="text-xl font-semibold text-center mt-8 mb-6">Diğer Konular</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {topics.filter(topic => 
+                !topic.href.includes('/python') && 
+                !topic.href.includes('/ai-fundamentals')
+              ).map((topic, index) => (
+                <Card key={index} className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 border-border hover:border-primary/50 bg-card flex flex-col">
+                  <div className="relative h-52 w-full">
+                    <Image 
+                      src={topic.imageUrl}
+                      alt={`${topic.title} - ${t('common.imageAlt')}`}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading={index < 3 ? "eager" : "lazy"}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" aria-hidden="true" />
+                    <div className="absolute bottom-4 left-4 p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-md">
+                      {topic.icon}
+                    </div>
+                  </div>
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-xl group-hover:text-primary transition-colors">{topic.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <CardDescription>{topic.description}</CardDescription>
+                  </CardContent>
+                  <CardFooter className="mt-auto pt-3">
+                    <Button asChild variant="ghost" className="gap-1.5 ml-auto text-primary hover:text-primary/80">
+                      <Link href={topic.href}>
+                        {t('common.exploreTopic')}
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>

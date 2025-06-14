@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Code2, Database, Brain, Globe, ChartBar, Terminal, Puzzle } from 'lucide-react';
+import { Code2, Database, Brain, Globe, ChartBar, Terminal, Puzzle, Sparkles, Bot, Cpu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import MarkdownContent from '@/components/MarkdownContent';
@@ -75,7 +75,8 @@ const topics = [
       "Temel OOP Kavramları",
       "Modüller ve Paketler"
     ],
-    color: "from-blue-500/20 to-blue-500/10 hover:from-blue-500/30 hover:to-blue-500/20"
+    color: "from-blue-500/20 to-blue-500/10 hover:from-blue-500/30 hover:to-blue-500/20",
+    iconBg: "bg-blue-500/10 text-blue-600"
   },
   {
     title: "Nesne Tabanlı Programlama",
@@ -89,7 +90,8 @@ const topics = [
       "Çok Biçimlilik",
       "İleri OOP Teknikleri"
     ],
-    color: "from-purple-500/20 to-purple-500/10 hover:from-purple-500/30 hover:to-purple-500/20"
+    color: "from-purple-500/20 to-purple-500/10 hover:from-purple-500/30 hover:to-purple-500/20",
+    iconBg: "bg-purple-500/10 text-purple-600"
   },
   {
     title: "Veri Yapıları ve Algoritmalar",
@@ -103,7 +105,8 @@ const topics = [
       "Graflar ve Ağaçlar",
       "Algoritma Analizi"
     ],
-    color: "from-green-500/20 to-green-500/10 hover:from-green-500/30 hover:to-green-500/20"
+    color: "from-green-500/20 to-green-500/10 hover:from-green-500/30 hover:to-green-500/20",
+    iconBg: "bg-green-500/10 text-green-600"
   },
   {
     title: "Derin Öğrenme",
@@ -117,7 +120,8 @@ const topics = [
       "Transfer Öğrenme",
       "Model Optimizasyonu"
     ],
-    color: "from-pink-500/20 to-pink-500/10 hover:from-pink-500/30 hover:to-pink-500/20"
+    color: "from-pink-500/20 to-pink-500/10 hover:from-pink-500/30 hover:to-pink-500/20",
+    iconBg: "bg-pink-500/10 text-pink-600"
   },
   {
     title: "Web Geliştirme",
@@ -131,7 +135,8 @@ const topics = [
       "Web Güvenliği",
       "Deployment"
     ],
-    color: "from-orange-500/20 to-orange-500/10 hover:from-orange-500/30 hover:to-orange-500/20"
+    color: "from-orange-500/20 to-orange-500/10 hover:from-orange-500/30 hover:to-orange-500/20",
+    iconBg: "bg-orange-500/10 text-orange-600"
   },
   {
     title: "Veri Bilimi",
@@ -145,7 +150,8 @@ const topics = [
       "Makine Öğrenmesi",
       "Büyük Veri İşleme"
     ],
-    color: "from-cyan-500/20 to-cyan-500/10 hover:from-cyan-500/30 hover:to-cyan-500/20"
+    color: "from-cyan-500/20 to-cyan-500/10 hover:from-cyan-500/30 hover:to-cyan-500/20",
+    iconBg: "bg-cyan-500/10 text-cyan-600"
   },
   {
     title: "Otomasyon ve Scripting",
@@ -159,7 +165,8 @@ const topics = [
       "Sistem Yönetimi",
       "GUI Otomasyon"
     ],
-    color: "from-yellow-500/20 to-yellow-500/10 hover:from-yellow-500/30 hover:to-yellow-500/20"
+    color: "from-yellow-500/20 to-yellow-500/10 hover:from-yellow-500/30 hover:to-yellow-500/20",
+    iconBg: "bg-yellow-500/10 text-yellow-600"
   }
 ];
 
@@ -201,72 +208,155 @@ export default function PythonTopicsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="prose prose-lg dark:prose-invert mb-12">
-            <MarkdownContent content={content} />
-          </div>
+      
+      {/* AI-themed background pattern */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 rounded-full bg-blue-500/5 blur-3xl"></div>
+        <div className="absolute top-80 left-20 w-72 h-72 rounded-full bg-purple-500/5 blur-3xl"></div>
+        <div className="absolute bottom-40 right-40 w-80 h-80 rounded-full bg-cyan-500/5 blur-3xl"></div>
+      </div>
 
-          {/* Learning Path Section */}
-          <div className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8 text-center">Python Öğrenme Yolu</h2>
-            <div className="relative">
-              {/* Optional: Timeline line */}
-              {/* <div className="hidden md:block absolute top-0 left-1/2 w-px h-full bg-border -translate-x-1/2"></div> */}
-              
-              <div className="space-y-0 md:grid md:grid-cols-1 md:gap-x-8 relative">
-                {learningPathItems.map((item, index) => (
-                  <div key={item.id} className="relative flex items-start space-x-4 pb-8">
-                    {/* Connecting line */}
-                    {index !== learningPathItems.length - 1 && (
-                      <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-border ml-px"></div>
-                    )}
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg shadow-md z-10">
-                      {item.id}
-                    </div>
-                    <div className="flex-1 pt-1.5 md:pt-2.5">
-                      <h3 className="text-lg font-semibold text-foreground mb-1">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
-                    </div>
+      <div className="container mx-auto px-4 py-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          {/* Hero section with AI visual elements */}
+          <div className="relative mb-12 p-6 rounded-2xl bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-950/30 dark:to-purple-950/30 border border-blue-100/50 dark:border-blue-800/30 shadow-lg overflow-hidden">
+            <div className="absolute top-0 right-0 -mt-10 -mr-10">
+              <div className="w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
+            </div>
+            <div className="absolute bottom-0 left-0 -mb-10 -ml-10">
+              <div className="w-40 h-40 bg-purple-500/10 rounded-full blur-2xl"></div>
+            </div>
+            
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <div className="flex-1">
+                <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-medium mb-4">
+                  <Cpu className="h-4 w-4 mr-2" />
+                  Yapay Zeka & Python
+                </div>
+                <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+                  Python ile Yapay Zeka Dünyasına Adım Atın
+                </h1>
+                <div className="prose prose-lg dark:prose-invert mb-6">
+                  <p className="text-gray-700 dark:text-gray-300">
+                    Python, yapay zeka ve veri bilimi alanında en çok tercih edilen programlama dilidir. 
+                    Kodleon'un kapsamlı Python eğitimleriyle, yapay zeka uygulamaları geliştirmeye hemen başlayın.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm">
+                    <Sparkles className="h-4 w-4 mr-1 text-yellow-500" />
+                    Yapay Zeka
                   </div>
-                ))}
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm">
+                    <Brain className="h-4 w-4 mr-1 text-purple-500" />
+                    Derin Öğrenme
+                  </div>
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm">
+                    <Bot className="h-4 w-4 mr-1 text-blue-500" />
+                    Makine Öğrenmesi
+                  </div>
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm">
+                    <Database className="h-4 w-4 mr-1 text-green-500" />
+                    Veri Bilimi
+                  </div>
+                </div>
+              </div>
+              <div className="flex-shrink-0 w-full md:w-1/3 relative">
+                <div className="aspect-square relative">
+                  <Image 
+                    src="/images/python-ai-illustration.jpg" 
+                    alt="Python ve Yapay Zeka" 
+                    width={300}
+                    height={300}
+                    className="rounded-lg shadow-lg object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg";
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            {topics.map((topic, index) => {
-              const Icon = topic.icon;
-              return (
-                <Card 
-                  key={index} 
-                  className={`flex flex-col bg-gradient-to-br transition-all duration-300 ${topic.color} border-none shadow-lg`}
-                >
-                  <CardHeader>
-                    <div className="flex items-center gap-2">
-                      <Icon className="h-6 w-6" />
-                      <CardTitle>{topic.title}</CardTitle>
+          {/* Course Cards Section - Moved up */}
+          <div className="mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-8 text-center relative">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+                Python & AI Kurs Konuları
+              </span>
+              <div className="absolute w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 bottom-0 left-1/2 transform -translate-x-1/2 mt-2 rounded-full"></div>
+            </h2>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {topics.map((topic, index) => {
+                const Icon = topic.icon;
+                return (
+                  <Card 
+                    key={index} 
+                    className={`flex flex-col bg-gradient-to-br transition-all duration-300 ${topic.color} border border-white/10 dark:border-gray-800/50 shadow-lg hover:shadow-xl hover:-translate-y-1`}
+                  >
+                    <CardHeader>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className={`p-2 rounded-lg ${topic.iconBg}`}>
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <CardTitle>{topic.title}</CardTitle>
+                      </div>
+                      <CardDescription className="text-foreground/80">{topic.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex-1">
+                      <ul className="space-y-2">
+                        {topic.features.map((feature, i) => (
+                          <li key={i} className="flex items-center gap-2 text-sm text-foreground/70">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                    <div className="p-6 pt-0">
+                      <Button 
+                        asChild 
+                        className="w-full bg-white/50 dark:bg-gray-900/50 hover:bg-white/70 dark:hover:bg-gray-900/70 text-foreground border border-white/20 dark:border-gray-700/50 shadow-sm"
+                      >
+                        <Link href={topic.href} className="flex items-center justify-center gap-2">
+                          Öğrenmeye Başla
+                          <Sparkles className="h-4 w-4" />
+                        </Link>
+                      </Button>
                     </div>
-                    <CardDescription className="text-foreground/80">{topic.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <ul className="list-disc list-inside space-y-1 text-sm text-foreground/70">
-                      {topic.features.map((feature, i) => (
-                        <li key={i}>{feature}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                  <div className="p-6 pt-0">
-                    <Button 
-                      asChild 
-                      className="w-full bg-background/50 hover:bg-background/70 text-foreground border border-border"
-                    >
-                      <Link href={topic.href}>Öğrenmeye Başla</Link>
-                    </Button>
-                  </div>
-                </Card>
-              );
-            })}
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Learning Path Section - Moved down with AI theme */}
+          <div className="mb-16 relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-purple-50/30 dark:from-blue-950/20 dark:to-purple-950/20 rounded-2xl -z-10"></div>
+            <div className="p-8 rounded-2xl border border-blue-100/50 dark:border-blue-800/30">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-8 text-center">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+                  Python Öğrenme Yolu
+                </span>
+              </h2>
+              <div className="relative">
+                <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-purple-500 dark:from-blue-500 dark:to-purple-600"></div>
+                <div className="space-y-0 relative">
+                  {learningPathItems.map((item, index) => (
+                    <div key={item.id} className="relative flex items-start space-x-4 pb-8">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-lg shadow-lg z-10">
+                        {item.id}
+                      </div>
+                      <div className="flex-1 pt-1.5 md:pt-2.5 bg-white/50 dark:bg-gray-900/50 p-4 rounded-lg border border-white/20 dark:border-gray-800/50 shadow-sm">
+                        <h3 className="text-lg font-semibold text-foreground mb-1">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="mt-16 text-center text-sm text-muted-foreground">

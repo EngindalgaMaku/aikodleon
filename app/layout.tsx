@@ -6,6 +6,7 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { siteConfig } from '@/config/site';
 import 'highlight.js/styles/github.css';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -119,6 +120,22 @@ export default function RootLayout({
             })
           }}
         />
+        
+        {/* Client-side script to handle www to non-www redirection (replacement for middleware) */}
+        <Script id="www-redirect" strategy="beforeInteractive">
+          {`
+            (function() {
+              // Only run in browser, not during static generation
+              if (typeof window !== 'undefined') {
+                var host = window.location.host;
+                if (host.startsWith('www.')) {
+                  var newHost = host.replace(/^www\\./, '');
+                  window.location.href = window.location.protocol + '//' + newHost + window.location.pathname + window.location.search;
+                }
+              }
+            })();
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         <ThemeProvider
