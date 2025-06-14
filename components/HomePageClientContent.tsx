@@ -118,7 +118,15 @@ export default function HomePageClientContent() {
 
   const latestBlogPosts = [
     {
-      title: t('home.blog.posts.embodiedAi.title'), // Assuming you'll add these specific keys
+      title: "2025'in En Güçlü AI Modelleri: Öğrenciler İçin Ücretsiz Seçenekler",
+      snippet: "2025 yılı ortalarında yapay zeka modellerinin son durumu, ücretsiz kullanım seçenekleri ve öğrenciler için özel fırsatlar hakkında kapsamlı rehber.",
+      imageUrl: "/blog-images/ai-future-2025.jpg",
+      href: "/blog/guncel-ai-modelleri-2025",
+      date: new Date(2025, 5, 1).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' }),
+      category: t('home.blog.categories.aiDevelopments')
+    },
+    {
+      title: t('home.blog.posts.embodiedAi.title'),
       snippet: t('home.blog.posts.embodiedAi.snippet'),
       imageUrl: "https://images.pexels.com/photos/7661169/pexels-photo-7661169.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       href: "/blog/embodied-ai-future",
@@ -132,14 +140,6 @@ export default function HomePageClientContent() {
       href: "/blog/ai-kod-asistanlari-karsilastirmasi",
       date: new Date(2025, 4, 31).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' }),
       category: t('home.blog.categories.aiTools')
-    },
-    {
-      title: t('home.blog.posts.aiVideoGeneration.title'),
-      snippet: t('home.blog.posts.aiVideoGeneration.snippet'),
-      imageUrl: "https://images.pexels.com/photos/9026285/pexels-photo-9026285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      href: "/blog/ai-video-uretimi-veo-flow",
-      date: new Date().toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' }),
-      category: t('home.blog.categories.generativeAi')
     }
   ];
 
@@ -158,6 +158,9 @@ export default function HomePageClientContent() {
         />
         <div className="container max-w-6xl mx-auto relative z-10 px-4">
           <div className="max-w-3xl mx-auto text-center mb-8 md:mb-10">
+            <div className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
+              YENİ! 2025 GÜNCEL AI MODELLERİ REHBERİ
+            </div>
             <h1 
               id="hero-heading" 
               className="text-3xl md:text-5xl font-bold tracking-tight mb-4 
@@ -167,18 +170,17 @@ export default function HomePageClientContent() {
               {t('home.hero.title')}
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8">
-              {t('home.hero.subtitle')}
+              {t('home.hero.subtitle')} <span className="font-medium text-primary">Güncel AI modelleri ve öğrenciler için ücretsiz seçenekler hakkındaki rehberimizi keşfedin!</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="rounded-full shadow-lg hover:shadow-xl transition-shadow">
-                <Link href="/topics">
-                  {t('home.hero.cta')}
+                <Link href="/blog/guncel-ai-modelleri-2025">
+                  AI Modelleri Rehberini İncele
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full border-border hover:border-primary/70 transition-colors">
-                <Link href="/blog">
-                  <Rss className="mr-2 h-5 w-5" />
-                  {t('navigation.blog')}
+                <Link href="/topics">
+                  {t('home.hero.cta')}
                 </Link>
               </Button>
             </div>

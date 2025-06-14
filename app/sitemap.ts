@@ -201,6 +201,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7
   }));
 
+  // Manuel olarak eklenen güncel AI modelleri blog yazısı
+  const aiModelsBlogPost = {
+    url: `${baseUrl}/blog/guncel-ai-modelleri-2025`,
+    lastModified: new Date('2025-06-01'),
+    changeFrequency: 'weekly' as ChangeFrequency,
+    priority: 0.9
+  };
+
   const blogPages = [
     {
       url: `${baseUrl}/blog`,
@@ -208,6 +216,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily' as ChangeFrequency,
       priority: 0.9
     },
+    aiModelsBlogPost, // Öncelikli olarak ekliyoruz
     ...blogPostPages
   ]
 

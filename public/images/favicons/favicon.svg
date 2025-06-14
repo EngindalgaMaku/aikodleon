@@ -1,0 +1,28 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Arka plan daire -->
+  <circle cx="256" cy="256" r="240" fill="#5046E5" opacity="0.1"/>
+  
+  <!-- Ana nöron ağı -->
+  <path d="M130 180L210 140M210 140L290 180M290 180L370 140M210 140L210 230M290 180L290 230M210 230L290 230M210 230L170 300M290 230L330 300M170 300L250 350M330 300L250 350M250 350L250 400" stroke="#5046E5" strokeWidth="8" strokeLinecap="round"/>
+  
+  <!-- Nöron noktaları -->
+  <circle cx="130" cy="180" r="14" fill="#5046E5"/>
+  <circle cx="210" cy="140" r="14" fill="#5046E5"/>
+  <circle cx="290" cy="180" r="14" fill="#5046E5"/>
+  <circle cx="370" cy="140" r="14" fill="#5046E5"/>
+  <circle cx="210" cy="230" r="14" fill="#5046E5"/>
+  <circle cx="290" cy="230" r="14" fill="#5046E5"/>
+  <circle cx="170" cy="300" r="14" fill="#5046E5"/>
+  <circle cx="330" cy="300" r="14" fill="#5046E5"/>
+  <circle cx="250" cy="350" r="14" fill="#5046E5"/>
+  <circle cx="250" cy="400" r="14" fill="#5046E5"/>
+  
+  <!-- Parlama efekti -->
+  <circle cx="210" cy="140" r="28" fill="#5046E5" opacity="0.3"/>
+  <circle cx="290" cy="180" r="28" fill="#5046E5" opacity="0.3"/>
+  <circle cx="250" cy="350" r="28" fill="#5046E5" opacity="0.3"/>
+  
+  <!-- K harfi (daha belirgin) -->
+  <path d="M130 100L130 160L170 130L130 100Z" fill="#5046E5"/>
+  <path d="M130 100L130 160L90 130L130 100Z" fill="#5046E5"/>
+</svg> 

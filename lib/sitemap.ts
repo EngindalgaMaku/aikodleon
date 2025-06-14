@@ -103,11 +103,25 @@ export function generateSitemapEntries(): SitemapEntry[] {
 
 // Blog ve kurs sayfaları gibi dinamik içerikler için ileride bu fonksiyon genişletilebilir
 export async function getDynamicPages(): Promise<SitemapEntry[]> {
-  // Örnek: Blog yazıları veya kurs içerikleri gibi dinamik içerikleri veritabanından çekip
-  // sitemap girdilerine dönüştürmek için kullanılabilir
+  const baseUrl = 'https://kodleon.com';
   
-  // Şu an için boş bir array dönüyoruz
-  return [];
+  // Manuel olarak eklenen güncel blog yazıları
+  const manualBlogPosts: SitemapEntry[] = [
+    {
+      url: `${baseUrl}/blog/guncel-ai-modelleri-2025`,
+      lastModified: new Date('2025-06-01'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      alternateRefs: [
+        {
+          hreflang: 'tr-TR',
+          href: `${baseUrl}/blog/guncel-ai-modelleri-2025`,
+        }
+      ]
+    }
+  ];
+  
+  return manualBlogPosts;
 }
 
 // Tüm sitemap girdilerini oluştur

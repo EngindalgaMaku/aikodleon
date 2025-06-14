@@ -51,7 +51,7 @@ export default function Navbar() {
               {/* SVG logo kullanımı */}
               <svg width="36" height="36" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" className="rounded-md">
                 <path d="M256 50C142.5 50 50 142.5 50 256C50 369.5 142.5 462 256 462C369.5 462 462 369.5 462 256C462 142.5 369.5 50 256 50Z" fill="#5046E5" opacity="0.1"/>
-                <path d="M130 180L210 140M210 140L290 180M290 180L370 140M210 140L210 230M290 180L290 230M210 230L290 230M210 230L170 300M290 230L330 300M170 300L250 350M330 300L250 350M250 350L250 400" stroke="#5046E5" stroke-width="6" stroke-linecap="round"/>
+                <path d="M130 180L210 140M210 140L290 180M290 180L370 140M210 140L210 230M290 180L290 230M210 230L290 230M210 230L170 300M290 230L330 300M170 300L250 350M330 300L250 350M250 350L250 400" stroke="#5046E5" strokeWidth="6" strokeLinecap="round"/>
                 <circle cx="130" cy="180" r="12" fill="#5046E5"/>
                 <circle cx="210" cy="140" r="12" fill="#5046E5"/>
                 <circle cx="290" cy="180" r="12" fill="#5046E5"/>

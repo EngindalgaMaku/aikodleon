@@ -62,8 +62,14 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: '/images/favicons/favicon-16x16.png',
-    apple: '/images/favicons/favicon-16x16.png',
+    icon: [
+      { url: '/images/favicons/favicon.svg', type: 'image/svg+xml' },
+      { url: '/images/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' }
+    ],
+    apple: [
+      { url: '/images/favicons/favicon.svg', type: 'image/svg+xml' }
+    ],
+    shortcut: '/images/favicons/favicon.svg'
   },
   viewport: {
     width: 'device-width',
@@ -85,12 +91,12 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" href="/images/favicons/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png" />
         <link
           rel="apple-touch-icon"
-          href="/images/favicons/favicon-16x16.png"
-          type="image/png"
-          sizes="16x16"
+          href="/images/favicons/favicon.svg"
+          type="image/svg+xml"
         />
         <meta name="google-site-verification" content="your-verification-code" />
         <script
