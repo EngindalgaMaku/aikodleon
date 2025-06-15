@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardFooter, CardTitle, CardDescription } from '@/components/ui/card';
+import CodeExamplesClient from './CodeExamplesClient';
 
 export const metadata: Metadata = {
   title: 'Yapay Zeka Kod Örnekleri | Kodleon',
@@ -73,7 +73,33 @@ const codeExamples: CodeExample[] = [
     level: 'İleri',
     image: '/images/code-examples/time-series.jpg',
   },
+  {
+    id: 'transformers-metin-uretimi',
+    title: 'Transformers ile Metin Üretimi',
+    description: 'Hugging Face Transformers kütüphanesi kullanarak GPT-2 ile metin üretme.',
+    category: 'Doğal Dil İşleme',
+    level: 'Orta',
+    image: '/images/code-examples/text-generation.jpg',
+  },
+  {
+    id: 'gans-goruntu-sentezi',
+    title: 'GANs ile Görüntü Sentezi',
+    description: 'PyTorch ve GANs kullanarak sentetik görüntüler (el yazısı rakamlar) oluşturma.',
+    category: 'Bilgisayarlı Görü',
+    level: 'İleri',
+    image: '/images/code-examples/gans.jpg',
+  },
+  {
+    id: 'onerici-sistemler',
+    title: 'Önerici Sistemler',
+    description: 'Scikit-learn ile işbirlikçi filtreleme tabanlı basit bir film öneri sistemi.',
+    category: 'Makine Öğrenmesi',
+    level: 'İleri',
+    image: '/images/code-examples/recommender-system.jpg',
+  },
 ];
+
+const allCategories = ['Tümü', ...Array.from(new Set(codeExamples.map(ex => ex.category)))];
 
 export default function CodeExamplesPage() {
   return (
@@ -88,98 +114,7 @@ export default function CodeExamplesPage() {
         </p>
       </div>
       
-      {/* Filtreler */}
-      <div className="flex flex-wrap gap-2 mb-8 justify-center">
-        <Button variant="outline" className="rounded-full">Tümü</Button>
-        <Button variant="outline" className="rounded-full">Derin Öğrenme</Button>
-        <Button variant="outline" className="rounded-full">Makine Öğrenmesi</Button>
-        <Button variant="outline" className="rounded-full">Doğal Dil İşleme</Button>
-        <Button variant="outline" className="rounded-full">Bilgisayarlı Görü</Button>
-        <Button variant="outline" className="rounded-full">Pekiştirmeli Öğrenme</Button>
-      </div>
-      
-      {/* Kod Örnekleri Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {codeExamples.map((example) => (
-          <Card key={example.id} className="overflow-hidden flex flex-col h-full">
-            <div className="relative h-48">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
-              <div className="absolute top-4 left-4 flex gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-medium bg-background/80 backdrop-blur-sm">
-                  {example.category}
-                </span>
-                <span className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
-                  example.level === 'Başlangıç' ? 'bg-green-500/20 text-green-700 dark:text-green-300' :
-                  example.level === 'Orta' ? 'bg-yellow-500/20 text-yellow-700 dark:text-yellow-300' :
-                  'bg-red-500/20 text-red-700 dark:text-red-300'
-                }`}>
-                  {example.level}
-                </span>
-              </div>
-            </div>
-            <CardHeader>
-              <CardTitle>{example.title}</CardTitle>
-              <CardDescription>{example.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span>Python</span>
-                <span>•</span>
-                <span>Jupyter Notebook</span>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button asChild variant="default" className="w-full">
-                <Link href={`/kod-ornekleri/${example.id}`}>
-                  Kodu İncele
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Link>
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-      
-      {/* Yakında Eklenecek Başlığı */}
-      <div className="mt-16 mb-8 text-center">
-        <h2 className="text-2xl font-bold">Yakında Eklenecek Örnekler</h2>
-        <p className="text-muted-foreground mt-2">
-          Aşağıdaki konularda yeni kod örnekleri hazırlıyoruz. Takipte kalın!
-        </p>
-      </div>
-      
-      {/* Yakında Eklenecek Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="bg-muted/50">
-          <CardHeader>
-            <CardTitle>Transformers ile Metin Üretimi</CardTitle>
-            <CardDescription>Hugging Face transformers kütüphanesi kullanarak metin üretimi ve dil modelleme.</CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <Button variant="outline" disabled className="w-full">Yakında</Button>
-          </CardFooter>
-        </Card>
-        
-        <Card className="bg-muted/50">
-          <CardHeader>
-            <CardTitle>GANs ile Görüntü Sentezi</CardTitle>
-            <CardDescription>Üretici Çekişmeli Ağlar (GANs) ile gerçekçi görüntüler oluşturma.</CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <Button variant="outline" disabled className="w-full">Yakında</Button>
-          </CardFooter>
-        </Card>
-        
-        <Card className="bg-muted/50">
-          <CardHeader>
-            <CardTitle>Önerici Sistemler</CardTitle>
-            <CardDescription>İşbirlikçi filtreleme ve içerik tabanlı önerici sistemlerin uygulaması.</CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <Button variant="outline" disabled className="w-full">Yakında</Button>
-          </CardFooter>
-        </Card>
-      </div>
+      <CodeExamplesClient codeExamples={codeExamples} />
       
       {/* Katkıda Bulunma Bölümü */}
       <div className="mt-16 p-6 bg-muted rounded-xl">

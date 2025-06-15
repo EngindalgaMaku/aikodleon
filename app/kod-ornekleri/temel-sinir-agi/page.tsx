@@ -190,55 +190,75 @@ plt.show()`}</code>
                 </div>
               </TabsContent>
               
-              <TabsContent value="explanation" className="p-6 m-0 space-y-4">
-                <h3 className="text-xl font-bold">Kod Açıklaması</h3>
+              <TabsContent value="explanation" className="p-6 m-0 space-y-6">
+                <h3 className="text-xl font-bold">Kodun Adım Adım Açıklaması</h3>
                 
                 <div>
-                  <h4 className="font-semibold">1. Aktivasyon Fonksiyonları</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Sigmoid aktivasyon fonksiyonu ve türevi tanımlanır. Sigmoid fonksiyonu, girdileri 0 ile 1 arasında bir değere dönüştürür ve türevi, geri yayılım algoritmasında kullanılır.
+                  <h4 className="font-semibold text-lg">Temel Fikir: Yapay Sinir Ağı Nedir?</h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Bu kodu, öğrenme yeteneğine sahip küçük bir "dijital beyin" olarak düşünebilirsiniz. Amacımız, bu beyine XOR problemini (bir mantık problemi) öğreterek, doğru tahminler yapmasını sağlamak. Tıpkı bir çocuğun deneme yanılma yoluyla öğrenmesi gibi, bizim dijital beynimiz de yaptığı hatalardan ders çıkararak kendini geliştirecek.
                   </p>
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold">2. NeuralNetwork Sınıfı</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Bu sınıf, bir giriş katmanı, bir gizli katman (4 nöron) ve bir çıkış katmanından oluşan basit bir sinir ağını temsil eder. Ağırlıklar rastgele başlatılır.
+                  <h4 className="font-semibold text-lg">1. Aktivasyon Fonksiyonu: Sigmoid</h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Bir nörondan (beyin hücresi) geçen bilginin ne kadar "önemli" olduğunu belirleyen bir kapı gibidir. Sigmoid fonksiyonu, kendisine gelen herhangi bir sayıyı 0 ile 1 arasında bir değere sıkıştırır. Bu, bir nöronun "ateşlenip ateşlenmeyeceğini" (yani sinyalin ne kadar güçlü geçeceğini) kontrol etmemizi sağlar. 0'a yakın değerler "zayıf sinyal", 1'e yakın değerler ise "güçlü sinyal" anlamına gelir. Türevi ise öğrenme (geri yayılım) aşamasında hatanın ne yönde düzeltileceğini hesaplamak için kullanılır.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-lg">2. NeuralNetwork Sınıfı: Beynimizi İnşa Etmek</h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Burada dijital beynimizin yapısını kuruyoruz. Bu yapı 3 katmandan oluşur:
+                    <ul className="list-disc list-inside mt-2 pl-4">
+                      <li><b>Giriş Katmanı (Input Layer):</b> Problemin verilerini (XOR için [0,0], [0,1] gibi) alır.</li>
+                      <li><b>Gizli Katman (Hidden Layer):</b> Beynin düşünme kısmıdır. Girdileri alır, işler ve bir sonraki katmana gönderir. Kodda 4 nörondan oluşur.</li>
+                      <li><b>Çıkış Katmanı (Output Layer):</b> Beynin tahminini (sonucunu) üretir.</li>
+                    </ul>
+                    `weights` (ağırlıklar) ise nöronlar arasındaki bağlantıların gücünü temsil eder. Başlangıçta bu bağlantıların ne kadar güçlü olacağını bilmediğimiz için rastgele sayılarla başlatırız. Öğrenme süreci, bu ağırlıkları doğru değerlere ayarlama işlemidir.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-lg">3. İleri Besleme (Feedforward): Tahmin Yapma</h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Bu, beynin "düşünme" veya "tahmin etme" adımıdır. Veri, giriş katmanından girer, gizli katmandan geçer ve çıkış katmanında bir sonuca ulaşır.
+                    <br />
+                    <code>self.layer1 = sigmoid(np.dot(self.input, self.weights1))</code> satırı şunu yapar: Giriş verilerini ilk ağırlık setiyle çarpar (bilgiyi işler) ve sonucu sigmoid fonksiyonundan geçirerek gizli katmanın çıktısını oluşturur. Bir sonraki satır da aynı işlemi gizli katman ve ikinci ağırlık setiyle yaparak nihai tahmini üretir.
                   </p>
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold">3. İleri Besleme (Feedforward)</h4>
-                  <p className="text-sm text-muted-foreground">
-                    <code>feedforward()</code> metodu, giriş verilerini ağ boyunca ilerletir. Her katmanda, önceki katmanın çıktıları ile ağırlıkların çarpımı alınır ve sigmoid aktivasyon fonksiyonu uygulanır.
+                  <h4 className="font-semibold text-lg">4. Geri Yayılım (Backpropagation): Hatalardan Ders Çıkarma</h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Bu, öğrenmenin gerçekleştiği en kritik adımdır. Beyin bir tahminde bulundu (ileri besleme), şimdi bu tahminin ne kadar "yanlış" olduğunu hesaplayıp kendini düzeltecek.
+                    <ol className="list-decimal list-inside mt-2 pl-4 space-y-1">
+                      <li><b>Hatayı Hesapla:</b> <code>(self.y - self.output)</code> koduyla, beynin tahmini (output) ile gerçek doğru cevap (y) arasındaki fark (hata) bulunur.</li>
+                      <li><b>Hatayı Geri Yay:</b> Bu hata, "suçun ne kadarının hangi bağlantıdan kaynaklandığını" bulmak için çıkıştan girişe doğru geri yayılır. Türevler burada devreye girerek her bir ağırlığın hataya olan etkisini (gradyanını) hesaplar.</li>
+                      <li><b>Ağırlıkları Güncelle:</b> <code>self.weights1 += d_weights1</code> satırıyla, hesaplanan bu "suç paylarına" göre ağırlıklar yavaşça güncellenir. Bu, beynin bir sonraki seferde daha doğru tahmin yapmasını sağlayacak şekilde bağlantılarını "ayarlaması" anlamına gelir.</li>
+                    </ol>
                   </p>
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold">4. Geri Yayılım (Backpropagation)</h4>
-                  <p className="text-sm text-muted-foreground">
-                    <code>backprop()</code> metodu, çıktı ile beklenen değer arasındaki hatayı hesaplar ve bu hatayı ağ boyunca geriye doğru yayarak ağırlıkları günceller. Bu, gradyan iniş algoritmasının bir uygulamasıdır.
+                  <h4 className="font-semibold text-lg">5. Eğitim (Training): Tekrar Tekrar Denemek</h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Bir "epoch", tüm veri setinin bir kez ileri besleme ve geri yayılım sürecinden geçmesidir. Biz bu işlemi 10,000 kez tekrarlıyoruz. Her tekrarda, beynimizdeki ağırlıklar çok küçük adımlarla daha doğru hale gelir ve ağımız problemi çözmeyi yavaş yavaş "öğrenir". Hatanın her 1000 epoch'ta bir yazdırılması, öğrenme sürecinin ne kadar iyi gittiğini görmemizi sağlar.
                   </p>
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold">5. Eğitim</h4>
-                  <p className="text-sm text-muted-foreground">
-                    <code>train()</code> metodu, belirtilen sayıda epoch boyunca ileri besleme ve geri yayılım işlemlerini tekrarlar. Her 1000 epoch'ta bir, ortalama kare hata hesaplanır ve kaydedilir.
+                  <h4 className="font-semibold text-lg">6. XOR Problemi: Neden Önemli?</h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    XOR problemi, "doğrusal olarak ayrılamayan" bir problem olduğu için klasiktir. Yani, bir grafik üzerinde sonuçları (0'ları ve 1'leri) tek bir düz çizgiyle ayıramazsınız. Bu tür problemleri çözmek için en az bir gizli katmana sahip sinir ağları gerekir, bu da yapay sinir ağlarının gücünü gösterir.
                   </p>
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold">6. XOR Problemi</h4>
-                  <p className="text-sm text-muted-foreground">
-                    XOR (özel VEYA) mantık kapısı, doğrusal olarak ayrılamayan bir problemdir ve bu nedenle sinir ağlarının gücünü göstermek için sıklıkla kullanılır. Girdiler [0,0], [0,1], [1,0], [1,1] ve beklenen çıktılar sırasıyla [0], [1], [1], [0]'dır.
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 className="font-semibold">7. Görselleştirme</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Kod, eğitim sırasındaki hatanın nasıl azaldığını gösteren bir grafik ve XOR probleminin girdilerini ve çıktılarını gösteren bir dağılım grafiği oluşturur.
+                  <h4 className="font-semibold text-lg">7. Görselleştirme: Sonuçları Anlamak</h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    İlk grafik, eğitim süresince hatanın nasıl giderek azaldığını gösterir. Bu, ağın başarılı bir şekilde öğrendiğinin kanıtıdır. İkinci grafik ise XOR probleminin veri noktalarını görselleştirerek problemi daha somut bir şekilde anlamamıza yardımcı olur.
                   </p>
                 </div>
               </TabsContent>
