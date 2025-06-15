@@ -6,237 +6,214 @@ import MarkdownContent from '@/components/MarkdownContent';
 
 export const metadata: Metadata = {
   title: 'Veri Yapıları | Python Temelleri | Kodleon',
-  description: "Python'da listeler, demetler, sözlükler ve kümeler gibi temel veri yapılarını ve bunların kullanımını öğrenin.",
+  description: "Python'daki listeler, demetler, sözlükler ve kümeler gibi temel yerleşik veri yapılarını, ileri düzey koleksiyonları ve pratik kullanım senaryolarını öğrenin.",
 };
 
 const content = `
 # Veri Yapıları
 
-Python'da veri yapıları, verileri organize etmek ve yönetmek için kullanılan temel yapı taşlarıdır. Bu bölümde, Python'un yerleşik veri yapılarını ve bunların kullanımını öğreneceksiniz.
+Veri yapıları, verileri verimli bir şekilde saklamak, organize etmek ve yönetmek için kullanılan temel programlama araçlarıdır. Python, kullanımı kolay ve güçlü yerleşik veri yapıları sunar.
 
-## Listeler (Lists)
+---
 
-Listeler, sıralı ve değiştirilebilir veri koleksiyonlarıdır:
+## 1. Listeler (Lists)
+Listeler, Python'da en sık kullanılan, sıralı ve **değiştirilebilir (mutable)** veri koleksiyonlarıdır.
+
+- **Özellikleri:** Sıralıdır (elemanların bir sırası vardır), değiştirilebilirdir (elemanlar eklenebilir, silinebilir, güncellenebilir), farklı veri tiplerini barındırabilir.
+- **Kullanım Alanları:** Sıralı veri koleksiyonları, veritabanından gelen kayıtlar, kullanıcı listeleri.
+
+### Temel Liste İşlemleri
 
 \`\`\`python
 # Liste oluşturma
-sayilar = [1, 2, 3, 4, 5]
 meyveler = ["elma", "armut", "muz"]
-karisik = [1, "elma", 3.14, True]
+sayilar = [1, 2, 3, 4, 5]
 
-# İndeksleme ve dilimleme
-print(sayilar[0])       # İlk eleman: 1
-print(sayilar[-1])      # Son eleman: 5
-print(sayilar[1:4])     # [2, 3, 4]
-print(sayilar[::2])     # [1, 3, 5] (2'şer atlayarak)
+# Elemanlara erişim (İndeksleme)
+print(meyveler[0])    # 'elma'
+print(sayilar[-1])   # 5 (Sondan birinci)
 
-# Liste metodları
-sayilar.append(6)       # Sona ekleme
-sayilar.insert(0, 0)    # Başa ekleme
-sayilar.remove(3)       # Değere göre silme
-sayilar.pop()          # Son elemanı çıkarma
-sayilar.sort()         # Sıralama
-sayilar.reverse()      # Ters çevirme
-
-# Liste işlemleri
-a = [1, 2, 3]
-b = [4, 5, 6]
-c = a + b              # Listeleri birleştirme
-a.extend(b)            # Liste sonuna ekleme
-print(len(a))          # Liste uzunluğu
-print(2 in a)          # Eleman kontrolü
+# Dilimleme (Slicing)
+alt_liste = sayilar[1:4]  # [2, 3, 4]
+print(alt_liste)
 \`\`\`
 
-## Demetler (Tuples)
+### Liste Metodları
 
-Demetler, değiştirilemez (immutable) listelerdir:
+\`\`\`python
+# Eleman ekleme
+sayilar.append(6)      # Sona ekler: [1, 2, 3, 4, 5, 6]
+sayilar.insert(0, 0)   # Belirtilen indekse ekler: [0, 1, 2, 3, 4, 5, 6]
+
+# Eleman silme
+sayilar.remove(3)      # Değere göre ilk bulduğunu siler
+son_eleman = sayilar.pop() # Son elemanı siler ve döndürür
+print(f"Silinen son eleman: {son_eleman}")
+
+# Diğer metodlar
+sayilar.sort(reverse=True) # Ters sıralar
+print(sayilar.count(2))    # 2 elemanının sayısını verir
+print(sayilar.index(4))    # 4 elemanının indeksini verir
+\`\`\`
+
+### Liste Anlayışları (List Comprehensions)
+Listeleri daha kısa ve okunaklı bir şekilde oluşturmak için kullanılır.
+
+\`\`\`python
+# 0'dan 9'a kadar olan sayıların karelerini içeren bir liste
+kareler = [x**2 for x in range(10)]
+print(kareler) # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Sadece çift sayıların kareleri
+cift_kareler = [x**2 for x in range(10) if x % 2 == 0]
+print(cift_kareler) # [0, 4, 16, 36, 64]
+\`\`\`
+
+---
+
+## 2. Demetler (Tuples)
+Demetler, sıralı ve **değiştirilemez (immutable)** veri koleksiyonlarıdır.
+
+- **Özellikleri:** Sıralıdır, değiştirilemez (elemanları güncellenemez), listelere göre daha hızlıdır ve daha az bellek kullanır.
+- **Kullanım Alanları:** Değişmemesi gereken veriler (koordinatlar, ayarlar), fonksiyonlardan birden fazla değer döndürme.
 
 \`\`\`python
 # Demet oluşturma
-koordinat = (3, 4)
-rgb = (255, 128, 0)
-tek_elemanli = (1,)    # Tek elemanlı demet için virgül gerekli
+koordinat = (10.5, 20.3)
+renk_kodu = (255, 165, 0) # RGB
 
-# Demet işlemleri
-x, y = koordinat       # Demet çözme (tuple unpacking)
-print(koordinat[0])    # İndeksleme
-print(len(rgb))        # Uzunluk
-print(128 in rgb)      # Eleman kontrolü
+# Elemanlara erişim (listelerle aynı)
+print(koordinat[0])
 
-# Demetlerin kullanım alanları
-def koordinat_hesapla():
-    return (10, 20)    # Çoklu değer döndürme
+# Demet Çözme (Tuple Unpacking)
+x, y = koordinat
+print(f"X: {x}, Y: {y}")
 
-x, y = koordinat_hesapla()
-
-# Değiştirilemezlik
-# koordinat[0] = 5     # TypeError: 'tuple' object does not support item assignment
+# Değiştirme denemesi hata verir
+# koordinat[0] = 5.0  # TypeError fırlatır
 \`\`\`
 
-## Sözlükler (Dictionaries)
+---
 
-Sözlükler, anahtar-değer çiftlerini saklayan veri yapılarıdır:
+## 3. Sözlükler (Dictionaries)
+Sözlükler, anahtar-değer (\`key-value\`) çiftlerinden oluşan, sırasız (Python 3.7+ itibarıyla eklenme sırasını korur) ve **değiştirilebilir** koleksiyonlardır.
+
+- **Özellikleri:** Anahtarlar benzersiz ve değiştirilemez olmalıdır (örn: str, int, tuple). Değerler herhangi bir veri tipi olabilir.
+- **Kullanım Alanları:** JSON verileri, ayar dosyaları, bir nesnenin özelliklerini saklama.
+
+### Sözlük İşlemleri
 
 \`\`\`python
-# Sözlük oluşturma
-kisi = {
-    "ad": "Ahmet",
-    "yas": 25,
-    "sehir": "İstanbul"
+ogrenci = {
+    "ad": "Ayşe",
+    "numara": 123,
+    "bolum": "Bilgisayar Mühendisliği"
 }
 
-# Erişim ve değiştirme
-print(kisi["ad"])           # Değere erişim
-kisi["yas"] = 26           # Değer güncelleme
-kisi["meslek"] = "Mühendis" # Yeni çift ekleme
+# Değere erişim
+print(ogrenci["ad"])            # 'Ayşe'
+print(ogrenci.get("bolum"))     # 'Bilgisayar Mühendisliği'
 
-# Güvenli erişim
-yas = kisi.get("yas", 0)    # Varsayılan değerle erişim
-meslek = kisi.get("meslek", "Belirtilmedi")
+# Değer ekleme / güncelleme
+ogrenci["yas"] = 21
+ogrenci["ad"] = "Ayşe Yılmaz"
 
-# Sözlük metodları
-print(kisi.keys())          # Anahtarlar
-print(kisi.values())        # Değerler
-print(kisi.items())         # Anahtar-değer çiftleri
+# Eleman silme
+cikarilan_deger = ogrenci.pop("numara")
+print(f"Çıkarılan numara: {cikarilan_deger}")
 
-# Sözlük işlemleri
-kisi.update({"email": "ahmet@email.com"})  # Çoklu güncelleme
-del kisi["yas"]            # Çift silme
-kisi.pop("sehir")          # Çift çıkarma ve değerini döndürme
-kisi.clear()               # Sözlüğü temizleme
-
-# İç içe sözlükler
-ogrenciler = {
-    "101": {
-        "ad": "Ayşe",
-        "notlar": [85, 90, 95]
-    },
-    "102": {
-        "ad": "Mehmet",
-        "notlar": [75, 80, 85]
-    }
-}
+# Döngü ile gezinme
+for anahtar, deger in ogrenci.items():
+    print(f"{anahtar.title()}: {deger}")
 \`\`\`
 
-## Kümeler (Sets)
+---
 
-Kümeler, benzersiz elemanları saklayan veri yapılarıdır:
+## 4. Kümeler (Sets)
+Kümeler, sırasız, benzersiz elemanlardan oluşan ve **değiştirilebilir** koleksiyonlardır.
+
+- **Özellikleri:** Tekrar eden elemanları barındırmazlar. Matematiksel küme işlemleri için optimize edilmişlerdir.
+- **Kullanım Alanları:** Bir koleksiyondaki benzersiz elemanları bulma, üyelik kontrolü, kesişim, birleşim gibi işlemler.
 
 \`\`\`python
 # Küme oluşturma
-sayilar = {1, 2, 3, 4, 5}
-meyveler = set(["elma", "armut", "muz"])
-tekrar = {1, 2, 2, 3, 3, 4}  # {1, 2, 3, 4}
+sayilar = {1, 2, 3, 2, 4, 1}
+print(sayilar) # {1, 2, 3, 4} (Tekrarlar otomatik silinir)
 
 # Küme işlemleri
-A = {1, 2, 3, 4}
-B = {3, 4, 5, 6}
+kume_a = {1, 2, 3, 4}
+kume_b = {3, 4, 5, 6}
 
-birlesim = A | B            # Birleşim
-kesisim = A & B            # Kesişim
-fark = A - B               # Fark
-simetrik_fark = A ^ B      # Simetrik fark
-
-# Küme metodları
-sayilar.add(6)             # Eleman ekleme
-sayilar.remove(1)          # Eleman silme (yoksa hata verir)
-sayilar.discard(10)        # Eleman silme (yoksa hata vermez)
-sayilar.pop()              # Rastgele eleman çıkarma
-sayilar.clear()            # Kümeyi temizleme
-
-# Küme kontrolleri
-print(2 in sayilar)        # Eleman kontrolü
-print(A.issubset(B))       # Alt küme kontrolü
-print(A.issuperset(B))     # Üst küme kontrolü
-print(A.isdisjoint(B))     # Ayrık küme kontrolü
+# Birleşim
+print(kume_a | kume_b)  # {1, 2, 3, 4, 5, 6}
+# Kesişim
+print(kume_a & kume_b)  # {3, 4}
+# Fark
+print(kume_a - kume_b)  # {1, 2}
+# Simetrik Fark (sadece birinde olanlar)
+print(kume_a ^ kume_b)  # {1, 2, 5, 6}
 \`\`\`
 
-## Dize İşlemleri (String Operations)
+---
 
-Dizeler de bir veri yapısıdır ve zengin işlem kümesine sahiptir:
+## Alıştırmalar ve Çözümleri
 
+### Alıştırma 1: Liste Anlayışı ve Filtreleme
+1'den 50'ye kadar olan sayılardan, 3'e ve 5'e aynı anda tam bölünebilen sayıların karelerini içeren bir listeyi, liste anlayışı (list comprehension) kullanarak oluşturun.
+
+**Çözüm:**
 \`\`\`python
-# Dize oluşturma ve biçimlendirme
-ad = "Ahmet"
-soyad = 'Yılmaz'
-tam_ad = f"{ad} {soyad}"
-uzun_metin = """Çok
-satırlı
-metin"""
+# 3 ve 5'in en küçük ortak katı 15'tir.
+# Dolayısıyla 15'e tam bölünen sayıları arıyoruz.
+sonuc_listesi = [sayi**2 for sayi in range(1, 51) if sayi % 15 == 0]
 
-# Dize metodları
-metin = "  Python Programlama  "
-print(metin.strip())       # Boşlukları temizleme
-print(metin.upper())       # Büyük harfe çevirme
-print(metin.lower())       # Küçük harfe çevirme
-print(metin.title())       # Başlık formatı
-print(metin.replace("Python", "Java"))  # Değiştirme
-
-# Dize bölme ve birleştirme
-kelimeler = metin.split()  # Boşluğa göre bölme
-dosya = "resim.jpg"
-ad, uzanti = dosya.split(".")  # Noktaya göre bölme
-"-".join(kelimeler)        # Birleştirme
-
-# Dize arama
-cumle = "Python çok güzel bir programlama dili"
-print("Python" in cumle)   # İçerik kontrolü
-print(cumle.startswith("Python"))  # Başlangıç kontrolü
-print(cumle.endswith("dili"))      # Bitiş kontrolü
-print(cumle.find("güzel"))         # Konum bulma
+print("1-50 arasında 3'e ve 5'e tam bölünen sayıların kareleri:")
+print(sonuc_listesi) # [225, 900, 2025]
 \`\`\`
 
-## Koleksiyon Modülü (Collections)
+### Alıştırma 2: Sözlük ile Kelime Frekansı
+Verilen bir cümlenin içindeki her kelimenin kaç kez geçtiğini sayan ve sonucu bir sözlük olarak döndüren bir program yazın. Büyük/küçük harf duyarlılığı olmamalıdır.
 
-Python'un \`collections\` modülü, özel veri yapıları sunar:
-
+**Çözüm:**
 \`\`\`python
-from collections import Counter, defaultdict, namedtuple, deque
+cumle = "Bu bir test cümlesi ve bu cümle test amaçlıdır"
+kelime_frekanslari = {}
 
-# Counter: Eleman sayımı
-metin = "mississippi"
-sayac = Counter(metin)
-print(sayac)  # {'i': 4, 's': 4, 'p': 2, 'm': 1}
+# Cümleyi küçük harfe çevirip kelimelere ayır
+kelimeler = cumle.lower().split()
 
-# defaultdict: Varsayılan değerli sözlük
-d = defaultdict(list)
-d["a"].append(1)  # Otomatik liste oluşturur
+for kelime in kelimeler:
+    # Eğer kelime sözlükte varsa, sayacını 1 artır.
+    # Yoksa, sözlüğe kelimeyi ekle ve değerini 1 yap.
+    kelime_frekanslari[kelime] = kelime_frekanslari.get(kelime, 0) + 1
 
-# namedtuple: İsimli alanları olan demet
-Nokta = namedtuple("Nokta", ["x", "y"])
-p = Nokta(3, 4)
-print(p.x, p.y)
-
-# deque: Çift yönlü kuyruk
-kuyruk = deque([1, 2, 3])
-kuyruk.appendleft(0)   # Başa ekleme
-kuyruk.append(4)       # Sona ekleme
-kuyruk.popleft()       # Baştan çıkarma
-kuyruk.pop()           # Sondan çıkarma
+print("Kelime frekansları:")
+print(kelime_frekanslari)
+# Çıktı: {'bu': 2, 'bir': 1, 'test': 2, 'cümlesi': 1, 've': 1, 'cümle': 1, 'amaçlıdır': 1}
 \`\`\`
 
-## Alıştırmalar
+### Alıştırma 3: Kümeler ile Ortak Eleman Bulma
+İki farklı öğrenci grubunun katıldığı dersleri temsil eden iki liste oluşturun. Kümeleri kullanarak her iki grubun da ortak olarak katıldığı dersleri bulun.
 
-1. **Liste İşlemleri**
-   - Bir listedeki tekrar eden elemanları temizleyen fonksiyon yazın
-   - İki listeyi birleştirip sıralayan program yazın
-   - Liste içindeki en sık geçen elemanı bulan fonksiyon yazın
+**Çözüm:**
+\`\`\`python
+grup_a_dersleri = ["Matematik", "Fizik", "Kimya", "Tarih"]
+grup_b_dersleri = ["Fizik", "Biyoloji", "Edebiyat", "Tarih"]
 
-2. **Sözlük İşlemleri**
-   - Öğrenci not takip sistemi oluşturun
-   - İç içe sözlüklerle telefon rehberi yapın
-   - Sözlük kullanarak metin içindeki kelimelerin frekansını hesaplayın
+# Listeleri kümelere dönüştür
+kume_a = set(grup_a_dersleri)
+kume_b = set(grup_b_dersleri)
 
-3. **Küme İşlemleri**
-   - İki metin arasındaki ortak kelimeleri bulan program yazın
-   - Küme işlemlerini kullanarak sayı problemleri çözün
-   - Öğrenci grupları arasındaki ilişkileri küme işlemleriyle analiz edin
+# Kesişim işlemini kullanarak ortak dersleri bul
+ortak_dersler = kume_a.intersection(kume_b)
+
+print("İki grubun da aldığı ortak dersler:")
+print(list(ortak_dersler)) # Sonucu liste olarak yazdırmak daha okunaklı olabilir
+# Çıktı: ['Tarih', 'Fizik'] (Sıra değişebilir)
+\`\`\`
 
 ## Sonraki Adımlar
-
-- [Python Veri Yapıları Dokümantasyonu](https://docs.python.org/3/tutorial/datastructures.html)
-- [Python Collections Modülü](https://docs.python.org/3/library/collections.html)
-- [Python String Metodları](https://docs.python.org/3/library/stdtypes.html#string-methods)
+Veri yapıları, daha karmaşık algoritmalar ve programlar oluşturmanın temelidir. Bu konuyu anladıktan sonra, kodunuzu organize etmek için [Fonksiyonlar](/topics/python/temel-python/fonksiyonlar) konusuna geçmek iyi bir adımdır.
 `;
 
 export default function PythonDataStructuresPage() {

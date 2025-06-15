@@ -6,221 +6,213 @@ import MarkdownContent from '@/components/MarkdownContent';
 
 export const metadata: Metadata = {
   title: 'Fonksiyonlar | Python Temelleri | Kodleon',
-  description: "Python'da fonksiyonlar, parametreler, dönüş değerleri ve modüller hakkında detaylı bilgi edinin.",
+  description: "Python'da yeniden kullanılabilir kod blokları olan fonksiyonları tanımlamayı, parametreleri, *args, **kwargs, lambda fonksiyonlarını ve kapsam (scope) kurallarını öğrenin.",
 };
 
 const content = `
 # Fonksiyonlar
 
-Fonksiyonlar, Python'da kod tekrarını önleyen ve programınızı modüler hale getiren yapı taşlarıdır. Bu bölümde, fonksiyonların tanımlanmasını, parametreleri, dönüş değerlerini ve modülleri öğreneceksiniz.
+Fonksiyonlar, belirli bir görevi yerine getirmek için organize edilmiş, yeniden kullanılabilir kod bloklarıdır. Kod tekrarını önler, programı daha modüler, okunaklı ve yönetilebilir hale getirirler.
 
-## Fonksiyon Tanımlama
+---
 
-Python'da fonksiyonlar \`def\` anahtar kelimesi ile tanımlanır:
+## 1. Fonksiyon Tanımlama ve Çağırma
+Python'da bir fonksiyon \`def\` anahtar kelimesi ile tanımlanır, ardından fonksiyon adı ve parantezler \`()\` gelir.
 
 \`\`\`python
-# Basit fonksiyon tanımlama
+# Parametresiz bir fonksiyon
 def selamla():
-    print("Merhaba!")
+    """Bu fonksiyon ekrana 'Merhaba, Dünya!' yazar."""
+    print("Merhaba, Dünya!")
 
 # Fonksiyonu çağırma
-selamla()  # Çıktı: Merhaba!
+selamla()
+\`\`\`
 
-# Parametreli fonksiyon
-def kisi_selamla(isim):
+### Parametreler ve Argümanlar
+Fonksiyonlar, işlevlerini yerine getirmek için dışarıdan veri alabilirler. Bu verilere **parametre** denir. Fonksiyonu çağırırken bu parametrelere gönderilen değerlere ise **argüman** denir.
+
+\`\`\`python
+def kisi_selamla(isim): # 'isim' bir parametredir
+    """Verilen ismi kullanarak kişiye özel selamlama yapar."""
     print(f"Merhaba, {isim}!")
 
-kisi_selamla("Ahmet")  # Çıktı: Merhaba, Ahmet!
-
-# Dönüş değeri olan fonksiyon
-def kare_al(sayi):
-    return sayi ** 2
-
-sonuc = kare_al(5)  # sonuc = 25
+kisi_selamla("Ayşe") # "Ayşe" bir argümandır
+kisi_selamla("Mehmet")
 \`\`\`
 
-## Parametreler ve Argümanlar
-
-### Varsayılan Parametreler
-
-\`\`\`python
-# Varsayılan değerli parametreler
-def guc_al(taban, us=2):
-    return taban ** us
-
-print(guc_al(3))     # 9 (3^2)
-print(guc_al(3, 3))  # 27 (3^3)
-
-# Birden fazla varsayılan parametre
-def kisi_bilgileri(ad, soyad, yas=None, sehir="Belirtilmedi"):
-    bilgi = f"{ad} {soyad}"
-    if yas:
-        bilgi += f", {yas} yaşında"
-    if sehir != "Belirtilmedi":
-        bilgi += f", {sehir}'de yaşıyor"
-    return bilgi
-
-print(kisi_bilgileri("Ahmet", "Yılmaz"))
-print(kisi_bilgileri("Ayşe", "Demir", 25, "İstanbul"))
-\`\`\`
-
-### Konumsal ve İsimli Argümanlar
+### \`return\` İfadesi
+Bir fonksiyon, yaptığı işlemin sonucunu çağrıldığı yere geri gönderebilir. Bu, \`return\` anahtar kelimesi ile yapılır.
 
 \`\`\`python
-def dikdortgen_alan(uzunluk, genislik):
-    return uzunluk * genislik
-
-# Konumsal argümanlar
-alan1 = dikdortgen_alan(5, 3)
-
-# İsimli argümanlar
-alan2 = dikdortgen_alan(genislik=3, uzunluk=5)
-
-# Karışık kullanım (önce konumsal, sonra isimli)
-alan3 = dikdortgen_alan(5, genislik=3)
-\`\`\`
-
-### Değişken Sayıda Argümanlar
-
-\`\`\`python
-# *args: Değişken sayıda konumsal argüman
-def toplam(*sayilar):
-    return sum(sayilar)
-
-print(toplam(1, 2, 3))       # 6
-print(toplam(1, 2, 3, 4, 5)) # 15
-
-# **kwargs: Değişken sayıda isimli argüman
-def kisi_olustur(**bilgiler):
-    for anahtar, deger in bilgiler.items():
-        print(f"{anahtar}: {deger}")
-
-kisi_olustur(ad="Ahmet", yas=25, sehir="İstanbul")
-
-# *args ve **kwargs birlikte kullanımı
-def genel_fonksiyon(*args, **kwargs):
-    print("Konumsal argümanlar:", args)
-    print("İsimli argümanlar:", kwargs)
-
-genel_fonksiyon(1, 2, 3, ad="Ahmet", yas=25)
-\`\`\`
-
-## Lambda Fonksiyonları
-
-Lambda fonksiyonları, tek satırda tanımlanan anonim fonksiyonlardır:
-
-\`\`\`python
-# Basit lambda fonksiyonu
-kare = lambda x: x ** 2
-print(kare(5))  # 25
-
-# Lambda fonksiyonlarını filtreleme ile kullanma
-sayilar = [1, 2, 3, 4, 5, 6]
-cift_sayilar = list(filter(lambda x: x % 2 == 0, sayilar))
-print(cift_sayilar)  # [2, 4, 6]
-
-# Lambda fonksiyonlarını sıralama ile kullanma
-kisiler = [("Ahmet", 25), ("Mehmet", 30), ("Ayşe", 20)]
-kisiler.sort(key=lambda x: x[1])  # Yaşa göre sıralama
-print(kisiler)
-\`\`\`
-
-## Fonksiyon Dekoratörleri
-
-Dekoratörler, fonksiyonların davranışını değiştirmek için kullanılır:
-
-\`\`\`python
-# Basit dekoratör örneği
-def zaman_olc(fonksiyon):
-    from time import time
-    
-    def sarmalayici(*args, **kwargs):
-        baslangic = time()
-        sonuc = fonksiyon(*args, **kwargs)
-        bitis = time()
-        print(f"{fonksiyon.__name__} fonksiyonu {bitis - baslangic} saniye sürdü")
-        return sonuc
-    
-    return sarmalayici
-
-@zaman_olc
-def faktoriyel(n):
-    from math import factorial
-    return factorial(n)
-
-sonuc = faktoriyel(1000)
-\`\`\`
-
-## Modüller ve Import
-
-### Modül İçe Aktarma
-
-\`\`\`python
-# Tüm modülü içe aktarma
-import math
-print(math.pi)  # 3.141592653589793
-
-# Belirli fonksiyonları içe aktarma
-from random import randint, choice
-print(randint(1, 10))
-print(choice(["elma", "armut", "muz"]))
-
-# Takma isimle içe aktarma
-import numpy as np
-import pandas as pd
-
-# Modülden her şeyi içe aktarma (önerilmez)
-from math import *
-\`\`\`
-
-### Kendi Modülünüzü Oluşturma
-
-\`\`\`python
-# hesaplamalar.py
-def toplama(a, b):
+def topla(a, b):
+    """İki sayıyı toplayıp sonucunu döndürür."""
     return a + b
 
-def cikarma(a, b):
-    return a - b
-
-def carpma(a, b):
-    return a * b
-
-def bolme(a, b):
-    if b != 0:
-        return a / b
-    raise ValueError("Sıfıra bölme hatası")
-
-# Başka bir dosyada kullanım
-from hesaplamalar import toplama, cikarma
-# veya
-import hesaplamalar
-
-sonuc = hesaplamalar.toplama(5, 3)
+toplam_sonuc = topla(5, 3)
+print(f"Toplam: {toplam_sonuc}") # Çıktı: Toplam: 8
 \`\`\`
 
-## Alıştırmalar
+---
 
-1. **Temel Fonksiyonlar**
-   - Bir sayının faktöriyelini hesaplayan fonksiyon yazın
-   - Verilen bir listedeki en büyük ve en küçük sayıyı bulan fonksiyon yazın
-   - Bir metindeki sesli harfleri sayan fonksiyon yazın
+## 2. Gelişmiş Argüman Kullanımı
 
-2. **Parametreler ve Dönüş Değerleri**
-   - Değişken sayıda sayı alan ve ortalamasını hesaplayan fonksiyon
-   - İsimli parametrelerle öğrenci bilgilerini alan ve sözlük döndüren fonksiyon
-   - Birden fazla değer döndüren fonksiyon (tuple olarak)
+### Varsayılan Argüman Değerleri
+Parametrelere varsayılan değerler atayarak, fonksiyon çağrılırken bu argümanların girilmesini isteğe bağlı hale getirebilirsiniz.
 
-3. **Dekoratörler ve Lambda**
-   - Fonksiyon çağrılarını loglayan bir dekoratör yazın
-   - Liste işlemlerini lambda fonksiyonlarıyla yapın
-   - Özyinelemeli (recursive) fonksiyonlar için dekoratör yazın
+\`\`\`python
+def guc_al(taban, us=2):
+    """Bir sayının belirtilen üssünü alır. Üs belirtilmezse karesini alır."""
+    return taban ** us
+
+print(guc_al(3))     # 9 (varsayılan üs olan 2 kullanıldı)
+print(guc_al(3, 3))  # 27 (üs olarak 3 gönderildi)
+\`\`\`
+
+### Anahtar Kelime Argümanları (Keyword Arguments)
+Argümanları, parametre adlarını belirterek sırasız bir şekilde gönderebilirsiniz. Bu, özellikle çok sayıda parametresi olan fonksiyonlarda kodun okunabilirliğini artırır.
+
+\`\`\`python
+def kullanici_profili(ad, soyad, yas, sehir="Bilinmiyor"):
+    print(f"{ad} {soyad}, {yas} yaşında, {sehir}'de yaşıyor.")
+
+# Anahtar kelime argümanları ile çağırma
+kullanici_profili(yas=25, sehir="Ankara", ad="Ali", soyad="Veli")
+\`\`\`
+
+### Değişken Sayıda Argümanlar: \`*args\` ve \`**kwargs\`
+
+#### \`*args\` (Konumsal Argümanlar)
+Bir fonksiyonun değişken sayıda konumsal argüman almasını sağlar. Bu argümanlar fonksiyon içinde bir **demet (tuple)** olarak saklanır.
+
+\`\`\`python
+def sayilari_topla(*args):
+    """Verilen tüm sayıları toplar."""
+    print(f"Gelen argümanlar (tuple): {args}")
+    return sum(args)
+
+print(sayilari_topla(1, 2, 3))          # 6
+print(sayilari_topla(10, 20, 30, 40))   # 100
+\`\`\`
+
+#### \`**kwargs\` (Anahtar Kelime Argümanları)
+Bir fonksiyonun değişken sayıda anahtar kelime argümanı almasını sağlar. Bu argümanlar fonksiyon içinde bir **sözlük (dictionary)** olarak saklanır.
+
+\`\`\`python
+def profil_olustur(**kwargs):
+    """Verilen bilgileri kullanarak bir profil yazdırır."""
+    print("Kullanıcı Profili:")
+    for anahtar, deger in kwargs.items():
+        print(f"- {anahtar.capitalize()}: {deger}")
+
+profil_olustur(ad="Zeynep", yas=30, meslek="Mühendis", sehir="İzmir")
+\`\`\`
+
+---
+
+## 3. Lambda Fonksiyonları
+Lambda fonksiyonları, \`lambda\` anahtar kelimesi ile oluşturulan küçük, isimsiz (anonim) fonksiyonlardır. Genellikle tek bir ifade içerirler ve başka bir fonksiyonun argümanı olarak kullanılırlar.
+
+\`\`\`python
+# Normal fonksiyon
+def kare(x):
+    return x * x
+
+# Lambda eşdeğeri
+kare_lambda = lambda x: x * x
+
+print(kare_lambda(5)) # 25
+
+# Kullanım örneği: listeyi elemanların ikinci değerine göre sıralama
+liste = [(1, 5), (3, 2), (2, 8)]
+liste.sort(key=lambda item: item[1])
+print(liste) # [(3, 2), (1, 5), (2, 8)]
+\`\`\`
+
+---
+
+## 4. Değişken Kapsamı (Scope)
+Bir değişkenin programın hangi bölümünden erişilebilir olduğunu belirtir.
+
+- **Yerel Kapsam (Local Scope):** Bir fonksiyon içinde tanımlanan değişkenler sadece o fonksiyon içinde geçerlidir.
+- **Global Kapsam (Global Scope):** Fonksiyonların dışında, en üst seviyede tanımlanan değişkenlerdir ve programın her yerinden erişilebilirler.
+
+\`\`\`python
+x = 10 # Global değişken
+
+def benim_fonksiyonum():
+    y = 5 # Yerel değişken
+    print(f"Fonksiyon içi global x: {x}")
+    print(f"Fonksiyon içi yerel y: {y}")
+
+benim_fonksiyonum()
+print(f"Fonksiyon dışı global x: {x}")
+# print(y) # Bu satır NameError verir çünkü 'y' yerel bir değişkendir.
+\`\`\`
+
+---
+
+## Alıştırmalar ve Çözümleri
+
+### Alıştırma 1: Asal Sayı Bulma
+Bir sayının asal olup olmadığını kontrol eden bir fonksiyon yazın. Fonksiyon, sayı asalsa \`True\`, değilse \`False\` döndürmelidir. (1 asal değildir.)
+
+**Çözüm:**
+\`\`\`python
+def asal_mi(sayi):
+    """Bir sayının asal olup olmadığını kontrol eder."""
+    if sayi <= 1:
+        return False
+    # 2'den sayının kareköküne kadar olan sayılara bölünüp bölünmediğini kontrol et
+    for i in range(2, int(sayi**0.5) + 1):
+        if sayi % i == 0:
+            return False
+    return True
+
+# Test
+print(f"17 asal mı? {asal_mi(17)}") # True
+print(f"25 asal mı? {asal_mi(25)}") # False
+print(f"2 asal mı? {asal_mi(2)}")   # True
+\`\`\`
+
+### Alıştırma 2: Faktöriyel Hesaplama (Özyinelemeli)
+Bir sayının faktöriyelini özyinelemeli (recursive) bir fonksiyon kullanarak hesaplayın. Özyineleme, bir fonksiyonun kendi kendini çağırmasıdır.
+
+**Çözüm:**
+\`\`\`python
+def faktoriyel(n):
+    """Bir sayının faktöriyelini özyinelemeli olarak hesaplar."""
+    # Temel durum: 0! veya 1! her zaman 1'dir.
+    if n == 0 or n == 1:
+        return 1
+    # Özyinelemeli adım
+    else:
+        return n * faktoriyel(n - 1)
+
+# Test
+sayi = 5
+print(f"{sayi}! = {faktoriyel(sayi)}") # 120
+\`\`\`
+
+### Alıştırma 3: Lambda ile Filtreleme
+Verilen bir listedeki pozitif, negatif ve sıfır sayılarını ayrı listelere ayıran bir program yazın. \`filter()\` ve lambda fonksiyonlarını kullanın.
+
+**Çözüm:**
+\`\`\`python
+sayilar = [-5, -2, 0, 1, 3, 4, -1, 0, 8]
+
+pozitif_sayilar = list(filter(lambda x: x > 0, sayilar))
+negatif_sayilar = list(filter(lambda x: x < 0, sayilar))
+sifirlar = list(filter(lambda x: x == 0, sayilar))
+
+print(f"Orijinal Liste: {sayilar}")
+print(f"Pozitif Sayılar: {pozitif_sayilar}")
+print(f"Negatif Sayılar: {negatif_sayilar}")
+print(f"Sıfırlar: {sifirlar}")
+\`\`\`
 
 ## Sonraki Adımlar
-
-- [Veri Yapıları](/topics/python/temel-python/veri-yapilari)
-- [Python Fonksiyonlar Dokümantasyonu](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)
-- [Python Modüller Dokümantasyonu](https://docs.python.org/3/tutorial/modules.html)
+Fonksiyonlar Python'da güçlü bir araçtır. Bu temelleri anladıktan sonra, kodunuzu daha da organize etmek için [Sınıflar ve Nesneler (OOP)](/topics/python/temel-python/siniflar-ve-nesneler) konusuna geçebilirsiniz.
 `;
 
 export default function PythonFunctionsPage() {

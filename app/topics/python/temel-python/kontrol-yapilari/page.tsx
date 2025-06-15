@@ -6,248 +6,281 @@ import MarkdownContent from '@/components/MarkdownContent';
 
 export const metadata: Metadata = {
   title: 'Kontrol Yapıları | Python Temelleri | Kodleon',
-  description: "Python'da koşullu ifadeler, döngüler ve hata yönetimi yapılarını öğrenin.",
+  description: "Python'da program akışını yönetmek için kullanılan koşullu ifadeler (if/elif/else), döngüler (for, while) ve hata yönetimi (try/except) yapılarını öğrenin.",
 };
 
 const content = `
 # Kontrol Yapıları
 
-Python'da kontrol yapıları, programınızın akışını yönetmenizi sağlayan temel programlama araçlarıdır. Bu bölümde, koşullu ifadeleri, döngüleri ve hata yönetimini öğreneceksiniz.
+Kontrol yapıları, bir programın hangi kod bloklarının hangi koşullar altında ve kaç kez çalışacağını belirleyen temel programlama mekanizmalarıdır. Bu yapılar sayesinde programlarımıza mantık ve esneklik kazandırırız.
 
-## Koşullu İfadeler (if-elif-else)
+---
 
-Koşullu ifadeler, belirli koşullara göre farklı kod bloklarını çalıştırmanızı sağlar.
+## 1. Koşullu İfadeler (if, elif, else)
 
-### Temel if Yapısı
+Koşullu ifadeler, belirli bir koşulun doğru (\`True\`) veya yanlış (\`False\`) olmasına bağlı olarak farklı kod bloklarını çalıştırmamızı sağlar.
+
+### if Yapısı
+En temel koşul yapısıdır. Belirtilen koşul doğru ise içindeki kod bloğu çalışır.
 
 \`\`\`python
-# Basit if örneği
-yas = 18
-
+# Örnek: Yaş kontrolü
+yas = 20
 if yas >= 18:
-    print("Reşitsiniz")
-else:
-    print("Reşit değilsiniz")
+    print("Ehliyet alabilirsiniz.")
+\`\`\`
 
-# if-elif-else örneği
-not_ = 85
+### if-else Yapısı
+Koşul doğru ise \`if\` bloğu, yanlış ise \`else\` bloğu çalışır.
+
+\`\`\`python
+# Örnek: Parola kontrolü
+dogru_parola = "12345"
+girilen_parola = input("Parolanızı girin: ")
+
+if girilen_parola == dogru_parola:
+    print("Giriş başarılı!")
+else:
+    print("Hatalı parola!")
+\`\`\`
+
+### if-elif-else Yapısı
+Birden fazla koşulu ardı ardına kontrol etmek için kullanılır. Python'da \`switch-case\` yapısının karşılığıdır.
+
+\`\`\`python
+# Örnek: Not değerlendirme sistemi
+not_ = 77
 
 if not_ >= 90:
-    print("AA")
+    harf_notu = "AA"
 elif not_ >= 85:
-    print("BA")
+    harf_notu = "BA"
 elif not_ >= 80:
-    print("BB")
-elif not_ >= 75:
-    print("CB")
+    harf_notu = "BB"
 elif not_ >= 70:
-    print("CC")
+    harf_notu = "CB"
+elif not_ >= 60:
+    harf_notu = "CC"
 else:
-    print("FF")
+    harf_notu = "FF"
+
+print(f"Harf notunuz: {harf_notu}")
 \`\`\`
 
-### Mantıksal Operatörler
+### İç İçe (Nested) if Yapıları
+Bir \`if\` bloğunun içine başka \`if\` blokları yerleştirilebilir.
 
 \`\`\`python
-# and, or, not operatörleri
-yas = 25
-gelir = 5000
+# Örnek: Kullanıcı yetkilendirme
+kullanici_adi = "admin"
+is_admin = True
 
-if yas >= 18 and gelir >= 4000:
-    print("Kredi başvurusu yapabilirsiniz")
-
-# Çoklu koşullar
-online = True
-premium = False
-
-if online and not premium:
-    print("Ücretsiz içeriklere erişebilirsiniz")
-elif online and premium:
-    print("Tüm içeriklere erişebilirsiniz")
+if kullanici_adi == "admin":
+    if is_admin:
+        print("Yönetici paneline hoş geldiniz!")
+    else:
+        print("Yetkiniz yok, normal kullanıcı olarak giriş yapıldı.")
 else:
-    print("Lütfen giriş yapın")
+    print("Normal kullanıcı girişi yapıldı.")
 \`\`\`
 
-### Karşılaştırma Operatörleri
+---
 
-\`\`\`python
-# Temel karşılaştırma operatörleri
-x = 5
-y = 10
+## 2. Döngüler
 
-print(x == y)  # Eşitlik
-print(x != y)  # Eşit değil
-print(x < y)   # Küçüktür
-print(x > y)   # Büyüktür
-print(x <= y)  # Küçük eşittir
-print(x >= y)  # Büyük eşittir
-
-# is operatörü (kimlik karşılaştırma)
-a = [1, 2, 3]
-b = [1, 2, 3]
-c = a
-
-print(a == b)   # True (değer karşılaştırma)
-print(a is b)   # False (kimlik karşılaştırma)
-print(a is c)   # True (aynı nesneyi işaret ediyor)
-\`\`\`
-
-## Döngüler
+Döngüler, bir kod bloğunu belirli bir koşul sağlandığı sürece veya bir koleksiyonun her bir elemanı için tekrar tekrar çalıştırmamızı sağlar.
 
 ### for Döngüsü
+Bir koleksiyon (liste, demet, sözlük, string vb.) üzerindeki her bir eleman için işlem yapmak amacıyla kullanılır.
 
 \`\`\`python
-# Liste üzerinde iterasyon
-meyveler = ["elma", "armut", "muz"]
+# Liste üzerinde döngü
+meyveler = ["elma", "armut", "kiraz"]
 for meyve in meyveler:
-    print(meyve)
+    print(f"{meyve.title()} lezzetlidir.")
 
-# range() ile sayı aralığında döngü
-for i in range(5):      # 0'dan 4'e kadar
+# range() fonksiyonu ile belirli sayıda tekrar
+# 0'dan 4'e kadar olan sayıları yazdırır
+for i in range(5):
     print(i)
 
-for i in range(2, 8):   # 2'den 7'ye kadar
-    print(i)
-
-for i in range(0, 10, 2):  # 0'dan 9'a 2'şer artarak
-    print(i)
-
-# Enumerate kullanımı
-for index, meyve in enumerate(meyveler):
-    print(f"{index}: {meyve}")
-
-# Dictionary üzerinde döngü
-kisi = {
-    "ad": "Ahmet",
-    "yas": 25,
-    "sehir": "İstanbul"
-}
-
-for anahtar in kisi:
-    print(anahtar, kisi[anahtar])
-
-for anahtar, deger in kisi.items():
-    print(f"{anahtar}: {deger}")
+# String üzerinde döngü
+for harf in "Python":
+    print(harf, end="-") # Çıktı: P-y-t-h-o-n-
 \`\`\`
 
 ### while Döngüsü
+Belirtilen bir koşul doğru (\`True\`) olduğu sürece çalışmaya devam eder. Koşulun döngü içinde bir noktada \`False\` yapılmasına dikkat edilmelidir, aksi takdirde sonsuz döngü oluşur.
 
 \`\`\`python
-# Temel while döngüsü
-sayac = 0
-while sayac < 5:
-    print(sayac)
-    sayac += 1
+# Örnek: 1'den 5'e kadar sayma
+sayac = 1
+while sayac <= 5:
+    print(f"Sayı: {sayac}")
+    sayac += 1 # Koşulu sonlandırmak için sayaç artırılır
 
-# Sonsuz döngü ve break
+# Örnek: Kullanıcıdan doğru girdi alana kadar sorma
 while True:
-    cevap = input("Çıkmak için 'q' yazın: ")
-    if cevap == 'q':
-        break
-
-# continue ile döngü adımını atlama
-for i in range(10):
-    if i % 2 == 0:
-        continue  # Çift sayıları atla
-    print(i)     # Sadece tek sayıları yazdır
+    cevap = input("Çıkmak için 'evet' yazın: ")
+    if cevap.lower() == "evet":
+        print("Program sonlandırılıyor...")
+        break # Döngüyü sonlandırır
 \`\`\`
 
-## break, continue ve else
+### Döngü Kontrol İfadeleri: \`break\` ve \`continue\`
+- **\`break\`**: İçinde bulunduğu döngüyü anında sonlandırır.
+- **\`continue\`**: Döngünün mevcut adımını atlar ve bir sonraki adımdan devam eder.
 
 \`\`\`python
-# break örneği
-for n in range(2, 10):
-    for x in range(2, n):
-        if n % x == 0:
-            print(f"{n} asal değil")
-            break
-    else:
-        print(f"{n} asal sayı")
+# break: 10'a kadar olan sayılardan 7'yi bulunca dur
+for sayi in range(1, 11):
+    if sayi == 7:
+        print("7 bulundu, döngü sonlandırılıyor.")
+        break
+    print(sayi)
 
-# continue örneği
-for num in range(1, 11):
-    if num % 3 == 0:
+# continue: 10'a kadar olan sayılardan çift olanları atla
+for sayi in range(1, 11):
+    if sayi % 2 == 0:
         continue
-    print(num)
+    print(sayi) # Sadece tek sayıları yazdırır
+\`\`\`
 
-# Döngü else'i
-for i in range(5):
-    if i == 10:
+### Döngülerde \`else\` Bloğu
+Bir döngü, \`break\` ifadesi ile sonlandırılmazsa, döngü tamamlandıktan sonra \`else\` bloğu çalışır. Bu, genellikle bir arama işlemi sonucunda bir şeyin bulunup bulunmadığını kontrol etmek için kullanılır.
+
+\`\`\`python
+# Örnek: Listede belirli bir elemanı arama
+sayilar = [2, 4, 6, 8, 10]
+aranan_sayi = 7
+
+for sayi in sayilar:
+    if sayi == aranan_sayi:
+        print(f"{aranan_sayi} bulundu!")
         break
 else:
-    print("Döngü normal şekilde tamamlandı")
+    # Bu blok sadece döngü break ile kırılmazsa çalışır
+    print(f"{aranan_sayi} listede bulunamadı.")
 \`\`\`
 
-## Hata Yönetimi (try-except)
+---
+
+## 3. Hata Yönetimi (try, except, finally)
+
+Program çalışırken oluşabilecek beklenmedik hataları (exceptions) yönetmek ve programın çökmesini engellemek için kullanılır.
+
+### try-except Bloğu
+Hata oluşma potansiyeli olan kod \`try\` bloğuna, oluşabilecek hatayı yakalamak için ise \`except\` bloğuna yazılır.
 
 \`\`\`python
-# Temel try-except
+# Örnek: Sayısal girdi ve sıfıra bölme hatası
 try:
-    sayi = int(input("Bir sayı girin: "))
-    sonuc = 10 / sayi
+    sayi1 = int(input("Bölünecek sayıyı girin: "))
+    sayi2 = int(input("Bölen sayıyı girin: "))
+    sonuc = sayi1 / sayi2
     print(f"Sonuç: {sonuc}")
 except ValueError:
-    print("Geçerli bir sayı girmediniz")
+    print("Hata: Lütfen sadece sayısal bir değer girin.")
 except ZeroDivisionError:
-    print("Sıfıra bölme hatası")
+    print("Hata: Bir sayı sıfıra bölünemez.")
 except Exception as e:
-    print(f"Bir hata oluştu: {e}")
-else:
-    print("İşlem başarılı")
-finally:
-    print("İşlem tamamlandı")
-
-# Özel hata yönetimi
-def yas_kontrol(yas):
-    if yas < 0:
-        raise ValueError("Yaş negatif olamaz")
-    elif yas > 120:
-        raise ValueError("Geçersiz yaş değeri")
-    return True
-
-try:
-    yas_kontrol(-5)
-except ValueError as e:
-    print(f"Hata: {e}")
+    # Beklenmedik diğer tüm hataları yakalamak için
+    print(f"Beklenmedik bir hata oluştu: {e}")
 \`\`\`
 
-## with İfadesi
+### \`else\` ve \`finally\` Blokları
+- **\`else\`**: \`try\` bloğunda hiçbir hata oluşmazsa çalışır.
+- **\`finally\`**: Hata oluşsa da oluşmasa da her durumda çalışır. Genellikle kaynakları serbest bırakmak (dosya kapatma vb.) için kullanılır.
 
 \`\`\`python
-# Dosya işlemleri için with kullanımı
-with open("dosya.txt", "r") as dosya:
-    icerik = dosya.read()
-    print(icerik)
-# Dosya otomatik olarak kapatılır
-
-# Birden fazla kaynak yönetimi
-with open("girdi.txt") as girdi, open("cikti.txt", "w") as cikti:
-    veri = girdi.read()
-    cikti.write(veri.upper())
+try:
+    dosya = open("veriler.txt", "r")
+    # ... dosya işlemleri ...
+except FileNotFoundError:
+    print("Dosya bulunamadı.")
+else:
+    print("Dosya başarıyla okundu.")
+    dosya.close() # Dosyayı kapat
+finally:
+    print("Hata yönetimi bloğu tamamlandı.")
 \`\`\`
 
-## Alıştırmalar
+---
 
-1. **Koşullu İfadeler**
-   - Bir sayının pozitif, negatif veya sıfır olduğunu kontrol eden program
-   - Girilen üç sayıdan en büyüğünü bulan program
-   - Basit bir hesap makinesi yapın (switch-case benzeri yapı)
+## Alıştırmalar ve Çözümleri
 
-2. **Döngüler**
-   - 1'den 100'e kadar olan sayıların toplamını hesaplayan program
-   - Çarpım tablosu oluşturan program
-   - Fibonacci serisinin ilk n terimini yazdıran program
+### Alıştırma 1: Faktöriyel Hesaplama
+Kullanıcıdan bir sayı alan ve bu sayının faktöriyelini hesaplayan bir program yazın. (Örn: 5! = 5 * 4 * 3 * 2 * 1 = 120). Negatif sayılar için hata mesajı verin.
 
-3. **Hata Yönetimi**
-   - Kullanıcıdan alınan verilerle basit bir bölme işlemi
-   - Dosya okuma ve yazma işlemlerinde hata yönetimi
-   - Özel hata sınıfı oluşturma ve kullanma
+**Çözüm:**
+\`\`\`python
+sayi_str = input("Faktöriyelini hesaplamak için bir sayı girin: ")
+
+try:
+    sayi = int(sayi_str)
+    if sayi < 0:
+        print("Negatif sayıların faktöriyeli hesaplanamaz.")
+    elif sayi == 0:
+        print("0! = 1")
+    else:
+        faktoriyel = 1
+        for i in range(1, sayi + 1):
+            faktoriyel *= i
+        print(f"{sayi}! = {faktoriyel}")
+except ValueError:
+    print("Lütfen geçerli bir tam sayı girin.")
+\`\`\`
+
+### Alıştırma 2: Sayı Tahmin Oyunu
+Program 1 ile 100 arasında rastgele bir sayı tutsun. Kullanıcıdan bu sayıyı tahmin etmesini isteyin. Kullanıcının her tahmininden sonra "Daha büyük" veya "Daha küçük" şeklinde ipuçları verin. Kullanıcı doğru sayıyı bulduğunda kaç denemede bulduğunu ekrana yazdırın.
+
+**Çözüm:**
+\`\`\`python
+import random
+
+hedef_sayi = random.randint(1, 100)
+tahmin_sayisi = 0
+tahmin = 0
+
+print("1-100 arasında bir sayı tuttum. Bakalım bulabilecek misin?")
+
+while tahmin != hedef_sayi:
+    try:
+        tahmin_str = input("Tahmininiz: ")
+        tahmin = int(tahmin_str)
+        tahmin_sayisi += 1
+
+        if tahmin < hedef_sayi:
+            print("Daha büyük bir sayı girin.")
+        elif tahmin > hedef_sayi:
+            print("Daha küçük bir sayı girin.")
+        else:
+            print(f"Tebrikler! {hedef_sayi} sayısını {tahmin_sayisi} denemede buldunuz.")
+    except ValueError:
+        print("Geçersiz giriş. Lütfen bir sayı girin.")
+\`\`\`
+
+### Alıştırma 3: Asal Sayı Bulma
+1'den 100'e kadar olan asal sayıları bulan ve bunları bir liste olarak ekrana yazdıran bir program yazın. Döngülerde \`else\` bloğunu kullanarak bir sayının asal olup olmadığını kontrol edin.
+
+**Çözüm:**
+\`\`\`python
+asal_sayilar = []
+for sayi in range(2, 101):  # Asal sayılar 2'den başlar
+    for i in range(2, sayi):
+        if (sayi % i) == 0:
+            # Tam bölündüyse asal değildir, iç döngüyü kır
+            break
+    else:
+        # İç döngü hiç kırılmadıysa sayı asaldır
+        asal_sayilar.append(sayi)
+
+print("1-100 arasındaki asal sayılar:")
+print(asal_sayilar)
+\`\`\`
 
 ## Sonraki Adımlar
-
-- [Fonksiyonlar](/topics/python/temel-python/fonksiyonlar)
-- [Python Akış Kontrolü Dokümantasyonu](https://docs.python.org/3/tutorial/controlflow.html)
-- [Python Hata ve İstisnalar](https://docs.python.org/3/tutorial/errors.html)
+Kontrol yapılarını öğrendiğinize göre, kodunuzu daha modüler ve yeniden kullanılabilir hale getirmek için [Fonksiyonlar](/topics/python/temel-python/fonksiyonlar) konusuna geçebilirsiniz.
 `;
 
 export default function PythonControlStructuresPage() {
