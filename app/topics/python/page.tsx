@@ -114,11 +114,12 @@ const topics = [
     description: "Yapay sinir ağları, derin öğrenme modelleri ve uygulamaları hakkında kapsamlı eğitim.",
     icon: Brain,
     features: [
-      "Yapay Sinir Ağları",
-      "Derin Öğrenme Frameworkleri",
-      "CNN ve RNN",
-      "Transfer Öğrenme",
-      "Model Optimizasyonu"
+      { text: "Yapay Sinir Ağları", href: "/kod-ornekleri/temel-sinir-agi" },
+      { text: "PyTorch Dersleri", href: "/topics/python/pytorch-dersleri/01-pytorch-kurulumu-ve-tensorlere-giris" },
+      { text: "Derin Öğrenme Frameworkleri" },
+      { text: "CNN ve RNN" },
+      { text: "Transfer Öğrenme" },
+      { text: "Model Optimizasyonu" }
     ],
     color: "from-pink-500/20 to-pink-500/10 hover:from-pink-500/30 hover:to-pink-500/20",
     iconBg: "bg-pink-500/10 text-pink-600"
@@ -287,47 +288,43 @@ export default function PythonTopicsPage() {
               </span>
               <div className="absolute w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 bottom-0 left-1/2 transform -translate-x-1/2 mt-2 rounded-full"></div>
             </h2>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {topics.map((topic, index) => {
-                const Icon = topic.icon;
-                return (
-                  <Card 
-                    key={index} 
-                    className={`flex flex-col bg-gradient-to-br transition-all duration-300 ${topic.color} border border-white/10 dark:border-gray-800/50 shadow-lg hover:shadow-xl hover:-translate-y-1`}
-                  >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {topics.map((topic) => (
+                <Link key={topic.title} href={topic.href} className="flex">
+                  <Card className={`w-full flex flex-col bg-gradient-to-br transition-all duration-300 ${topic.color} border-gray-200 dark:border-gray-800 shadow-md hover:shadow-xl hover:-translate-y-1`}>
                     <CardHeader>
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className={`p-2 rounded-lg ${topic.iconBg}`}>
-                          <Icon className="h-6 w-6" />
+                      <div className="flex items-center gap-4">
+                        <div className={`p-3 rounded-lg ${topic.iconBg}`}>
+                          <topic.icon className="h-6 w-6" />
                         </div>
-                        <CardTitle>{topic.title}</CardTitle>
+                        <CardTitle className="text-xl font-bold">{topic.title}</CardTitle>
                       </div>
-                      <CardDescription className="text-foreground/80">{topic.description}</CardDescription>
                     </CardHeader>
-                    <CardContent className="flex-1">
-                      <ul className="space-y-2">
-                        {topic.features.map((feature, i) => (
-                          <li key={i} className="flex items-center gap-2 text-sm text-foreground/70">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                            {feature}
+                    <CardContent className="flex-grow">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{topic.description}</p>
+                      <ul className="space-y-2 text-sm">
+                        {topic.features.map((feature, index) => (
+                          <li key={index} className="flex items-center">
+                            <div className="w-2 h-2 bg-current rounded-full mr-3 flex-shrink-0"></div>
+                            {feature.href ? (
+                              <a href={feature.href} className="hover:underline text-blue-600 dark:text-blue-400 font-semibold">
+                                {feature.text}
+                              </a>
+                            ) : (
+                              <span className="text-gray-700 dark:text-gray-300">{typeof feature === 'string' ? feature : feature.text}</span>
+                            )}
                           </li>
                         ))}
                       </ul>
                     </CardContent>
-                    <div className="p-6 pt-0">
-                      <Button 
-                        asChild 
-                        className="w-full bg-white/50 dark:bg-gray-900/50 hover:bg-white/70 dark:hover:bg-gray-900/70 text-foreground border border-white/20 dark:border-gray-700/50 shadow-sm"
-                      >
-                        <Link href={topic.href} className="flex items-center justify-center gap-2">
-                          Öğrenmeye Başla
-                          <Sparkles className="h-4 w-4" />
-                        </Link>
+                    <div className="p-4 mt-auto">
+                      <Button variant="ghost" className="w-full bg-white/50 dark:bg-black/20 hover:bg-white/70 dark:hover:bg-black/30">
+                        Öğrenmeye Başla <Sparkles className="h-4 w-4 ml-2" />
                       </Button>
                     </div>
                   </Card>
-                );
-              })}
+                </Link>
+              ))}
             </div>
           </div>
 

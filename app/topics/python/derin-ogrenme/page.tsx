@@ -56,11 +56,11 @@ const sections = [
     icon: <Code2 className="h-6 w-6" />,
     href: "/topics/python/derin-ogrenme/derin-ogrenme-frameworkleri",
     topics: [
-      "PyTorch Temelleri",
-      "TensorFlow ve Keras",
-      "Model Oluşturma",
-      "Veri Yükleme ve İşleme",
-      "Model Eğitimi ve Değerlendirme"
+      { text: "PyTorch Temelleri", href: "/topics/python/pytorch-dersleri/01-pytorch-kurulumu-ve-tensorlere-giris" },
+      { text: "TensorFlow ve Keras" },
+      { text: "Model Oluşturma" },
+      { text: "Veri Yükleme ve İşleme" },
+      { text: "Model Eğitimi ve Değerlendirme" }
     ]
   },
   {
@@ -155,7 +155,13 @@ export default function DeepLearningPage() {
                 <CardContent>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                     {section.topics.map((topic, i) => (
-                      <li key={i}>{topic}</li>
+                      <li key={i}>
+                        {typeof topic === 'string' ? topic : (
+                          <Link href={topic.href || '#'} className="text-primary hover:underline">
+                            {topic.text}
+                          </Link>
+                        )}
+                      </li>
                     ))}
                   </ul>
                 </CardContent>
