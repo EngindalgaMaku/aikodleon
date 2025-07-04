@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MarkdownContent from '@/components/MarkdownContent';
 import { Card } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export const metadata: Metadata = {
   title: 'Makine Öğrenmesi | Python Veri Bilimi | Kodleon',
@@ -11,422 +12,222 @@ export const metadata: Metadata = {
 };
 
 const content = `
-# Makine Öğrenmesi
+# Makine Öğrenmesi Temelleri
 
-Bu bölümde, Python ile makine öğrenmesi uygulamalarını ve temel algoritmaları öğreneceğiz.
+## Giriş
 
-## Denetimli Öğrenme (Supervised Learning)
+Makine öğrenmesi, bilgisayarların verilerden öğrenmesini ve bu öğrendiklerini kullanarak tahminler yapmasını sağlayan bir yapay zeka alt dalıdır. Bu derste, makine öğrenmesinin temellerini adım adım öğreneceğiz.
 
+## Temel Kavramlar
+
+### 1. Veri ve Özellikler
+- **Veri (Data)**: Makine öğrenmesi modellerinin öğrenmek için kullandığı bilgi
+- **Özellikler (Features)**: Verideki her bir değişken
+- **Hedef (Target)**: Tahmin etmeye çalıştığımız değer
+
+### 2. Model Türleri
+- **Denetimli Öğrenme**: Etiketli veri ile öğrenme
+- **Denetimsiz Öğrenme**: Etiketsiz veri ile öğrenme
+- **Pekiştirmeli Öğrenme**: Ödül-ceza sistemi ile öğrenme
+
+## Denetimli Öğrenme
+
+### 1. Veri Hazırlama
 \`\`\`python
-import numpy as np
+# Adım 1: Gerekli kütüphaneleri içe aktarma
 import pandas as pd
-from typing import Optional, List, Dict, Any, Tuple
-from sklearn.base import BaseEstimator, ClassifierMixin
-from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+import numpy as np
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-import joblib
-from dataclasses import dataclass
-import logging
 
-@dataclass
-class ModelMetrikleri:
-    accuracy: float
-    precision: float
-    recall: float
-    f1: float
-    
-@dataclass
-class ModelKonfigurasyonu:
-    model_adi: str
-    model_tipi: str
-    parametreler: Dict[str, Any]
-    egitim_parametreleri: Dict[str, Any]
-    
-class DenetimliOgrenme:
-    def __init__(self, 
-                 konfigurasyon: ModelKonfigurasyonu,
-                 olceklendirme: bool = True):
-        self.konfigurasyon = konfigurasyon
-        self.olceklendirme = olceklendirme
-        self.model = None
-        self.olceklendirici = StandardScaler() if olceklendirme else None
-        
-        # Logging ayarları
-        logging.basicConfig(
-            level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s'
-        )
-        self.logger = logging.getLogger(__name__)
-        
-    def veri_hazirla(self,
-                     X: np.ndarray,
-                     y: np.ndarray,
-                     test_orani: float = 0.2,
-                     rastgele_durum: int = 42) -> Tuple[np.ndarray, ...]:
-        """Veriyi eğitim ve test setlerine ayırır"""
-        # Veriyi böl
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=test_orani, random_state=rastgele_durum
-        )
-        
-        # Ölçeklendirme uygula
-        if self.olceklendirme:
-            X_train = self.olceklendirici.fit_transform(X_train)
-            X_test = self.olceklendirici.transform(X_test)
-            
-        return X_train, X_test, y_train, y_test
-        
-    def model_olustur(self) -> BaseEstimator:
-        """Konfigürasyona göre model oluşturur"""
-        if self.konfigurasyon.model_tipi == 'random_forest':
-            from sklearn.ensemble import RandomForestClassifier
-            return RandomForestClassifier(**self.konfigurasyon.parametreler)
-        elif self.konfigurasyon.model_tipi == 'svm':
-            from sklearn.svm import SVC
-            return SVC(**self.konfigurasyon.parametreler)
-        elif self.konfigurasyon.model_tipi == 'logistic':
-            from sklearn.linear_model import LogisticRegression
-            return LogisticRegression(**self.konfigurasyon.parametreler)
-        else:
-            raise ValueError(f"Desteklenmeyen model tipi: {self.konfigurasyon.model_tipi}")
-            
-    def model_egit(self,
-                   X_train: np.ndarray,
-                   y_train: np.ndarray) -> None:
-        """Modeli eğitir"""
-        self.model = self.model_olustur()
-        self.model.fit(X_train, y_train)
-        self.logger.info(f"{self.konfigurasyon.model_adi} eğitimi tamamlandı")
-        
-    def model_degerlendir(self,
-                         X_test: np.ndarray,
-                         y_test: np.ndarray) -> ModelMetrikleri:
-        """Model performansını değerlendirir"""
-        if self.model is None:
-            raise ValueError("Model henüz eğitilmemiş")
-            
-        y_pred = self.model.predict(X_test)
-        
-        metrikler = ModelMetrikleri(
-            accuracy=accuracy_score(y_test, y_pred),
-            precision=precision_score(y_test, y_pred, average='weighted'),
-            recall=recall_score(y_test, y_pred, average='weighted'),
-            f1=f1_score(y_test, y_pred, average='weighted')
-        )
-        
-        self.logger.info(f"Model metrikleri hesaplandı: {metrikler}")
-        return metrikler
-        
-    def capraz_dogrulama(self,
-                         X: np.ndarray,
-                         y: np.ndarray,
-                         k_fold: int = 5) -> Dict[str, List[float]]:
-        """K-fold çapraz doğrulama uygular"""
-        if self.model is None:
-            self.model = self.model_olustur()
-            
-        metrikler = {
-            'accuracy': cross_val_score(
-                self.model, X, y, cv=k_fold, scoring='accuracy'
-            ),
-            'precision': cross_val_score(
-                self.model, X, y, cv=k_fold, scoring='precision_weighted'
-            ),
-            'recall': cross_val_score(
-                self.model, X, y, cv=k_fold, scoring='recall_weighted'
-            ),
-            'f1': cross_val_score(
-                self.model, X, y, cv=k_fold, scoring='f1_weighted'
-            )
-        }
-        
-        for metrik, skorlar in metrikler.items():
-            self.logger.info(
-                f"{metrik}: {skorlar.mean():.4f} (+/- {skorlar.std() * 2:.4f})"
-            )
-            
-        return metrikler
-        
-    def model_kaydet(self, dosya_yolu: str) -> None:
-        """Modeli ve konfigürasyonu kaydeder"""
-        if self.model is None:
-            raise ValueError("Kaydedilecek model bulunamadı")
-            
-        model_verisi = {
-            'model': self.model,
-            'konfigurasyon': self.konfigurasyon,
-            'olceklendirici': self.olceklendirici
-        }
-        
-        joblib.dump(model_verisi, dosya_yolu)
-        self.logger.info(f"Model kaydedildi: {dosya_yolu}")
-        
-    @classmethod
-    def model_yukle(cls, dosya_yolu: str) -> 'DenetimliOgrenme':
-        """Kaydedilmiş modeli yükler"""
-        model_verisi = joblib.load(dosya_yolu)
-        
-        sinif = cls(
-            konfigurasyon=model_verisi['konfigurasyon'],
-            olceklendirme=model_verisi['olceklendirici'] is not None
-        )
-        
-        sinif.model = model_verisi['model']
-        sinif.olceklendirici = model_verisi['olceklendirici']
-        
-        return sinif
-
-# Kullanım örneği
-if __name__ == "__main__":
-    from sklearn.datasets import load_iris
-    
-    # Veri setini yükle
-    iris = load_iris()
-    X, y = iris.data, iris.target
-    
-    # Model konfigürasyonu
-    konfigurasyon = ModelKonfigurasyonu(
-        model_adi="Iris Sınıflandırıcı",
-        model_tipi="random_forest",
-        parametreler={
-            'n_estimators': 100,
-            'max_depth': 5,
-            'random_state': 42
-        },
-        egitim_parametreleri={
-            'test_orani': 0.2,
-            'k_fold': 5
-        }
-    )
-    
-    # Model oluştur ve eğit
-    model = DenetimliOgrenme(konfigurasyon)
-    
-    # Veriyi hazırla
-    X_train, X_test, y_train, y_test = model.veri_hazirla(
-        X, y, 
-        test_orani=konfigurasyon.egitim_parametreleri['test_orani']
-    )
-    
-    # Modeli eğit
-    model.model_egit(X_train, y_train)
-    
-    # Model performansını değerlendir
-    metrikler = model.model_degerlendir(X_test, y_test)
-    print("Model Metrikleri:", metrikler)
-    
-    # Çapraz doğrulama
-    cv_metrikler = model.capraz_dogrulama(
-        X, y, 
-        k_fold=konfigurasyon.egitim_parametreleri['k_fold']
-    )
-    
-    # Modeli kaydet
-    model.model_kaydet("iris_model.joblib")
+# Adım 2: Örnek veri seti oluşturma
+# Iris veri setini kullanalım
+from sklearn.datasets import load_iris
+iris = load_iris()
+X = iris.data  # özellikler
+y = iris.target  # hedef değişken
 \`\`\`
 
-## Denetimsiz Öğrenme (Unsupervised Learning)
+**🔍 Açıklama:**
+- Öncelikle gerekli kütüphaneleri projemize dahil ediyoruz
+- Scikit-learn'den hazır Iris veri setini yüklüyoruz
+- X değişkeni özellikleri (çiçeğin ölçüleri), y değişkeni hedef sınıfı (çiçek türü) temsil eder
 
+### 2. Veri Ön İşleme
 \`\`\`python
-import numpy as np
-import pandas as pd
-from typing import Optional, List, Dict, Any, Tuple
-from sklearn.base import BaseEstimator, ClusterMixin
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import silhouette_score, calinski_harabasz_score
-import matplotlib.pyplot as plt
-import seaborn as sns
-from dataclasses import dataclass
-import logging
+# Adım 1: Veriyi eğitim ve test setlerine ayırma
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 
-@dataclass
-class KumelemeMetrikleri:
-    silhouette: float
-    calinski_harabasz: float
-    inertia: Optional[float] = None
-    
-@dataclass
-class KumelemeKonfigurasyonu:
-    model_adi: str
-    model_tipi: str
-    parametreler: Dict[str, Any]
-    
-class DenetimsizOgrenme:
-    def __init__(self,
-                 konfigurasyon: KumelemeKonfigurasyonu,
-                 olceklendirme: bool = True):
-        self.konfigurasyon = konfigurasyon
-        self.olceklendirme = olceklendirme
-        self.model = None
-        self.olceklendirici = StandardScaler() if olceklendirme else None
-        
-        # Logging ayarları
-        logging.basicConfig(
-            level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s'
-        )
-        self.logger = logging.getLogger(__name__)
-        
-    def veri_hazirla(self, X: np.ndarray) -> np.ndarray:
-        """Veriyi hazırlar ve ölçeklendirir"""
-        if self.olceklendirme:
-            return self.olceklendirici.fit_transform(X)
-        return X
-        
-    def model_olustur(self) -> BaseEstimator:
-        """Konfigürasyona göre model oluşturur"""
-        if self.konfigurasyon.model_tipi == 'kmeans':
-            from sklearn.cluster import KMeans
-            return KMeans(**self.konfigurasyon.parametreler)
-        elif self.konfigurasyon.model_tipi == 'dbscan':
-            from sklearn.cluster import DBSCAN
-            return DBSCAN(**self.konfigurasyon.parametreler)
-        elif self.konfigurasyon.model_tipi == 'hierarchical':
-            from sklearn.cluster import AgglomerativeClustering
-            return AgglomerativeClustering(**self.konfigurasyon.parametreler)
-        else:
-            raise ValueError(f"Desteklenmeyen model tipi: {self.konfigurasyon.model_tipi}")
-            
-    def kumeleme_yap(self, X: np.ndarray) -> np.ndarray:
-        """Kümeleme analizi yapar"""
-        self.model = self.model_olustur()
-        etiketler = self.model.fit_predict(X)
-        self.logger.info(f"{self.konfigurasyon.model_adi} kümeleme tamamlandı")
-        return etiketler
-        
-    def metrikleri_hesapla(self,
-                          X: np.ndarray,
-                          etiketler: np.ndarray) -> KumelemeMetrikleri:
-        """Kümeleme metriklerini hesaplar"""
-        metrikler = KumelemeMetrikleri(
-            silhouette=silhouette_score(X, etiketler),
-            calinski_harabasz=calinski_harabasz_score(X, etiketler)
-        )
-        
-        # K-means için inertia hesapla
-        if hasattr(self.model, 'inertia_'):
-            metrikler.inertia = self.model.inertia_
-            
-        self.logger.info(f"Kümeleme metrikleri hesaplandı: {metrikler}")
-        return metrikler
-        
-    def optimal_kume_sayisi(self,
-                           X: np.ndarray,
-                           min_k: int = 2,
-                           max_k: int = 10) -> Dict[str, List[float]]:
-        """Optimal küme sayısını bulmak için metrikler hesaplar"""
-        if self.konfigurasyon.model_tipi != 'kmeans':
-            raise ValueError("Bu metod sadece K-means için kullanılabilir")
-            
-        sonuclar = {
-            'k': list(range(min_k, max_k + 1)),
-            'inertia': [],
-            'silhouette': [],
-            'calinski_harabasz': []
-        }
-        
-        for k in sonuclar['k']:
-            self.konfigurasyon.parametreler['n_clusters'] = k
-            etiketler = self.kumeleme_yap(X)
-            metrikler = self.metrikleri_hesapla(X, etiketler)
-            
-            sonuclar['inertia'].append(metrikler.inertia)
-            sonuclar['silhouette'].append(metrikler.silhouette)
-            sonuclar['calinski_harabasz'].append(metrikler.calinski_harabasz)
-            
-        return sonuclar
-        
-    def kumeleri_gorselleştir(self,
-                             X: np.ndarray,
-                             etiketler: np.ndarray,
-                             boyutlar: Tuple[int, int] = (0, 1)) -> None:
-        """Kümeleri 2D düzlemde görselleştirir"""
-        plt.figure(figsize=(10, 6))
-        scatter = plt.scatter(
-            X[:, boyutlar[0]], 
-            X[:, boyutlar[1]], 
-            c=etiketler, 
-            cmap='viridis'
-        )
-        plt.colorbar(scatter)
-        plt.title(f"{self.konfigurasyon.model_adi} Kümeleme Sonuçları")
-        plt.xlabel(f"Özellik {boyutlar[0]}")
-        plt.ylabel(f"Özellik {boyutlar[1]}")
-        plt.show()
-
-# Kullanım örneği
-if __name__ == "__main__":
-    from sklearn.datasets import make_blobs
-    
-    # Yapay veri oluştur
-    X, _ = make_blobs(
-        n_samples=300,
-        n_features=2,
-        centers=4,
-        cluster_std=0.60,
-        random_state=42
-    )
-    
-    # Model konfigürasyonu
-    konfigurasyon = KumelemeKonfigurasyonu(
-        model_adi="Blob Kümeleme",
-        model_tipi="kmeans",
-        parametreler={
-            'n_clusters': 4,
-            'random_state': 42
-        }
-    )
-    
-    # Model oluştur
-    model = DenetimsizOgrenme(konfigurasyon)
-    
-    # Veriyi hazırla
-    X_hazir = model.veri_hazirla(X)
-    
-    # Kümeleme yap
-    etiketler = model.kumeleme_yap(X_hazir)
-    
-    # Metrikleri hesapla
-    metrikler = model.metrikleri_hesapla(X_hazir, etiketler)
-    print("Kümeleme Metrikleri:", metrikler)
-    
-    # Optimal küme sayısını bul
-    optimizasyon = model.optimal_kume_sayisi(X_hazir)
-    
-    # Sonuçları görselleştir
-    model.kumeleri_gorselleştir(X_hazir, etiketler)
+# Adım 2: Veri ölçeklendirme
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 \`\`\`
+
+**🔍 Açıklama:**
+- Veriyi %80 eğitim, %20 test olarak ayırıyoruz
+- StandardScaler ile verileri normalize ediyoruz (ortalama=0, standart sapma=1)
+- fit_transform() eğitim verisi için, transform() test verisi için kullanılır
+
+**⚠️ Önemli Not:** Test verisini ölçeklendirirken sadece transform() kullanıyoruz, çünkü test verisi eğitim sürecinde bilinmeyen veriyi temsil eder.
+
+### 3. Model Seçimi ve Eğitimi
+
+#### 3.1 Lojistik Regresyon
+\`\`\`python
+# Adım 1: Model oluşturma
+from sklearn.linear_model import LogisticRegression
+model_lr = LogisticRegression(random_state=42)
+
+# Adım 2: Model eğitimi
+model_lr.fit(X_train_scaled, y_train)
+
+# Adım 3: Tahmin
+y_pred_lr = model_lr.predict(X_test_scaled)
+\`\`\`
+
+**🔍 Model Parametreleri:**
+- random_state: Sonuçların tekrarlanabilirliği için
+- solver: Optimizasyon algoritması ('lbfgs', 'newton-cg', 'sag', 'saga')
+- max_iter: Maksimum iterasyon sayısı
+
+#### 3.2 Rastgele Orman
+\`\`\`python
+# Adım 1: Model oluşturma
+from sklearn.ensemble import RandomForestClassifier
+model_rf = RandomForestClassifier(
+    n_estimators=100,
+    max_depth=5,
+    random_state=42
+)
+
+# Adım 2: Model eğitimi
+model_rf.fit(X_train_scaled, y_train)
+
+# Adım 3: Tahmin
+y_pred_rf = model_rf.predict(X_test_scaled)
+\`\`\`
+
+**🔍 Model Parametreleri:**
+- n_estimators: Ağaç sayısı
+- max_depth: Maksimum ağaç derinliği
+- min_samples_split: Düğüm bölmek için gereken minimum örnek sayısı
+- min_samples_leaf: Yaprak düğümde olması gereken minimum örnek sayısı
+
+### 4. Model Değerlendirme
+\`\`\`python
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    confusion_matrix
+)
+
+# Adım 1: Doğruluk skorları
+print("Lojistik Regresyon Doğruluk:", 
+      accuracy_score(y_test, y_pred_lr))
+print("Rastgele Orman Doğruluk:", 
+      accuracy_score(y_test, y_pred_rf))
+
+# Adım 2: Detaylı metrikler
+print("\\nLojistik Regresyon Raporu:")
+print(classification_report(y_test, y_pred_lr))
+
+print("\\nRastgele Orman Raporu:")
+print(classification_report(y_test, y_pred_rf))
+\`\`\`
+
+**🔍 Metrikler ve Anlamları:**
+- **Accuracy (Doğruluk)**: Doğru tahmin edilen örneklerin oranı
+- **Precision (Kesinlik)**: Pozitif tahminlerin ne kadarının gerçekten pozitif olduğu
+- **Recall (Duyarlılık)**: Gerçek pozitiflerin ne kadarının doğru tahmin edildiği
+- **F1-Score**: Precision ve Recall'un harmonik ortalaması
+
+### 5. Model İyileştirme
+
+#### 5.1 Çapraz Doğrulama
+\`\`\`python
+from sklearn.model_selection import cross_val_score
+
+# 5-katlı çapraz doğrulama
+cv_scores_lr = cross_val_score(model_lr, X_train_scaled, y_train, cv=5)
+cv_scores_rf = cross_val_score(model_rf, X_train_scaled, y_train, cv=5)
+
+print("Lojistik Regresyon CV Skorları:", cv_scores_lr.mean())
+print("Rastgele Orman CV Skorları:", cv_scores_rf.mean())
+\`\`\`
+
+**🔍 Açıklama:**
+- Çapraz doğrulama, modelin genelleme yeteneğini ölçer
+- Veri 5 parçaya bölünür ve her seferinde 4 parça eğitim, 1 parça test için kullanılır
+- Final skor, 5 farklı testin ortalamasıdır
+
+#### 5.2 Hiperparametre Optimizasyonu
+\`\`\`python
+from sklearn.model_selection import GridSearchCV
+
+# Parametre ızgarası
+param_grid = {
+    'n_estimators': [50, 100, 200],
+    'max_depth': [3, 5, 7],
+    'min_samples_split': [2, 5, 10]
+}
+
+# Grid Search
+grid_search = GridSearchCV(
+    RandomForestClassifier(random_state=42),
+    param_grid,
+    cv=5,
+    scoring='accuracy'
+)
+
+grid_search.fit(X_train_scaled, y_train)
+
+print("En iyi parametreler:", grid_search.best_params_)
+print("En iyi skor:", grid_search.best_score_)
+\`\`\`
+
+**🔍 Grid Search Stratejisi:**
+1. Belirlenen parametre kombinasyonlarını dener
+2. Her kombinasyon için çapraz doğrulama yapar
+3. En iyi sonucu veren parametre setini seçer
+
+## Pratik Uygulamalar
+
+### 1. Ev Fiyat Tahmini
+[Ev Fiyat Tahmini Örneği](/kod-ornekleri/ev-fiyat-tahmini)
+
+### 2. Müşteri Segmentasyonu
+[Müşteri Segmentasyonu Örneği](/kod-ornekleri/musteri-segmentasyonu)
+
+### 3. Duygu Analizi
+[Duygu Analizi Örneği](/kod-ornekleri/duygu-analizi)
+
+## Önerilen Kaynaklar
+
+1. 📚 Scikit-learn Dokümantasyonu
+2. 📖 Python Machine Learning (Sebastian Raschka)
+3. 🎓 Coursera - Machine Learning Specialization
+4. 💻 Kaggle Competitions
 
 ## Alıştırmalar
 
-1. **Denetimli Öğrenme**
-   - Farklı veri setleri üzerinde sınıflandırma modelleri oluşturun
-   - Hiperparametre optimizasyonu yapın
-   - Model performansını değerlendirin ve karşılaştırın
+1. Farklı bir veri seti ile sınıflandırma modeli oluşturun
+2. Hiperparametre optimizasyonu yapın
+3. Farklı metriklerle model performansını değerlendirin
+4. Veri ön işleme adımlarını değiştirerek sonuçları karşılaştırın
 
-2. **Denetimsiz Öğrenme**
-   - Farklı kümeleme algoritmaları deneyin
-   - Optimal küme sayısını belirleyin
-   - Kümeleme sonuçlarını görselleştirin
+## Sıkça Sorulan Sorular
 
-3. **Model Geliştirme**
-   - Özellik mühendisliği teknikleri uygulayın
-   - Farklı ön işleme stratejileri deneyin
-   - Model performansını artırmak için ensemble yöntemler kullanın
+1. **S: Hangi model türünü seçmeliyim?**
+   C: Veri setinizin büyüklüğü, problem tipi ve hesaplama kaynaklarınıza göre değişir.
 
-## Sonraki Adımlar
+2. **S: Overfitting nasıl önlenir?**
+   C: Cross-validation, regularization ve veri artırma teknikleri kullanılabilir.
 
-1. [Derin Öğrenme](/topics/python/veri-bilimi/derin-ogrenme)
-2. [MLOps ve DevOps](/topics/python/veri-bilimi/mlops)
-3. [Yapay Zeka Projeleri](/topics/python/veri-bilimi/yapay-zeka-projeleri)
-
-## Faydalı Kaynaklar
-
-- [scikit-learn Dokümantasyonu](https://scikit-learn.org/)
-- [Python Machine Learning (Kitap)](https://www.packtpub.com/product/python-machine-learning-third-edition/9781789955750)
-- [Kaggle Eğitimleri](https://www.kaggle.com/learn)
-- [Google Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course)
+3. **S: Ne zaman derin öğrenme kullanmalıyım?**
+   C: Büyük veri setlerinde ve karmaşık örüntülerde derin öğrenme tercih edilir.
 `;
 
 const learningPath = [
@@ -487,47 +288,16 @@ const learningPath = [
 export default function MakineOgrenmesiPage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-6">
-          <Button variant="ghost" asChild className="mb-6">
-            <Link href="/topics/python/veri-bilimi" className="flex items-center">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Veri Bilimi
-            </Link>
-          </Button>
-        </div>
-
-        <div className="prose prose-lg dark:prose-invert">
-          <MarkdownContent content={content} />
-        </div>
-
-        <h2 className="text-2xl font-bold mb-6">Öğrenme Yolu</h2>
-        
-        <div className="grid gap-6 md:grid-cols-2">
-          {learningPath.map((topic, index) => (
-            <Card key={index} className="p-6 hover:bg-accent transition-colors cursor-pointer">
-              <Link href={topic.href}>
-                <div className="flex items-start space-x-4">
-                  <div className="text-4xl">{topic.icon}</div>
-                  <div className="space-y-2">
-                    <h3 className="font-bold">{topic.title}</h3>
-                    <p className="text-sm text-muted-foreground">{topic.description}</p>
-                    <ul className="text-sm space-y-1 list-disc list-inside text-muted-foreground">
-                      {topic.topics.map((t, i) => (
-                        <li key={i}>{t}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </Link>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-16 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Kodleon | Python Eğitim Platformu</p>
-        </div>
+      <div className="mb-8">
+        <Button variant="ghost" className="mb-4">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          <Link href="/topics/python/veri-bilimi">Geri Dön</Link>
+        </Button>
       </div>
+      
+      <Card className="p-6">
+        <MarkdownContent content={content} />
+      </Card>
     </div>
   );
 } 
