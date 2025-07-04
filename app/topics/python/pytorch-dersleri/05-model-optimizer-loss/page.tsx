@@ -130,7 +130,7 @@ print(f'x = 6.0 için modelin tahmini: {predicted:.3f}')
             </div>
             
             <p className="text-sm font-medium text-primary mt-4">
-              Bu <b>Model -> Kayıp -> Optimizatör</b> üçlüsü, PyTorch ile model eğitmenin standart yoludur. Bu yapıyı benimsemek, basit bir doğrusal regresyondan devasa bir dil modeline kadar her türlü projede size yol gösterecektir.
+              Bu <b>Model -&gt; Kayıp -&gt; Optimizatör</b> üçlüsü, PyTorch ile model eğitmenin standart yoludur. Bu yapıyı benimsemek, basit bir doğrusal regresyondan devasa bir dil modeline kadar her türlü projede size yol gösterecektir.
             </p>
 
           </TabsContent>

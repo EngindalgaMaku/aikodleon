@@ -306,12 +306,14 @@ export default function PythonTopicsPage() {
                         {topic.features.map((feature, index) => (
                           <li key={index} className="flex items-center">
                             <div className="w-2 h-2 bg-current rounded-full mr-3 flex-shrink-0"></div>
-                            {feature.href ? (
+                            {typeof feature === "object" && feature !== null && "href" in feature ? (
                               <a href={feature.href} className="hover:underline text-blue-600 dark:text-blue-400 font-semibold">
                                 {feature.text}
                               </a>
                             ) : (
-                              <span className="text-gray-700 dark:text-gray-300">{typeof feature === 'string' ? feature : feature.text}</span>
+                              typeof feature === "object" && feature !== null && "text" in feature
+                                ? feature.text
+                                : feature
                             )}
                           </li>
                         ))}
